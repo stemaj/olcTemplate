@@ -4,10 +4,24 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\engine">
+      <UniqueIdentifier>{1F63D4E0-0B1B-162E-7422-EF8960F9B01E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\src">
+      <UniqueIdentifier>{C345B32C-AF13-A732-98A7-175984148397}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\engine\olcPixelGameEngine.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\src\olcPixelGameEngine.cpp">
+      <Filter>src\engine\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

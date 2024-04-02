@@ -12,16 +12,16 @@ solution "OlcTemplate"
   configuration "Debug"
     targetdir (path.join(ROOT_DIR,"solution/bin/Debug"))
     objdir (path.join(ROOT_DIR,"solution/obj"))
-    flags { "Symbols", "CppLatest" }
+    flags { "Symbols", "Cpp17" }
   configuration "Test"
     targetdir (path.join(ROOT_DIR,"solution/bin/Test"))
     objdir (path.join(ROOT_DIR,"solution/obj"))
     defines { "RUN_TESTS" }
-    flags { "Symbols", "CppLatest" }
+    flags { "Symbols", "Cpp17" }
   configuration "Release"
     targetdir (path.join(ROOT_DIR,"solution/bin/Release"))
     objdir (path.join(ROOT_DIR,"solution/obj"))
-    flags { "OptimizeSpeed", "CppLatest" }
+    flags { "OptimizeSpeed", "Cpp17" }
   platforms {
     "Native",
     "x64",
