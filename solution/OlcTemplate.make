@@ -68,8 +68,6 @@ ifeq ($(config),debug)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -102,8 +100,6 @@ ifeq ($(config),test)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -136,8 +132,6 @@ ifeq ($(config),release)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -170,8 +164,6 @@ ifeq ($(config),debug64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -204,8 +196,6 @@ ifeq ($(config),test64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -238,8 +228,6 @@ ifeq ($(config),release64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -273,8 +261,6 @@ ifeq ($(config),debuguniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -308,8 +294,6 @@ ifeq ($(config),testuniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -343,8 +327,6 @@ ifeq ($(config),releaseuniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
-	$(OBJDIR)/src/engine/src/olcPixelGameEngine.o \
-	$(OBJDIR)/src/main.o \
 
   define PREBUILDCMDS
   endef
@@ -356,8 +338,6 @@ endif
 
 OBJDIRS := \
 	$(OBJDIR) \
-	$(OBJDIR)/src \
-	$(OBJDIR)/src/engine/src \
 
 RESOURCES := \
 
@@ -416,14 +396,6 @@ $(LDRESP): $(LDDEPS) | $(TARGETDIR) $(OBJDIRS)
 	$(SILENT) echo $^
 	$(SILENT) echo $^ > $@
 endif
-
-$(OBJDIR)/src/engine/src/olcPixelGameEngine.o: ../src/engine/src/olcPixelGameEngine.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/src/engine/src
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/src/main.o: ../src/main.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/src
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))
