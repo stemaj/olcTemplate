@@ -68,6 +68,9 @@ ifeq ($(config),debug)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -100,6 +103,9 @@ ifeq ($(config),test)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -132,6 +138,9 @@ ifeq ($(config),release)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -164,6 +173,9 @@ ifeq ($(config),debug64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -196,6 +208,9 @@ ifeq ($(config),test64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -228,6 +243,9 @@ ifeq ($(config),release64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -261,6 +279,9 @@ ifeq ($(config),debuguniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -294,6 +315,9 @@ ifeq ($(config),testuniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -327,6 +351,9 @@ ifeq ($(config),releaseuniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/main.o \
+	$(OBJDIR)/game/src/olcTemplate.o \
 
   define PREBUILDCMDS
   endef
@@ -338,6 +365,8 @@ endif
 
 OBJDIRS := \
 	$(OBJDIR) \
+	$(OBJDIR)/game/src \
+	$(OBJDIR)/game/src/engine/src \
 
 RESOURCES := \
 
@@ -396,6 +425,18 @@ $(LDRESP): $(LDDEPS) | $(TARGETDIR) $(OBJDIRS)
 	$(SILENT) echo $^
 	$(SILENT) echo $^ > $@
 endif
+
+$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o: ../game/src/engine/src/olcPixelGameEngine.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/engine/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/main.o: ../game/src/main.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/olcTemplate.o: ../game/src/olcTemplate.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

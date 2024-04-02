@@ -34,9 +34,9 @@ solution "OlcTemplate"
 project "OlcTemplate"
   kind "ConsoleApp"
   files {
-    path.join(ROOT_DIR,"src/**.h"),
-    path.join(ROOT_DIR,"src/**.hpp"),
-    path.join(ROOT_DIR,"src/**.cpp"),
+    path.join(ROOT_DIR,"game/**.h"),
+    path.join(ROOT_DIR,"game/**.hpp"),
+    path.join(ROOT_DIR,"game/**.cpp"),
     --path.join(ROOT_DIR,"assets/**.txt"),
   }
   includedirs {
