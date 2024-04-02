@@ -7,6 +7,7 @@ struct Input
 {
   int mouseX;
   int mouseY;
+  bool leftMouseClicked;
 };
 
 } // namespace stemaj

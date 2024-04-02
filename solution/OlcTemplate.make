@@ -72,6 +72,8 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -108,6 +110,8 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -144,6 +148,8 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -180,6 +186,8 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -216,6 +224,8 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -252,6 +262,8 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -289,6 +301,8 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -326,6 +340,8 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -363,6 +379,8 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 
   define PREBUILDCMDS
   endef
@@ -376,6 +394,8 @@ OBJDIRS := \
 	$(OBJDIR) \
 	$(OBJDIR)/game/src \
 	$(OBJDIR)/game/src/engine/src \
+	$(OBJDIR)/game/src/render/src \
+	$(OBJDIR)/game/src/state/src \
 
 RESOURCES := \
 
@@ -448,6 +468,14 @@ $(OBJDIR)/game/src/main.o: ../game/src/main.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/g
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/olcTemplate.o: ../game/src/olcTemplate.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/render/src/mainMenuRender.o: ../game/src/render/src/mainMenuRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/state/src/mainMenuState.o: ../game/src/state/src/mainMenuState.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/state/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

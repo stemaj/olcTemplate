@@ -1,25 +1,20 @@
 #include <game/game.hpp>
 #include <game/src/render/render.hpp>
+#include <game/src/state/mainMenuState.hpp>
 #include <memory>
 
 using namespace stemaj;
 
-Game::Game()
+Game::Game() : _currentState(std::make_unique<MainMenuState>())
 {
-
 }
 
-std::unique_ptr<Render> Game::Update(Input input)
+void Game::Update(const Input& input)
 {
-  return nullptr;
+  _currentState->Update(input);
 }
 
-void Game::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, std::unique_ptr<Render> render)
+void Game::Render(olc::PixelGameEngine* pge, float fElapsedTime)
 {
-  
-}
-
-void Game::SetState(std::unique_ptr<State> newState)
-{
-
+  _currentState->GetRender()->DoRender(pge,fElapsedTime,_currentState.get());
 }

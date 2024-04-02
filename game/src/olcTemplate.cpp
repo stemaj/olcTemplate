@@ -1,3 +1,4 @@
+#include <X11/Xlib.h>
 #include <game/input.hpp>
 #include <game/src/render/render.hpp>
 #include <game/olcTemplate.hpp>
@@ -12,12 +13,12 @@ bool OlcTemplate::OnUserCreate()
 
 bool OlcTemplate::OnUserUpdate(float fElapsedTime)
 {
-  Input input;
-  input.mouseX = GetMouseX();
-  input.mouseY = GetMouseY();
+  Input input {GetMouseX(),
+    GetMouseY(),
+    GetMouse(0).bPressed};
 
-  std::unique_ptr<Render> render = _game.Update(input);
+  _game.Update(input);
+  _game.Render(this, fElapsedTime);
 
-
-  return true;
+  return !GetKey(olc::ESCAPE).bPressed;
 }

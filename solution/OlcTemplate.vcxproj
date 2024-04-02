@@ -329,6 +329,8 @@
     <ClInclude Include="..\game\olcTemplate.hpp" />
     <ClInclude Include="..\game\game.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
+    <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
+    <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -338,7 +340,11 @@
     </ClCompile>
     <ClCompile Include="..\game\src\game.cpp">
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
+    </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

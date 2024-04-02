@@ -16,9 +16,8 @@ class Game
 {
 public:
   Game();
-  std::unique_ptr<Render> Update(Input input);
-  void DoRender(olc::PixelGameEngine* pge, float fElapsedTime, std::unique_ptr<Render> render);
-  void SetState(std::unique_ptr<State> newState);
+  void Update(const Input& input);
+  void Render(olc::PixelGameEngine* pge, float fElapsedTime);
 
 private:
   std::unique_ptr<State> _currentState;

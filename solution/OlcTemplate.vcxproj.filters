@@ -16,8 +16,14 @@
     <Filter Include="game\src\state">
       <UniqueIdentifier>{4022380C-2CF0-2B12-1584-9C3801F10777}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\src\render\src">
+      <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\engine\src">
       <UniqueIdentifier>{19D989B7-853A-67C5-0EA8-AD777A089E84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\src\state\src">
+      <UniqueIdentifier>{64AD33D4-5091-F429-B9F1-EE7CA5F4DEAB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +42,12 @@
     <ClInclude Include="..\game\src\render\render.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\render\mainMenuRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\state\mainMenuState.hpp">
+      <Filter>game\src\state</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\state\state.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
@@ -50,8 +62,14 @@
     <ClCompile Include="..\game\src\game.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
+      <Filter>game\src\render\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
       <Filter>game\src\engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
+      <Filter>game\src\state\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
