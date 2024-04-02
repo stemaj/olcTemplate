@@ -323,6 +323,24 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h" />
+    <ClInclude Include="..\game\input.hpp" />
+    <ClInclude Include="..\game\olcTemplate.hpp" />
+    <ClInclude Include="..\game\game.hpp" />
+    <ClInclude Include="..\game\src\render\render.hpp" />
+    <ClInclude Include="..\game\src\state\state.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\game\src\olcTemplate.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\main.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\game.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
+    </ClCompile>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

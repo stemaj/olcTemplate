@@ -7,29 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1773ED288337EC184C9D1CE3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D1023B9222EE7CBB86DC3E /* OpenGL.framework */; };
-		ABDB80709796701C404EE966 /* OpenGL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A6D1023B9222EE7CBB86DC3E /* OpenGL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D0B189163C6BF4C0C5CA0E9B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC476A7EBEA400ED430C6D9 /* GLUT.framework */; };
-		62EDF0A54EFD9C76B7B60195 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FFC476A7EBEA400ED430C6D9 /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D2B6BB01BE0893F1A727D001 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81149E07ED82F386366CAE86 /* Carbon.framework */; };
-		BB63516CA71E411850D6B962 /* Carbon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 81149E07ED82F386366CAE86 /* Carbon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2F1523DD1B51264784633E3E /* game.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1E115A0D8A29413753D6D0D0 /* game.hpp */; };
+		07C47F89737DEA33FCDC040E /* input.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D6D8C3BAC2FE8D21AB4413ED /* input.hpp */; };
+		3ACA0DC82632D4958F9DE8AB /* olcTemplate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 691ED247D5E2D0379E480102 /* olcTemplate.hpp */; };
+		905370787C13011DE530E927 /* olcPixelGameEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = FF57026E6B74F45E344C61CC /* olcPixelGameEngine.h */; };
+		25680E971169A2113A310F96 /* olcPixelGameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B496F57420549EABA91E8A13 /* olcPixelGameEngine.cpp */; };
+		8C947783F823396E01201A86 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44A85FFC30E4626699F67A5D /* game.cpp */; };
+		593EB331C5CD741CCEC95534 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 883FA482747BA7ECDD8DBFE3 /* main.cpp */; };
+		30F261691C70B2020568709A /* olcTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C270B8B868AACD4A89A40 /* olcTemplate.cpp */; };
+		CD5FC03AB908286AE29E43E9 /* render.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5C47D910C8AC6C9751850E70 /* render.hpp */; };
+		C9199778B597E7119E8FA5A9 /* state.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 613ED23ECD5835E0167B4574 /* state.hpp */; };
+		0607E20FF258B9FFDB77F60F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35749070A1E2E5EFEACBA0EF /* OpenGL.framework */; };
+		ABDB80709796701C404EE966 /* OpenGL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 35749070A1E2E5EFEACBA0EF /* OpenGL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FF7D1AD6EB64DCCD94B542EB /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77CC303A5BDB70435E09AD /* GLUT.framework */; };
+		62EDF0A54EFD9C76B7B60195 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE77CC303A5BDB70435E09AD /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		1A0F936806616A58EF7FA768 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91FA372358EF8F17E77B3F1 /* Carbon.framework */; };
+		BB63516CA71E411850D6B962 /* Carbon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C91FA372358EF8F17E77B3F1 /* Carbon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A6D1023B9222EE7CBB86DC3E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGL.framework"; path = "/System/Library/Frameworks/OpenGL.framework"; sourceTree = "<absolute>"; };
-		FFC476A7EBEA400ED430C6D9 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "GLUT.framework"; path = "/System/Library/Frameworks/GLUT.framework"; sourceTree = "<absolute>"; };
-		81149E07ED82F386366CAE86 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Carbon.framework"; path = "/System/Library/Frameworks/Carbon.framework"; sourceTree = "<absolute>"; };
+		1E115A0D8A29413753D6D0D0 /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "game.hpp"; path = "game.hpp"; sourceTree = "<group>"; };
+		D6D8C3BAC2FE8D21AB4413ED /* input.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "input.hpp"; path = "input.hpp"; sourceTree = "<group>"; };
+		691ED247D5E2D0379E480102 /* olcTemplate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "olcTemplate.hpp"; path = "olcTemplate.hpp"; sourceTree = "<group>"; };
+		FF57026E6B74F45E344C61CC /* olcPixelGameEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "olcPixelGameEngine.h"; path = "olcPixelGameEngine.h"; sourceTree = "<group>"; };
+		B496F57420549EABA91E8A13 /* olcPixelGameEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "olcPixelGameEngine.cpp"; path = "olcPixelGameEngine.cpp"; sourceTree = "<group>"; };
+		44A85FFC30E4626699F67A5D /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "game.cpp"; path = "game.cpp"; sourceTree = "<group>"; };
+		883FA482747BA7ECDD8DBFE3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "main.cpp"; path = "main.cpp"; sourceTree = "<group>"; };
+		1F6C270B8B868AACD4A89A40 /* olcTemplate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "olcTemplate.cpp"; path = "olcTemplate.cpp"; sourceTree = "<group>"; };
+		5C47D910C8AC6C9751850E70 /* render.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "render.hpp"; path = "render.hpp"; sourceTree = "<group>"; };
+		613ED23ECD5835E0167B4574 /* state.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "state.hpp"; path = "state.hpp"; sourceTree = "<group>"; };
+		35749070A1E2E5EFEACBA0EF /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGL.framework"; path = "/System/Library/Frameworks/OpenGL.framework"; sourceTree = "<absolute>"; };
+		CE77CC303A5BDB70435E09AD /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "GLUT.framework"; path = "/System/Library/Frameworks/GLUT.framework"; sourceTree = "<absolute>"; };
+		C91FA372358EF8F17E77B3F1 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Carbon.framework"; path = "/System/Library/Frameworks/Carbon.framework"; sourceTree = "<absolute>"; };
 		E841427CD4D0CB457DEFDF40 /* OlcTemplate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "OlcTemplate"; path = "OlcTemplate"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FF6142DC6B7CA57DB49EB511 /* Frameworks */ = {
+		FE2626546A4189F5B3639989 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1773ED288337EC184C9D1CE3 /* OpenGL.framework in Frameworks */,
-				D0B189163C6BF4C0C5CA0E9B /* GLUT.framework in Frameworks */,
-				D2B6BB01BE0893F1A727D001 /* Carbon.framework in Frameworks */,
+				0607E20FF258B9FFDB77F60F /* OpenGL.framework in Frameworks */,
+				FF7D1AD6EB64DCCD94B542EB /* GLUT.framework in Frameworks */,
+				1A0F936806616A58EF7FA768 /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,23 +59,88 @@
 		5D6D9D7CC97ACB625261C74D /* OlcTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				65458F2D51553BFEBA0EA01C /* Frameworks */,
-				6685E3DDD24717681BF8A5F4 /* Products */,
+				FE14D64EEAA35F1893C27313 /* game */,
+				B4E8B50820F6E3EEA9DCDFD9 /* Frameworks */,
+				AEC855A21A8B892C633B18B9 /* Products */,
 			);
 			name = "OlcTemplate";
+			path = "..";
 			sourceTree = "<group>";
 		};
-		65458F2D51553BFEBA0EA01C /* Frameworks */ = {
+		FE14D64EEAA35F1893C27313 /* game */ = {
 			isa = PBXGroup;
 			children = (
-				A6D1023B9222EE7CBB86DC3E /* OpenGL.framework */,
-				FFC476A7EBEA400ED430C6D9 /* GLUT.framework */,
-				81149E07ED82F386366CAE86 /* Carbon.framework */,
+				1E115A0D8A29413753D6D0D0 /* game.hpp */,
+				D6D8C3BAC2FE8D21AB4413ED /* input.hpp */,
+				691ED247D5E2D0379E480102 /* olcTemplate.hpp */,
+				E34029084F035D9298B3EB1E /* src */,
+			);
+			name = "game";
+			path = "game";
+			sourceTree = "<group>";
+		};
+		E34029084F035D9298B3EB1E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				894D2452759E0F949E02FE55 /* engine */,
+				44A85FFC30E4626699F67A5D /* game.cpp */,
+				883FA482747BA7ECDD8DBFE3 /* main.cpp */,
+				1F6C270B8B868AACD4A89A40 /* olcTemplate.cpp */,
+				96B93254820A1E96AB6E0C58 /* render */,
+				9A74C83C0658D77C0F5B05B9 /* state */,
+			);
+			name = "src";
+			path = "src";
+			sourceTree = "<group>";
+		};
+		894D2452759E0F949E02FE55 /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				FF57026E6B74F45E344C61CC /* olcPixelGameEngine.h */,
+				43D5DA982FBC9C90D80C03AE /* src */,
+			);
+			name = "engine";
+			path = "engine";
+			sourceTree = "<group>";
+		};
+		43D5DA982FBC9C90D80C03AE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B496F57420549EABA91E8A13 /* olcPixelGameEngine.cpp */,
+			);
+			name = "src";
+			path = "src";
+			sourceTree = "<group>";
+		};
+		96B93254820A1E96AB6E0C58 /* render */ = {
+			isa = PBXGroup;
+			children = (
+				5C47D910C8AC6C9751850E70 /* render.hpp */,
+			);
+			name = "render";
+			path = "render";
+			sourceTree = "<group>";
+		};
+		9A74C83C0658D77C0F5B05B9 /* state */ = {
+			isa = PBXGroup;
+			children = (
+				613ED23ECD5835E0167B4574 /* state.hpp */,
+			);
+			name = "state";
+			path = "state";
+			sourceTree = "<group>";
+		};
+		B4E8B50820F6E3EEA9DCDFD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35749070A1E2E5EFEACBA0EF /* OpenGL.framework */,
+				CE77CC303A5BDB70435E09AD /* GLUT.framework */,
+				C91FA372358EF8F17E77B3F1 /* Carbon.framework */,
 			);
 			name = "Frameworks";
 			sourceTree = "<group>";
 		};
-		6685E3DDD24717681BF8A5F4 /* Products */ = {
+		AEC855A21A8B892C633B18B9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				E841427CD4D0CB457DEFDF40 /* OlcTemplate */,
@@ -68,11 +153,11 @@
 /* Begin PBXNativeTarget section */
 		CE94A8133AF68521C363CCD3 /* OlcTemplate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB546E54276FD1F57091E189 /* Build configuration list for PBXNativeTarget "OlcTemplate" */;
+			buildConfigurationList = 03284E106F42B1B1B864C145 /* Build configuration list for PBXNativeTarget "OlcTemplate" */;
 			buildPhases = (
-				DD930AD749AE6D7892D07D0C /* Resources */,
-				1599A65981B309FBCAD5198F /* Sources */,
-				FF6142DC6B7CA57DB49EB511 /* Frameworks */,
+				DC58EE4E487351F091956184 /* Resources */,
+				145E8AD18078ED72C99AFD06 /* Sources */,
+				FE2626546A4189F5B3639989 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -102,7 +187,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DD930AD749AE6D7892D07D0C /* Resources */ = {
+		DC58EE4E487351F091956184 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -112,10 +197,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1599A65981B309FBCAD5198F /* Sources */ = {
+		145E8AD18078ED72C99AFD06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25680E971169A2113A310F96 /* olcPixelGameEngine.cpp in Sources */,
+				8C947783F823396E01201A86 /* game.cpp in Sources */,
+				593EB331C5CD741CCEC95534 /* main.cpp in Sources */,
+				30F261691C70B2020568709A /* olcTemplate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +439,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BB546E54276FD1F57091E189 /* Build configuration list for PBXNativeTarget "OlcTemplate" */ = {
+		03284E106F42B1B1B864C145 /* Build configuration list for PBXNativeTarget "OlcTemplate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EF3C6470AAEB6F3B3652F3E /* Debug */,

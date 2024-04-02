@@ -69,6 +69,7 @@ ifeq ($(config),debug)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -104,6 +105,7 @@ ifeq ($(config),test)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -139,6 +141,7 @@ ifeq ($(config),release)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -174,6 +177,7 @@ ifeq ($(config),debug64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -209,6 +213,7 @@ ifeq ($(config),test64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -244,6 +249,7 @@ ifeq ($(config),release64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -280,6 +286,7 @@ ifeq ($(config),debuguniv64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -316,6 +323,7 @@ ifeq ($(config),testuniv64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -352,6 +360,7 @@ ifeq ($(config),releaseuniv64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 
@@ -427,6 +436,10 @@ $(LDRESP): $(LDDEPS) | $(TARGETDIR) $(OBJDIRS)
 endif
 
 $(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o: ../game/src/engine/src/olcPixelGameEngine.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/engine/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/game.o: ../game/src/game.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
