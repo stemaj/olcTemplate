@@ -62,7 +62,7 @@ ifeq ($(config),debug)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -108,7 +108,7 @@ ifeq ($(config),test)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -154,7 +154,7 @@ ifeq ($(config),release)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -200,7 +200,7 @@ ifeq ($(config),debug64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -246,7 +246,7 @@ ifeq ($(config),test64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -292,7 +292,7 @@ ifeq ($(config),release64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -339,7 +339,7 @@ ifeq ($(config),debuguniv64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -386,7 +386,7 @@ ifeq ($(config),testuniv64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -433,7 +433,7 @@ ifeq ($(config),releaseuniv64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)

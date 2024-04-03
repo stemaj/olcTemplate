@@ -44,13 +44,14 @@
 		FF9374E56BA51C8CF4F6AECB /* lua.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EE2BDF60DAA92FFAC3A1ED91 /* lua.hpp */; };
 		E7C8119453E503851CBD70F2 /* luaconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 96ABC49182542CC1ABEA4740 /* luaconf.h */; };
 		F1921CF2DDD1C66D8654A39F /* lualib.h in Headers */ = {isa = PBXBuildFile; fileRef = 800B85FAEC46E5BDF53B624D /* lualib.h */; };
-		4F1494143B27946DE410715A /* sol.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1E4BFEB88ADABFA393D6A0BB /* sol.hpp */; };
-		D08513DBBCD7EACAA5F627DB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0C7B872B7BD00674648B06 /* OpenGL.framework */; };
-		ABDB80709796701C404EE966 /* OpenGL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF0C7B872B7BD00674648B06 /* OpenGL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		49C269D035A92BC8DEF991E5 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D865430E4449524E4D4C808A /* GLUT.framework */; };
-		62EDF0A54EFD9C76B7B60195 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D865430E4449524E4D4C808A /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		82B3B82DEE427A18F73E5B30 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3163AEFC1D9FB16686B1C95D /* Carbon.framework */; };
-		BB63516CA71E411850D6B962 /* Carbon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3163AEFC1D9FB16686B1C95D /* Carbon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B572846D21842C14AAD5BE53 /* config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = E4800512D0FE55ABB9F61343 /* config.hpp */; };
+		9283E27A7E96E2D32780BFC0 /* sol.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 81646646EDF32731F6EF0849 /* sol.hpp */; };
+		71A450D9DD3312C4E62FF3DB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E297F0EB4E06466B97EF006B /* OpenGL.framework */; };
+		ABDB80709796701C404EE966 /* OpenGL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E297F0EB4E06466B97EF006B /* OpenGL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		AAC4DCA51689DB95DFEE0B60 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9927223385780D75AEDCFB36 /* GLUT.framework */; };
+		62EDF0A54EFD9C76B7B60195 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9927223385780D75AEDCFB36 /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85AC0132F13BC31CFA37A434 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EE2361402A27CBA93C3FC2 /* Carbon.framework */; };
+		BB63516CA71E411850D6B962 /* Carbon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54EE2361402A27CBA93C3FC2 /* Carbon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,21 +92,22 @@
 		EE2BDF60DAA92FFAC3A1ED91 /* lua.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "lua.hpp"; path = "lua.hpp"; sourceTree = "<group>"; };
 		96ABC49182542CC1ABEA4740 /* luaconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "luaconf.h"; path = "luaconf.h"; sourceTree = "<group>"; };
 		800B85FAEC46E5BDF53B624D /* lualib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "lualib.h"; path = "lualib.h"; sourceTree = "<group>"; };
-		1E4BFEB88ADABFA393D6A0BB /* sol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "sol.hpp"; path = "sol.hpp"; sourceTree = "<group>"; };
-		BF0C7B872B7BD00674648B06 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGL.framework"; path = "/System/Library/Frameworks/OpenGL.framework"; sourceTree = "<absolute>"; };
-		D865430E4449524E4D4C808A /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "GLUT.framework"; path = "/System/Library/Frameworks/GLUT.framework"; sourceTree = "<absolute>"; };
-		3163AEFC1D9FB16686B1C95D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Carbon.framework"; path = "/System/Library/Frameworks/Carbon.framework"; sourceTree = "<absolute>"; };
+		E4800512D0FE55ABB9F61343 /* config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "config.hpp"; path = "config.hpp"; sourceTree = "<group>"; };
+		81646646EDF32731F6EF0849 /* sol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "sol.hpp"; path = "sol.hpp"; sourceTree = "<group>"; };
+		E297F0EB4E06466B97EF006B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGL.framework"; path = "/System/Library/Frameworks/OpenGL.framework"; sourceTree = "<absolute>"; };
+		9927223385780D75AEDCFB36 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "GLUT.framework"; path = "/System/Library/Frameworks/GLUT.framework"; sourceTree = "<absolute>"; };
+		54EE2361402A27CBA93C3FC2 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Carbon.framework"; path = "/System/Library/Frameworks/Carbon.framework"; sourceTree = "<absolute>"; };
 		E841427CD4D0CB457DEFDF40 /* OlcTemplate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "OlcTemplate"; path = "OlcTemplate"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AF604EE19BC814AF043429C5 /* Frameworks */ = {
+		D25E2269BEC6E8362732FD4C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D08513DBBCD7EACAA5F627DB /* OpenGL.framework in Frameworks */,
-				49C269D035A92BC8DEF991E5 /* GLUT.framework in Frameworks */,
-				82B3B82DEE427A18F73E5B30 /* Carbon.framework in Frameworks */,
+				71A450D9DD3312C4E62FF3DB /* OpenGL.framework in Frameworks */,
+				AAC4DCA51689DB95DFEE0B60 /* GLUT.framework in Frameworks */,
+				85AC0132F13BC31CFA37A434 /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +119,8 @@
 			children = (
 				FE14D64EEAA35F1893C27313 /* game */,
 				577AD832430962FCEC2776F7 /* sdk */,
-				BE6163C92A6F91AFB3558D9A /* Frameworks */,
-				1624A86B0234543C6BEDB85A /* Products */,
+				A10E247B0D1C526196024E4C /* Frameworks */,
+				393C82FE254C2ECF8E0593ED /* Products */,
 			);
 			name = "OlcTemplate";
 			path = "..";
@@ -280,23 +282,33 @@
 		AA3CE8191620F7591F232596 /* sol2-3.3.0 */ = {
 			isa = PBXGroup;
 			children = (
-				1E4BFEB88ADABFA393D6A0BB /* sol.hpp */,
+				A8CF5E8B1489C9359DE8E30F /* sol */,
+				81646646EDF32731F6EF0849 /* sol.hpp */,
 			);
 			name = "sol2-3.3.0";
 			path = "sol2-3.3.0";
 			sourceTree = "<group>";
 		};
-		BE6163C92A6F91AFB3558D9A /* Frameworks */ = {
+		A8CF5E8B1489C9359DE8E30F /* sol */ = {
 			isa = PBXGroup;
 			children = (
-				BF0C7B872B7BD00674648B06 /* OpenGL.framework */,
-				D865430E4449524E4D4C808A /* GLUT.framework */,
-				3163AEFC1D9FB16686B1C95D /* Carbon.framework */,
+				E4800512D0FE55ABB9F61343 /* config.hpp */,
+			);
+			name = "sol";
+			path = "sol";
+			sourceTree = "<group>";
+		};
+		A10E247B0D1C526196024E4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E297F0EB4E06466B97EF006B /* OpenGL.framework */,
+				9927223385780D75AEDCFB36 /* GLUT.framework */,
+				54EE2361402A27CBA93C3FC2 /* Carbon.framework */,
 			);
 			name = "Frameworks";
 			sourceTree = "<group>";
 		};
-		1624A86B0234543C6BEDB85A /* Products */ = {
+		393C82FE254C2ECF8E0593ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				E841427CD4D0CB457DEFDF40 /* OlcTemplate */,
@@ -309,11 +321,11 @@
 /* Begin PBXNativeTarget section */
 		CE94A8133AF68521C363CCD3 /* OlcTemplate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B537A5957BB4027C026553D /* Build configuration list for PBXNativeTarget "OlcTemplate" */;
+			buildConfigurationList = 8E514EE17AB914AFE32429C5 /* Build configuration list for PBXNativeTarget "OlcTemplate" */;
 			buildPhases = (
-				8D9216DC79FADCA9E265F1BF /* Resources */,
-				C597B25EB1FF782C1A6B8D42 /* Sources */,
-				AF604EE19BC814AF043429C5 /* Frameworks */,
+				B090EA639CF8B0310564C547 /* Resources */,
+				E89586E6D4FD4CB43D6961CA /* Sources */,
+				D25E2269BEC6E8362732FD4C /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,7 +355,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8D9216DC79FADCA9E265F1BF /* Resources */ = {
+		B090EA639CF8B0310564C547 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,7 +365,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C597B25EB1FF782C1A6B8D42 /* Sources */ = {
+		E89586E6D4FD4CB43D6961CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -617,7 +629,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B537A5957BB4027C026553D /* Build configuration list for PBXNativeTarget "OlcTemplate" */ = {
+		8E514EE17AB914AFE32429C5 /* Build configuration list for PBXNativeTarget "OlcTemplate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EF3C6470AAEB6F3B3652F3E /* Debug */,

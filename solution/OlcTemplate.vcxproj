@@ -347,6 +347,7 @@
     <ClInclude Include="..\game\src\state\state.hpp" />
     <ClInclude Include="..\game\src\state\introState.hpp" />
     <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp" />
+    <ClInclude Include="..\sdk\sol2-3.3.0\sol\config.hpp" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp" />
   </ItemGroup>
   <ItemGroup>

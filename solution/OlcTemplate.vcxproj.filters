@@ -34,6 +34,9 @@
     <Filter Include="sdk\sol2-3.3.0">
       <UniqueIdentifier>{C2BA6F82-AE88-6388-971C-D4AE83893FED}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk\sol2-3.3.0\sol">
+      <UniqueIdentifier>{8CB6A755-789A-68AB-E1FA-62FECDFD522D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\render\src">
       <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
     </Filter>
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp">
       <Filter>sdk\sol2-3.3.0</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\sol2-3.3.0\sol\config.hpp">
+      <Filter>sdk\sol2-3.3.0\sol</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp">
       <Filter>sdk\lua-5.4.2\include</Filter>

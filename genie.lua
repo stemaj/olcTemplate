@@ -73,7 +73,7 @@ project "OlcTemplate"
     }
     libdirs {
       "/usr/lib",
-      "sdk/lua-5.4.2/linux"
+      "sdk/lua-5.4.2/linux",
       --"soloud/lib/linux/Release",
     }
     links {
@@ -83,7 +83,8 @@ project "OlcTemplate"
        "pthread",
        "png",
        "stdc++fs",
-       "lua54"
+       "lua54",
+       "dl",
        --"soloud_static",
        --"asound"
     }
