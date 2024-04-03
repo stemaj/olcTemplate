@@ -10,6 +10,15 @@
     <Filter Include="game\src\engine">
       <UniqueIdentifier>{75BB2A72-E146-9836-EA57-1B2B5662F436}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{67A9880B-D3B2-887C-5C2E-9F7CC836947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\imgui-1.90.4">
+      <UniqueIdentifier>{75A6A6E9-619F-C53B-8AD1-AAC07629A547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\imgui-1.90.4\backends">
+      <UniqueIdentifier>{6C11CB3E-D8D3-FEC8-2184-8D558D85D7A6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\render">
       <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
@@ -29,6 +38,30 @@
   <ItemGroup>
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h">
       <Filter>game\src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\engine\imgui_impl_pge.h">
+      <Filter>game\src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imgui_internal.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_rectpack.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClInclude>
     <ClInclude Include="..\game\input.hpp">
       <Filter>game</Filter>
@@ -70,6 +103,24 @@
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
       <Filter>game\src\state\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_draw.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_tables.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

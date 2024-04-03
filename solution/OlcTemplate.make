@@ -50,7 +50,7 @@ ifeq ($(config),debug)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -74,6 +74,12 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -88,7 +94,7 @@ ifeq ($(config),test)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -112,6 +118,12 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -126,7 +138,7 @@ ifeq ($(config),release)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
@@ -150,6 +162,12 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -164,7 +182,7 @@ ifeq ($(config),debug64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -188,6 +206,12 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -202,7 +226,7 @@ ifeq ($(config),test64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -226,6 +250,12 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -240,7 +270,7 @@ ifeq ($(config),release64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
@@ -264,6 +294,12 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -279,7 +315,7 @@ ifeq ($(config),debuguniv64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -303,6 +339,12 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -318,7 +360,7 @@ ifeq ($(config),testuniv64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -342,6 +384,12 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -357,7 +405,7 @@ ifeq ($(config),releaseuniv64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
@@ -381,6 +429,12 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o \
 
   define PREBUILDCMDS
   endef
@@ -396,6 +450,8 @@ OBJDIRS := \
 	$(OBJDIR)/game/src/engine/src \
 	$(OBJDIR)/game/src/render/src \
 	$(OBJDIR)/game/src/state/src \
+	$(OBJDIR)/sdk/imgui-1.90.4 \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends \
 
 RESOURCES := \
 
@@ -476,6 +532,30 @@ $(OBJDIR)/game/src/render/src/mainMenuRender.o: ../game/src/render/src/mainMenuR
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/state/src/mainMenuState.o: ../game/src/state/src/mainMenuState.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/state/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o: ../sdk/imgui-1.90.4/backends/imgui_impl_opengl2.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4/backends
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/sdk/imgui-1.90.4/imgui.o: ../sdk/imgui-1.90.4/imgui.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o: ../sdk/imgui-1.90.4/imgui_demo.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o: ../sdk/imgui-1.90.4/imgui_draw.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/sdk/imgui-1.90.4/imgui_tables.o: ../sdk/imgui-1.90.4/imgui_tables.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/sdk/imgui-1.90.4/imgui_widgets.o: ../sdk/imgui-1.90.4/imgui_widgets.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

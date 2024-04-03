@@ -19,7 +19,7 @@ public:
   std::string someText = "Main Menu";
   int someX = 80;
   int someY = 100;
-  std::string someColor = "white";
+  std::array<float,4> someColor = {1.0f,1.0f, 1.0f, 1.0f};
 private:
   std::unique_ptr<MainMenuRender> _render;
 };

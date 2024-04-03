@@ -1,7 +1,7 @@
-#include <X11/Xlib.h>
 #include <game/input.hpp>
 #include <game/src/render/render.hpp>
 #include <game/olcTemplate.hpp>
+#include <sdk/imgui-1.90.4/imgui.h>
 #include <chrono>
 #include <thread>
 
@@ -9,6 +9,11 @@ using namespace stemaj;
 
 bool OlcTemplate::OnUserCreate()
 {
+  _gameLayer = CreateLayer();
+  EnableLayer(_gameLayer, true);
+  SetLayerCustomRenderFunction(0, [this](){
+    _pgeImgui.ImGui_ImplPGE_Render();});
+
   return true;
 }
 
@@ -26,9 +31,12 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
 {
   auto frameStartTime = std::chrono::steady_clock::now();
 
+  SetDrawTarget((uint8_t)_gameLayer);
+
   Input input {GetMouseX(),
-  GetMouseY(),
-  GetMouse(0).bPressed};
+    GetMouseY(),
+    ImGui::GetIO().WantCaptureMouse ? false : GetMouse(0).bPressed
+    };
 
   _game.Update(input);
   _game.Render(this, fElapsedTime);

@@ -12,5 +12,8 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 
   pge->DrawStringDecal(olc::vi2d{mainMenu->someX, mainMenu->someY},
     mainMenu->someText,
-    mainMenu->someColor == "white" ? olc::WHITE : olc::RED);
+    olc::Pixel(int(mainMenu->someColor[0]*255.0f),
+              int(mainMenu->someColor[1]*255.0f),
+              int(mainMenu->someColor[2]*255.0f),
+              int(mainMenu->someColor[3]*255.0f)));
 }

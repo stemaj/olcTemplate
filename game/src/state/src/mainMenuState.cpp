@@ -1,6 +1,7 @@
 #include "game/src/render/mainMenuRender.hpp"
 #include <game/src/state/mainMenuState.hpp>
 #include <memory>
+#include <sdk/imgui-1.90.4/imgui.h>
 
 using namespace stemaj;
 
@@ -15,8 +16,15 @@ Render* MainMenuState::GetRender()
 
 void MainMenuState::Update(const Input& input)
 {
-  if (input.leftMouseClicked)
-  {
-    someColor = someColor == "white" ? "red" : "white";
-  }
+  ImVec4 color = ImVec4(someColor[0], someColor[1], someColor[2], someColor[3]); // Anfangsfarbe
+  ImGui::Begin("Main Menu Debug");
+  ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
+  ImGui::ColorEdit3("Color", (float*)&color);
+
+  someColor[0] = color.x;
+  someColor[1] = color.y;
+  someColor[2] = color.z;
+  someColor[3] = color.w;
+
+  ImGui::End();
 }

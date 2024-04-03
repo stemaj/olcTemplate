@@ -138,7 +138,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -154,7 +154,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,7 +169,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -185,7 +185,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -201,7 +201,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -217,7 +217,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -232,7 +232,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -248,7 +248,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -264,7 +264,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -279,7 +279,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -295,7 +295,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -310,7 +310,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -325,6 +325,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h" />
+    <ClInclude Include="..\game\src\engine\imgui_impl_pge.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imgui_internal.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_rectpack.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h" />
     <ClInclude Include="..\game\input.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
     <ClInclude Include="..\game\game.hpp" />
@@ -345,6 +353,18 @@
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_draw.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_tables.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

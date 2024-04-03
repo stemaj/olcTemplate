@@ -34,9 +34,9 @@ solution "OlcTemplate"
 project "OlcTemplate"
   kind "ConsoleApp"
   files {
-    path.join(ROOT_DIR,"game/**.h"),
-    path.join(ROOT_DIR,"game/**.hpp"),
-    path.join(ROOT_DIR,"game/**.cpp"),
+    path.join(ROOT_DIR,"**.h"),
+    path.join(ROOT_DIR,"**.hpp"),
+    path.join(ROOT_DIR,"**.cpp"),
     --path.join(ROOT_DIR,"assets/**.txt"),
   }
   includedirs {
@@ -46,6 +46,8 @@ project "OlcTemplate"
 
   configuration "windows"
     includedirs {
+      "sdk/imgui-1.90.4",
+      "sdk/imgui-1.90.4/backends"
       --"soloud/include",
       --"freetype-windows-binaries-2.13.1/include",
     }
@@ -61,6 +63,8 @@ project "OlcTemplate"
   configuration "linux"
     includedirs {
       "/usr/include",
+      "sdk/imgui-1.90.4",
+      "sdk/imgui-1.90.4/backends"
       --"/usr/include/freetype2",
     }
     libdirs {
@@ -85,6 +89,8 @@ project "OlcTemplate"
     }
     includedirs {
       "../../../../opt/homebrew/include",
+      "sdk/imgui-1.90.4",
+      "sdk/imgui-1.90.4/backends"
       --"../../../../opt/homebrew/include/freetype2",
     }
     libdirs {
