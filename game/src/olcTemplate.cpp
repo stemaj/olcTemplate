@@ -6,6 +6,8 @@
 #include <thread>
 
 using namespace stemaj;
+using timePoint = std::chrono::time_point<std::chrono::steady_clock,
+  std::chrono::duration<long, std::ratio<1, 1000000000>>>;
 
 bool OlcTemplate::OnUserCreate()
 {
@@ -17,7 +19,7 @@ bool OlcTemplate::OnUserCreate()
   return true;
 }
 
-void reduceFrameRate(std::chrono::time_point<std::chrono::steady_clock, std::chrono::duration<long, std::ratio<1, 1000000000>>> start, float frameTime)
+void reduceFrameRate(const timePoint& start, const float frameTime)
 {
   auto now = std::chrono::steady_clock::now();
   auto frameDuration = std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count() / 1000.0f;
@@ -40,6 +42,7 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
 
   _game.Update(input);
   _game.Render(this, fElapsedTime);
+  _game.UpdateState();
 
   reduceFrameRate(frameStartTime, 1.0f/60.f); // 60 FPS
 

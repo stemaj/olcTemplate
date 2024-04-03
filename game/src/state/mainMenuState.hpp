@@ -13,7 +13,7 @@ class MainMenuState : public State
 {
 public:
   explicit MainMenuState();
-  void Update(const Input& input) override;
+  std::optional<std::unique_ptr<State>> Update(const Input& input) override;
   Render* GetRender() override;
 
   std::string someText = "Main Menu";

@@ -2,6 +2,8 @@
 #define __STATE_HPP
 
 #include <game/input.hpp>
+#include <memory>
+#include <optional>
 
 namespace stemaj {
 
@@ -11,7 +13,7 @@ class State
 {
 public:
   virtual ~State() = default;
-  virtual void Update(const Input& input) = 0;
+  virtual std::optional<std::unique_ptr<State>> Update(const Input& input) = 0;
   virtual Render* GetRender() = 0;
 };
 

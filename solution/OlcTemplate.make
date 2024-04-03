@@ -50,7 +50,7 @@ ifeq ($(config),debug)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -58,11 +58,11 @@ ifeq ($(config),debug)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"."
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"."
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -72,7 +72,9 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -94,7 +96,7 @@ ifeq ($(config),test)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -102,11 +104,11 @@ ifeq ($(config),test)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"."
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"."
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -116,7 +118,9 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -138,7 +142,7 @@ ifeq ($(config),release)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
@@ -146,11 +150,11 @@ ifeq ($(config),release)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"." -s
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -160,7 +164,9 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -182,7 +188,7 @@ ifeq ($(config),debug64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -190,11 +196,11 @@ ifeq ($(config),debug64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"." -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -m64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -204,7 +210,9 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -226,7 +234,7 @@ ifeq ($(config),test64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -234,11 +242,11 @@ ifeq ($(config),test64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"." -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -m64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -248,7 +256,9 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -270,7 +280,7 @@ ifeq ($(config),release64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
@@ -278,11 +288,11 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64 -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"." -s -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s -m64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -292,7 +302,9 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -315,7 +327,7 @@ ifeq ($(config),debuguniv64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -323,11 +335,11 @@ ifeq ($(config),debuguniv64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"." -arch x86_64 -arch ppc64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -arch x86_64 -arch ppc64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -337,7 +349,9 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -360,7 +374,7 @@ ifeq ($(config),testuniv64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -368,11 +382,11 @@ ifeq ($(config),testuniv64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"." -arch x86_64 -arch ppc64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -arch x86_64 -arch ppc64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -382,7 +396,9 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -405,7 +421,7 @@ ifeq ($(config),releaseuniv64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
@@ -413,11 +429,11 @@ ifeq ($(config),releaseuniv64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64 -std=c++17
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"." -s -arch x86_64 -arch ppc64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s -arch x86_64 -arch ppc64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs
+  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -427,7 +443,9 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -527,7 +545,15 @@ $(OBJDIR)/game/src/olcTemplate.o: ../game/src/olcTemplate.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
+$(OBJDIR)/game/src/render/src/introRender.o: ../game/src/render/src/introRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/game/src/render/src/mainMenuRender.o: ../game/src/render/src/mainMenuRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/state/src/introState.o: ../game/src/state/src/introState.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/state/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

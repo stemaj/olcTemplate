@@ -19,11 +19,20 @@
     <Filter Include="sdk\imgui-1.90.4\backends">
       <UniqueIdentifier>{6C11CB3E-D8D3-FEC8-2184-8D558D85D7A6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk\lua-5.4.2">
+      <UniqueIdentifier>{294E811B-950E-FD51-5E49-46CFCAC8412E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\lua-5.4.2\include">
+      <UniqueIdentifier>{29FAFC20-9566-B81B-5E5A-5079CA85DA83}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\render">
       <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\state">
       <UniqueIdentifier>{4022380C-2CF0-2B12-1584-9C3801F10777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\sol2-3.3.0">
+      <UniqueIdentifier>{C2BA6F82-AE88-6388-971C-D4AE83893FED}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\render\src">
       <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
@@ -63,6 +72,18 @@
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\input.hpp">
       <Filter>game</Filter>
     </ClInclude>
@@ -78,11 +99,23 @@
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\render\introRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\state\mainMenuState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\state.hpp">
       <Filter>game\src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\state\introState.hpp">
+      <Filter>game\src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp">
+      <Filter>sdk\sol2-3.3.0</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp">
+      <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -95,11 +128,17 @@
     <ClCompile Include="..\game\src\game.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\introRender.cpp">
+      <Filter>game\src\render\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
       <Filter>game\src\engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\introState.cpp">
+      <Filter>game\src\state\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
       <Filter>game\src\state\src</Filter>

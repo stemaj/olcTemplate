@@ -47,7 +47,9 @@ project "OlcTemplate"
   configuration "windows"
     includedirs {
       "sdk/imgui-1.90.4",
-      "sdk/imgui-1.90.4/backends"
+      "sdk/imgui-1.90.4/backends",
+      "sdk/sol2-3.3.0",
+      "sdk/lua-5.4.2/include",
       --"soloud/include",
       --"freetype-windows-binaries-2.13.1/include",
     }
@@ -64,11 +66,14 @@ project "OlcTemplate"
     includedirs {
       "/usr/include",
       "sdk/imgui-1.90.4",
-      "sdk/imgui-1.90.4/backends"
+      "sdk/imgui-1.90.4/backends",
+      "sdk/sol2-3.3.0",
+      "sdk/lua-5.4.2/include",
       --"/usr/include/freetype2",
     }
     libdirs {
       "/usr/lib",
+      "sdk/lua-5.4.2/linux"
       --"soloud/lib/linux/Release",
     }
     links {
@@ -78,6 +83,7 @@ project "OlcTemplate"
        "pthread",
        "png",
        "stdc++fs",
+       "lua54"
        --"soloud_static",
        --"asound"
     }
@@ -90,7 +96,9 @@ project "OlcTemplate"
     includedirs {
       "../../../../opt/homebrew/include",
       "sdk/imgui-1.90.4",
-      "sdk/imgui-1.90.4/backends"
+      "sdk/imgui-1.90.4/backends",
+      "sdk/sol2-3.3.0",
+      "sdk/lua-5.4.2/include",
       --"../../../../opt/homebrew/include/freetype2",
     }
     libdirs {

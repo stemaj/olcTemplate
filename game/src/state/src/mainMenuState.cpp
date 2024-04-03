@@ -1,6 +1,6 @@
 #include "game/src/render/mainMenuRender.hpp"
 #include <game/src/state/mainMenuState.hpp>
-#include <memory>
+#include <optional>
 #include <sdk/imgui-1.90.4/imgui.h>
 
 using namespace stemaj;
@@ -14,7 +14,7 @@ Render* MainMenuState::GetRender()
   return _render.get();
 }
 
-void MainMenuState::Update(const Input& input)
+std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input)
 {
   ImVec4 color = ImVec4(someColor[0], someColor[1], someColor[2], someColor[3]); // Anfangsfarbe
   ImGui::Begin("Main Menu Debug");
@@ -27,4 +27,5 @@ void MainMenuState::Update(const Input& input)
   someColor[3] = color.w;
 
   ImGui::End();
+  return std::nullopt;
 }

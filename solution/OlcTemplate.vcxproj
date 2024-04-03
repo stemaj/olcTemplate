@@ -138,7 +138,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -154,7 +154,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,7 +169,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -185,7 +185,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -201,7 +201,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -217,7 +217,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -232,7 +232,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -248,7 +248,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -264,7 +264,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -279,7 +279,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -295,7 +295,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -310,7 +310,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -333,13 +333,21 @@
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h" />
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h" />
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h" />
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h" />
     <ClInclude Include="..\game\input.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
     <ClInclude Include="..\game\game.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
+    <ClInclude Include="..\game\src\render\introRender.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
+    <ClInclude Include="..\game\src\state\introState.hpp" />
+    <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp" />
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\olcTemplate.cpp">
@@ -348,9 +356,13 @@
     </ClCompile>
     <ClCompile Include="..\game\src\game.cpp">
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\introRender.cpp">
+    </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\introState.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
     </ClCompile>
