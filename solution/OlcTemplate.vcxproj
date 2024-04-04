@@ -147,7 +147,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(IntDir)OlcTemplate.compile.pdb</ProgramDataBaseFileName>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
@@ -178,7 +178,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(IntDir)OlcTemplate.compile.pdb</ProgramDataBaseFileName>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
@@ -210,7 +210,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(IntDir)OlcTemplate.compile.pdb</ProgramDataBaseFileName>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
@@ -241,7 +241,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(IntDir)OlcTemplate.compile.pdb</ProgramDataBaseFileName>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
@@ -273,7 +273,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat></DebugInformationFormat>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
@@ -304,7 +304,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat></DebugInformationFormat>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
@@ -332,12 +332,15 @@
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_rectpack.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h" />
     <ClInclude Include="..\game\input.hpp" />
+    <ClInclude Include="..\game\assets.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
     <ClInclude Include="..\game\game.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
@@ -352,6 +355,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\olcTemplate.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\assets.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\main.cpp">
     </ClCompile>
@@ -376,6 +381,8 @@
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_tables.cpp">
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.cpp">
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
     </ClCompile>

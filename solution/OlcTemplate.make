@@ -54,9 +54,9 @@ ifeq ($(config),debug)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"."
   LIBDEPS            +=
@@ -68,6 +68,7 @@ ifeq ($(config),debug)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -77,6 +78,7 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -100,9 +102,9 @@ ifeq ($(config),test)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"."
   LIBDEPS            +=
@@ -114,6 +116,7 @@ ifeq ($(config),test)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -123,6 +126,7 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -146,9 +150,9 @@ ifeq ($(config),release)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s
   LIBDEPS            +=
@@ -160,6 +164,7 @@ ifeq ($(config),release)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -169,6 +174,7 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -192,9 +198,9 @@ ifeq ($(config),debug64)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -m64
   LIBDEPS            +=
@@ -206,6 +212,7 @@ ifeq ($(config),debug64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -215,6 +222,7 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -238,9 +246,9 @@ ifeq ($(config),test64)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -m64
   LIBDEPS            +=
@@ -252,6 +260,7 @@ ifeq ($(config),test64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -261,6 +270,7 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -284,9 +294,9 @@ ifeq ($(config),release64)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64 -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64 -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64 -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s -m64
   LIBDEPS            +=
@@ -298,6 +308,7 @@ ifeq ($(config),release64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -307,6 +318,7 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -331,9 +343,9 @@ ifeq ($(config),debuguniv64)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -arch x86_64 -arch ppc64
   LIBDEPS            +=
@@ -345,6 +357,7 @@ ifeq ($(config),debuguniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -354,6 +367,7 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -378,9 +392,9 @@ ifeq ($(config),testuniv64)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -arch x86_64 -arch ppc64
   LIBDEPS            +=
@@ -392,6 +406,7 @@ ifeq ($(config),testuniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -401,6 +416,7 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -425,9 +441,9 @@ ifeq ($(config),releaseuniv64)
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64 -std=c++17
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64 -std=c++2a
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64 -std=c++17
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s -arch x86_64 -arch ppc64
   LIBDEPS            +=
@@ -439,6 +455,7 @@ ifeq ($(config),releaseuniv64)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -448,6 +465,7 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
+	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_demo.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui_draw.o \
@@ -529,6 +547,10 @@ $(LDRESP): $(LDDEPS) | $(TARGETDIR) $(OBJDIRS)
 	$(SILENT) echo $^ > $@
 endif
 
+$(OBJDIR)/game/src/assets.o: ../game/src/assets.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o: ../game/src/engine/src/olcPixelGameEngine.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/engine/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
@@ -562,6 +584,10 @@ $(OBJDIR)/game/src/state/src/mainMenuState.o: ../game/src/state/src/mainMenuStat
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o: ../sdk/imgui-1.90.4/backends/imgui_impl_opengl2.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4/backends
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o: ../sdk/imgui-1.90.4/backends/imgui_impl_opengl3.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/sdk/imgui-1.90.4/backends
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

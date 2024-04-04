@@ -72,6 +72,12 @@
     <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.h">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3_loader.h">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
+    </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClInclude>
@@ -88,6 +94,9 @@
       <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
     <ClInclude Include="..\game\input.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\assets.hpp">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\game\olcTemplate.hpp">
@@ -128,6 +137,9 @@
     <ClCompile Include="..\game\src\olcTemplate.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\game\src\assets.cpp">
+      <Filter>game\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\game\src\main.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
@@ -163,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
       <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.cpp">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
       <Filter>sdk\imgui-1.90.4\backends</Filter>

@@ -68,7 +68,7 @@
         "file_list.txt",
         "&&",
         "em++",
-        "-std=c++17",
+        "-std=c++2a",
         "-O2",
         "-s",
         "ALLOW_MEMORY_GROWTH=1",

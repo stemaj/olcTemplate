@@ -1,6 +1,7 @@
 #include <game/src/render/mainMenuRender.hpp>
 #include <game/src/state/mainMenuState.hpp>
 #include <game/src/engine/olcPixelGameEngine.h>
+#include <game/assets.hpp>
 
 using namespace stemaj;
 
@@ -16,4 +17,6 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
               int(mainMenu->someColor[1]*255.0f),
               int(mainMenu->someColor[2]*255.0f),
               int(mainMenu->someColor[3]*255.0f)));
+
+  pge->DrawDecal({150,150}, AS.Decal("japan_1"), {0.2f,0.2f});
 }
