@@ -1,5 +1,7 @@
-#include "game/src/render/mainMenuRender.hpp"
 #include <game/src/state/mainMenuState.hpp>
+#include <game/src/render/mainMenuRender.hpp>
+#include <game/src/state/levelState.hpp>
+#include <game/src/render/levelRender.hpp>
 #include <optional>
 #include <sdk/imgui-1.90.4/imgui.h>
 #include <vector>
@@ -45,5 +47,10 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input)
   someColor[3] = color.w;
 
   ImGui::End();
+
+  if (input.leftMouseClicked)
+  {
+    return std::make_unique<LevelState>();
+  }
   return std::nullopt;
 }

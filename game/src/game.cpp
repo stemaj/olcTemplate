@@ -1,4 +1,5 @@
 #include <game/src/state/introState.hpp>
+#include <game/src/render/introRender.hpp>
 #include <game/game.hpp>
 #include <game/src/render/render.hpp>
 

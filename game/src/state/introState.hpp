@@ -5,12 +5,13 @@
 #include <memory>
 #include <game/input.hpp>
 #include <game/src/state/state.hpp>
-#include <game/src/render/introRender.hpp>
 
 using timePoint = std::chrono::time_point<std::chrono::steady_clock,
   std::chrono::duration<long, std::ratio<1, 1000000000>>>;
 
 namespace stemaj {
+
+class IntroRender;
 
 class IntroState : public State
 {

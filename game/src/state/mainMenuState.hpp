@@ -5,11 +5,12 @@
 #include <string>
 #include <game/input.hpp>
 #include <game/src/state/state.hpp>
-#include <game/src/render/mainMenuRender.hpp>
 #define SOL_ALL_SAFETIES_ON 1
 #include <sdk/sol2-3.3.0/sol.hpp>
 
 namespace stemaj {
+
+class MainMenuRender;
 
 class MainMenuState : public State
 {
