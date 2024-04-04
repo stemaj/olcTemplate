@@ -85,6 +85,9 @@
         "-Isdk/imgui-1.90.4/backends",
         "-Isdk/sol2-3.3.0",
         "-Isdk/lua-5.4.2/include",
+        "-Lsdk/lua-5.4.2/emscripten",
+        "-llua54emscripten",
+        "-ldl",
         "$(<file_list.txt)",
         "-o",
         "./index.html",
@@ -92,6 +95,8 @@
         "shell_minimal.html",
         "--preload-file",
         "./assets",
+        "--preload-file",
+        "./scripts",
         "&&",
         "emrun",
         "./index.html"

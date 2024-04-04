@@ -1,0 +1,6 @@
+# compile lua for emscripten
+
+cd ~/lua-5.4.6
+find . -name '*.c' > file_list.txt
+emcc -c $(<file_list.txt) -o obj
+emar rcs liblua54emscripten.a *.o

@@ -398,3 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 imgui.ini
 file_list.txt
+index.data
+index.wasm
+index.html
+index.js
