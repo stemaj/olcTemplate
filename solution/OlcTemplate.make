@@ -74,8 +74,10 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -122,8 +124,10 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -170,8 +174,10 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -218,8 +224,10 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -266,8 +274,10 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -314,8 +324,10 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -363,8 +375,10 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -412,8 +426,10 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -461,8 +477,10 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
+	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
+	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
@@ -571,11 +589,19 @@ $(OBJDIR)/game/src/render/src/introRender.o: ../game/src/render/src/introRender.
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
+$(OBJDIR)/game/src/render/src/levelRender.o: ../game/src/render/src/levelRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/game/src/render/src/mainMenuRender.o: ../game/src/render/src/mainMenuRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/state/src/introState.o: ../game/src/state/src/introState.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/state/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/state/src/levelState.o: ../game/src/state/src/levelState.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/state/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

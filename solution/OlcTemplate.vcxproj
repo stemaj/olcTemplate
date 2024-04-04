@@ -343,12 +343,14 @@
     <ClInclude Include="..\game\assets.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
     <ClInclude Include="..\game\game.hpp" />
+    <ClInclude Include="..\game\src\render\levelRender.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
     <ClInclude Include="..\game\src\state\introState.hpp" />
+    <ClInclude Include="..\game\src\state\levelState.hpp" />
     <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp" />
     <ClInclude Include="..\sdk\sol2-3.3.0\sol\config.hpp" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp" />
@@ -364,6 +366,8 @@
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\introRender.cpp">
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\levelRender.cpp">
+    </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
@@ -371,6 +375,8 @@
     <ClCompile Include="..\game\src\state\src\introState.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\levelState.cpp">
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
     </ClCompile>

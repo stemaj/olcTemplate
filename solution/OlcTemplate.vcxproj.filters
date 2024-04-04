@@ -105,6 +105,9 @@
     <ClInclude Include="..\game\game.hpp">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\render\levelRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\render\render.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
@@ -121,6 +124,9 @@
       <Filter>game\src\state</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\introState.hpp">
+      <Filter>game\src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\state\levelState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp">
@@ -149,6 +155,9 @@
     <ClCompile Include="..\game\src\render\src\introRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\levelRender.cpp">
+      <Filter>game\src\render\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
@@ -159,6 +168,9 @@
       <Filter>game\src\state\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
+      <Filter>game\src\state\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\levelState.cpp">
       <Filter>game\src\state\src</Filter>
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
