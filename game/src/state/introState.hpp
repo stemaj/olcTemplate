@@ -19,7 +19,7 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input) override;
   Render* GetRender() override;
 
-  float introEndDuration = 3.0f;
+  float introEndDuration = 1.0f;
   float currentDuration = 0.0f;
 
 private:

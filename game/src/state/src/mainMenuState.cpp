@@ -3,38 +3,28 @@
 #include <optional>
 #include <sdk/imgui-1.90.4/imgui.h>
 #include <vector>
-#define SOL_ALL_SAFETIES_ON 1
-#include <sdk/sol2-3.3.0/sol.hpp>
 
 using namespace stemaj;
 
 MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
 {
-  sol::state lua;
-  lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
+  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
-  // Step 1) Load & Parse File
 	try
 	{
-		lua.safe_script_file("scripts/mainMenu.lua");
-		std::cout << "[CPP S1] Lua File read OK!\n";
+		_lua.safe_script_file("scripts/mainMenu.lua");
 	}
 	catch (const sol::error& e)
 	{
-		// Something went wrong with loading this script
-		std::cout << std::string(e.what()) << "\n";
+		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  std::cout << "[CPP S2] a = " << lua["headerText"].get_or<std::string>("0") << "\n";
-  std::vector<float> cppArray = lua["headerColor"].get<std::vector<float>>();
-
-  for (int i = 0; i< cppArray.size(); i++)
+  someText = _lua["headerText"].get<std::string>();
+  std::vector<float> cppArray = _lua["headerColor"].get<std::vector<float>>();
+  for (int i = 0; i < cppArray.size(); i++)
   {
-    std::cout << cppArray[i];
-
+    someColor[i] = cppArray[i];
   }
-  
-
 }
 
 Render* MainMenuState::GetRender()
