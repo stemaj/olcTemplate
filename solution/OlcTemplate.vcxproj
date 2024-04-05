@@ -347,6 +347,7 @@
     <ClInclude Include="..\game\src\render\render.hpp" />
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
+    <ClInclude Include="..\game\src\tools\pfadfindung.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
     <ClInclude Include="..\game\src\state\introState.hpp" />
@@ -369,6 +370,8 @@
     <ClCompile Include="..\game\src\render\src\levelRender.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\tools\src\pfadfindung.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
     </ClCompile>

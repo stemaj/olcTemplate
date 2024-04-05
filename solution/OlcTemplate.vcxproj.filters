@@ -28,6 +28,9 @@
     <Filter Include="game\src\render">
       <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\src\tools">
+      <UniqueIdentifier>{70B7470C-5C85-3B12-4519-AC3831861777}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\state">
       <UniqueIdentifier>{4022380C-2CF0-2B12-1584-9C3801F10777}</UniqueIdentifier>
     </Filter>
@@ -39,6 +42,9 @@
     </Filter>
     <Filter Include="game\src\render\src">
       <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\src\tools\src">
+      <UniqueIdentifier>{945A6ACF-803E-2B25-E99E-2578D5A115A7}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\engine\src">
       <UniqueIdentifier>{19D989B7-853A-67C5-0EA8-AD777A089E84}</UniqueIdentifier>
@@ -117,6 +123,9 @@
     <ClInclude Include="..\game\src\render\introRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\tools\pfadfindung.hpp">
+      <Filter>game\src\tools</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\state\mainMenuState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
@@ -160,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
       <Filter>game\src\render\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\tools\src\pfadfindung.cpp">
+      <Filter>game\src\tools\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
       <Filter>game\src\engine\src</Filter>
