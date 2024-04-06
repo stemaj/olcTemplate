@@ -12,17 +12,15 @@ void LevelRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
 
  // Draw Path
     for (const auto& p : level->path)
-        pge->Draw(p.first,p.second, olc::WHITE);
+        pge->Draw(p.x,p.y, olc::WHITE);
 
   // Zeichne das Objekt
-        pge->FillCircle(level->obj_x, level->obj_y, 5, olc::RED);
+       // pge->FillCircle(level->, level->obj_y, 3, olc::RED);
 
 // Zeichne den Zielpunkt
-        if (level->goal_x != -1 && level->goal_y != -1) {
-            pge->FillCircle(level->goal_x, level->goal_y, 3, olc::GREEN);
-        }
-
+            pge->FillCircle(level->end.x, level->end.y, 4, olc::GREEN);
+        
         // Zeichne den Startpunkt
-        pge->FillCircle(level->start_x, level->start_y, 3, olc::BLUE);
+        pge->FillCircle(level->start.x, level->start.y, 5, olc::BLUE);
 
 }

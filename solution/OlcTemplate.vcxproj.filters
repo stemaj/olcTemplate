@@ -28,11 +28,11 @@
     <Filter Include="game\src\render">
       <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\src\tools">
-      <UniqueIdentifier>{70B7470C-5C85-3B12-4519-AC3831861777}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game\src\state">
       <UniqueIdentifier>{4022380C-2CF0-2B12-1584-9C3801F10777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\src\tools">
+      <UniqueIdentifier>{70B7470C-5C85-3B12-4519-AC3831861777}</UniqueIdentifier>
     </Filter>
     <Filter Include="sdk\sol2-3.3.0">
       <UniqueIdentifier>{C2BA6F82-AE88-6388-971C-D4AE83893FED}</UniqueIdentifier>
@@ -40,30 +40,30 @@
     <Filter Include="sdk\sol2-3.3.0\sol">
       <UniqueIdentifier>{8CB6A755-789A-68AB-E1FA-62FECDFD522D}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\src\render\src">
-      <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game\src\tools\src">
-      <UniqueIdentifier>{945A6ACF-803E-2B25-E99E-2578D5A115A7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game\src\engine\src">
       <UniqueIdentifier>{19D989B7-853A-67C5-0EA8-AD777A089E84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\src\render\src">
+      <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\state\src">
       <UniqueIdentifier>{64AD33D4-5091-F429-B9F1-EE7CA5F4DEAB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\src\tools\src">
+      <UniqueIdentifier>{945A6ACF-803E-2B25-E99E-2578D5A115A7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h">
-      <Filter>game\src\engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\game\src\engine\imgui_impl_pge.h">
       <Filter>game\src\engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h">
+    <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h">
+      <Filter>game\src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h">
+    <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui_internal.h">
@@ -72,11 +72,14 @@
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_rectpack.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h">
-      <Filter>sdk\imgui-1.90.4</Filter>
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.h">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
@@ -84,53 +87,41 @@
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3_loader.h">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h">
-      <Filter>sdk\imgui-1.90.4\backends</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h">
-      <Filter>sdk\lua-5.4.2\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h">
       <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h">
       <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
     <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h">
       <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\input.hpp">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="..\game\assets.hpp">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\olcTemplate.hpp">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\game\game.hpp">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\render\levelRender.hpp">
+    <ClInclude Include="..\game\input.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\olcTemplate.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\introRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\render\render.hpp">
+    <ClInclude Include="..\game\src\render\levelRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\render\introRender.hpp">
+    <ClInclude Include="..\game\src\render\render.hpp">
       <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\tools\pfadfindung.hpp">
-      <Filter>game\src\tools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\state\mainMenuState.hpp">
-      <Filter>game\src\state</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\state\state.hpp">
-      <Filter>game\src\state</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\introState.hpp">
       <Filter>game\src\state</Filter>
@@ -138,28 +129,43 @@
     <ClInclude Include="..\game\src\state\levelState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\state\mainMenuState.hpp">
+      <Filter>game\src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\state\state.hpp">
+      <Filter>game\src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\tools\jumpPointSearch.hpp">
+      <Filter>game\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\tools\pfadFollower.hpp">
+      <Filter>game\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
     <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp">
       <Filter>sdk\sol2-3.3.0</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\sol2-3.3.0\sol\config.hpp">
       <Filter>sdk\sol2-3.3.0\sol</Filter>
     </ClInclude>
-    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp">
-      <Filter>sdk\lua-5.4.2\include</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\game\src\olcTemplate.cpp">
+    <ClCompile Include="..\game\src\assets.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\assets.cpp">
+    <ClCompile Include="..\game\src\game.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\main.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\game.cpp">
+    <ClCompile Include="..\game\src\olcTemplate.cpp">
       <Filter>game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
+      <Filter>game\src\engine\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\introRender.cpp">
       <Filter>game\src\render\src</Filter>
@@ -170,25 +176,25 @@
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\pfadfindung.cpp">
-      <Filter>game\src\tools\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
-      <Filter>game\src\engine\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\game\src\state\src\introState.cpp">
-      <Filter>game\src\state\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
       <Filter>game\src\state\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\levelState.cpp">
       <Filter>game\src\state\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
+    <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
+      <Filter>game\src\state\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\tools\src\jumpPointSearch.cpp">
+      <Filter>game\src\tools\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\tools\src\pfadFollower.cpp">
+      <Filter>game\src\tools\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_draw.cpp">
@@ -197,13 +203,13 @@
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_tables.cpp">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.cpp">
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.cpp">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClCompile>
   </ItemGroup>

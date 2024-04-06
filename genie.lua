@@ -54,10 +54,12 @@ project "OlcTemplate"
       --"freetype-windows-binaries-2.13.1/include",
     }
     libdirs {
+      "sdk/lua-5.4.2/windows",
       --"freetype-windows-binaries-2.13.1/release static/vs2015-2022/win64",
       --"soloud/lib/windows",
     }
     links {
+      "lua54"
       --"freetype",
       --"soloud_static_x64"
     }

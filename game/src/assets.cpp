@@ -24,7 +24,7 @@ void stemaj::Assets::Load()
   {
     if (entry.is_regular_file() && entry.path().extension() == ".png")
     {
-      loadSprite(entry.path().stem(), entry.path());
+      loadSprite(entry.path().stem().string(), entry.path().string());
     }
   }
 }
