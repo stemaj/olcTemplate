@@ -39,42 +39,36 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'" Label="Configuration">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'" Label="Configuration">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -145,15 +139,13 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -161,8 +153,7 @@
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -180,15 +171,13 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -196,8 +185,7 @@
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -222,8 +210,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -255,8 +242,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -283,24 +269,20 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -319,24 +301,20 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions></PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -352,49 +330,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\game\src\engine\imgui_impl_pge.h" />
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h" />
-    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h" />
+    <ClInclude Include="..\game\src\engine\imgui_impl_pge.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui_internal.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_rectpack.h" />
-    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h" />
-    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h" />
-    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h" />
-    <ClInclude Include="..\game\assets.hpp" />
-    <ClInclude Include="..\game\game.hpp" />
     <ClInclude Include="..\game\input.hpp" />
+    <ClInclude Include="..\game\assets.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
-    <ClInclude Include="..\game\src\render\introRender.hpp" />
+    <ClInclude Include="..\game\game.hpp" />
     <ClInclude Include="..\game\src\render\levelRender.hpp" />
-    <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
-    <ClInclude Include="..\game\src\state\introState.hpp" />
-    <ClInclude Include="..\game\src\state\levelState.hpp" />
+    <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
+    <ClInclude Include="..\game\src\render\introRender.hpp" />
+    <ClInclude Include="..\game\src\tools\pfadFollower.hpp" />
+    <ClInclude Include="..\game\src\tools\jumpPointSearch.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
-    <ClInclude Include="..\game\src\tools\jumpPointSearch.hpp" />
-    <ClInclude Include="..\game\src\tools\pfadFollower.hpp" />
-    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp" />
+    <ClInclude Include="..\game\src\state\introState.hpp" />
+    <ClInclude Include="..\game\src\state\levelState.hpp" />
     <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp" />
     <ClInclude Include="..\sdk\sol2-3.3.0\sol\config.hpp" />
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\game\src\assets.cpp">
+    <ClCompile Include="..\game\src\olcTemplate.cpp">
     </ClCompile>
-    <ClCompile Include="..\game\src\game.cpp">
+    <ClCompile Include="..\game\src\assets.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\main.cpp">
     </ClCompile>
-    <ClCompile Include="..\game\src\olcTemplate.cpp">
-    </ClCompile>
-    <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
+    <ClCompile Include="..\game\src\game.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\introRender.cpp">
     </ClCompile>
@@ -402,29 +378,31 @@
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
     </ClCompile>
-    <ClCompile Include="..\game\src\state\src\introState.cpp">
-    </ClCompile>
-    <ClCompile Include="..\game\src\state\src\levelState.cpp">
-    </ClCompile>
-    <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
+    <ClCompile Include="..\game\src\tools\src\pfadFollower.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\jumpPointSearch.cpp">
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\pfadFollower.cpp">
+    <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
+    <ClCompile Include="..\game\src\state\src\introState.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\levelState.cpp">
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_draw.cpp">
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_tables.cpp">
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
-    </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.cpp">
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
