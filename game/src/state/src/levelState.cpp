@@ -24,15 +24,15 @@ std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input)
     end.x = input.mouseX;
     end.y = input.mouseY;
     path = jps.FindPath(start, end);
-    jps.Clear();
-    pf.SetPath(path);
-    pf.SetSpeed(1.0f);
+    //jps.Clear();
+    //pf.SetPath(path);
+    //pf.SetSpeed(1.0f);
   }
 
-  if (pf.MoveTowardsNextPoint())
-  {
-    obj = pf.GetCurrentPosition();
-  }
+  // if (pf.MoveTowardsNextPoint())
+  // {
+  //   obj = pf.GetCurrentPosition();
+  // }
 
 
 

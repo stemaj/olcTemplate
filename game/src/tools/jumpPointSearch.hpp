@@ -1,71 +1,48 @@
 #ifndef __PFADFINDUNG_HPP
 #define __PFADFINDUNG_HPP
 
-#include <cmath>
-#include <memory>
 #include <vector>
-
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <queue>
-#include <unordered_set>
 
 namespace stemaj {
 
 
-  struct Point {
+// Pathfinding class implementing the A* algorithm
+class Pathfinding {
+public:
+ struct Point {
     int x, y;
     Point(int _x, int _y) : x(_x), y(_y) {}
   };
+explicit Pathfinding();
+virtual ~Pathfinding() = default;
+std::vector<Point> FindPath(Point start, Point end);
+void SetGrid(int height, int width);
+void ToggleObstacle(int x, int y);
+
+private:
+
+	struct sNode
+	{
+		bool bObstacle = false;			// Is the node an obstruction?
+		bool bVisited = false;			// Have we searched this node before?
+		float fGlobalGoal;				// Distance to goal so far
+		float fLocalGoal;				// Distance to goal if we took the alternative route
+		int x;							// Nodes position in 2D space
+		int y;
+		std::vector<sNode*> vecNeighbours;	// Connections to neighbours
+		sNode* parent;					// Node connecting to this node that offers shortest parent
+	};
 
 
+bool Solve_AStar();
+	sNode *nodes = nullptr;
+	int nMapWidth = 10;
+	int nMapHeight = 10;
 
-  class JumpPointSearch {
+	sNode *nodeStart = nullptr;
+	sNode *nodeEnd = nullptr;
+};
 
-   
- 
-  public:
- 
-    void SetGrid(int height, int width);
-    void SetPolygon(std::vector<Point> poly);
-    void Clear();
-    std::vector<Point> FindPath(Point start, Point end);
-  private:
-    int gridHeight = 0, gridWidth = 0;
-    std::vector<std::vector<bool>> obstacles;
-    std::vector<Point> polygon;
-
-    std::vector<Point> calculateNeighbors(Point point);
-    bool isValidPoint(Point point);
-    Point calculateEndPoint(Point point);
-
-  };
-
-
-
- /* int main() {
-    JumpPointSearch jps;
-    jps.SetGrid(10, 10);
-
-    std::vector<Point> polygon = { Point(3, 3), Point(3, 4), Point(4, 4), Point(4, 3) };
-    jps.SetPolygon(polygon);
-
-    Point start(0, 0);
-    Point end(9, 9);
-
-    std::vector<Point> path = jps.FindPath(start, end);
-
-    std::cout << "Path: ";
-    for (auto point : path) {
-      std::cout << "(" << point.x << "," << point.y << ") ";
-    }
-    std::cout << std::endl;
-
-    return 0;
-  }*/
-
-
-} // namespace stemaj
+}
 
 #endif //__PFADFINDUNG_HPP
