@@ -346,6 +346,7 @@
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h" />
     <ClInclude Include="..\sdk\doctest-2.4.11\doctest.h" />
+    <ClInclude Include="..\game\coordinates.hpp" />
     <ClInclude Include="..\game\input.hpp" />
     <ClInclude Include="..\game\assets.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
@@ -374,6 +375,8 @@
     <ClCompile Include="..\game\src\main.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\game.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\coordinates.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\introRender.cpp">
     </ClCompile>

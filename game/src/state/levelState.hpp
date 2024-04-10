@@ -17,7 +17,7 @@ public:
   explicit LevelState();
   std::optional<std::unique_ptr<State>> Update(const Input& input) override;
   Render* GetRender() override;
-
+private:
   virtual void LoadLevelData() {}
   virtual void SaveLevelData() {}
 

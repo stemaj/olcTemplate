@@ -105,6 +105,9 @@
     <ClInclude Include="..\sdk\doctest-2.4.11\doctest.h">
       <Filter>sdk\doctest-2.4.11</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\coordinates.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\input.hpp">
       <Filter>game</Filter>
     </ClInclude>
@@ -174,6 +177,9 @@
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\game.cpp">
+      <Filter>game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\coordinates.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\introRender.cpp">

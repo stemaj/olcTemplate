@@ -69,6 +69,7 @@ ifeq ($(config),debug)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -123,6 +124,7 @@ ifeq ($(config),test)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -177,6 +179,7 @@ ifeq ($(config),release)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -231,6 +234,7 @@ ifeq ($(config),debug64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -285,6 +289,7 @@ ifeq ($(config),test64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -339,6 +344,7 @@ ifeq ($(config),release64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -394,6 +400,7 @@ ifeq ($(config),debuguniv64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -449,6 +456,7 @@ ifeq ($(config),testuniv64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -504,6 +512,7 @@ ifeq ($(config),releaseuniv64)
   OBJRESP             =
   OBJECTS := \
 	$(OBJDIR)/game/src/assets.o \
+	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
@@ -603,6 +612,10 @@ $(LDRESP): $(LDDEPS) | $(TARGETDIR) $(OBJDIRS)
 endif
 
 $(OBJDIR)/game/src/assets.o: ../game/src/assets.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/coordinates.o: ../game/src/coordinates.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

@@ -1,9 +1,9 @@
 grid = { 10, 10 }
 start = { 0, 0 }
 
-colorBackground = {1.0, 1.0, 1.0, 1.0}
-colorObject     = {1.0, 0.0, 0.0, 1.0}
-colorStart      = {0.0, 1.0, 0.0, 1.0}
-colorEnd        = {0.0, 1.0, 0.0, 1.0}
-colorPath       = {0.0, 0.0, 0.0, 1.0}
-colorPolygon    = {0.5, 0.5, 0.0, 1.0}
+colorBackground = {255, 255, 255, 1}
+colorObject     = {255,   0,   0, 1}
+colorStart      = {  0, 255,   0, 1}
+colorEnd        = {  0, 255,   0, 1}
+colorPath       = {  0,   0,   0, 1}
+colorPolygon    = {124, 124, 124, 1}
