@@ -94,6 +94,7 @@ std::vector<Point> Pathfinding::FindPath(Point start, Point end)
 							}
 						}
 					}
+	if (ret.size() < 2) return {};
 	std::reverse(ret.begin(), ret.end());
 	return ret;
 }
@@ -188,33 +189,46 @@ bool Pathfinding::Solve_AStar()
 
 #ifdef RUN_TESTS
 TEST_CASE("Testing Pathfinding") {
+
+	// 0123456789
+	// x......... 0
+	// .......... 1
+	// ...###.... 2
+	// ...###.... 3
+	// ...###.... 4
+	// ...###.... 5
+	// .......... 6
+	// .......... 7
+	// .......... 8
+	// .........x 9
+
   Pathfinding jps;
   jps.SetGrid(10, 10);
-
-  // std::vector<Point> polygon = {Point(3, 3), Point(3, 4), Point(6, 4), Point(6, 3)};
-  // jps.SetPolygon(polygon);
-	jps.ToggleObstacle(3,2);
-	jps.ToggleObstacle(4,2);
-	jps.ToggleObstacle(3,3);
-	jps.ToggleObstacle(4,3);
-	jps.ToggleObstacle(3,4);
-	jps.ToggleObstacle(4,4);
-	jps.ToggleObstacle(3,5);
-	jps.ToggleObstacle(4,5);
+	jps.ToggleObstacle(3,2); jps.ToggleObstacle(4,2); jps.ToggleObstacle(5,2);
+	jps.ToggleObstacle(3,3); jps.ToggleObstacle(4,3); jps.ToggleObstacle(5,3);
+	jps.ToggleObstacle(3,4); jps.ToggleObstacle(4,4); jps.ToggleObstacle(5,4);
+	jps.ToggleObstacle(3,5); jps.ToggleObstacle(4,5); jps.ToggleObstacle(5,5);
 
   SUBCASE("Test FindPath with valid start and end points") {
+
+		// 0123456789
+		// x......... 0
+		// .x........ 1
+		// ..x###.... 2
+		// ..x###.... 3
+		// ..x###.... 4
+		// ..x###.... 5
+		// ...x...... 6
+		// ....xx.... 7
+		// ......xxx. 8
+		// .........x 9
+
     Point start(0, 0);
     Point end(9, 9);
     std::vector<Point> path = jps.FindPath(start, end);
 
-    // fastest way around polygon
-    REQUIRE(path.size() == 13);
-
-		for (int i = 0; i< 13; i++)
-		{
-			std::cout << "x: "<< path[i].x << ", y: " << path[i].y << std::endl;
-		}
-
+    REQUIRE(path.size() > 0);
+		CHECK_EQ(path.size(), 13);
     CHECK(path[0].x == start.x);
     CHECK(path[0].y == start.y);
     CHECK(path[path.size() - 1].x == end.x);
@@ -223,9 +237,9 @@ TEST_CASE("Testing Pathfinding") {
 
   SUBCASE("Test FindPath with invalid end point") {
     Point start(0, 0);
-    Point end(3, 2); // Inside polygon
+    Point end(4, 3); // inner obstacle
     std::vector<Point> path = jps.FindPath(start, end);
-    REQUIRE(path.size() == 4);
+    REQUIRE(path.size() == 0);
   }
 }
 #endif //RUN_TESTS

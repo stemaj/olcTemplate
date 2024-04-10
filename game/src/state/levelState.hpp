@@ -18,14 +18,19 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input) override;
   Render* GetRender() override;
 
-  std::vector<Pathfinding::Point> path;
-  Pathfollower pf;
-  Pathfinding jps;
-  Pathfinding::Point start = Pathfinding::Point(50, 50); // Startpunkt
-  Pathfinding::Point end = Pathfinding::Point(50, 50); // Zielpunkt
-  Pathfinding::Point obj = Pathfinding::Point(50, 50); // Objektpunkt
-    std::vector<Pathfinding::Point> polygon = { Pathfinding::Point(100,100),
-      Pathfinding::Point(100,150), Pathfinding::Point(150,150), Pathfinding::Point(150,100) };
+  virtual void LoadLevelData() {}
+  virtual void SaveLevelData() {}
+
+
+
+  // std::vector<Pathfinding::Point> path;
+  // Pathfollower pf;
+  // Pathfinding jps;
+  // Pathfinding::Point start = Pathfinding::Point(50, 50); // Startpunkt
+  // Pathfinding::Point end = Pathfinding::Point(50, 50); // Zielpunkt
+  // Pathfinding::Point obj = Pathfinding::Point(50, 50); // Objektpunkt
+  //   std::vector<Pathfinding::Point> polygon = { Pathfinding::Point(100,100),
+  //     Pathfinding::Point(100,150), Pathfinding::Point(150,150), Pathfinding::Point(150,100) };
 
 
 
