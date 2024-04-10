@@ -18,18 +18,18 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input) override;
   Render* GetRender() override;
 private:
-  struct Grid
-  {
-    int width;
-    int height;
-  };
-  Grid _grid;
-  struct GridPoint
+  struct XY
   {
     int x;
     int y;
   };
-  GridPoint _start;
+  XY _grid;
+  XY _start;
+
+  std::vector<XY> _displayGrid;
+  XY _displayStart;
+  XY _displayEnd;
+
   struct Color
   {
     int r;

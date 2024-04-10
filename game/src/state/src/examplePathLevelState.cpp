@@ -2,6 +2,7 @@
 #include <game/src/state/examplePathLevelState.hpp>
 #include <game/src/render/examplePathLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
+#include <game/coordinates.hpp>
 
 using namespace stemaj;
 
@@ -21,6 +22,7 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
   if (input.leftMouseClicked)
   {
     // select an endpoint
+    
 
   }
 
@@ -73,5 +75,21 @@ void ExamplePathLevelState::SaveLevelData()
 
 void ExamplePathLevelState::InitValues()
 {
+  int singleWidth = CO.W / _grid.x;
+  int singleHeight = CO.W / _grid.y;
+
+  for (int x = singleWidth/2; x < (singleWidth/2) + _grid.x * singleWidth; x=singleWidth)
+    for (int y = 0; y < _grid.y; y++)
+    {
+      _displayGrid.push_back({ 1, 1});
+      
+    }
+
+ // y*nMapWidth + x
+
+
+
+
+
     
 }

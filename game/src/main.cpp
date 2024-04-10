@@ -4,6 +4,9 @@
 #endif
 
 #include <game/olcTemplate.hpp>
+#include <game/coordinates.hpp>
+
+using namespace stemaj;
 
 int main()
 {
@@ -11,8 +14,9 @@ int main()
 	doctest::Context context;
 	context.run();
 #else
-  stemaj::OlcTemplate t;
-  if (t.Construct(320, 240, 2, 2))
+  OlcTemplate t;
+  
+  if (t.Construct(CO.W, CO.H, 2, 2))
   {
     t.Start();
   }

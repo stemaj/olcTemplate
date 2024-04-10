@@ -11,6 +11,9 @@ public:
 	Coordinates(Coordinates const&) = delete;
 	void operator=(Coordinates const&) = delete;
 
+	int W;
+	int H;
+
 private:
 	Coordinates();
 	virtual ~Coordinates() {}

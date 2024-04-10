@@ -12,5 +12,17 @@ Coordinates& Coordinates::get()
 
 Coordinates::Coordinates()
 {
-  
+  sol::state lua;
+  lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
+	try
+	{
+		lua.safe_script_file("scripts/settings.lua");
+	}
+	catch (const sol::error& e)
+	{
+		std::cout << std::string(e.what()) << std::endl;
+	}
+
+  W = lua["width"].get<int>();
+  H = lua["height"].get<int>();
 }
