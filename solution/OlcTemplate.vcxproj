@@ -345,6 +345,7 @@
     <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h" />
+    <ClInclude Include="..\sdk\doctest-2.4.11\doctest.h" />
     <ClInclude Include="..\game\input.hpp" />
     <ClInclude Include="..\game\assets.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
@@ -353,8 +354,8 @@
     <ClInclude Include="..\game\src\render\render.hpp" />
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
+    <ClInclude Include="..\game\src\tools\pathfinding.hpp" />
     <ClInclude Include="..\game\src\tools\pfadFollower.hpp" />
-    <ClInclude Include="..\game\src\tools\jumpPointSearch.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
     <ClInclude Include="..\game\src\state\introState.hpp" />
@@ -378,9 +379,9 @@
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\pfadFollower.cpp">
+    <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\jumpPointSearch.cpp">
+    <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
     </ClCompile>

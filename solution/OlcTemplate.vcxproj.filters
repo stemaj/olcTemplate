@@ -25,6 +25,9 @@
     <Filter Include="sdk\lua-5.4.2\include">
       <UniqueIdentifier>{29FAFC20-9566-B81B-5E5A-5079CA85DA83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk\doctest-2.4.11">
+      <UniqueIdentifier>{8AE5E45C-76C9-A5B2-DF29-A005CB2C9034}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\render">
       <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
@@ -99,6 +102,9 @@
     <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h">
       <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\doctest-2.4.11\doctest.h">
+      <Filter>sdk\doctest-2.4.11</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\input.hpp">
       <Filter>game</Filter>
     </ClInclude>
@@ -123,10 +129,10 @@
     <ClInclude Include="..\game\src\render\introRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\tools\pfadFollower.hpp">
+    <ClInclude Include="..\game\src\tools\pathfinding.hpp">
       <Filter>game\src\tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\tools\jumpPointSearch.hpp">
+    <ClInclude Include="..\game\src\tools\pfadFollower.hpp">
       <Filter>game\src\tools</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\mainMenuState.hpp">
@@ -173,10 +179,10 @@
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\pfadFollower.cpp">
+    <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
       <Filter>game\src\tools\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\jumpPointSearch.cpp">
+    <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
       <Filter>game\src\tools\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">

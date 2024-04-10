@@ -79,8 +79,8 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -131,8 +131,8 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -183,8 +183,8 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -235,8 +235,8 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -287,8 +287,8 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -339,8 +339,8 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -392,8 +392,8 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -445,8 +445,8 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -498,8 +498,8 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/jumpPointSearch.o \
-	$(OBJDIR)/game/src/tools/src/pfadFollower.o \
+	$(OBJDIR)/game/src/tools/src/pathfinding.o \
+	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl3.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/imgui.o \
@@ -628,11 +628,11 @@ $(OBJDIR)/game/src/state/src/mainMenuState.o: ../game/src/state/src/mainMenuStat
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/game/src/tools/src/jumpPointSearch.o: ../game/src/tools/src/jumpPointSearch.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/tools/src
+$(OBJDIR)/game/src/tools/src/pathfinding.o: ../game/src/tools/src/pathfinding.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/tools/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/game/src/tools/src/pfadFollower.o: ../game/src/tools/src/pfadFollower.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/tools/src
+$(OBJDIR)/game/src/tools/src/pathfollower.o: ../game/src/tools/src/pathfollower.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/tools/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

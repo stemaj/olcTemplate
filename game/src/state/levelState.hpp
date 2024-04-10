@@ -2,7 +2,7 @@
 #define __LEVELSTATE_HPP
 
 #include <game/src/state/state.hpp>
-#include <game/src/tools/jumpPointSearch.hpp>
+#include <game/src/tools/pathfinding.hpp>
 #include <game/src/tools/pfadFollower.hpp>
 #include <memory>
 #include <vector>
@@ -19,7 +19,7 @@ public:
   Render* GetRender() override;
 
   std::vector<Pathfinding::Point> path;
-  PathFollower pf;
+  Pathfollower pf;
   Pathfinding jps;
   Pathfinding::Point start = Pathfinding::Point(50, 50); // Startpunkt
   Pathfinding::Point end = Pathfinding::Point(50, 50); // Zielpunkt

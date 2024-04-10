@@ -5,7 +5,7 @@
 #ifdef RUN_TESTS
 #include <sdk/doctest-2.4.11/doctest.h>
 #endif
-#include <game/src/tools/jumpPointSearch.hpp>
+#include <game/src/tools/pathfinding.hpp>
 
 using namespace stemaj;
 using Point = Pathfinding::Point;
@@ -73,6 +73,8 @@ std::vector<Point> Pathfinding::FindPath(Point start, Point end)
 	std::vector<Point> ret;
 	nodeStart = &nodes[start.y * nMapWidth + start.x];
 	nodeEnd = &nodes[end.y * nMapWidth + end.x];
+	auto x = nodeStart->x;
+	auto y = nodeStart->y;
 	if(nodeStart->x >=0 && nodeStart->x < nMapWidth)
 		if (nodeStart->y >= 0 && nodeStart->y < nMapHeight)
 			if(nodeEnd->x >=0 && nodeEnd->x < nMapWidth)

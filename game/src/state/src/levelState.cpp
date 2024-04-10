@@ -24,17 +24,14 @@ std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input)
     end.x = input.mouseX;
     end.y = input.mouseY;
     path = jps.FindPath(start, end);
-    //jps.Clear();
-    //pf.SetPath(path);
-    //pf.SetSpeed(1.0f);
+    pf.SetPath(path);
+    pf.SetSpeed(1.0f);
   }
 
-  // if (pf.MoveTowardsNextPoint())
-  // {
-  //   obj = pf.GetCurrentPosition();
-  // }
-
-
+  if (pf.MoveTowardsNextPoint())
+  {
+    obj = pf.GetCurrentPosition();
+  }
 
   ImGui::Begin("Level Debug");
   ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
