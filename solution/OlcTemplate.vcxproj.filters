@@ -123,6 +123,9 @@
     <ClInclude Include="..\game\src\render\render.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\render\examplePathLevelRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
@@ -136,6 +139,9 @@
       <Filter>game\src\tools</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\mainMenuState.hpp">
+      <Filter>game\src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\state\examplePathLevelState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\state.hpp">
@@ -179,6 +185,9 @@
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\examplePathLevelRender.cpp">
+      <Filter>game\src\render\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
       <Filter>game\src\tools\src</Filter>
     </ClCompile>
@@ -189,6 +198,9 @@
       <Filter>game\src\engine\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\introState.cpp">
+      <Filter>game\src\state\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\examplePathLevelState.cpp">
       <Filter>game\src\state\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">

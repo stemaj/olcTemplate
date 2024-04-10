@@ -73,9 +73,11 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -125,9 +127,11 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -177,9 +181,11 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -229,9 +235,11 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -281,9 +289,11 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -333,9 +343,11 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -386,9 +398,11 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -439,9 +453,11 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -492,9 +508,11 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
@@ -604,6 +622,10 @@ $(OBJDIR)/game/src/olcTemplate.o: ../game/src/olcTemplate.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
+$(OBJDIR)/game/src/render/src/examplePathLevelRender.o: ../game/src/render/src/examplePathLevelRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/game/src/render/src/introRender.o: ../game/src/render/src/introRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
@@ -613,6 +635,10 @@ $(OBJDIR)/game/src/render/src/levelRender.o: ../game/src/render/src/levelRender.
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/render/src/mainMenuRender.o: ../game/src/render/src/mainMenuRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/state/src/examplePathLevelState.o: ../game/src/state/src/examplePathLevelState.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/state/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

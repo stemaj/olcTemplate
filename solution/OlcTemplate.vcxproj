@@ -352,11 +352,13 @@
     <ClInclude Include="..\game\game.hpp" />
     <ClInclude Include="..\game\src\render\levelRender.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
+    <ClInclude Include="..\game\src\render\examplePathLevelRender.hpp" />
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
     <ClInclude Include="..\game\src\tools\pathfinding.hpp" />
     <ClInclude Include="..\game\src\tools\pfadFollower.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
+    <ClInclude Include="..\game\src\state\examplePathLevelState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
     <ClInclude Include="..\game\src\state\introState.hpp" />
     <ClInclude Include="..\game\src\state\levelState.hpp" />
@@ -379,6 +381,8 @@
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\examplePathLevelRender.cpp">
+    </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
@@ -386,6 +390,8 @@
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\introState.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\examplePathLevelState.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
     </ClCompile>
