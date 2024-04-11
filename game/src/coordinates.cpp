@@ -30,7 +30,7 @@ Coordinates::Coordinates()
 template <typename T>
 T Coordinates::Distance(const PT<T>& p1, const PT<T>& p2)
 {
-  return std::sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
+  return static_cast<T>(std::sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y)));
 }
 
 template <typename T>
@@ -43,7 +43,7 @@ PT<T> Coordinates::ClosestPoint(const std::vector<PT<T>>& points, const PT<T>& p
 
   for (const auto& point : points)
   {
-    auto d = distance(point, p);
+    auto d = Distance(point, p);
     if (d < minDistance)
     {
       minDistance = d;
@@ -52,3 +52,6 @@ PT<T> Coordinates::ClosestPoint(const std::vector<PT<T>>& points, const PT<T>& p
   }
   return closest;
 }
+
+template PT<int> Coordinates::ClosestPoint(const std::vector<PT<int>>& points, const PT<int>& p);
+template PT<float> Coordinates::ClosestPoint(const std::vector<PT<float>>& points, const PT<float>& p);
