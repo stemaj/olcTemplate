@@ -54,17 +54,17 @@ void ExamplePathLevelState::LoadLevelData()
   arr2 = _lua["start"].get<std::array<int,2>>();
   _start = { arr2[0], arr2[1] };
 
-  auto arr4 = _lua["colorBackground"].get<std::array<int,4>>();
+  auto arr4 = _lua["colorBackground"].get<std::array<uint8_t,4>>();
   _colorBackground = { arr4[0], arr4[1], arr4[2], arr4[3] };
-  arr4 = _lua["colorObject"].get<std::array<int,4>>();
+  arr4 = _lua["colorObject"].get<std::array<uint8_t,4>>();
   _colorObject = { arr4[0], arr4[1], arr4[2], arr4[3] };
-  arr4 = _lua["colorStart"].get<std::array<int,4>>();
+  arr4 = _lua["colorStart"].get<std::array<uint8_t,4>>();
   _colorStart = { arr4[0], arr4[1], arr4[2], arr4[3] };
-  arr4 = _lua["colorEnd"].get<std::array<int,4>>();
+  arr4 = _lua["colorEnd"].get<std::array<uint8_t,4>>();
   _colorEnd = { arr4[0], arr4[1], arr4[2], arr4[3] };
-  arr4 = _lua["colorPath"].get<std::array<int,4>>();
+  arr4 = _lua["colorPath"].get<std::array<uint8_t,4>>();
   _colorPath = { arr4[0], arr4[1], arr4[2], arr4[3] };
-  arr4 = _lua["colorPolygon"].get<std::array<int,4>>();
+  arr4 = _lua["colorPolygon"].get<std::array<uint8_t,4>>();
   _colorPolygon = { arr4[0], arr4[1], arr4[2], arr4[3] };
 }
 
@@ -76,20 +76,17 @@ void ExamplePathLevelState::SaveLevelData()
 void ExamplePathLevelState::InitValues()
 {
   int singleWidth = CO.W / _grid.x;
-  int singleHeight = CO.W / _grid.y;
+  int singleHeight = CO.H / _grid.y;
 
-  for (int x = singleWidth/2; x < (singleWidth/2) + _grid.x * singleWidth; x=singleWidth)
-    for (int y = 0; y < _grid.y; y++)
+  for (int x = singleWidth/2; x <= CO.W - (singleWidth/2); x=x+singleWidth)
+    for (int y = singleHeight/2; y <= CO.H - (singleHeight/2); y=y+singleHeight)
     {
-      _displayGrid.push_back({ 1, 1});
-      
+      DisplayGrid.push_back({x,y});
+      //std::cout << DisplayGrid[DisplayGrid.size()-1];
     }
+  
+  //std::cout << "count: " << DisplayGrid.size() << std::endl;
 
- // y*nMapWidth + x
-
-
-
-
-
-    
+  DisplayStart = DisplayGrid[_grid.x * _start.y * _start.x];
+  //std::cout << "DisplayStart: " << DisplayStart;
 }

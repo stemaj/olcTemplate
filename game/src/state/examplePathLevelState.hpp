@@ -22,20 +22,29 @@ private:
   {
     int x;
     int y;
+    friend std::ostream& operator<<(std::ostream& os, const XY& obj) {
+      os << "{ x: " << obj.x << ", y: " << obj.y << " }\n";
+      return os;
+    }
   };
   XY _grid;
   XY _start;
 
-  std::vector<XY> _displayGrid;
-  XY _displayStart;
-  XY _displayEnd;
+  std::vector<XY> DisplayGrid;
+  XY DisplayStart;
+  XY DisplayEnd;
 
   struct Color
   {
-    int r;
-    int g;
-    int b;
-    int alpha;
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+    uint8_t alpha;
+    friend std::ostream& operator<<(std::ostream& os, const Color& obj) {
+      os << "{ r: " << obj.r << ", g: " << obj.g << ", b: " << obj.b << ", alpha: " << obj.alpha << " }\n";
+      return os;
+    }
+
   };
   Color _colorBackground;
   Color _colorObject;
@@ -49,6 +58,8 @@ private:
   void SaveLevelData() override;
   sol::state _lua;
   std::unique_ptr<ExamplePathLevelRender> _render;
+
+  friend class ExamplePathLevelRender;
 };
 
 } // namespace stemaj
