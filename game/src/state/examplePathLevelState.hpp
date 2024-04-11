@@ -1,6 +1,7 @@
 #ifndef __EXAMPLEPATHLEVELSTATE_HPP
 #define __EXAMPLEPATHLEVELSTATE_HPP
 
+#include <game/coordinates.hpp>
 #include <game/src/render/examplePathLevelRender.hpp>
 #include <game/src/state/levelState.hpp>
 #define SOL_ALL_SAFETIES_ON 1
@@ -18,21 +19,12 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input) override;
   Render* GetRender() override;
 private:
-  struct XY
-  {
-    int x;
-    int y;
-    friend std::ostream& operator<<(std::ostream& os, const XY& obj) {
-      os << "{ x: " << obj.x << ", y: " << obj.y << " }\n";
-      return os;
-    }
-  };
-  XY _grid;
-  XY _start;
+  PT<int> _grid;
+  PT<int> _start;
 
-  std::vector<XY> DisplayGrid;
-  XY DisplayStart;
-  XY DisplayEnd;
+  std::vector<PT<int>> DisplayGrid;
+  PT<int> DisplayStart;
+  PT<int> DisplayEnd;
 
   struct Color
   {

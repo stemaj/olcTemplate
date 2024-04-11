@@ -3,6 +3,7 @@
 #include <game/src/render/examplePathLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
 #include <game/coordinates.hpp>
+#include <vector>
 
 using namespace stemaj;
 
@@ -21,12 +22,8 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
 {
   if (input.leftMouseClicked)
   {
-    // select an endpoint
-    
-
+    DisplayEnd = CO.ClosestPoint(DisplayGrid, {input.mouseX, input.mouseY});
   }
-
-
   return std::nullopt;
 }
 

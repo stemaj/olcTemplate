@@ -1,7 +1,21 @@
 #ifndef __COORDINATES_HPP
 #define __COORDINATES_HPP
 
+#include <ostream>
+#include <vector>
+
 namespace stemaj {
+
+template <typename T>
+struct PT
+{
+	T x;
+	T y;
+	friend std::ostream& operator<<(std::ostream& os, const PT& obj) {
+		os << "{ x: " << obj.x << ", y: " << obj.y << " }\n";
+		return os;
+	}
+};
 
 class Coordinates
 {
@@ -13,6 +27,13 @@ public:
 
 	int W;
 	int H;
+
+	// some helper functions
+	template <typename T>
+	T Distance(const PT<T>& p1, const PT<T>& p2);
+	
+	template <typename T>
+	PT<T> ClosestPoint(const std::vector<PT<T>>& points, const PT<T>& p);
 
 private:
 	Coordinates();
