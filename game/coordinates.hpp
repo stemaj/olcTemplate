@@ -15,6 +15,10 @@ struct PT
 	{
 		return x == other.x && y == other.y;
 	}
+  bool operator!=(const PT& other) const
+	{
+		return x != other.x || y != other.y;
+	}
 	friend std::ostream& operator<<(std::ostream& os, const PT& obj)
 	{
 		os << "{ x: " << obj.x << ", y: " << obj.y << " }\n";

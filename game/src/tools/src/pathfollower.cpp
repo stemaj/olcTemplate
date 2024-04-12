@@ -2,7 +2,7 @@
 #ifdef RUN_TESTS
 #include <sdk/doctest-2.4.11/doctest.h>
 #endif
-#include <game/src/tools/pfadFollower.hpp>
+#include <game/src/tools/pathfollower.hpp>
 
 using namespace stemaj;
 

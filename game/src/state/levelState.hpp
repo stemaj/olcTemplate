@@ -3,7 +3,7 @@
 
 #include <game/src/state/state.hpp>
 #include <game/src/tools/pathfinding.hpp>
-#include <game/src/tools/pfadFollower.hpp>
+#include <game/src/tools/pathfollower.hpp>
 #include <memory>
 #include <vector>
 

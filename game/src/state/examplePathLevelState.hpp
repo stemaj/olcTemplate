@@ -27,6 +27,8 @@ private:
   PT<int> _displayEnd;
   std::vector<PT<int>> _displayPath;
 
+  PT<int> _displayObj;
+
   struct Color
   {
     uint8_t r;
@@ -45,6 +47,8 @@ private:
   Color _colorEnd;
   Color _colorPath;
   Color _colorPolygon;
+
+  Pathfollower _pathFollower;
 
   void InitValues();
   void LoadLevelData() override;

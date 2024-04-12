@@ -1,4 +1,5 @@
 #include "game/src/tools/pathfinding.hpp"
+#include "game/src/tools/pathfollower.hpp"
 #include <array>
 #include <game/src/state/examplePathLevelState.hpp>
 #include <game/src/render/examplePathLevelRender.hpp>
@@ -49,7 +50,17 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
       _displayPath.push_back( PT<int>{ singleWidth / 2 + pt.x * singleWidth,
         singleHeight / 2 + pt.y * singleHeight } );
     }
+
+    _pathFollower.SetPath(_displayPath);
+    _pathFollower.SetSpeed(2);
   }
+
+  if (_displayObj != _displayEnd)
+  {
+    _pathFollower.MoveTowardsNextPoint();
+    _displayObj = _pathFollower.GetCurrentPosition();
+  }
+
   return std::nullopt;
 }
 
@@ -110,6 +121,6 @@ void ExamplePathLevelState::InitValues()
   
   //std::cout << "count: " << _displayGrid.size() << std::endl;
 
-  _displayStart = _displayGrid[_grid.x * _start.y * _start.x];
+  _displayObj = _displayStart = _displayGrid[_grid.x * _start.y * _start.x];
   //std::cout << "_displayStart: " << _displayStart;
 }
