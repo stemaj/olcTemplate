@@ -1,6 +1,7 @@
 #include "game/src/tools/pathfinding.hpp"
 #include "game/src/tools/pathfollower.hpp"
 #include <array>
+#include <climits>
 #include <game/src/state/examplePathLevelState.hpp>
 #include <game/src/render/examplePathLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
@@ -25,6 +26,21 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
   if (input.leftMouseClicked)
   {
     _displayPath.clear();
+
+    int x = -1, y = 0;
+    int minDistance = INT_MAX;
+    for (const auto& displayPt : _displayGrid)
+    {
+      x++;
+      if (x >= _grid.x) { x = 0; y++; }
+      int distance = CO.Distance(displayPt, _displayObj);
+      if (distance < minDistance)
+      {
+        minDistance = distance;
+        _obj = {x,y};
+      }
+    }
+
     _displayEnd = CO.ClosestPoint(_displayGrid, {input.mouseX, input.mouseY});
 
     Pathfinding f;
@@ -40,7 +56,7 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
           //std::cout << "Geklickt auf x = " << x << " und y = " << y << std::endl;
         }
 
-    auto gridPath = f.FindPath(_start, end);
+    auto gridPath = f.FindPath(_obj, end);
 
     int singleWidth = CO.W / _grid.x;
     int singleHeight = CO.H / _grid.y;
@@ -53,9 +69,10 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
 
     _pathFollower.SetPath(_displayPath);
     _pathFollower.SetSpeed(2);
+    _pathFollower.MoveTowardsNextPoint();
   }
 
-  if (_displayObj != _displayEnd)
+  if (_pathFollower.IsMoving() && _displayObj != _displayEnd)
   {
     _pathFollower.MoveTowardsNextPoint();
     _displayObj = _pathFollower.GetCurrentPosition();
@@ -86,7 +103,7 @@ void ExamplePathLevelState::LoadLevelData()
   auto arr2 = _lua["grid"].get<std::array<int,2>>();
   _grid = { arr2[0], arr2[1] };
   arr2 = _lua["start"].get<std::array<int,2>>();
-  _start = { arr2[0], arr2[1] };
+  _obj = { arr2[0], arr2[1] };
 
   auto arr4 = _lua["colorBackground"].get<std::array<uint8_t,4>>();
   _colorBackground = { arr4[0], arr4[1], arr4[2], arr4[3] };
@@ -121,6 +138,6 @@ void ExamplePathLevelState::InitValues()
   
   //std::cout << "count: " << _displayGrid.size() << std::endl;
 
-  _displayObj = _displayStart = _displayGrid[_grid.x * _start.y * _start.x];
+  _displayObj = _displayGrid[_grid.x * _obj.y * _obj.x];
   //std::cout << "_displayStart: " << _displayStart;
 }

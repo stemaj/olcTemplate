@@ -20,14 +20,12 @@ public:
   Render* GetRender() override;
 private:
   PT<int> _grid;
-  PT<int> _start;
+  PT<int> _obj;
 
   std::vector<PT<int>> _displayGrid;
-  PT<int> _displayStart;
+  PT<int> _displayObj;
   PT<int> _displayEnd;
   std::vector<PT<int>> _displayPath;
-
-  PT<int> _displayObj;
 
   struct Color
   {

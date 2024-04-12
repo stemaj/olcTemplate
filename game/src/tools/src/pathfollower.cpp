@@ -20,10 +20,10 @@ PT<int> Pathfollower::GetCurrentPosition() {
   return currentPosition;
 }
 
-bool Pathfollower::MoveTowardsNextPoint() {
+void Pathfollower::MoveTowardsNextPoint() {
   if (currentPointIndex >= path.size() - 1) {
     // Already reached the end of the path
-    return false;
+    _moving = false;
   }
 
   PT<int> nextPoint = path[currentPointIndex + 1];
@@ -45,7 +45,7 @@ bool Pathfollower::MoveTowardsNextPoint() {
     currentPosition.y += ratio * deltaY;
   }
 
-  return true;
+  _moving = true;
 }
 
 #ifdef RUN_TESTS

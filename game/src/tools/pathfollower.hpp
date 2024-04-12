@@ -12,9 +12,11 @@ public:
   void SetPath(const std::vector<PT<int>>& newPath);
   void SetSpeed(float newSpeed);
   PT<int> GetCurrentPosition();
-  bool MoveTowardsNextPoint();
+  void MoveTowardsNextPoint();
+  bool IsMoving() { return _moving; };
 
 private:
+  bool _moving = false;
   std::vector<PT<int>> path;
   float speed = 0.0f;
   size_t currentPointIndex = size_t(-1);
