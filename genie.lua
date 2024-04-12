@@ -63,6 +63,7 @@ project "OlcTemplate"
       --"freetype",
       --"soloud_static_x64"
     }
+    debugdir ".."
 
   configuration "linux"
     includedirs {

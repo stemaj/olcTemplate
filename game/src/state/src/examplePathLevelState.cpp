@@ -1,3 +1,4 @@
+#include "game/src/tools/pathfinding.hpp"
 #include <array>
 #include <game/src/state/examplePathLevelState.hpp>
 #include <game/src/render/examplePathLevelRender.hpp>
@@ -22,7 +23,20 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
 {
   if (input.leftMouseClicked)
   {
-    DisplayEnd = CO.ClosestPoint(DisplayGrid, {input.mouseX, input.mouseY});
+    _displayEnd = CO.ClosestPoint(_displayGrid, {input.mouseX, input.mouseY});
+
+    Pathfinding f;
+    f.SetGrid(_grid.x, _grid.y);
+
+    int row = 0; int col = 0;
+    for (int y = 0; y < _grid.y; y++)
+      for (int x = 0; x < _grid.x; x++)
+        if (_displayGrid[y*_grid.x + x] == _displayEnd)
+        {
+          //std::cout << "Geklickt auf x = " << x << " und y = " << y << std::endl;
+        }
+
+    //f.FindPath(Pathfinding::Point(_start.x, _start.y), Pathfinding::Point(_en))
   }
   return std::nullopt;
 }
@@ -75,15 +89,15 @@ void ExamplePathLevelState::InitValues()
   int singleWidth = CO.W / _grid.x;
   int singleHeight = CO.H / _grid.y;
 
-  for (int x = singleWidth/2; x <= CO.W - (singleWidth/2); x=x+singleWidth)
-    for (int y = singleHeight/2; y <= CO.H - (singleHeight/2); y=y+singleHeight)
+  for (int y = singleHeight/2; y <= CO.H - (singleHeight/2); y=y+singleHeight)
+    for (int x = singleWidth/2; x <= CO.W - (singleWidth/2); x=x+singleWidth)
     {
-      DisplayGrid.push_back({x,y});
-      //std::cout << DisplayGrid[DisplayGrid.size()-1];
+      _displayGrid.push_back({x,y});
+      //std::cout << _displayGrid[_displayGrid.size()-1];
     }
   
-  //std::cout << "count: " << DisplayGrid.size() << std::endl;
+  //std::cout << "count: " << _displayGrid.size() << std::endl;
 
-  DisplayStart = DisplayGrid[_grid.x * _start.y * _start.x];
-  //std::cout << "DisplayStart: " << DisplayStart;
+  _displayStart = _displayGrid[_grid.x * _start.y * _start.x];
+  //std::cout << "_displayStart: " << _displayStart;
 }

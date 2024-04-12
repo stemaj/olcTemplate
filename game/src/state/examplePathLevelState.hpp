@@ -22,9 +22,9 @@ private:
   PT<int> _grid;
   PT<int> _start;
 
-  std::vector<PT<int>> DisplayGrid;
-  PT<int> DisplayStart;
-  PT<int> DisplayEnd;
+  std::vector<PT<int>> _displayGrid;
+  PT<int> _displayStart;
+  PT<int> _displayEnd;
 
   struct Color
   {
