@@ -9,16 +9,16 @@ namespace stemaj {
 class Pathfollower
 {
 public:
-  void SetPath(const std::vector<Pathfinding::Point>& newPath);
+  void SetPath(const std::vector<PT<int>>& newPath);
   void SetSpeed(float newSpeed);
-  Pathfinding::Point GetCurrentPosition();
+  PT<int> GetCurrentPosition();
   bool MoveTowardsNextPoint();
 
 private:
-  std::vector<Pathfinding::Point> path;
+  std::vector<PT<int>> path;
   float speed = 0.0f;
   size_t currentPointIndex = size_t(-1);
-  Pathfinding::Point currentPosition = Pathfinding::Point(-1,-1);
+  PT<int> currentPosition = {-1,-1};
 };
 
 } // namespace

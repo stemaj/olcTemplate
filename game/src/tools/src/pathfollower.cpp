@@ -1,4 +1,3 @@
-#include "game/src/tools/pathfinding.hpp"
 #include <cmath>
 #ifdef RUN_TESTS
 #include <sdk/doctest-2.4.11/doctest.h>
@@ -6,9 +5,8 @@
 #include <game/src/tools/pfadFollower.hpp>
 
 using namespace stemaj;
-using Point = stemaj::Pathfinding::Point;
 
-void Pathfollower::SetPath(const std::vector<Point>& newPath) {
+void Pathfollower::SetPath(const std::vector<PT<int>>& newPath) {
   path = newPath;
   currentPointIndex = 0;
   currentPosition = path[currentPointIndex];
@@ -18,7 +16,7 @@ void Pathfollower::SetSpeed(float newSpeed) {
   speed = newSpeed;
 }
 
-Point Pathfollower::GetCurrentPosition() {
+PT<int> Pathfollower::GetCurrentPosition() {
   return currentPosition;
 }
 
@@ -28,7 +26,7 @@ bool Pathfollower::MoveTowardsNextPoint() {
     return false;
   }
 
-  Point nextPoint = path[currentPointIndex + 1];
+  PT<int> nextPoint = path[currentPointIndex + 1];
 
   // Calculate distance to next point
   float deltaX = nextPoint.x - currentPosition.x;

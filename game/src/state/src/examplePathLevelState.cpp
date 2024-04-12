@@ -23,20 +23,32 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
 {
   if (input.leftMouseClicked)
   {
+    _displayPath.clear();
     _displayEnd = CO.ClosestPoint(_displayGrid, {input.mouseX, input.mouseY});
 
     Pathfinding f;
     f.SetGrid(_grid.x, _grid.y);
 
+    PT<int> end;
     int row = 0; int col = 0;
     for (int y = 0; y < _grid.y; y++)
       for (int x = 0; x < _grid.x; x++)
         if (_displayGrid[y*_grid.x + x] == _displayEnd)
         {
+          end = {x,y};
           //std::cout << "Geklickt auf x = " << x << " und y = " << y << std::endl;
         }
 
-    //f.FindPath(Pathfinding::Point(_start.x, _start.y), Pathfinding::Point(_en))
+    auto gridPath = f.FindPath(_start, end);
+
+    int singleWidth = CO.W / _grid.x;
+    int singleHeight = CO.H / _grid.y;
+
+    for (const auto& pt : gridPath)
+    {
+      _displayPath.push_back( PT<int>{ singleWidth / 2 + pt.x * singleWidth,
+        singleHeight / 2 + pt.y * singleHeight } );
+    }
   }
   return std::nullopt;
 }

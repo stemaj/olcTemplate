@@ -1,6 +1,7 @@
 #ifndef __PFADFINDUNG_HPP
 #define __PFADFINDUNG_HPP
 
+#include <game/coordinates.hpp>
 #include <vector>
 
 namespace stemaj {
@@ -9,13 +10,9 @@ namespace stemaj {
 // Pathfinding class implementing the A* algorithm
 class Pathfinding {
 public:
- struct Point {
-    int x, y;
-    Point(int _x, int _y) : x(_x), y(_y) {}
-  };
 explicit Pathfinding();
 virtual ~Pathfinding() = default;
-std::vector<Point> FindPath(Point start, Point end);
+std::vector<PT<int>> FindPath(PT<int> start, PT<int> end);
 void SetGrid(int height, int width);
 void ToggleObstacle(int x, int y);
 

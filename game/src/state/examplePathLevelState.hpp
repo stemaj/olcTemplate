@@ -25,6 +25,7 @@ private:
   std::vector<PT<int>> _displayGrid;
   PT<int> _displayStart;
   PT<int> _displayEnd;
+  std::vector<PT<int>> _displayPath;
 
   struct Color
   {

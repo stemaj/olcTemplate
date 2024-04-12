@@ -8,7 +8,6 @@
 #include <game/src/tools/pathfinding.hpp>
 
 using namespace stemaj;
-using Point = Pathfinding::Point;
 
 Pathfinding::Pathfinding()
 {
@@ -68,9 +67,9 @@ void Pathfinding::ToggleObstacle(int nSelectedNodeX, int nSelectedNodeY)
 	nodes[nSelectedNodeY * nMapWidth + nSelectedNodeX].bObstacle = !nodes[nSelectedNodeY * nMapWidth + nSelectedNodeX].bObstacle;
 }
 
-std::vector<Point> Pathfinding::FindPath(Point start, Point end)
+std::vector<PT<int>> Pathfinding::FindPath(PT<int> start, PT<int> end)
 {
-	std::vector<Point> ret;
+	std::vector<PT<int>> ret;
 	nodeStart = &nodes[start.y * nMapWidth + start.x];
 	nodeEnd = &nodes[end.y * nMapWidth + end.x];
 	auto x = nodeStart->x;
@@ -84,10 +83,10 @@ std::vector<Point> Pathfinding::FindPath(Point start, Point end)
 						if (nodeEnd != nullptr)
 						{
 							sNode *p = nodeEnd;
-							ret.push_back(Point(p->x,p->y));
+							ret.push_back(PT<int>{p->x,p->y});
 							while (p->parent != nullptr)
 							{
-								ret.push_back(Point(p->parent->x, p->parent->y));
+								ret.push_back(PT<int>{p->parent->x, p->parent->y});
 								
 								// Set next node to this node's parent
 								p = p->parent;
