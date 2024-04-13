@@ -21,8 +21,9 @@ public:
 private:
   PT<int> _grid;
   PT<int> _obj;
+  std::vector<std::array<float, 2>> _relPolygon;
 
-  std::vector<PT<int>> _displayGrid;
+  std::vector<std::pair<PT<int>,bool>> _displayGrid;
   PT<int> _displayObj;
   PT<int> _displayEnd;
   std::vector<PT<int>> _displayPath;

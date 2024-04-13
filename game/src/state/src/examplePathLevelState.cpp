@@ -29,8 +29,9 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
 
     int x = -1, y = 0;
     int minDistance = INT_MAX;
-    for (const auto& displayPt : _displayGrid)
+    for (const auto& disPt : _displayGrid)
     {
+      auto displayPt = disPt.first;
       x++;
       if (x >= _grid.x) { x = 0; y++; }
       int distance = CO.Distance(displayPt, _displayObj);
@@ -41,7 +42,17 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
       }
     }
 
-    _displayEnd = CO.ClosestPoint(_displayGrid, {input.mouseX, input.mouseY});
+    std::vector<PT<int>> nonObstaclePoints;
+    for (const auto& d : _displayGrid)
+    {
+      if (!d.second)
+      {
+        nonObstaclePoints.push_back(d.first);
+      }
+    }
+
+    _displayEnd = CO.ClosestPoint(nonObstaclePoints, { input.mouseX, input.mouseY });
+
 
     Pathfinding f;
     f.SetGrid(_grid.x, _grid.y);
@@ -50,7 +61,7 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
     int row = 0; int col = 0;
     for (int y = 0; y < _grid.y; y++)
       for (int x = 0; x < _grid.x; x++)
-        if (_displayGrid[y*_grid.x + x] == _displayEnd)
+        if (_displayGrid[y*_grid.x + x].first == _displayEnd)
         {
           end = {x,y};
           //std::cout << "Geklickt auf x = " << x << " und y = " << y << std::endl;
@@ -118,11 +129,7 @@ void ExamplePathLevelState::LoadLevelData()
   arr4 = _lua["colorPolygon"].get<std::array<uint8_t,4>>();
   _colorPolygon = { arr4[0], arr4[1], arr4[2], arr4[3] };
 
-  auto relPolygon = _lua["polygon"].get<std::vector<std::array<float, 2>>>();
-  for (const auto& a : relPolygon)
-  {
-    _displayPolygon.push_back(CO.D({ a[0], a[1] }));
-  }
+  _relPolygon = _lua["polygon"].get<std::vector<std::array<float, 2>>>();
 }
 
 void ExamplePathLevelState::SaveLevelData()
@@ -135,15 +142,21 @@ void ExamplePathLevelState::InitValues()
   int singleWidth = CO.W / _grid.x;
   int singleHeight = CO.H / _grid.y;
 
+  for (const auto& a : _relPolygon)
+  {
+    _displayPolygon.push_back(CO.D({ a[0], a[1] }));
+  }
+
   for (int y = singleHeight/2; y <= CO.H - (singleHeight/2); y=y+singleHeight)
     for (int x = singleWidth/2; x <= CO.W - (singleWidth/2); x=x+singleWidth)
     {
-      _displayGrid.push_back({x,y});
+      _displayGrid.push_back(std::make_pair(PT{x,y},
+        !CO.IsInsidePolygon({ x,y }, _displayPolygon)));
       //std::cout << _displayGrid[_displayGrid.size()-1];
     }
   
   //std::cout << "count: " << _displayGrid.size() << std::endl;
 
-  _displayObj = _displayGrid[_grid.x * _obj.y * _obj.x];
+  _displayObj = _displayGrid[_grid.x * _obj.y * _obj.x].first;
   //std::cout << "_displayStart: " << _displayStart;
 }

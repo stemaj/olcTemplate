@@ -48,6 +48,9 @@ public:
 	template <typename T>
 	PT<T> ClosestPoint(const std::vector<PT<T>>& points, const PT<T>& p);
 
+	template <typename T>
+	bool IsInsidePolygon(const PT<T> point, const std::vector<PT<T>>& polygon);
+
 private:
 	Coordinates();
 	virtual ~Coordinates() {}
