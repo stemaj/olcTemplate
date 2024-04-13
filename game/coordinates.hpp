@@ -38,6 +38,10 @@ public:
 	int H;
 
 	// some helper functions
+	PT<int> D(PT<float> relativeCoordinate);
+
+	PT<float> R(PT<int> absoluteCoordinate);
+
 	template <typename T>
 	T Distance(const PT<T>& p1, const PT<T>& p2);
 	

@@ -27,6 +27,8 @@ private:
   PT<int> _displayEnd;
   std::vector<PT<int>> _displayPath;
 
+  std::vector<PT<int>> _displayPolygon;
+
   struct Color
   {
     uint8_t r;

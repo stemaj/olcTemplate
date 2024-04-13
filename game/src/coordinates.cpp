@@ -27,6 +27,16 @@ Coordinates::Coordinates()
   H = lua["height"].get<int>();
 }
 
+PT<int> Coordinates::D(PT<float> relativeCoordinate)
+{
+  return { int(relativeCoordinate.x * float(W)), int(relativeCoordinate.y * float(H)) };
+}
+
+PT<float> Coordinates::R(PT<int> absoluteCoordinate)
+{
+  return { absoluteCoordinate.x / float(W), absoluteCoordinate.y / float(H) };
+}
+
 template <typename T>
 T Coordinates::Distance(const PT<T>& p1, const PT<T>& p2)
 {

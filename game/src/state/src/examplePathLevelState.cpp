@@ -117,6 +117,12 @@ void ExamplePathLevelState::LoadLevelData()
   _colorPath = { arr4[0], arr4[1], arr4[2], arr4[3] };
   arr4 = _lua["colorPolygon"].get<std::array<uint8_t,4>>();
   _colorPolygon = { arr4[0], arr4[1], arr4[2], arr4[3] };
+
+  auto relPolygon = _lua["polygon"].get<std::vector<std::array<float, 2>>>();
+  for (const auto& a : relPolygon)
+  {
+    _displayPolygon.push_back(CO.D({ a[0], a[1] }));
+  }
 }
 
 void ExamplePathLevelState::SaveLevelData()
