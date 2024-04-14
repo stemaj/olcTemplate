@@ -6,6 +6,24 @@
 
 namespace stemaj {
 
+		static PT<int> toGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point)
+		{
+			int singleWidth = displaySize.x / gridDimension.x;
+			int singleHeight = displaySize.y / gridDimension.y;
+			int minDistance = INT_MAX;
+			PT<int> ret = { -1,-1 };
+			for (int y = singleHeight / 2; y <= displaySize.y - (singleHeight / 2); y = y + singleHeight)
+				for (int x = singleWidth / 2; x <= displaySize.x - (singleWidth / 2); x = x + singleWidth)
+				{
+					int distance = CO.Distance(point, { x,y });
+					if (distance < minDistance)
+					{
+						minDistance = distance;
+						ret = {x,y};
+					}
+				}
+			return ret;
+		}
 
 // Pathfinding class implementing the A* algorithm
 class Pathfinding {

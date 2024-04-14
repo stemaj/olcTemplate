@@ -19,16 +19,19 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input) override;
   Render* GetRender() override;
 private:
-  PT<int> _grid;
+
+  // dynamic values
+  std::vector<PT<int>> _path;
   PT<int> _obj;
-  std::vector<std::array<float, 2>> _relPolygon;
+  PT<int> _end;
 
-  std::vector<std::pair<PT<int>,bool>> _displayGrid;
-  PT<int> _displayObj;
-  PT<int> _displayEnd;
-  std::vector<PT<int>> _displayPath;
+  // feste values
+  std::vector<std::pair<PT<int>, bool>> _grid;
 
-  std::vector<PT<int>> _displayPolygon;
+  // input
+  PT<int> _gridDimension;
+  PT<float> _objSource;
+  std::vector<PT<float>> _polygon;
 
   struct Color
   {

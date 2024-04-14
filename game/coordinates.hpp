@@ -42,6 +42,10 @@ public:
 
 	PT<float> R(PT<int> absoluteCoordinate);
 
+	std::vector<PT<int>> VD(std::vector<PT<float>> relativeCoordinates);
+
+	std::vector<PT<float>> VR(std::vector<PT<int>> absoluteCoordinates);
+
 	template <typename T>
 	T Distance(const PT<T>& p1, const PT<T>& p2);
 	

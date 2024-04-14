@@ -37,6 +37,26 @@ PT<float> Coordinates::R(PT<int> absoluteCoordinate)
   return { absoluteCoordinate.x / float(W), absoluteCoordinate.y / float(H) };
 }
 
+std::vector<PT<int>> Coordinates::VD(std::vector<PT<float>> relativeCoordinates)
+{
+  std::vector<PT<int>> ret;
+  for (const auto& r : relativeCoordinates)
+  {
+    ret.push_back(D(r));
+  }
+  return ret;
+}
+
+std::vector<PT<float>> Coordinates::VR(std::vector<PT<int>> absoluteCoordinates)
+{
+  std::vector<PT<float>> ret;
+  for (const auto& a : absoluteCoordinates)
+  {
+    ret.push_back(R(a));
+  }
+  return ret;
+}
+
 template <typename T>
 T Coordinates::Distance(const PT<T>& p1, const PT<T>& p2)
 {
