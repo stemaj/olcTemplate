@@ -78,9 +78,12 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
         singleHeight / 2 + pt.y * singleHeight } );
     }
 
-    _pathFollower.SetPath(_displayPath);
-    _pathFollower.SetSpeed(2);
-    _pathFollower.MoveTowardsNextPoint();
+    if (!_displayPath.empty())
+    {
+      _pathFollower.SetPath(_displayPath);
+      _pathFollower.SetSpeed(2);
+      _pathFollower.MoveTowardsNextPoint();
+    }
   }
 
   if (_pathFollower.IsMoving() && _displayObj != _displayEnd)
