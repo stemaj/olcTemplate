@@ -9,7 +9,7 @@ using namespace stemaj;
 void Pathfollower::SetPath(const std::vector<PT<int>>& newPath) {
   path = newPath;
   currentPointIndex = path.empty() ? -1 : 0;
-  currentPosition = path.empty() ? PT{-1, -1} : path[currentPointIndex];
+  currentPosition = path.empty() ? PT<int>{-1, -1} : path[currentPointIndex];
 }
 
 void Pathfollower::SetSpeed(float newSpeed) {

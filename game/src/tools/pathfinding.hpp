@@ -1,6 +1,7 @@
 #ifndef __PFADFINDUNG_HPP
 #define __PFADFINDUNG_HPP
 
+#include <climits>
 #include <game/coordinates.hpp>
 #include <vector>
 

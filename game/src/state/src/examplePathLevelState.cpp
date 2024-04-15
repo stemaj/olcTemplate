@@ -82,22 +82,22 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
 
     for (const auto& pt : gridPath)
     {
-      _displayPath.push_back( PT<int>{ singleWidth / 2 + pt.x * singleWidth,
+      _path.push_back( PT<int>{ singleWidth / 2 + pt.x * singleWidth,
         singleHeight / 2 + pt.y * singleHeight } );
     }
 
-    if (!_displayPath.empty())
+    if (!_path.empty())
     {
-      _pathFollower.SetPath(_displayPath);
+      _pathFollower.SetPath(_path);
       _pathFollower.SetSpeed(2);
       _pathFollower.MoveTowardsNextPoint();
     }
   }
 
-  if (_pathFollower.IsMoving() && _displayObj != _displayEnd)
+  if (_pathFollower.IsMoving() && _obj != _end)
   {
     _pathFollower.MoveTowardsNextPoint();
-    _displayObj = _pathFollower.GetCurrentPosition();
+    _obj = _pathFollower.GetCurrentPosition();
   }
 
   return std::nullopt;
@@ -140,7 +140,11 @@ void ExamplePathLevelState::LoadLevelData()
   arr4 = _lua["colorPolygon"].get<std::array<uint8_t,4>>();
   _colorPolygon = { arr4[0], arr4[1], arr4[2], arr4[3] };
 
-  _polygon = _lua["polygon"].get<std::vector<PT<float>>>();
+  auto vec = _lua["polygon"].get<std::vector<std::array<float,2>>>();
+  for (const auto& v : vec)
+  {
+    _polygon.push_back({v[0],v[1]});
+  }
 }
 
 void ExamplePathLevelState::SaveLevelData()
@@ -161,7 +165,7 @@ void ExamplePathLevelState::InitValues()
   for (int y = singleHeight/2; y <= CO.H - (singleHeight/2); y=y+singleHeight)
     for (int x = singleWidth/2; x <= CO.W - (singleWidth/2); x=x+singleWidth)
     {
-      _grid.push_back(std::make_pair(PT{x,y}, CO.IsInsidePolygon({ x,y }, CO.VD(_polygon))));
+      _grid.push_back(std::make_pair(PT<int>{x,y}, CO.IsInsidePolygon({ x,y }, CO.VD(_polygon))));
       //std::cout << _grid[_grid.size()-1];
     }
   

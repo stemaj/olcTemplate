@@ -19,18 +19,18 @@ void ExamplePathLevelRender::DoRender(olc::PixelGameEngine* pge, float fElapsedT
     pge->DrawCircle({g.first.x,g.first.y},1,toPixelColor(g.second ? pathLevel->_colorPath : pathLevel->_colorPolygon));
   }
 
-  for (auto p : pathLevel->_displayPath)
+  for (auto p : pathLevel->_path)
   {
     pge->DrawCircle({p.x,p.y}, 6, toPixelColor(pathLevel->_colorPath));
   }
 
-  pge->DrawCircle({pathLevel->_displayEnd.x, pathLevel->_displayEnd.y},
+  pge->DrawCircle({pathLevel->_end.x, pathLevel->_end.y},
     3, toPixelColor(pathLevel->_colorEnd));
 
-  pge->FillCircle({pathLevel->_displayObj.x, pathLevel->_displayObj.y},
+  pge->FillCircle({pathLevel->_obj.x, pathLevel->_obj.y},
     4, toPixelColor(pathLevel->_colorObject));
 
-  for (const auto& pp : pathLevel->_displayPolygon)
+  for (const auto& pp : pathLevel->_polygon)
   {
     pge->DrawCircle(pp.x, pp.y, 2, toPixelColor(pathLevel->_colorPolygon));
   }
