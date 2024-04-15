@@ -357,7 +357,7 @@
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
     <ClInclude Include="..\game\src\tools\pathfinding.hpp" />
-    <ClInclude Include="..\game\src\tools\pfadFollower.hpp" />
+    <ClInclude Include="..\game\src\tools\pathfollower.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\examplePathLevelState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
@@ -414,6 +414,18 @@
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\genie.lua" />
+    <None Include="..\scripts\examplePathLevel.lua" />
+    <None Include="..\scripts\settings.lua" />
+    <None Include="..\scripts\mainMenu.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\assets\png\japan_1.png">
+      <DeploymentContent>true</DeploymentContent>
+      <Link>assets\png\japan_1.png</Link>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

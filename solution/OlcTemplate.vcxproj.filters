@@ -55,6 +55,27 @@
     <Filter Include="game\src\state\src">
       <UniqueIdentifier>{64AD33D4-5091-F429-B9F1-EE7CA5F4DEAB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scripts">
+      <UniqueIdentifier>{6D076287-D9E6-E022-E2FE-6BF94E5D4784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{583885F2-44DA-AFC8-2D95-C31C19D63619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\png">
+      <UniqueIdentifier>{3902CEA8-25BA-0FF6-8EC1-E8517A98AAE6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\genie.lua" />
+    <None Include="..\scripts\examplePathLevel.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\scripts\settings.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\scripts\mainMenu.lua">
+      <Filter>scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h">
@@ -138,7 +159,7 @@
     <ClInclude Include="..\game\src\tools\pathfinding.hpp">
       <Filter>game\src\tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\tools\pfadFollower.hpp">
+    <ClInclude Include="..\game\src\tools\pathfollower.hpp">
       <Filter>game\src\tools</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\mainMenuState.hpp">
@@ -236,5 +257,10 @@
     <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\assets\png\japan_1.png">
+      <Filter>assets\png</Filter>
+    </Image>
   </ItemGroup>
 </Project>

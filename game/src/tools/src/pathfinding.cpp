@@ -187,7 +187,7 @@ bool Pathfinding::Solve_AStar()
 
 	PT<int> Pathfinding::toGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point)
 	{
-					int singleWidth = displaySize.x / gridDimension.x;
+			int singleWidth = displaySize.x / gridDimension.x;
 			int singleHeight = displaySize.y / gridDimension.y;
 			int minDistance = INT_MAX;
 			PT<int> ret = { -1,-1 };
@@ -264,7 +264,10 @@ TEST_CASE("Testing Pathfinding") {
 
 TEST_CASE("Testing GridPoint Conversion") {
 	Pathfinding p;
-  p.toGridPoint({20,10}, {100,200}, PT<int>{int(12.5f),int(50.0f)});
+	auto gp = p.toGridPoint({25,10}, {100,200}, PT<int>{10,50});
+	CHECK_EQ(gp.x, 1);
+	CHECK_EQ(gp.y, 1);
+
 
 
 

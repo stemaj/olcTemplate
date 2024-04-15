@@ -20,7 +20,7 @@
     {
       "label": "test",
       "type": "shell",
-      "command": "cd solution && make config=test -j8 && ./bin/Test/OlcTemplate",
+      "command": "cd solution && make config=test -j8 && cd .. && ./solution/bin/Test/OlcTemplate",
       "problemMatcher": [],
       "group": {
         "kind": "test",

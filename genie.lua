@@ -37,6 +37,8 @@ project "OlcTemplate"
     path.join(ROOT_DIR,"**.h"),
     path.join(ROOT_DIR,"**.hpp"),
     path.join(ROOT_DIR,"**.cpp"),
+    path.join(ROOT_DIR,"**.lua"),
+    path.join(ROOT_DIR,"**.png"),
     --path.join(ROOT_DIR,"assets/**.txt"),
   }
   includedirs {
