@@ -1,7 +1,6 @@
 #include "game/src/tools/pathfinding.hpp"
 #include "game/src/tools/pathfollower.hpp"
 #include <array>
-#include <climits>
 #include <game/src/state/examplePathLevelState.hpp>
 #include <game/src/render/examplePathLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>

@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <cmath>
 #include <list>
-#include <iostream>
 #ifdef RUN_TESTS
 #include <sdk/doctest-2.4.11/doctest.h>
 #endif
@@ -186,6 +185,27 @@ bool Pathfinding::Solve_AStar()
 		return true;
 	}
 
+	PT<int> Pathfinding::toGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point)
+	{
+					int singleWidth = displaySize.x / gridDimension.x;
+			int singleHeight = displaySize.y / gridDimension.y;
+			int minDistance = INT_MAX;
+			PT<int> ret = { -1,-1 };
+			for (int y = singleHeight / 2; y <= displaySize.y - (singleHeight / 2); y = y + singleHeight)
+				for (int x = singleWidth / 2; x <= displaySize.x - (singleWidth / 2); x = x + singleWidth)
+				{
+					int distance = CO.Distance(point, { x,y });
+					if (distance < minDistance)
+					{
+						minDistance = distance;
+						ret = {x,y};
+					}
+				}
+			return ret;
+
+
+	}
+
 #ifdef RUN_TESTS
 TEST_CASE("Testing Pathfinding") {
 
@@ -222,9 +242,9 @@ TEST_CASE("Testing Pathfinding") {
 		// ......xxx. 8
 		// .........x 9
 
-    Point start(0, 0);
-    Point end(9, 9);
-    std::vector<Point> path = jps.FindPath(start, end);
+    PT<int> start{0, 0};
+    PT<int> end{9, 9};
+    std::vector<PT<int>> path = jps.FindPath(start, end);
 
     REQUIRE(path.size() > 0);
 		CHECK_EQ(path.size(), 13);
@@ -235,10 +255,19 @@ TEST_CASE("Testing Pathfinding") {
   }
 
   SUBCASE("Test FindPath with invalid end point") {
-    Point start(0, 0);
-    Point end(4, 3); // inner obstacle
-    std::vector<Point> path = jps.FindPath(start, end);
+    PT<int> start{0, 0};
+    PT<int> end{4, 3}; // inner obstacle
+    std::vector<PT<int>> path = jps.FindPath(start, end);
     REQUIRE(path.size() == 0);
   }
 }
+
+TEST_CASE("Testing GridPoint Conversion") {
+	Pathfinding p;
+  p.toGridPoint({20,10}, {100,200}, PT<int>{int(12.5f),int(50.0f)});
+
+
+
+}
+
 #endif //RUN_TESTS
