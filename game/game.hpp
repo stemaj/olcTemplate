@@ -17,7 +17,7 @@ class Game
 {
 public:
   Game();
-  void Update(const Input& input);
+  void Update(const Input& input, float fElapsedTime);
   void Render(olc::PixelGameEngine* pge, float fElapsedTime);
   void UpdateState();
 

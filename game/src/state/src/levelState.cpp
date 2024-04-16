@@ -18,7 +18,7 @@ Render* LevelState::GetRender()
   return _render.get();
 }
 
-std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input)
+std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input, float fElapsedTime)
 {
   return std::make_unique<ExamplePathLevelState>();
   

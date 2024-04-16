@@ -10,9 +10,9 @@ Game::Game() : _currentState(std::make_unique<ExamplePathLevelState>())
 {
 }
 
-void Game::Update(const Input& input)
+void Game::Update(const Input& input, float fElapsedTime)
 {
-  _nextState = _currentState->Update(input);
+  _nextState = _currentState->Update(input, fElapsedTime);
 }
 
 void Game::Render(olc::PixelGameEngine* pge, float fElapsedTime)

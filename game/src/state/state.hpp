@@ -13,7 +13,7 @@ class State
 {
 public:
   virtual ~State() = default;
-  virtual std::optional<std::unique_ptr<State>> Update(const Input& input) = 0;
+  virtual std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) = 0;
   virtual Render* GetRender() = 0;
 };
 

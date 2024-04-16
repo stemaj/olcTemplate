@@ -17,7 +17,7 @@ class IntroState : public State
 {
 public:
   explicit IntroState();
-  std::optional<std::unique_ptr<State>> Update(const Input& input) override;
+  std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
   float introEndDuration = 1.0f;

@@ -16,7 +16,7 @@ class MainMenuState : public State
 {
 public:
   explicit MainMenuState();
-  std::optional<std::unique_ptr<State>> Update(const Input& input) override;
+  std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
   std::string someText = "Main Menu";

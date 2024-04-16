@@ -34,7 +34,7 @@ Render* MainMenuState::GetRender()
   return _render.get();
 }
 
-std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input)
+std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, float fElapsedTime)
 {
   ImVec4 color = ImVec4(someColor[0], someColor[1], someColor[2], someColor[3]); // Anfangsfarbe
   ImGui::Begin("Main Menu Debug");

@@ -15,7 +15,7 @@ class LevelState : public State
 {
 public:
   explicit LevelState();
-  std::optional<std::unique_ptr<State>> Update(const Input& input) override;
+  std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 private:
   virtual void LoadLevelData() {}

@@ -43,7 +43,7 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
     ImGui::GetIO().WantCaptureMouse ? false : GetMouse(0).bPressed
     };
 
-  _game.Update(input);
+  _game.Update(input, fElapsedTime);
   _game.Render(this, fElapsedTime);
   _game.UpdateState();
 

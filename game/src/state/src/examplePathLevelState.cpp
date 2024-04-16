@@ -20,7 +20,8 @@ ExamplePathLevelState::~ExamplePathLevelState()
   SaveLevelData();
 }
 
-std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelState::Update(const Input& input)
+std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelState::Update(
+  const Input& input, float fElapsedTime)
 {
   if (input.leftMouseClicked)
   {
@@ -39,26 +40,6 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
       }
     }
 
-
-    
-
-
-
-    //int x = -1, y = 0;
-    //int minDistance = INT_MAX;
-    //for (const auto& disPt : _grid)
-    //{
-    //  auto displayPt = disPt.first;
-    //  x++;
-    //  if (x >= _gridDimension.x) { x = 0; y++; }
-    //  int distance = CO.Distance(displayPt, _obj);
-    //  if (distance < minDistance)
-    //  {
-    //    minDistance = distance;
-    //    _obj = {x,y};
-    //  }
-    //}
-
     std::vector<PT<int>> nonObstaclePoints;
     for (const auto& d : _grid)
     {
@@ -68,27 +49,6 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
       }
     }
     _end = CO.ClosestPoint(nonObstaclePoints, { input.mouseX, input.mouseY });
-
-
-    // Pathfinding f;
-    // f.SetGrid(_gridDimension.x, _gridDimension.y);
-    // for (const auto& a : _grid)
-    // {
-    //   if (a.second)
-    //   {
-    //     f.ToggleObstacle(a.first.x, a.first.y);
-    //   }
-    // }
-
-    //PT<int> end;
-    //int row = 0; int col = 0;
-    //for (int y = 0; y < _gridDimension.y; y++)
-    //  for (int x = 0; x < _gridDimension.x; x++)
-    //    if (_grid[y*_gridDimension.x + x].first == _displayEnd)
-    //    {
-    //      end = {x,y};
-    //      //std::cout << "Geklickt auf x = " << x << " und y = " << y << std::endl;
-    //    }
 
     auto objGrid = f.ToGridPoint(_gridDimension, {CO.W,CO.H}, _obj);
     auto endGrid = f.ToGridPoint(_gridDimension, {CO.W,CO.H}, _end);
@@ -106,7 +66,7 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
     if (!_path.empty())
     {
       _pathFollower.SetPath(_path);
-      _pathFollower.SetSpeed(2);
+      _pathFollower.SetSpeed(_speed * fElapsedTime);
       _pathFollower.MoveTowardsNextPoint();
     }
   }

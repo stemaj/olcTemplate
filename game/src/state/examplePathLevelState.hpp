@@ -13,10 +13,12 @@ namespace stemaj {
 
 class ExamplePathLevelState : public LevelState
 {
+ const int _speed = 300;
+
 public:
   explicit ExamplePathLevelState();
   virtual ~ExamplePathLevelState();
-  std::optional<std::unique_ptr<State>> Update(const Input& input) override;
+  std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 private:
 

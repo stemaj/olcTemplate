@@ -18,7 +18,7 @@ Render* IntroState::GetRender()
   return _render.get();
 }
 
-std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input)
+std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input, float fElapsedTime)
 {
   ImGui::Begin("Intro Debug");
   ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
