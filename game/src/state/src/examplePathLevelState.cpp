@@ -25,6 +25,23 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
   if (input.leftMouseClicked)
   {
     _path.clear();
+    Pathfinding f;
+    f.SetGrid(_gridDimension.x, _gridDimension.y);
+
+    int x = -1, y = 0;
+    for (auto& gp : _grid)
+    {
+      x++;
+      if (x >= _gridDimension.x) { x = 0; y++; }
+      if (gp.second)
+      {
+        f.ToggleObstacle(x,y);
+      }
+    }
+
+
+    
+
 
 
     //int x = -1, y = 0;
@@ -50,19 +67,18 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
         nonObstaclePoints.push_back(d.first);
       }
     }
-
     _end = CO.ClosestPoint(nonObstaclePoints, { input.mouseX, input.mouseY });
 
 
-    Pathfinding f;
-    f.SetGrid(_gridDimension.x, _gridDimension.y);
-    for (const auto& a : _grid)
-    {
-      if (a.second)
-      {
-        f.ToggleObstacle(a.first.x, a.first.y);
-      }
-    }
+    // Pathfinding f;
+    // f.SetGrid(_gridDimension.x, _gridDimension.y);
+    // for (const auto& a : _grid)
+    // {
+    //   if (a.second)
+    //   {
+    //     f.ToggleObstacle(a.first.x, a.first.y);
+    //   }
+    // }
 
     //PT<int> end;
     //int row = 0; int col = 0;
@@ -74,7 +90,9 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
     //      //std::cout << "Geklickt auf x = " << x << " und y = " << y << std::endl;
     //    }
 
-    auto gridPath = f.FindPath(_obj, _end);
+    auto objGrid = f.ToGridPoint(_gridDimension, {CO.W,CO.H}, _obj);
+    auto endGrid = f.ToGridPoint(_gridDimension, {CO.W,CO.H}, _end);
+    auto gridPath = f.FindPath(objGrid, endGrid);
 
     int singleWidth = CO.W / _gridDimension.x;
     int singleHeight = CO.H / _gridDimension.y;
@@ -142,7 +160,7 @@ void ExamplePathLevelState::LoadLevelData()
   auto vec = _lua["polygon"].get<std::vector<std::array<float,2>>>();
   for (const auto& v : vec)
   {
-    _polygon.push_back({v[0],v[1]});
+    _polygonSource.push_back({v[0],v[1]});
   }
 }
 
@@ -155,22 +173,12 @@ void ExamplePathLevelState::InitValues()
 {
   int singleWidth = CO.W / _gridDimension.x;
   int singleHeight = CO.H / _gridDimension.y;
-
-  //for (const auto& a : _relPolygon)
-  //{
-  //  _displayPolygon.push_back(CO.D({ a[0], a[1] }));
-  //}
-
   for (int y = singleHeight/2; y <= CO.H - (singleHeight/2); y=y+singleHeight)
     for (int x = singleWidth/2; x <= CO.W - (singleWidth/2); x=x+singleWidth)
     {
-      _grid.push_back(std::make_pair(PT<int>{x,y}, CO.IsInsidePolygon({ x,y }, CO.VD(_polygon))));
-      //std::cout << _grid[_grid.size()-1];
+      _grid.push_back(std::make_pair(PT<int>{x,y},
+        CO.IsInsidePolygon({ x,y }, CO.VD(_polygonSource))));
     }
   
   _obj = CO.D(_objSource);
-  //std::cout << "count: " << _grid.size() << std::endl;
-
-  //_obj = _grid[_gridDimension.x * _obj.y * _obj.x].first;
-  //std::cout << "_displayStart: " << _displayStart;
 }

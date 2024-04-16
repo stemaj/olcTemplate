@@ -25,13 +25,13 @@ private:
   PT<int> _obj;
   PT<int> _end;
 
-  // feste values
+  // values to init
   std::vector<std::pair<PT<int>, bool>> _grid;
 
   // input
   PT<int> _gridDimension;
   PT<float> _objSource;
-  std::vector<PT<float>> _polygon;
+  std::vector<PT<float>> _polygonSource;
 
   struct Color
   {

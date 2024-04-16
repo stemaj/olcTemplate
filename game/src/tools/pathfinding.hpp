@@ -1,25 +1,24 @@
 #ifndef __PFADFINDUNG_HPP
 #define __PFADFINDUNG_HPP
 
-#include <climits>
 #include <game/coordinates.hpp>
 #include <vector>
 
 namespace stemaj {
 
-		static PT<int> toGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point);
+static PT<int> ToGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point);
 
 // Pathfinding class implementing the A* algorithm
 class Pathfinding {
 public:
-explicit Pathfinding();
-virtual ~Pathfinding() = default;
-std::vector<PT<int>> FindPath(PT<int> start, PT<int> end);
-void SetGrid(int height, int width);
-void ToggleObstacle(int x, int y);
+	explicit Pathfinding();
+	virtual ~Pathfinding() = default;
+	std::vector<PT<int>> FindPath(PT<int> start, PT<int> end);
+	void SetGrid(int height, int width);
+	void ToggleObstacle(int x, int y);
 
-// helper functions
-static PT<int> toGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point);
+	// helper functions
+	static PT<int> ToGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point);
 
 private:
 
@@ -35,8 +34,7 @@ private:
 		sNode* parent;					// Node connecting to this node that offers shortest parent
 	};
 
-
-bool Solve_AStar();
+	bool Solve_AStar();
 	sNode *nodes = nullptr;
 	int nMapWidth = 10;
 	int nMapHeight = 10;

@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <climits>
 #include <cmath>
 #include <iostream>
 #include <list>
@@ -184,7 +185,7 @@ bool Pathfinding::Solve_AStar()
 	return true;
 }
 
-PT<int> Pathfinding::toGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point)
+PT<int> Pathfinding::ToGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point)
 {
 	int singleWidth = displaySize.x / gridDimension.x;
 	int singleHeight = displaySize.y / gridDimension.y;
@@ -264,11 +265,11 @@ TEST_CASE("Testing Pathfinding") {
 
 TEST_CASE("Testing GridPoint Conversion") {
 	Pathfinding p;
-	auto gp = p.toGridPoint({25,10}, {100,200}, PT<int>{10,50});
+	auto gp = p.ToGridPoint({25,10}, {100,200}, PT<int>{10,50});
 	CHECK_EQ(gp.x, 2);
 	CHECK_EQ(gp.y, 2);
 
-	gp = p.toGridPoint({25,10}, {100,200}, PT<int>{12,52});
+	gp = p.ToGridPoint({25,10}, {100,200}, PT<int>{12,52});
 	CHECK_EQ(gp.x, 2);
 	CHECK_EQ(gp.y, 2);
 }
