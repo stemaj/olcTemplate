@@ -1,15 +1,23 @@
 #include <game/assets.hpp>
 #include <filesystem>
 
-namespace fs = std::filesystem;
+#define OLC_IGNORE_VEC2D
+#include <game/src/engine/utilities/olcUTIL_Geometry2D.h>
+#include <game/src/engine/olcUTIL_Animate2D.h>
+#include <game/src/engine/olcPixelGameEngine.h>
 
-stemaj::Assets& stemaj::Assets::get()
+using namespace stemaj;
+namespace fs = std::filesystem;
+using olc::utils::Animate2D::Animation;
+using olc::utils::Animate2D::FrameSequence;
+
+Assets& stemaj::Assets::get()
 {
   static Assets me;
   return me;
 }
 
-void stemaj::Assets::Load()
+void Assets::Load()
 {
   auto loadSprite = [&](const std::string& sName, 
     const std::string& sFileName)
@@ -29,12 +37,18 @@ void stemaj::Assets::Load()
   }
 }
 
-olc::Sprite* stemaj::Assets::Sprite(const std::string& name)
+olc::Sprite* Assets::Sprite(const std::string& name)
 {
   return _sprites[name].first.get();
 }
 
-olc::Decal* stemaj::Assets::Decal(const std::string& name)
+olc::Decal* Assets::Decal(const std::string& name)
 {
   return _sprites[name].second.get();
 }
+
+Animation<Assets::AnimationKind>* Assets::AnimatedSprite(const std::string& name)
+{
+  return nullptr;
+}
+

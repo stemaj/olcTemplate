@@ -32,5 +32,5 @@ void ExampleWalkLevelState::LoadLevelData()
 
 void ExampleWalkLevelState::SaveLevelData()
 {
-  std::cout << "loading" << std::endl;
+  std::cout << "saving" << std::endl;
 }
