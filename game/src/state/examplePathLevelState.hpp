@@ -2,14 +2,13 @@
 #define __EXAMPLEPATHLEVELSTATE_HPP
 
 #include <game/coordinates.hpp>
-#include <game/src/render/examplePathLevelRender.hpp>
 #include <game/src/state/levelState.hpp>
 #define SOL_ALL_SAFETIES_ON 1
 #include <sdk/sol2-3.3.0/sol.hpp>
 
 namespace stemaj {
 
-//class ExamplePathLevelRender;
+class ExamplePathLevelRender;
 
 class ExamplePathLevelState : public LevelState
 {

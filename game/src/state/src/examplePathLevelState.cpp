@@ -6,6 +6,7 @@
 #include <game/src/render/levelRender.hpp>
 #include <game/coordinates.hpp>
 #include <vector>
+#include <sdk/imgui-1.90.4/imgui.h>
 
 using namespace stemaj;
 
@@ -76,6 +77,19 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
     _pathFollower.MoveTowardsNextPoint();
     _obj = _pathFollower.GetCurrentPosition();
   }
+
+  ImGui::Begin("ExamplePathLevel Debug");
+  ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
+  ImGui::Text("Endpunkt:  (%d, %d)", _end.x, _end.y);
+  ImGui::Text("Objekt:  (%d, %d)", _obj.x, _obj.y);
+  ImGui::Separator();
+  if (ImGui::BeginListBox("Path", ImVec2(0, _path.size() * 25)))
+  {
+    for (const auto& point : _path)
+      ImGui::Text("(%d, %d)", point.x, point.y);
+    ImGui::EndListBox();
+  }
+  ImGui::End();
 
   return std::nullopt;
 }

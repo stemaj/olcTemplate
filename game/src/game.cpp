@@ -1,12 +1,12 @@
 #include <game/src/state/introState.hpp>
-#include <game/src/render/introRender.hpp>
 #include <game/game.hpp>
 #include <game/src/render/render.hpp>
-#include <game/src/state/examplePathLevelState.hpp>
+#include <game/src/render/levelRender.hpp>
+#include <game/src/state/levelState.hpp>
 
 using namespace stemaj;
 
-Game::Game() : _currentState(std::make_unique<ExamplePathLevelState>())
+Game::Game() : _currentState(std::make_unique<LevelState>())
 {
 }
 
