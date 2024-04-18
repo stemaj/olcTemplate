@@ -1,5 +1,6 @@
 #include <game/assets.hpp>
 #include <filesystem>
+#include <memory>
 
 #define OLC_IGNORE_VEC2D
 #include <game/src/engine/utilities/olcUTIL_Geometry2D.h>
@@ -44,15 +45,17 @@ void Assets::Load()
   auto loadSpriteSheet = [&](const std::string& sName, 
     const std::string& sFileName)
   {
-    std::unique_ptr<olc::Renderable> spritesheet;
-
+    auto spritesheet = std::make_unique<olc::Renderable>();
+    spritesheet->Load(sFileName);
 
     // load lua file
     int animations = 5;
+    Animation<AnimationKind> animation;
 
     for (int i = 0; i < animations; i++)
     {
-      Animation<AnimationKind> animation;
+      
+      AnimationKind e = IDLE;
 
       // count pro animation
       int singlePics = 2;
@@ -60,18 +63,19 @@ void Assets::Load()
       for (int j = 0; j < singlePics; j++)
       {
         FrameSequence frameSequence(0.3f);
+
+        //pos = x * sprWidht , y * speHeit;
+        //imaessizr = { sprWif, sprHe }
+
+        
+        frameSequence.AddFrame({ spritesheet.get(), { pos, imageSize } });
         
         
+        animation.AddState(e, frameSequence);
         
       }
-
-
-
-
-
-
-
     }
+    _animatedSprites[name] = std::make_pair(std::make_unique<Animation<AnimationKind>>(animation), std::move(spritesheet));
 
 
   };

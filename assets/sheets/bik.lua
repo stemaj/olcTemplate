@@ -1,72 +1,45 @@
+-- kind:
+--
+-- IDLE = 0,
+-- MOVERIGHT = 1,
+-- MOVEUP = 2,
+-- MOVELEFT = 3,
+-- MOVEDOWN = 4
 
+function GetSpriteSheetData()
+	data:clear()
 
-function CreateAnimation()
+  local p = SpriteSheetData:new()
+	p.kind = 0
+	p.spriteWidth = 342
+  p.spriteHeight = 476
+  p.ox = 0.5
+  p.oy = 0.9
+  p.singlePics = { { 3,2 }, { 4,1 }, { 4,2 } }
+  data:add(p)
 
-  animations:clear()
+  p = SpriteSheetData:new()
+	p.kind = 1
+	p.spriteWidth = 342
+  p.spriteHeight = 476
+  p.ox = 0.5
+  p.oy = 0.9
+  p.singlePics = { { 2,0 }, { 3,0 }, { 2,1 } }
+  data:add(p)
 
-  animations:add()
+  p = SpriteSheetData:new()
+	p.kind = 2
+	p.spriteWidth = 342
+  p.spriteHeight = 476
+  p.ox = 0.5
+  p.oy = 0.9
+  p.singlePics = { { 1,0 }, { 1,1 }, { 1,2 } }
+  data:add(p)
 
-
+  return data
 end
 
-animations = 5
-animation[0]
-{
-  name = idle
-  spriteWidth = 342
-  spriteHeight = 476
-  ox = 0.5
-  oy = 0.9
-  singlePics = 3
-  singlePicPos[0]
-  {
-    x = 3
-    y = 2
-  }
-  singlePicPos[1]
-  {
-    x = 4
-    y = 1
-  }
-  singlePicPos[2]
-  {
-    x = 4
-    y = 2
-  }
-}
-animation[1]
-{
-  name = moveright
-  spriteWidth = 342
-  spriteHeight = 476
-  ox = 0.5
-  oy = 0.9
-  singlePics = 3
-  singlePicPos[0]
-  {
-    x = 2
-    y = 0
-  }
-  singlePicPos[1]
-  {
-    x = 3
-    y = 0
-  }
-  singlePicPos[2]
-  {
-    x = 2
-    y = 1
-  }
-}
-animation[2]
-{
-  name = moveup
-  spriteWidth = 342
-  spriteHeight = 476
-  ox = 0.5
-  oy = 0.9
-  singlePics = 3
-  singlePicPos[0]
+
   {
     x = 1
     y = 0
