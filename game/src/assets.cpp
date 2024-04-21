@@ -51,7 +51,7 @@ void Assets::Load()
     lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
     try
     {
-      lua.safe_script_file("assets/sheets/" + sName + ".lua");
+      lua.safe_script_file("./assets/sheets/" + sName + ".lua");
     }
     catch (const sol::error& e)
     {
@@ -67,27 +67,18 @@ void Assets::Load()
     container.oy = lua["oy"];
     for (int i = 0; i < AnimationKind::COUNT; i++)
     {
-      sol::table value = lua["details"][i];
+      auto indicies = lua["details"][i].get<std::vector<std::array<int, 2>>>();
       auto e = static_cast<AnimationKind>(i);
-      for (const auto& kvp : value)
-      {
-        container.details[e].singlePics = std::make_pair<int, int>(kvp.first.as<int>(), kvp.second.as<int>());
-    
-
-
-    if (lua["moveright"]) {
-      x = AnimationKind::MOVERIGHT;
-      // Lade die Werte in y
-      sol::table moverightTable = lua["moveright"];
-      for (auto& pair : moverightTable) {
-        sol::object key = pair.first;
-        sol::object value = pair.second;
-        if (key.is<int>() && value.is<sol::table>()) {
-          float first = value.as<sol::table>()[1];
-          float second = value.as<sol::table>()[2];
-          y.emplace_back(first, second);
-        }
-      }
+      //auto v = indicies.size();
+      //auto z = indicies.get<std::vector<std::array<int,2>>>();
+      //for (const auto& kvp : indicies)
+      //{
+      //  auto x =  kvp.first.as<int>();
+      //  auto y = kvp.second.as<int>();
+      //  AnimationDetail d;
+      //  d.singlePics.push_back(std::make_pair<int, int>(kvp.first.as<int>(), kvp.second.as<int>()));
+      //  container.details[e] = d;
+      //}
     }
 
 

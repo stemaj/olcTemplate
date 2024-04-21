@@ -1,9 +1,9 @@
 --
 
-spriteWidth = 32,
-spriteHeight = 32,
-ox = 0.0,
-oy = 0.0,
+spriteWidth = 32
+spriteHeight = 32
+ox = 0.0
+oy = 0.0
 details = {
     [0] = {{0, 0}, {1, 0}, {2, 0}},
     [1] = {{0, 1}, {1, 1}, {2, 1}},
