@@ -28,7 +28,8 @@ enum AnimationKind : uint8_t
   MOVERIGHT = 1,
   MOVEUP = 2,
   MOVELEFT = 3,
-  MOVEDOWN = 4
+  MOVEDOWN = 4,
+  COUNT
 };
 struct AnimationDetail
 {

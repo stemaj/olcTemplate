@@ -58,50 +58,37 @@ void Assets::Load()
       std::cout << std::string(e.what()) << std::endl;
     }
 
-    // Erhalte die Liste von AnimationContainern aus der Lua-Datei
-    std::vector<AnimationContainer> animationContainers;
-    sol::table containersTable = lua["animation_containers"];
-    for (auto& kv : containersTable) {
-        AnimationContainer container;
-        sol::table tbl = kv.second;
-        container.spriteWidth = tbl["spriteWidth"];
-        container.spriteHeight = tbl["spriteHeight"];
-        container.ox = tbl["ox"];
-        container.oy = tbl["oy"];
 
-        sol::table detailsTable = tbl["details"];
-        detailsTable.for_each([&container](sol::object key, sol::object value) {
-            AnimationKind kind = static_cast<AnimationKind>(key.as<uint8_t>());
-            sol::table detailTable = value;
-            AnimationDetail detail;
-            //detail.animation = detailTable["animation"];
-            sol::table singlePicsTable = detailTable["singlePics"];
-            singlePicsTable.for_each([&detail](sol::object key, sol::object value) {
-                sol::table pic = value;
-                detail.singlePics.push_back({pic[1], pic[2]});
-            });
-            container.details.emplace(kind, detail);
-        });
+    // Extrahiere Werte aus Lua
+    AnimationContainer container;
+    container.spriteWidth = lua["spriteWidth"];
+    container.spriteHeight = lua["spriteHeight"];
+    container.ox = lua["ox"];
+    container.oy = lua["oy"];
+    for (int i = 0; i < AnimationKind::COUNT; i++)
+    {
+      sol::table value = lua["details"][i];
+      auto e = static_cast<AnimationKind>(i);
+      for (const auto& kvp : value)
+      {
+        container.details[e].singlePics = std::make_pair<int, int>(kvp.first.as<int>(), kvp.second.as<int>());
+    
 
-        animationContainers.push_back(container);
-    }
 
-    // Beispiel-Ausgabe der erhaltenen Daten
-    for (const auto& container : animationContainers) {
-        std::cout << "Sprite Width: " << container.spriteWidth << std::endl;
-        std::cout << "Sprite Height: " << container.spriteHeight << std::endl;
-        std::cout << "Origin X: " << container.ox << std::endl;
-        std::cout << "Origin Y: " << container.oy << std::endl;
-        for (const auto& [kind, detail] : container.details) {
-            std::cout << "Animation Kind: " << static_cast<int>(kind) << std::endl;
-            std::cout << "Animation: " << detail.animation << std::endl;
-            std::cout << "Animation Details SinglePics:" << std::endl;
-            for (const auto& pair : detail.singlePics) {
-                std::cout << "    (" << pair.first << ", " << pair.second << ")" << std::endl;
-            }
+    if (lua["moveright"]) {
+      x = AnimationKind::MOVERIGHT;
+      // Lade die Werte in y
+      sol::table moverightTable = lua["moveright"];
+      for (auto& pair : moverightTable) {
+        sol::object key = pair.first;
+        sol::object value = pair.second;
+        if (key.is<int>() && value.is<sol::table>()) {
+          float first = value.as<sol::table>()[1];
+          float second = value.as<sol::table>()[2];
+          y.emplace_back(first, second);
         }
+      }
     }
-
 
 
 // -- 	std::cout << "[CPP S9] vecPlayers.size() = " << vecPlayers.size() << "\n";

@@ -1,25 +1,15 @@
--- Definiere eine Funktion zum Erstellen von AnimationDetails
-function createAnimationDetail(singlePics)
-  return {
-      singlePics = singlePics
-  }
-end
+--
 
--- Erstelle eine Liste von AnimationContainern
-animation_containers = {
-  {
-      spriteWidth = 32,
-      spriteHeight = 32,
-      ox = 0.0,
-      oy = 0.0,
-      details = {
-          IDLE = createAnimationDetail({{0, 0}, {1, 0}, {2, 0}}),
-          MOVERIGHT = createAnimationDetail({{0, 1}, {1, 1}, {2, 1}}),
-          MOVEUP = createAnimationDetail({{0, 2}, {1, 2}, {2, 2}}),
-          MOVELEFT = createAnimationDetail({{0, 3}, {1, 3}, {2, 3}}),
-          MOVEDOWN = createAnimationDetail({{0, 4}, {1, 4}, {2, 4}})
-      }
-  }
+spriteWidth = 32,
+spriteHeight = 32,
+ox = 0.0,
+oy = 0.0,
+details = {
+    [0] = {{0, 0}, {1, 0}, {2, 0}},
+    [1] = {{0, 1}, {1, 1}, {2, 1}},
+    [2] = {{0, 2}, {1, 2}, {2, 2}},
+    [3] = {{0, 3}, {1, 3}, {2, 3}},
+    [4] = {{0, 4}, {1, 4}, {2, 4}}
 }
 
 
@@ -38,7 +28,7 @@ animation_containers = {
 -- };
 -- struct AnimationContainer
 -- {
---   olc::utils::Animate2D::Animation<AnimationKind>* animation = nullptr;
+--   olc::utils::Animate2D::Animation<AnimationKind> animation;
 --   int spriteWidth = 0;
 --   int spriteHeight = 0;
 --   float ox = 0.0f;
