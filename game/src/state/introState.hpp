@@ -2,7 +2,6 @@
 #define __INTROSTATE_HPP
 
 #include <chrono>
-#include <memory>
 #include <game/input.hpp>
 #include <game/src/state/state.hpp>
 

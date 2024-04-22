@@ -2,7 +2,6 @@
 #include <game/src/render/introRender.hpp>
 #include <game/src/state/mainMenuState.hpp>
 #include <game/src/render/mainMenuRender.hpp>
-#include <memory>
 #include <optional>
 #include <sdk/imgui-1.90.4/imgui.h>
 

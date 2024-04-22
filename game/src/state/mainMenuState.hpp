@@ -1,7 +1,6 @@
 #ifndef __MAINMENUSTATE_HPP
 #define __MAINMENUSTATE_HPP
 
-#include <memory>
 #include <string>
 #include <game/input.hpp>
 #include <game/src/state/state.hpp>

@@ -4,9 +4,7 @@
 #include <cstdint>
 #include <string>
 #include <memory>
-#include <map>
 #include <unordered_map>
-#include <vector>
 
 namespace olc {
   class Sprite;
@@ -31,18 +29,13 @@ enum AnimationKind : uint8_t
   MOVEDOWN = 4,
   COUNT
 };
-struct AnimationDetail
-{
-  std::vector<std::pair<int,int>> singlePics;
-  olc::utils::Animate2D::Animation<AnimationKind>* animation = nullptr;
-};
 struct AnimationContainer
 {
   int spriteWidth = 0;
   int spriteHeight = 0;
   float ox = 0.0f;
   float oy = 0.0f;
-  std::unordered_map<AnimationKind, AnimationDetail> details;
+  std::unordered_map<AnimationKind, std::unique_ptr<olc::utils::Animate2D::Animation<AnimationKind>>> animation = {};
 };
 
 class Assets
@@ -55,7 +48,8 @@ public:
 
   olc::Sprite* Sprite(const std::string& name);
   olc::Decal* Decal(const std::string& name);
-  AnimationContainer* AnimatedSprite(const std::string& name);
+  olc::Renderable* Renderable(const std::string& name);
+  AnimationContainer* Animation(const std::string& name);
   
   void Load();
 
@@ -63,10 +57,10 @@ private:
 	Assets() {}
 	virtual ~Assets() {}	
 
-  std::map<std::string, std::pair<std::unique_ptr<olc::Sprite>, 
-                                  std::unique_ptr<olc::Decal>>> _sprites;
-  std::map<std::string, std::pair<std::unique_ptr<AnimationContainer>,
-                                  std::unique_ptr<olc::Renderable>>> _animatedSprites;
+  std::unordered_map<std::string, std::unique_ptr<olc::Sprite>> _sprites;
+  std::unordered_map<std::string, std::unique_ptr<olc::Decal>> _decals;
+  std::unordered_map<std::string, std::unique_ptr<olc::Renderable>> _renderables;
+  std::unordered_map<std::string, std::unique_ptr<AnimationContainer>> _animationContainers;
 };
 
 #define AS Assets::get()

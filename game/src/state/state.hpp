@@ -2,8 +2,8 @@
 #define __STATE_HPP
 
 #include <game/input.hpp>
-#include <memory>
 #include <optional>
+#include <memory>
 
 namespace stemaj {
 
