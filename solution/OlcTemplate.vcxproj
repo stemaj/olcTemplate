@@ -332,10 +332,10 @@
   <ItemGroup>
     <ClInclude Include="..\game\src\engine\olcPGEX_TTF.h" />
     <ClInclude Include="..\game\src\engine\olcPGEX_TransformedView.h" />
-    <ClInclude Include="..\game\src\engine\olcUTIL_Geometry2D.h" />
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h" />
     <ClInclude Include="..\game\src\engine\olcUTIL_Animate2D.h" />
     <ClInclude Include="..\game\src\engine\imgui_impl_pge.h" />
+    <ClInclude Include="..\game\src\engine\utilities\olcUTIL_Geometry2D.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui_internal.h" />
@@ -362,6 +362,7 @@
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
     <ClInclude Include="..\game\src\tools\pathfinding.hpp" />
+    <ClInclude Include="..\game\src\tools\animation.hpp" />
     <ClInclude Include="..\game\src\tools\pathfollower.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\examplePathLevelState.hpp" />
@@ -393,6 +394,8 @@
     <ClCompile Include="..\game\src\render\src\examplePathLevelRender.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\exampleWalkLevelRender.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\tools\src\animation.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
     </ClCompile>
