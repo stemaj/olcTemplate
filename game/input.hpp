@@ -8,6 +8,10 @@ struct Input
   int mouseX;
   int mouseY;
   bool leftMouseClicked;
+  bool wHold;
+  bool aHold;
+  bool sHold;
+  bool dHold;
 };
 
 } // namespace stemaj

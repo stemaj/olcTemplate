@@ -1,6 +1,9 @@
 #include <game/src/state/exampleWalkLevelState.hpp>
 #include <game/src/render/exampleWalkLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
+#include <game/src/tools/animation.hpp>
+
+olc::utils::Animate2D::AnimationState animationState;
 
 using namespace stemaj;
 
@@ -17,6 +20,31 @@ ExampleWalkLevelState::~ExampleWalkLevelState()
 std::optional<std::unique_ptr<State>> ExampleWalkLevelState::ExampleWalkLevelState::Update(
   const Input& input, float fElapsedTime)
 {
+  auto bikAnim = AN.GetAnimation("bik");
+
+  if (input.wHold)
+  {
+    if (_currentKind != AnimationKind::MOVEUP)
+    {
+      bikAnim.animation.ChangeState(animationState, MOVEUP);
+      _currentKind = AnimationKind::MOVEUP;
+    }
+    else
+    {
+      bikAnim.animation.ChangeState(animationState, IDLE);
+      _currentKind = AnimationKind::IDLE;
+    }
+  }
+
+  const auto& frame = bikAnim.animation.GetFrame(animationState);
+  bikAnim.animation.UpdateState(animationState, fElapsedTime);
+
+  _drawPos = PT<int>{ 0,0 };
+  _decal = frame.GetSourceImage()->Decal();
+  _sourceRectPos = {frame.GetSourceRect().pos.x,frame.GetSourceRect().pos.y};
+  _sourceRectSize = {frame.GetSourceRect().size.x,frame.GetSourceRect().size.y};
+  _scale = PT<float>{0.5f,0.5f};
+
   return std::nullopt;
 }
 

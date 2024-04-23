@@ -16,11 +16,20 @@ public:
   virtual ~ExampleWalkLevelState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
+
+
+  PT<int> _drawPos;
+  PT<int> _sourceRectPos;
+  PT<int> _sourceRectSize;
+  PT<float> _scale;
+
 private:
   void LoadLevelData() override;
   void SaveLevelData() override;
   sol::state _lua;
   std::unique_ptr<ExampleWalkLevelRender> _render;
+
+  int _currentKind = 0;
 
   friend class ExampleWalkLevelRender;
 };

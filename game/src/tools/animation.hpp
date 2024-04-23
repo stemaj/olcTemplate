@@ -1,14 +1,61 @@
 #ifndef __ANIMATION_HPP
 #define __ANIMATION_HPP
 
+#include <cstdint>
+#include <string>
+#include <unordered_map>
+
+namespace olc
+{
+  namespace utils {
+    namespace Animate2D {
+      template<typename StatesEnum>
+      class Animation;
+    }
+  }
+}
+
 namespace stemaj {
 
-class Animation
+enum AnimationKind : uint8_t
 {
-  
-
+  IDLE = 0,
+  MOVERIGHT = 1,
+  MOVEUP = 2,
+  MOVELEFT = 3,
+  MOVEDOWN = 4,
+  COUNT
 };
 
+struct Animation
+{
+  int spriteWidth = 0;
+  int spriteHeight = 0;
+  float ox = 0.0f;
+  float oy = 0.0f;
+  olc::utils::Animate2D::Animation<AnimationKind>* animation;
+};
+
+class AnimationMap
+{
+public:
+	static AnimationMap& get();
+	AnimationMap(AnimationMap const&) = delete;
+	void operator=(AnimationMap const&) = delete;
+
+  stemaj::Animation GetAnimation(const std::string& name);
+
+private:
+  void Load();
+	AnimationMap() {}
+	virtual ~AnimationMap() {}	
+  bool _loaded = false;
+
+  std::unordered_map<std::string, stemaj::Animation> _map;
+};
+
+#define AN AnimationMap::get()
+  
 } // namespace stemaj
 
 #endif // __ANIMATION_HPP
