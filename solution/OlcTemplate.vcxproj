@@ -138,7 +138,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -154,14 +154,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -170,7 +170,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -186,14 +186,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <TargetMachine>MachineX64</TargetMachine>
@@ -203,7 +203,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -219,14 +219,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -235,7 +235,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -251,14 +251,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <TargetMachine>MachineX64</TargetMachine>
@@ -268,7 +268,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -283,15 +283,15 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>lua54.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -300,7 +300,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -315,15 +315,15 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>lua54.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <TargetMachine>MachineX64</TargetMachine>
@@ -350,11 +350,75 @@
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h" />
     <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h" />
     <ClInclude Include="..\sdk\doctest-2.4.11\doctest.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\ft2build.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlzw.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgzip.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftparams.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgxval.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbitmap.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsnames.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlist.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\tttables.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftotval.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsystem.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmm.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmoderr.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fterrors.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlcdfil.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftglyph.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftrender.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsynth.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcache.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbbox.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fterrdef.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftadvanc.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmodapi.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftpfr.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlogging.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftwinfnt.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftdriver.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftstroke.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgasp.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftincrem.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftoutln.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\otsvg.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\freetype.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftimage.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fttypes.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fttrigon.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcid.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcolor.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ttnameid.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbzip2.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\tttags.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbdf.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\t1tables.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftchapters.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftfntfmt.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsizes.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmac.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftoption.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftheader.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftmodule.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftstdlib.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\integer-types.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftconfig.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\public-macros.h" />
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\mac-support.h" />
+    <ClInclude Include="..\sdk\utfcpp\utf8.h" />
+    <ClInclude Include="..\sdk\utfcpp\utf8\cpp20.h" />
+    <ClInclude Include="..\sdk\utfcpp\utf8\core.h" />
+    <ClInclude Include="..\sdk\utfcpp\utf8\cpp11.h" />
+    <ClInclude Include="..\sdk\utfcpp\utf8\checked.h" />
+    <ClInclude Include="..\sdk\utfcpp\utf8\unchecked.h" />
+    <ClInclude Include="..\sdk\utfcpp\utf8\cpp17.h" />
+    <ClInclude Include="..\game\animation.hpp" />
     <ClInclude Include="..\game\coordinates.hpp" />
     <ClInclude Include="..\game\input.hpp" />
     <ClInclude Include="..\game\assets.hpp" />
     <ClInclude Include="..\game\olcTemplate.hpp" />
     <ClInclude Include="..\game\game.hpp" />
+    <ClInclude Include="..\game\fonts.hpp" />
     <ClInclude Include="..\game\src\render\levelRender.hpp" />
     <ClInclude Include="..\game\src\render\exampleWalkLevelRender.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
@@ -362,7 +426,6 @@
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
     <ClInclude Include="..\game\src\tools\pathfinding.hpp" />
-    <ClInclude Include="..\game\src\tools\animation.hpp" />
     <ClInclude Include="..\game\src\tools\pathfollower.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\examplePathLevelState.hpp" />
@@ -377,7 +440,11 @@
   <ItemGroup>
     <ClCompile Include="..\game\src\olcTemplate.cpp">
     </ClCompile>
+    <ClCompile Include="..\game\src\fonts.cpp">
+    </ClCompile>
     <ClCompile Include="..\game\src\assets.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\animation.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\main.cpp">
     </ClCompile>
@@ -394,8 +461,6 @@
     <ClCompile Include="..\game\src\render\src\examplePathLevelRender.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\exampleWalkLevelRender.cpp">
-    </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\animation.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
     </ClCompile>
@@ -434,6 +499,7 @@
     <None Include="..\scripts\examplePathLevel.lua" />
     <None Include="..\scripts\settings.lua" />
     <None Include="..\scripts\mainMenu.lua" />
+    <None Include="..\assets\fonts\CutiePatootie-Rgjv.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\assets\png\japan_1.png">

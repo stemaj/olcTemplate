@@ -9,12 +9,6 @@ namespace olc {
   class Sprite;
   class Decal;
   class Renderable;
-  // namespace utils {
-  //   namespace Animate2D {
-  //     template<typename StatesEnum>
-  //     class Animation;
-  //   }
-  // }
 }
 
 namespace stemaj {

@@ -39,6 +39,7 @@ project "OlcTemplate"
     path.join(ROOT_DIR,"**.cpp"),
     path.join(ROOT_DIR,"**.lua"),
     path.join(ROOT_DIR,"**.png"),
+    path.join(ROOT_DIR,"**.ttf"),
     --path.join(ROOT_DIR,"assets/**.txt"),
   }
   includedirs {
@@ -53,16 +54,16 @@ project "OlcTemplate"
       "sdk/sol2-3.3.0",
       "sdk/lua-5.4.2/include",
       --"soloud/include",
-      --"freetype-windows-binaries-2.13.1/include",
+      "sdk/freetype-2.13.1/include",
     }
     libdirs {
       "sdk/lua-5.4.2/windows",
-      --"freetype-windows-binaries-2.13.1/release static/vs2015-2022/win64",
+      "sdk/freetype-2.13.1/windows",
       --"soloud/lib/windows",
     }
     links {
-      "lua54"
-      --"freetype",
+      "lua54",
+      "freetype",
       --"soloud_static_x64"
     }
     debugdir ".."
@@ -74,7 +75,7 @@ project "OlcTemplate"
       "sdk/imgui-1.90.4/backends",
       "sdk/sol2-3.3.0",
       "sdk/lua-5.4.2/include",
-      --"/usr/include/freetype2",
+      "sdk/freetype-2.13.1/include",
     }
     libdirs {
       "/usr/lib",
@@ -82,7 +83,7 @@ project "OlcTemplate"
       --"soloud/lib/linux/Release",
     }
     links {
-      --"freetype",
+       "freetype",
        "X11",
        "GL",
        "pthread",
@@ -105,7 +106,7 @@ project "OlcTemplate"
       "sdk/imgui-1.90.4/backends",
       "sdk/sol2-3.3.0",
       "sdk/lua-5.4.2/include",
-      --"../../../../opt/homebrew/include/freetype2",
+      "../../../../opt/homebrew/include/freetype2",
     }
     libdirs {
       "../../../../opt/homebrew/lib",

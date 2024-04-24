@@ -50,7 +50,7 @@ ifeq ($(config),debug)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -62,15 +62,17 @@ ifeq ($(config),debug)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -84,7 +86,6 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -108,7 +109,7 @@ ifeq ($(config),test)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -120,15 +121,17 @@ ifeq ($(config),test)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -142,7 +145,6 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -166,7 +168,7 @@ ifeq ($(config),release)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
@@ -178,15 +180,17 @@ ifeq ($(config),release)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -200,7 +204,6 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -224,7 +227,7 @@ ifeq ($(config),debug64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -236,15 +239,17 @@ ifeq ($(config),debug64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -258,7 +263,6 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -282,7 +286,7 @@ ifeq ($(config),test64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -294,15 +298,17 @@ ifeq ($(config),test64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -316,7 +322,6 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -340,7 +345,7 @@ ifeq ($(config),release64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
@@ -352,15 +357,17 @@ ifeq ($(config),release64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -374,7 +381,6 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -399,7 +405,7 @@ ifeq ($(config),debuguniv64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -411,15 +417,17 @@ ifeq ($(config),debuguniv64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -433,7 +441,6 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -458,7 +465,7 @@ ifeq ($(config),testuniv64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -470,15 +477,17 @@ ifeq ($(config),testuniv64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -492,7 +501,6 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -517,7 +525,7 @@ ifeq ($(config),releaseuniv64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include"
+  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
@@ -529,15 +537,17 @@ ifeq ($(config),releaseuniv64)
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJRESP             =
   OBJECTS := \
+	$(OBJDIR)/game/src/animation.o \
 	$(OBJDIR)/game/src/assets.o \
 	$(OBJDIR)/game/src/coordinates.o \
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
+	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
@@ -551,7 +561,6 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/state/src/introState.o \
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
-	$(OBJDIR)/game/src/tools/src/animation.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -638,6 +647,10 @@ $(LDRESP): $(LDDEPS) | $(TARGETDIR) $(OBJDIRS)
 	$(SILENT) echo $^ > $@
 endif
 
+$(OBJDIR)/game/src/animation.o: ../game/src/animation.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/game/src/assets.o: ../game/src/assets.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
@@ -647,6 +660,10 @@ $(OBJDIR)/game/src/coordinates.o: ../game/src/coordinates.cpp $(GCH) $(MAKEFILE)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o: ../game/src/engine/src/olcPixelGameEngine.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/engine/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/fonts.o: ../game/src/fonts.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
@@ -699,10 +716,6 @@ $(OBJDIR)/game/src/state/src/levelState.o: ../game/src/state/src/levelState.cpp 
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/state/src/mainMenuState.o: ../game/src/state/src/mainMenuState.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/state/src
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/game/src/tools/src/animation.o: ../game/src/tools/src/animation.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/tools/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

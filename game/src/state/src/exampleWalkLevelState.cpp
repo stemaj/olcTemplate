@@ -1,7 +1,7 @@
 #include <game/src/state/exampleWalkLevelState.hpp>
 #include <game/src/render/exampleWalkLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
-#include <game/src/tools/animation.hpp>
+#include <game/animation.hpp>
 
 olc::utils::Animate2D::AnimationState animationState;
 

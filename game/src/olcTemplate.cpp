@@ -2,7 +2,7 @@
 #include <game/src/render/render.hpp>
 #include <game/olcTemplate.hpp>
 #include <game/assets.hpp>
-#include <game/src/tools/animation.hpp>
+#include <game/animation.hpp>
 #include <sdk/imgui-1.90.4/imgui.h>
 #include <chrono>
 #include <thread>

@@ -13,6 +13,9 @@
 #define OLC_PGEX_DEAR_IMGUI_IMPLEMENTATION
 #include <game/src/engine/imgui_impl_pge.h>
 
+#define OLC_PGEX_TTF
+#include <game/src/engine/olcPGEX_TTF.h>
+
 #define OLC_PGEX_TRANSFORMEDVIEW
 #include <game/src/engine/olcPGEX_TransformedView.h>
 
