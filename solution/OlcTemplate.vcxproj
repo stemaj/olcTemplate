@@ -462,12 +462,14 @@
     <ClInclude Include="..\game\src\render\levelRender.hpp" />
     <ClInclude Include="..\game\src\render\exampleWalkLevelRender.hpp" />
     <ClInclude Include="..\game\src\render\render.hpp" />
+    <ClInclude Include="..\game\src\render\exampleScreenElementsLevelRender.hpp" />
     <ClInclude Include="..\game\src\render\examplePathLevelRender.hpp" />
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\introRender.hpp" />
     <ClInclude Include="..\game\src\tools\pathfinding.hpp" />
     <ClInclude Include="..\game\src\tools\pathfollower.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
+    <ClInclude Include="..\game\src\state\exampleScreenElementsLevelState.hpp" />
     <ClInclude Include="..\game\src\state\examplePathLevelState.hpp" />
     <ClInclude Include="..\game\src\state\exampleWalkLevelState.hpp" />
     <ClInclude Include="..\game\src\state\state.hpp" />
@@ -504,6 +506,8 @@
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\exampleWalkLevelRender.cpp">
     </ClCompile>
+    <ClCompile Include="..\game\src\render\src\exampleScreenElementsLevelRender.cpp">
+    </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
@@ -513,6 +517,8 @@
     <ClCompile Include="..\game\src\state\src\introState.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\examplePathLevelState.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\state\src\exampleScreenElementsLevelState.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
     </ClCompile>
