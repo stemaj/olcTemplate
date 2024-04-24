@@ -2,6 +2,7 @@
 #include <game/src/render/render.hpp>
 #include <game/olcTemplate.hpp>
 #include <game/assets.hpp>
+#include <game/src/tools/animation.hpp>
 #include <sdk/imgui-1.90.4/imgui.h>
 #include <chrono>
 #include <thread>
@@ -13,6 +14,7 @@ using timePoint = std::chrono::time_point<std::chrono::steady_clock,
 bool OlcTemplate::OnUserCreate()
 {
   AS.Load();
+  AN.Load();
 
   _gameLayer = CreateLayer();
   EnableLayer(_gameLayer, true);

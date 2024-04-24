@@ -22,28 +22,33 @@ std::optional<std::unique_ptr<State>> ExampleWalkLevelState::ExampleWalkLevelSta
 {
   auto bikAnim = AN.GetAnimation("bik");
 
-  if (input.wHold)
+  if (input.aHold)
   {
-    if (_currentKind != AnimationKind::MOVEUP)
+    if (_currentKind != AnimationKind::IDLE)
     {
-      bikAnim.animation.ChangeState(animationState, MOVEUP);
-      _currentKind = AnimationKind::MOVEUP;
-    }
-    else
-    {
+      std::cout << "change state to moveleft\n";
       bikAnim.animation.ChangeState(animationState, IDLE);
       _currentKind = AnimationKind::IDLE;
+    }
+  }
+  else
+  {
+    if (_currentKind != AnimationKind::MOVELEFT)
+    {
+      std::cout << "change state to idle\n";
+      bikAnim.animation.ChangeState(animationState, MOVELEFT);
+      _currentKind = AnimationKind::MOVELEFT;
     }
   }
 
   const auto& frame = bikAnim.animation.GetFrame(animationState);
   bikAnim.animation.UpdateState(animationState, fElapsedTime);
 
-  _drawPos = PT<int>{ 0,0 };
+  _drawPos = PT<int>{ 20,20 };
   _decal = frame.GetSourceImage()->Decal();
   _sourceRectPos = {frame.GetSourceRect().pos.x,frame.GetSourceRect().pos.y};
   _sourceRectSize = {frame.GetSourceRect().size.x,frame.GetSourceRect().size.y};
-  _scale = PT<float>{0.1f,0.1f};
+  _scale = PT<float>{0.35f,0.35f};
 
   return std::nullopt;
 }

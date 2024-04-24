@@ -40,8 +40,8 @@ public:
 
   stemaj::Animation GetAnimation(const std::string& name);
 
-private:
   void Load();
+private:
 	AnimationMap() {}
 	virtual ~AnimationMap() {}	
   bool _loaded = false;

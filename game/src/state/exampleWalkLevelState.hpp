@@ -1,6 +1,7 @@
 #ifndef __EXAMPLEWALKLEVELSTATE_HPP
 #define __EXAMPLEWALKLEVELSTATE_HPP
 
+#include <cstdint>
 #include <game/src/state/levelState.hpp>
 #define SOL_ALL_SAFETIES_ON 1
 #include <sdk/sol2-3.3.0/sol.hpp>
@@ -33,7 +34,7 @@ private:
   sol::state _lua;
   std::unique_ptr<ExampleWalkLevelRender> _render;
 
-  int _currentKind = 0;
+  uint8_t _currentKind = 2;
 
   friend class ExampleWalkLevelRender;
 };

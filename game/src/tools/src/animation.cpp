@@ -17,7 +17,6 @@ AnimationMap& AnimationMap::get()
 
 stemaj::Animation AnimationMap::GetAnimation(const std::string& name)
 {
-  if (!_loaded) Load();
   return _map[name];
 }
 
@@ -56,15 +55,20 @@ void AnimationMap::Load()
       auto e = static_cast<AnimationKind>(i);
       for (auto& j : indicies)
       {
+        // std::cout << j[0] << std::endl;
+        // std::cout << j[1] << std::endl;
+        // std::cout << entry.path().stem() << std::endl;
+        // std::cout << a.spriteHeight << std::endl;
+        // std::cout << a.spriteWidth << std::endl;
+        // std::cout << e << std::endl;
+
         auto pair = std::make_pair(j[0],j[1]);
-        frameSequence.AddFrame( { AS.Renderable(sName),
-          { {pair.first,pair.second}, 
+        frameSequence.AddFrame( { AS.Renderable(entry.path().stem()),
+          { {pair.first * a.spriteWidth,pair.second * a.spriteHeight}, 
           {a.spriteWidth, a.spriteHeight} } } );
       }
       a.animation.AddState(e, frameSequence);
     }
     _map[entry.path().stem()] = a;
   }
-
-  _loaded = true;
 }
