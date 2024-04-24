@@ -5,15 +5,10 @@
 #include <string>
 #include <unordered_map>
 
-namespace olc
-{
-  namespace utils {
-    namespace Animate2D {
-      template<typename StatesEnum>
-      class Animation;
-    }
-  }
-}
+#include <game/src/engine/olcUTIL_Geometry2D.h>
+#include <game/src/engine/olcUTIL_Animate2D.h>
+
+
 
 namespace stemaj {
 
@@ -33,7 +28,7 @@ struct Animation
   int spriteHeight = 0;
   float ox = 0.0f;
   float oy = 0.0f;
-  olc::utils::Animate2D::Animation<AnimationKind>* animation;
+  olc::utils::Animate2D::Animation<AnimationKind> animation;
 };
 
 class AnimationMap

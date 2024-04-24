@@ -1,10 +1,6 @@
 #include <game/src/tools/animation.hpp>
 #include <game/assets.hpp>
 
-#define OLC_IGNORE_VEC2D
-#include <game/src/engine/utilities/olcUTIL_Geometry2D.h>
-#include <game/src/engine/olcUTIL_Animate2D.h>
-
 #define SOL_ALL_SAFETIES_ON 1
 #include <sdk/sol2-3.3.0/sol.hpp>
 
@@ -65,8 +61,7 @@ void AnimationMap::Load()
           { {pair.first,pair.second}, 
           {a.spriteWidth, a.spriteHeight} } } );
       }
-      a.animation = new olc::utils::Animate2D::Animation<AnimationKind>();
-      a.animation->AddState(e, frameSequence);
+      a.animation.AddState(e, frameSequence);
     }
     _map[entry.path().stem()] = a;
   }

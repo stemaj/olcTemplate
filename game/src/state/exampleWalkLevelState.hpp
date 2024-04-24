@@ -5,6 +5,10 @@
 #define SOL_ALL_SAFETIES_ON 1
 #include <sdk/sol2-3.3.0/sol.hpp>
 
+namespace olc {
+  class Decal;
+}
+
 namespace stemaj {
 
 class ExampleWalkLevelRender;
@@ -17,8 +21,8 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
-
   PT<int> _drawPos;
+  olc::Decal* _decal;
   PT<int> _sourceRectPos;
   PT<int> _sourceRectSize;
   PT<float> _scale;

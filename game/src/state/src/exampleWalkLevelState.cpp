@@ -43,7 +43,7 @@ std::optional<std::unique_ptr<State>> ExampleWalkLevelState::ExampleWalkLevelSta
   _decal = frame.GetSourceImage()->Decal();
   _sourceRectPos = {frame.GetSourceRect().pos.x,frame.GetSourceRect().pos.y};
   _sourceRectSize = {frame.GetSourceRect().size.x,frame.GetSourceRect().size.y};
-  _scale = PT<float>{0.5f,0.5f};
+  _scale = PT<float>{0.1f,0.1f};
 
   return std::nullopt;
 }
