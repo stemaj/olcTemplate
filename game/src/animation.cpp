@@ -63,12 +63,12 @@ void AnimationMap::Load()
         // std::cout << e << std::endl;
 
         auto pair = std::make_pair(j[0],j[1]);
-        frameSequence.AddFrame( { AS.Renderable(entry.path().stem()),
+        frameSequence.AddFrame( { AS.Renderable(entry.path().stem().string()),
           { {pair.first * a.spriteWidth,pair.second * a.spriteHeight}, 
           {a.spriteWidth, a.spriteHeight} } } );
       }
       a.animation.AddState(e, frameSequence);
     }
-    _map[entry.path().stem()] = a;
+    _map[entry.path().stem().string()] = a;
   }
 }

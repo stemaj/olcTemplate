@@ -3,6 +3,7 @@
 #include <game/src/state/exampleWalkLevelState.hpp>
 #include <game/src/engine/olcPixelGameEngine.h>
 #include <game/fonts.hpp>
+#define UTF_CPP_CPLUSPLUS 202002L
 #include <sdk/utfcpp/utf8.h>
 #include <string>
 
