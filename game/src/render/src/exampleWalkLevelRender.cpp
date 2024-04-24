@@ -20,5 +20,6 @@ void ExampleWalkLevelRender::DoRender(olc::PixelGameEngine* pge, float fElapsedT
     {walkLevel->_scale.x,walkLevel->_scale.y});
 
   auto font = FT.Font("CutiePatootie-Rgjv", 40);
-  font->DrawString(utf8::utf8to32(std::string("Ä Bik ß")),200,80,olc::GREEN);
+  auto r = font->RenderStringToDecal(utf8::utf8to32(std::string("Ä Bik ß")), olc::GREEN);
+  pge->DrawDecal({ 200,80 }, r,{1.0f,1.0f}, olc::GREEN);
 }
