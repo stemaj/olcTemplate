@@ -3,6 +3,7 @@
 #include <game/olcTemplate.hpp>
 #include <game/assets.hpp>
 #include <game/animation.hpp>
+#include <game/fonts.hpp>
 #include <sdk/imgui-1.90.4/imgui.h>
 #include <chrono>
 #include <thread>
@@ -15,6 +16,7 @@ bool OlcTemplate::OnUserCreate()
 {
   AS.Load();
   AN.Load();
+  FT.Load();
 
   _gameLayer = CreateLayer();
   EnableLayer(_gameLayer, true);

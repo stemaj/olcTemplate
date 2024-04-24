@@ -16,6 +16,8 @@ Fonts& stemaj::Fonts::get()
 
 void Fonts::Load()
 {
+  olc::Font::init();
+  
   auto loadFont = [&](const std::string& sName, 
     const std::string& sFileName)
   {
