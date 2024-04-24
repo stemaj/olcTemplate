@@ -40,47 +40,42 @@ project "OlcTemplate"
     path.join(ROOT_DIR,"**.lua"),
     path.join(ROOT_DIR,"**.png"),
     path.join(ROOT_DIR,"**.ttf"),
-    --path.join(ROOT_DIR,"assets/**.txt"),
+    path.join(ROOT_DIR,"**.wav"),
   }
   includedirs {
     ".",
-    --"soloud/include",
+    "sdk/imgui-1.90.4",
+    "sdk/imgui-1.90.4/backends",
+    "sdk/sol2-3.3.0",
+    "sdk/lua-5.4.2/include",
+    "sdk/soloud/include",
   }
 
   configuration "windows"
     includedirs {
-      "sdk/imgui-1.90.4",
-      "sdk/imgui-1.90.4/backends",
-      "sdk/sol2-3.3.0",
-      "sdk/lua-5.4.2/include",
-      --"soloud/include",
       "sdk/freetype-2.13.1/include",
     }
     libdirs {
       "sdk/lua-5.4.2/windows",
       "sdk/freetype-2.13.1/windows",
-      --"soloud/lib/windows",
+      "sdk/soloud/windows",
     }
     links {
       "lua54",
       "freetype",
-      --"soloud_static_x64"
+      "soloud_static_x64"
     }
     debugdir ".."
 
   configuration "linux"
     includedirs {
       "/usr/include",
-      "sdk/imgui-1.90.4",
-      "sdk/imgui-1.90.4/backends",
-      "sdk/sol2-3.3.0",
-      "sdk/lua-5.4.2/include",
       "sdk/freetype-2.13.1/include",
     }
     libdirs {
       "/usr/lib",
       "sdk/lua-5.4.2/linux",
-      --"soloud/lib/linux/Release",
+      "sdk/soloud/linux",
     }
     links {
        "freetype",
@@ -91,8 +86,8 @@ project "OlcTemplate"
        "stdc++fs",
        "lua54",
        "dl",
-       --"soloud_static",
-       --"asound"
+       "soloud_static",
+       "asound"
     }
     debugdir "."
  
@@ -102,30 +97,26 @@ project "OlcTemplate"
     }
     includedirs {
       "../../../../opt/homebrew/include",
-      "sdk/imgui-1.90.4",
-      "sdk/imgui-1.90.4/backends",
-      "sdk/sol2-3.3.0",
-      "sdk/lua-5.4.2/include",
       "../../../../opt/homebrew/include/freetype2",
     }
     libdirs {
       "../../../../opt/homebrew/lib",
-      --"soloud/lib/macos",
+      "sdk/soloud/macos",
     }
     links {
        "freetype",
        "png",
-       --"soloud_static",
+       "soloud_static",
        "OpenGL.framework",
        "GLUT.framework",
        "Carbon.framework",
-       --"AudioToolbox.framework",
+       "AudioToolbox.framework",
     }
     xcodecopyframeworks {
       "OpenGL.framework",
       "GLUT.framework",
       "Carbon.framework",
-      --"AudioToolbox.framework",
+      "AudioToolbox.framework",
     }
     debugdir "."
 

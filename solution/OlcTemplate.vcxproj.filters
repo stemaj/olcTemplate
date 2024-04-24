@@ -46,6 +46,12 @@
     <Filter Include="sdk\utfcpp\utf8">
       <UniqueIdentifier>{38CA3224-A455-A0E8-AD66-23DD1971FCE8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk\soloud">
+      <UniqueIdentifier>{B905D204-A5BD-1352-0EC5-ECADFA9BAE42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\soloud\include">
+      <UniqueIdentifier>{B94114D5-A525-D52A-0E86-CF7DFA88BFAC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\render">
       <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
@@ -88,6 +94,9 @@
     <Filter Include="assets\fonts">
       <UniqueIdentifier>{FE38A313-EA9B-32B8-9321-6B6E7F63FE3A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="assets\wav">
+      <UniqueIdentifier>{621ECEA8-4ED6-0FF6-B7DD-E851A3B4AAE6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\genie.lua" />
@@ -105,6 +114,9 @@
     </None>
     <None Include="..\assets\fonts\CutiePatootie-Rgjv.ttf">
       <Filter>assets\fonts</Filter>
+    </None>
+    <None Include="..\assets\wav\1.wav">
+      <Filter>assets\wav</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -354,6 +366,126 @@
     <ClInclude Include="..\sdk\utfcpp\utf8\cpp17.h">
       <Filter>sdk\utfcpp\utf8</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_fftfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_duckfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_vic.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_vizsn.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_file.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_misc.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_freeverbfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_thread.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_openmpt.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_monotone.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_on.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_c.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_robotizefilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_noise.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_sfxr.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_tedsid.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_off.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_filter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_lofifilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\zx7decompress.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_dcremovalfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_eqfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_bassboostfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_error.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_queue.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_flangerfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_biquadresonantfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_speech.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_echofilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_wav.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_fader.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_fft.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_ay.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_wavstream.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_waveshaperfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_bus.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_audiosource.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_internal.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\sound.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\animation.hpp">
       <Filter>game</Filter>
     </ClInclude>
@@ -429,6 +561,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\olcTemplate.cpp">
+      <Filter>game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\sound.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\fonts.cpp">

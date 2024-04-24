@@ -50,7 +50,7 @@ ifeq ($(config),debug)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -58,11 +58,11 @@ ifeq ($(config),debug)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"."
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"."
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -81,6 +81,7 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -109,7 +110,7 @@ ifeq ($(config),test)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
@@ -117,11 +118,11 @@ ifeq ($(config),test)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"."
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"."
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -140,6 +141,7 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -168,7 +170,7 @@ ifeq ($(config),release)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
@@ -176,11 +178,11 @@ ifeq ($(config),release)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"." -s
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -199,6 +201,7 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -227,7 +230,7 @@ ifeq ($(config),debug64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -235,11 +238,11 @@ ifeq ($(config),debug64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"." -m64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -258,6 +261,7 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -286,7 +290,7 @@ ifeq ($(config),test64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
@@ -294,11 +298,11 @@ ifeq ($(config),test64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"." -m64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -317,6 +321,7 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -345,7 +350,7 @@ ifeq ($(config),release64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
@@ -353,11 +358,11 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"." -s -m64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -376,6 +381,7 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -405,7 +411,7 @@ ifeq ($(config),debuguniv64)
   TARGETDIR           = bin/Debug
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -413,11 +419,11 @@ ifeq ($(config),debuguniv64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -arch x86_64 -arch ppc64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"." -arch x86_64 -arch ppc64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -436,6 +442,7 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -465,7 +472,7 @@ ifeq ($(config),testuniv64)
   TARGETDIR           = bin/Test
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            += -DRUN_TESTS
-  INCLUDES           += -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
@@ -473,11 +480,11 @@ ifeq ($(config),testuniv64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -arch x86_64 -arch ppc64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -arch x86_64 -arch ppc64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"." -arch x86_64 -arch ppc64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -496,6 +503,7 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -525,7 +533,7 @@ ifeq ($(config),releaseuniv64)
   TARGETDIR           = bin/Release
   TARGET              = $(TARGETDIR)/OlcTemplate
   DEFINES            +=
-  INCLUDES           += -I".." -I".." -I"../../../../../usr/include" -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/freetype-2.13.1/include"
+  INCLUDES           += -I".." -I".." -I"../sdk/imgui-1.90.4" -I"../sdk/imgui-1.90.4/backends" -I"../sdk/sol2-3.3.0" -I"../sdk/lua-5.4.2/include" -I"../sdk/soloud/include" -I"../../../../../usr/include" -I"../sdk/freetype-2.13.1/include"
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
@@ -533,11 +541,11 @@ ifeq ($(config),releaseuniv64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -arch x86_64 -arch ppc64 -std=c++2a
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"." -s -arch x86_64 -arch ppc64
+  ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../../usr/lib" -L"../sdk/lua-5.4.2/linux" -L"../sdk/soloud/linux" -L"." -s -arch x86_64 -arch ppc64
   LIBDEPS            +=
   LDDEPS             +=
   LDRESP              =
-  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl
+  LIBS               += $(LDDEPS) -lfreetype -lX11 -lGL -lpthread -lpng -lstdc++fs -llua54 -ldl -lsoloud_static -lasound
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -556,6 +564,7 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/render/src/introRender.o \
 	$(OBJDIR)/game/src/render/src/levelRender.o \
 	$(OBJDIR)/game/src/render/src/mainMenuRender.o \
+	$(OBJDIR)/game/src/sound.o \
 	$(OBJDIR)/game/src/state/src/examplePathLevelState.o \
 	$(OBJDIR)/game/src/state/src/exampleWalkLevelState.o \
 	$(OBJDIR)/game/src/state/src/introState.o \
@@ -696,6 +705,10 @@ $(OBJDIR)/game/src/render/src/levelRender.o: ../game/src/render/src/levelRender.
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/render/src/mainMenuRender.o: ../game/src/render/src/mainMenuRender.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/sound.o: ../game/src/sound.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

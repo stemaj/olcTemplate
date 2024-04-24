@@ -138,7 +138,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -154,14 +154,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;soloud_static_x64.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;..\sdk\soloud\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -170,7 +170,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -186,14 +186,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;soloud_static_x64.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;..\sdk\soloud\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <TargetMachine>MachineX64</TargetMachine>
@@ -203,7 +203,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -219,14 +219,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;soloud_static_x64.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;..\sdk\soloud\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -235,7 +235,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -251,14 +251,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RUN_TESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)OlcTemplate.pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;soloud_static_x64.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;..\sdk\soloud\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <TargetMachine>MachineX64</TargetMachine>
@@ -268,7 +268,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -283,15 +283,15 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;soloud_static_x64.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;..\sdk\soloud\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -300,7 +300,7 @@
     <ClCompile>
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions></PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -315,15 +315,15 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions></PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..;..\sdk\imgui-1.90.4;..\sdk\imgui-1.90.4\backends;..\sdk\sol2-3.3.0;..\sdk\lua-5.4.2\include;..\sdk\soloud\include;..\sdk\freetype-2.13.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>lua54.lib;freetype.lib;;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua54.lib;freetype.lib;soloud_static_x64.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\sdk\lua-5.4.2\windows;..\sdk\freetype-2.13.1\windows;..\sdk\soloud\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)OlcTemplate.exe</OutputFile>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <TargetMachine>MachineX64</TargetMachine>
@@ -412,6 +412,46 @@
     <ClInclude Include="..\sdk\utfcpp\utf8\checked.h" />
     <ClInclude Include="..\sdk\utfcpp\utf8\unchecked.h" />
     <ClInclude Include="..\sdk\utfcpp\utf8\cpp17.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_fftfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_duckfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_vic.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_vizsn.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_file.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_misc.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_freeverbfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_thread.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_openmpt.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_monotone.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_on.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_c.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_robotizefilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_noise.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_sfxr.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_tedsid.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_off.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_filter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_lofifilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\zx7decompress.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_dcremovalfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_eqfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_bassboostfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_error.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_queue.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_flangerfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_biquadresonantfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_speech.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_echofilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_wav.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_fader.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_fft.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_ay.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_wavstream.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_waveshaperfilter.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_bus.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_audiosource.h" />
+    <ClInclude Include="..\sdk\soloud\include\soloud_internal.h" />
+    <ClInclude Include="..\game\sound.hpp" />
     <ClInclude Include="..\game\animation.hpp" />
     <ClInclude Include="..\game\coordinates.hpp" />
     <ClInclude Include="..\game\input.hpp" />
@@ -439,6 +479,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\olcTemplate.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\sound.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\fonts.cpp">
     </ClCompile>
@@ -500,6 +542,7 @@
     <None Include="..\scripts\settings.lua" />
     <None Include="..\scripts\mainMenu.lua" />
     <None Include="..\assets\fonts\CutiePatootie-Rgjv.ttf" />
+    <None Include="..\assets\wav\1.wav" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\assets\png\japan_1.png">

@@ -2,6 +2,7 @@
 #include <game/src/render/exampleWalkLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
 #include <game/animation.hpp>
+#include <game/sound.hpp>
 
 olc::utils::Animate2D::AnimationState animationState;
 
@@ -10,6 +11,7 @@ using namespace stemaj;
 ExampleWalkLevelState::ExampleWalkLevelState() : _render(std::make_unique<ExampleWalkLevelRender>())
 {
   LoadLevelData();
+  SO.Play("1");
 }
 
 ExampleWalkLevelState::~ExampleWalkLevelState()
