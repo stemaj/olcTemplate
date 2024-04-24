@@ -10,9 +10,6 @@
     <Filter Include="game\src\engine">
       <UniqueIdentifier>{75BB2A72-E146-9836-EA57-1B2B5662F436}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\src\engine\utilities">
-      <UniqueIdentifier>{0D192DAF-79DB-6039-C28B-EFC52E8D3917}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sdk">
       <UniqueIdentifier>{67A9880B-D3B2-887C-5C2E-9F7CC836947C}</UniqueIdentifier>
     </Filter>
@@ -93,6 +90,9 @@
     <ClInclude Include="..\game\src\engine\olcPGEX_TransformedView.h">
       <Filter>game\src\engine</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\engine\olcUTIL_Geometry2D.h">
+      <Filter>game\src\engine</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h">
       <Filter>game\src\engine</Filter>
     </ClInclude>
@@ -101,9 +101,6 @@
     </ClInclude>
     <ClInclude Include="..\game\src\engine\imgui_impl_pge.h">
       <Filter>game\src\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\engine\utilities\olcUTIL_Geometry2D.h">
-      <Filter>game\src\engine\utilities</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h">
       <Filter>sdk\imgui-1.90.4</Filter>

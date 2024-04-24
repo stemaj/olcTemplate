@@ -332,10 +332,10 @@
   <ItemGroup>
     <ClInclude Include="..\game\src\engine\olcPGEX_TTF.h" />
     <ClInclude Include="..\game\src\engine\olcPGEX_TransformedView.h" />
+    <ClInclude Include="..\game\src\engine\olcUTIL_Geometry2D.h" />
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h" />
     <ClInclude Include="..\game\src\engine\olcUTIL_Animate2D.h" />
     <ClInclude Include="..\game\src\engine\imgui_impl_pge.h" />
-    <ClInclude Include="..\game\src\engine\utilities\olcUTIL_Geometry2D.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h" />
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui_internal.h" />
