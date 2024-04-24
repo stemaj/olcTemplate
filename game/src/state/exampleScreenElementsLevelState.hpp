@@ -17,6 +17,11 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
+  std::string _text = "stemaj Template";
+  PT<int> _mousePos = {0,0 };
+  PT<int> _boxSize = {0,0 };
+  PT<int> _boxUpperLeft = {0,0 };
+
 private:
   void LoadLevelData() override;
   void SaveLevelData() override;

@@ -1,9 +1,12 @@
 #include <game/fonts.hpp>
+#include <game/coordinates.hpp>
 #include <filesystem>
 #include <unordered_map>
 #include <utility>
 
 #include <game/src/engine/olcPGEX_TTF.h>
+#define UTF_CPP_CPLUSPLUS 202002L
+#include <sdk/utfcpp/utf8.h>
 
 using namespace stemaj;
 namespace fs = std::filesystem;
@@ -22,10 +25,11 @@ void Fonts::Load()
     const std::string& sFileName)
   {
     // TODO fontsize from settings
+    Fontsize size = Fontsize::NORMAL;
 
-    auto font = std::make_shared<olc::Font>(sFileName,40);
+    auto font = std::make_shared<olc::Font>(sFileName,toInt(size));
     std::unordered_map<int, std::shared_ptr<olc::Font>> map;
-    map[40] = std::move(font);
+    map[(int)size] = std::move(font);
     _fonts[sName] = map;
 	};
 
@@ -39,8 +43,29 @@ void Fonts::Load()
   }
 }
 
-olc::Font* Fonts::Font(const std::string& name, const int fontSize)
+olc::Font* Fonts::Font(const std::string& name, const Fontsize fontSize)
 {
   auto family = _fonts[name];
-  return family[fontSize].get();
+  return family[(int)fontSize].get();
+}
+
+int Fonts::toInt(Fontsize f)
+{
+  float fac = std::min(CO.W,CO.H);
+
+  switch (f)
+  {
+  case Fontsize::NORMAL:
+    return int(fac * 0.15);
+  default:
+    throw;
+  }
+}
+
+PT<int> Fonts::BoxSize(const std::string& text, olc::Font* fontPtr)
+{
+  auto r = fontPtr->RenderStringToDecal(
+    utf8::utf8to32(std::string(text)), olc::WHITE);
+
+  return { r->sprite->width, r->sprite->height};
 }

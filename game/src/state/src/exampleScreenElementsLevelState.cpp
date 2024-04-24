@@ -1,3 +1,4 @@
+#include "game/fonts.hpp"
 #include <game/src/state/exampleScreenElementsLevelState.hpp>
 #include <game/src/render/exampleScreenElementsLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
@@ -17,6 +18,10 @@ ExampleScreenElementsLevelState::~ExampleScreenElementsLevelState()
 std::optional<std::unique_ptr<State>> ExampleScreenElementsLevelState::ExampleScreenElementsLevelState::Update(
   const Input& input, float fElapsedTime)
 {
+  _mousePos = {input.mouseX,input.mouseY };
+  _boxSize = FT.BoxSize(_text, FT.Font("CutiePatootie-Rgjv", Fontsize::NORMAL));
+  _boxUpperLeft = { input.mouseX - _boxSize.x / 2, input.mouseY - _boxSize.y / 2};
+
   return std::nullopt;
 }
 
