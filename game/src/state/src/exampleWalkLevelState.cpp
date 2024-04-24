@@ -50,6 +50,10 @@ std::optional<std::unique_ptr<State>> ExampleWalkLevelState::ExampleWalkLevelSta
   _sourceRectSize = {frame.GetSourceRect().size.x,frame.GetSourceRect().size.y};
   _scale = PT<float>{0.35f,0.35f};
 
+  // std::cout << "-----\n";
+  // std::cout << _sourceRectPos << std::endl;
+  // std::cout << _sourceRectSize << std::endl;
+
   return std::nullopt;
 }
 
