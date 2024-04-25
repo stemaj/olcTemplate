@@ -7,7 +7,7 @@
 #include <ft2build.h>
 #pragma comment(lib, "freetype.lib")
 #else
-#include <freetype2/ft2build.h>
+#include <ft2build.h>
 #endif
 
 #include <iostream>
