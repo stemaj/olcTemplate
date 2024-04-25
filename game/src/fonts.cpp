@@ -69,3 +69,11 @@ PT<int> Fonts::BoxSize(const std::string& text, olc::Font* fontPtr)
 
   return { r->sprite->width, r->sprite->height};
 }
+
+static PT<int> FrameSize(const std::string& text, olc::Font* fontPtr)
+{
+  auto r = fontPtr->RenderStringToDecal(
+    utf8::utf8to32(std::string(text)), olc::WHITE);
+
+  return { r->sprite->width+20, r->sprite->height+20};
+}

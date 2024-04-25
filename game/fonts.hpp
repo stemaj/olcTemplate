@@ -31,6 +31,7 @@ public:
   void Load();
 
 	static PT<int> BoxSize(const std::string& text, olc::Font* fontPtr);
+	static PT<int> FrameSize(const std::string& text, olc::Font* fontPtr);
 
 private:
 	Fonts() {}

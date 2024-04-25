@@ -19,8 +19,9 @@ public:
 
   std::string _text = "stemaj Template";
   PT<int> _mousePos = {0,0 };
-  PT<int> _boxSize = {0,0 };
   PT<int> _boxUpperLeft = {0,0 };
+  PT<int> _frameboxSize = {0,0 };
+  PT<int> _frameboxUpperLeft = {0,0 };
 
 private:
   void LoadLevelData() override;
