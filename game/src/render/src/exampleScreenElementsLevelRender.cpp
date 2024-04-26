@@ -6,23 +6,41 @@
 #define UTF_CPP_CPLUSPLUS 202002L
 #include <sdk/utfcpp/utf8.h>
 
+namespace stemaj {
+  class ExampleScreenElementsLevelRenderImpl
+  {
+  private:
+    olc::Renderable _r;
+  public:
+    ExampleScreenElementsLevelRenderImpl()
+    {
+      int w = 4, h = 1;
+      _r.Create(w,h);
+      for (int x = 0; x < w; x++)
+        for (int y = 0; y < h; y++)
+        {
+          if (x < 1 || x > w-2)
+            _r.Sprite()->SetPixel({x,y},olc::BLANK);
+          else 
+            _r.Sprite()->SetPixel({x,y},olc::GREEN);
+        }
+      _r.Decal()->Update();
+    }
+    olc::Decal* GetLine()
+    {
+      return _r.Decal();
+    }
+  };
+}
+
 using namespace stemaj;
 
-olc::Renderable _r;
-olc::Decal* GetLine()
+ExampleScreenElementsLevelRender::ExampleScreenElementsLevelRender() :
+  _impl(new ExampleScreenElementsLevelRenderImpl()) {}
+
+ExampleScreenElementsLevelRender::~ExampleScreenElementsLevelRender()
 {
-  int w = 4, h = 1;
-  _r.Create(w,h);
-  for (int x = 0; x < w; x++)
-    for (int y = 0; y < h; y++)
-    {
-      if (x < 1 || x > w-2)
-        _r.Sprite()->SetPixel({x,y},olc::BLANK);
-      else 
-        _r.Sprite()->SetPixel({x,y},olc::GREEN);
-    }
-  _r.Decal()->Update();
-  return _r.Decal();
+  delete _impl;
 }
 
 void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
@@ -53,5 +71,5 @@ void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float
       (float)screenElementsLevel->_mousePos.y-1}
   };
   
-  pge->DrawWarpedDecal(GetLine(), points);
+  pge->DrawWarpedDecal(_impl->GetLine(), points);
 }
