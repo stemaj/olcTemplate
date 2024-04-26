@@ -1097,6 +1097,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					../../../../../opt/homebrew/lib,
 					../sdk/soloud/macos,
+					"../sdk/lua-5.4.2/macos",
 				);
 				OBJROOT = obj/Debug;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1106,6 +1107,7 @@
 				OTHER_LDFLAGS = (
 					"-lfreetype",
 					"-lpng",
+					"-llua",
 					"-lsoloud_static",
 				);
 				SDKROOT = macosx;
@@ -1167,6 +1169,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					../../../../../opt/homebrew/lib,
 					../sdk/soloud/macos,
+					"../sdk/lua-5.4.2/macos",
 				);
 				OBJROOT = obj/Test;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1176,6 +1179,7 @@
 				OTHER_LDFLAGS = (
 					"-lfreetype",
 					"-lpng",
+					"-llua",
 					"-lsoloud_static",
 				);
 				SDKROOT = macosx;
@@ -1233,6 +1237,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					../../../../../opt/homebrew/lib,
 					../sdk/soloud/macos,
+					"../sdk/lua-5.4.2/macos",
 				);
 				OBJROOT = obj/Release;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1242,6 +1247,7 @@
 				OTHER_LDFLAGS = (
 					"-lfreetype",
 					"-lpng",
+					"-llua",
 					"-lsoloud_static",
 				);
 				SDKROOT = macosx;

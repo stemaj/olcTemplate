@@ -102,10 +102,12 @@ project "OlcTemplate"
     libdirs {
       "../../../../opt/homebrew/lib",
       "sdk/soloud/macos",
+      "sdk/lua-5.4.2/macos",
     }
     links {
        "freetype",
        "png",
+       "lua",
        "soloud_static",
        "OpenGL.framework",
        "GLUT.framework",
