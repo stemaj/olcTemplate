@@ -3,7 +3,7 @@
 #include <game/src/state/exampleScreenElementsLevelState.hpp>
 #include <game/src/render/exampleScreenElementsLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
-
+#include <sdk/imgui-1.90.4/imgui.h>
 using namespace stemaj;
 
 ExampleScreenElementsLevelState::ExampleScreenElementsLevelState() : _render(std::make_unique<ExampleScreenElementsLevelRender>())
@@ -20,14 +20,27 @@ std::optional<std::unique_ptr<State>> ExampleScreenElementsLevelState::ExampleSc
   const Input& input, float fElapsedTime)
 {
   _mousePos = {input.mouseX,input.mouseY };
-  auto boxSize = FT.BoxSize(_text, FT.Font("CutiePatootie-Rgjv", Fontsize::NORMAL));
-  _frameboxSize = { boxSize.x + 20, boxSize.y + 20 };
-  
-  _frameboxUpperLeft = { input.mouseX - _frameboxSize.x / 2, input.mouseY - _frameboxSize.y / 2};
-  _frameboxUpperLeft = { std::clamp(_frameboxUpperLeft.x, 0, CO.W-_frameboxSize.x),
-    std::clamp(_frameboxUpperLeft.y, 0, CO.H-_frameboxSize.y) } ;
+  _textboxes.clear();
 
-  _boxUpperLeft = { _frameboxUpperLeft.x + 10, _frameboxUpperLeft.y + 10 };
+  Textbox t;
+  auto boxSize = FT.BoxSize(t._text, FT.Font("CutiePatootie-Rgjv", Fontsize::NORMAL));
+  auto margin = std::min(boxSize.x, boxSize.y) / 5;
+  t._frameboxSize = { boxSize.x + 20, boxSize.y + 20 };
+  
+  t._frameboxUpperLeft = { input.mouseX - t._frameboxSize.x / 2, input.mouseY - t._frameboxSize.y / 2};
+  t._frameboxUpperLeft = { std::clamp(t._frameboxUpperLeft.x, 0, CO.W-t._frameboxSize.x),
+    std::clamp(t._frameboxUpperLeft.y, 0, CO.H-t._frameboxSize.y) } ;
+
+  t._boxUpperLeft = { t._frameboxUpperLeft.x + 10, t._frameboxUpperLeft.y + 10 };
+
+  _textboxes.push_back(t);
+
+  ImGui::Begin("Screen Elements Debug");
+  // ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
+  // ImGui::Text("Box Upper Left: (%d, %d)", _boxUpperLeft.x, _boxUpperLeft.y);
+  // ImGui::Text("Framebox Upper Left: (%d, %d)", _frameboxUpperLeft.x, _frameboxUpperLeft.y);
+  // ImGui::Text("Framebox Size: (%d, %d)", _frameboxSize.x, _frameboxSize.y);
+  ImGui::End();
 
   return std::nullopt;
 }

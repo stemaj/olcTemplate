@@ -49,17 +49,19 @@ void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float
 
   pge->Clear(olc::DARK_CYAN);
 
-  pge->FillRectDecal( { (float)screenElementsLevel->_frameboxUpperLeft.x,
-    (float)screenElementsLevel->_frameboxUpperLeft.y },
-    { (float)screenElementsLevel->_frameboxSize.x, 
-    (float)screenElementsLevel->_frameboxSize.y },
+  auto t = screenElementsLevel->_textboxes[0];
+
+  pge->FillRectDecal( { (float)t._frameboxUpperLeft.x,
+    (float)t._frameboxUpperLeft.y },
+    { (float)t._frameboxSize.x, 
+    (float)t._frameboxSize.y },
     olc::Pixel(235,242,244, 224) );
 
   auto font = FT.Font("CutiePatootie-Rgjv", Fontsize::NORMAL);
   auto textDecal = font->RenderStringToDecal(
-    utf8::utf8to32(std::string(screenElementsLevel->_text)), olc::WHITE);
-  pge->DrawDecal({ (float)screenElementsLevel->_boxUpperLeft.x,
-      (float)screenElementsLevel->_boxUpperLeft.y },
+    utf8::utf8to32(std::string(t._text)), olc::WHITE);
+  pge->DrawDecal({ (float)t._boxUpperLeft.x,
+      (float)t._boxUpperLeft.y },
     textDecal,{1.0f,1.0f});
 
   std::array<olc::vf2d, 4> points = {
