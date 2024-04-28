@@ -6,8 +6,6 @@
 
 namespace stemaj {
 
-static PT<int> ToGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<int> point);
-
 // Pathfinding class implementing the A* algorithm
 class Pathfinding {
 public:

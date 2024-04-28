@@ -64,14 +64,10 @@ void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float
       (float)t._boxUpperLeft.y },
     textDecal,{1.0f,1.0f});
 
-  std::array<olc::vf2d, 4> points = {
-    olc::vf2d{1,0},
-    olc::vf2d{0,1},
-    olc::vf2d{(float)screenElementsLevel->_mousePos.x-1,
-      (float)screenElementsLevel->_mousePos.y},
-    olc::vf2d{(float)screenElementsLevel->_mousePos.x,
-      (float)screenElementsLevel->_mousePos.y-1}
-  };
-  
-  pge->DrawWarpedDecal(_impl->GetLine(), points);
+  pge->DrawWarpedDecal(_impl->GetLine(),
+		{{(float)t._points[0].x, (float)t._points[0].y},
+		{(float)t._points[1].x, (float)t._points[1].y},
+		{(float)t._points[2].x, (float)t._points[2].y},
+		{(float)t._points[3].x, (float)t._points[3].y} }
+	);
 }

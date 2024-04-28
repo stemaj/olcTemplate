@@ -11,7 +11,6 @@ using namespace stemaj;
 ExampleWalkLevelState::ExampleWalkLevelState() : _render(std::make_unique<ExampleWalkLevelRender>())
 {
   LoadLevelData();
-  SO.Play("1");
 }
 
 ExampleWalkLevelState::~ExampleWalkLevelState()
