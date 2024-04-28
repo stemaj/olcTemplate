@@ -14,15 +14,15 @@ namespace stemaj {
   public:
     ExampleScreenElementsLevelRenderImpl()
     {
-      int w = 4, h = 1;
+      int w = 6, h = 1;
       _r.Create(w,h);
       for (int x = 0; x < w; x++)
         for (int y = 0; y < h; y++)
         {
-          if (x < 1 || x > w-2)
+          if (x < 2 || x > w-2)
             _r.Sprite()->SetPixel({x,y},olc::BLANK);
           else 
-            _r.Sprite()->SetPixel({x,y},olc::GREEN);
+            _r.Sprite()->SetPixel({x,y},olc::WHITE);
         }
       _r.Decal()->Update();
     }

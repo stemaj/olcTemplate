@@ -28,12 +28,17 @@ std::optional<std::unique_ptr<State>> ExampleScreenElementsLevelState::ExampleSc
   t._frameboxSize = { boxSize.x + margin*2, boxSize.y + margin*2 };
 	
 	PT<int> offset = {0,0};
-	if (t.location == 1)
+	if (t._location == 1)
 	{
 		offset.x = -t._frameboxSize.x / 6;
 		offset.y = -t._frameboxSize.y * 2;
 	}
-  
+	else if (t._location == 2)
+	{
+		offset.x = t._frameboxSize.x / 6;
+		offset.y = t._frameboxSize.y * 2;
+	}
+
   t._frameboxUpperLeft = { 
 		input.mouseX - t._frameboxSize.x / 2 + offset.x,
 		input.mouseY - t._frameboxSize.y / 2 + offset.y};
@@ -43,12 +48,12 @@ std::optional<std::unique_ptr<State>> ExampleScreenElementsLevelState::ExampleSc
   t._boxUpperLeft = { t._frameboxUpperLeft.x + margin, t._frameboxUpperLeft.y + margin };
 	
 	t._points = {
-		PT<int>{1+t._frameboxUpperLeft.x+ t._frameboxSize.x/2,
+		PT<int>{2+t._frameboxUpperLeft.x+ t._frameboxSize.x/2,
 			0+t._frameboxUpperLeft.y+ t._frameboxSize.y/2},
 		PT<int>{0+t._frameboxUpperLeft.x+ t._frameboxSize.x/2,
-			1+t._frameboxUpperLeft.y+ t._frameboxSize.y/2},
-		PT<int>{_mousePos.x-1, _mousePos.y},
-		PT<int>{_mousePos.x,   _mousePos.y-1}};
+			2+t._frameboxUpperLeft.y+ t._frameboxSize.y/2},
+		PT<int>{_mousePos.x-2, _mousePos.y},
+		PT<int>{_mousePos.x,   _mousePos.y-2}};
 
   _textboxes.push_back(t);
 

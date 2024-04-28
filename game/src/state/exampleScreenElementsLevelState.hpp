@@ -21,7 +21,7 @@ public:
     PT<int> _frameboxSize = {0,0 };
     PT<int> _frameboxUpperLeft = {0,0 };
 		
-		int location = 1; // offset upper left
+		int _location = 2;
 		
 		std::array<PT<int>, 4> _points;
   };
