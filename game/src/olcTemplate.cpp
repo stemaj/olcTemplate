@@ -20,6 +20,10 @@ bool OlcTemplate::OnUserCreate()
 
   _gameLayer = CreateLayer();
   EnableLayer(_gameLayer, true);
+
+#if defined(__APPLE__)
+	_pgeImgui.ImGui_ImplPGE_Init();
+#endif
   SetLayerCustomRenderFunction(0, [this](){
     _pgeImgui.ImGui_ImplPGE_Render();});
 
