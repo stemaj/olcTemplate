@@ -12,20 +12,15 @@ using namespace stemaj;
 namespace fs = std::filesystem;
 
 namespace stemaj {
-class FontsImpl
+struct FontsImpl
 {
-public:
-	struct Single
-	{
-	public:
-		Single(std::string name, FontSize size, olc::Font* font) :
-		_name(name), _size(size), _font(font) {}
-		virtual ~Single() = default;
-		std::string _name;
-		FontSize _size;
-		olc::Font* _font = nullptr;
-	};
-	std::vector<Single> _fonts;
+  struct FontContainer
+  {
+    std::string name;
+    FontSize size;
+    std::unique_ptr<olc::Font> font;
+  };
+  std::vector<FontContainer> _fonts;
 };
 }
 
@@ -36,10 +31,6 @@ Fonts::Fonts() : _impl(new FontsImpl())
 
 Fonts::~Fonts()
 {
-	for (auto& a : _impl->_fonts)
-	{
-		delete a._font;
-	}
 	delete _impl;
 }
 
@@ -58,8 +49,11 @@ void Fonts::Load()
   {
 		for (int i = 0; i < (int)FontSize::COUNT; i++)
 		{
-			FontsImpl::Single s = {sFileName, (FontSize)i, new olc::Font(sFileName,toInt((FontSize)i))};
-			_impl->_fonts.push_back(s);
+      _impl->_fonts.push_back({
+        sName,
+        (FontSize)i,
+        std::make_unique<olc::Font>(sFileName, toInt((FontSize)i))
+        });
 		}
 	};
 
@@ -75,28 +69,37 @@ void Fonts::Load()
 
 olc::Font* Fonts::Font(const std::string& name, const FontSize fontSize)
 {
-	
-	auto it = std::find_if(_impl->_fonts.begin(), _impl->_fonts.end(),
-												 [&](const FontsImpl::Single& p) { 
-		return name == p._name && fontSize == p._size; });
-	return it->_font;
+  for (auto& a : _impl->_fonts)
+  {
+    if (a.name == name && a.size == fontSize)
+    {
+      return a.font.get();
+    }
+  }
+  throw;
+  return nullptr;
 }
 
 int Fonts::toInt(FontSize f)
 {
   float fac = std::min(CO.W,CO.H);
+  auto ret = 0;
 
   switch (f)
   {
 		case FontSize::SMALL:
-			return int((float)fac * 0.05f);
+			ret = int((float)fac * 0.05f);
+      break;
 		case FontSize::NORMAL:
-			return int((float)fac * 0.1f);
+			ret = int((float)fac * 0.1f);
+      break;
 		case FontSize::BIG:
-			return int((float)fac * 0.5f);
-  default:
-    throw;
+      ret = int((float)fac * 0.5f);
+      break;
+    default:
+      throw;
   }
+  return ret;
 }
 
 PT<int> Fonts::BoxSize(const std::string& text, olc::Font* fontPtr)

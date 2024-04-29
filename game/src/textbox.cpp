@@ -1,6 +1,7 @@
 #include <game/textbox.hpp>
 #include <game/fonts.hpp>
 #include <sdk/imgui-1.90.4/imgui.h>
+#include <algorithm>
 
 using namespace stemaj;
 
@@ -10,7 +11,9 @@ TextBox::TextBox(const std::string& text,
 									const std::string& fontName,
 									const FontSize fontSize) : _text(text), _location(location)
 {
-	auto boxSize = FT.BoxSize(_text, FT.Font("CutiePatootie-Rgjv", FontSize::NORMAL));
+
+
+	auto boxSize = FT.BoxSize(_text, FT.Font("CutiePatootie-Rgjv", fontSize));
 	auto margin = std::min(boxSize.x, boxSize.y) / 5;
 	_frameboxSize = { boxSize.x + margin*2, boxSize.y + margin*2 };
 	
@@ -52,4 +55,9 @@ TextBox::TextBox(const std::string& text,
 							_frameboxUpperLeft.x, _frameboxUpperLeft.y);
 	ImGui::Text("Framebox Size: (%d, %d)", _frameboxSize.x, _frameboxSize.y);
 	ImGui::End();
+}
+
+olc::Decal* Decal()
+{
+	return nullptr;
 }

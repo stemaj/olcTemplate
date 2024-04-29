@@ -2,6 +2,12 @@
 #define __TEXTBOX_HPP
 
 #include <game/fonts.hpp>
+#include <game/coordinates.hpp>
+#include <array>
+
+namespace olc {
+	class Decal;
+}
 
 namespace stemaj {
 
@@ -21,6 +27,8 @@ public:
 									 const TextBoxLocation location,
 									 const std::string& fontName,
 									 const FontSize fontSize);
+
+	olc::Decal* Decal();
 
 	std::string _text = "stemaj Template";
 	PT<int> _boxUpperLeft = {0,0 };
