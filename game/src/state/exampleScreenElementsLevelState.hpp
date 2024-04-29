@@ -9,30 +9,18 @@
 namespace stemaj {
 
 class ExampleScreenElementsLevelRender;
+class TextBox;
 
 class ExampleScreenElementsLevelState : public LevelState
 {
 public:
-
-  struct Textbox
-  {
-    std::string _text = "stemaj Template";
-    PT<int> _boxUpperLeft = {0,0 };
-    PT<int> _frameboxSize = {0,0 };
-    PT<int> _frameboxUpperLeft = {0,0 };
-		
-		int _location = 2;
-		
-		std::array<PT<int>, 4> _points;
-  };
 
   explicit ExampleScreenElementsLevelState();
   virtual ~ExampleScreenElementsLevelState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
-  PT<int> _mousePos = {0,0 };
-  std::vector<Textbox> _textboxes;
+  std::vector<TextBox> _textboxes;
 
 private:
   void LoadLevelData() override;

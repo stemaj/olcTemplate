@@ -3,4 +3,84 @@
    uuid = "8EB41C50-EFD5-4F73-9A25-53A78F3B912F"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "812512C8-3A9A-4FA9-A750-0053B7ECD716"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../game/src/fonts.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "Fonts::Load()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "812512C8-3A9A-4FA9-A750-0053B7ECD716 - 665774070196d04d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stemaj::Fonts::Load()::$_0::operator()(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;) const"
+                  moduleName = "OlcTemplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/steffen.majaura/testprojects/olcTemplate/game/src/fonts.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "812512C8-3A9A-4FA9-A750-0053B7ECD716 - 665774070196d04d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stemaj::Fonts::Load()::$_0::operator()(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;) const"
+                  moduleName = "OlcTemplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/steffen.majaura/testprojects/olcTemplate/game/src/fonts.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "400">
+               </Location>
+               <Location
+                  uuid = "812512C8-3A9A-4FA9-A750-0053B7ECD716 - 665774070196d383"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stemaj::Fonts::Load()::$_0::operator()(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;) const"
+                  moduleName = "OlcTemplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/steffen.majaura/testprojects/olcTemplate/game/src/fonts.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "812512C8-3A9A-4FA9-A750-0053B7ECD716 - 665774070196d383"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stemaj::Fonts::Load()::$_0::operator()(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt;&gt; const&amp;) const"
+                  moduleName = "OlcTemplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/steffen.majaura/testprojects/olcTemplate/game/src/fonts.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

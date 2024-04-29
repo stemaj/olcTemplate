@@ -7,40 +7,42 @@
 #include <string>
 
 namespace olc {
-  class Font;
+	class Font;
 }
 
 namespace stemaj {
 
-enum class Fontsize
+enum class FontSize
 {
 	NORMAL = 0,
-	COUNT = 1
+	SMALL = 1,
+	BIG = 2,
+	COUNT = 3
 };
+
+class FontsImpl;
 
 class Fonts
 {
 public:
-
+	
 	static Fonts& get();
 	Fonts(Fonts const&) = delete;
 	void operator=(Fonts const&) = delete;
-
-  olc::Font* Font(const std::string& name, const Fontsize fontSize);
-
-  void Load();
-
+	
+	olc::Font* Font(const std::string& name, const FontSize fontSize);
+	
+	void Load();
+	
 	static PT<int> BoxSize(const std::string& text, olc::Font* fontPtr);
-	static PT<int> FrameSize(const std::string& text, olc::Font* fontPtr);
-
+	
 private:
-	Fonts() {}
-	virtual ~Fonts() {}	
-
-	int toInt(Fontsize f);
-
-  std::unordered_map<std::string, 
-		std::unordered_map<int, std::shared_ptr<olc::Font>>> _fonts;
+	Fonts();
+	virtual ~Fonts();
+	
+	int toInt(FontSize f);
+	
+	FontsImpl* _impl = nullptr;
 };
 
 #define FT Fonts::get()
