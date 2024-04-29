@@ -27,17 +27,15 @@ public:
 									 const TextBoxLocation location,
 									 const std::string& fontName,
 									 const FontSize fontSize);
-
-	olc::Decal* Decal();
-
+	
 	std::string _text = "stemaj Template";
 	PT<int> _boxUpperLeft = {0,0 };
 	PT<int> _frameboxSize = {0,0 };
 	PT<int> _frameboxUpperLeft = {0,0 };
 	TextBoxLocation _location = TextBoxLocation::NORMAL;
 	std::array<PT<int>, 4> _points;
-
-private:
+	std::string _fontName = "";
+	FontSize _fontSize = FontSize::NORMAL;
 };
   
 } // namespace stemaj

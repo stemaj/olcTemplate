@@ -8,6 +8,8 @@
 
 namespace olc {
 	class Font;
+	class Pixel;
+	class Decal;
 }
 
 namespace stemaj {
@@ -34,8 +36,9 @@ public:
 	
 	void Load();
 	
-	static PT<int> BoxSize(const std::string& text, olc::Font* fontPtr);
-	
+	PT<int> BoxSize(const std::string& text, const std::string& fontName, const FontSize fontSize);
+	olc::Decal* Decal(const std::string& text, const std::string& fontName, const FontSize fontSize);
+
 private:
 	Fonts();
 	virtual ~Fonts();

@@ -102,10 +102,29 @@ int Fonts::toInt(FontSize f)
   return ret;
 }
 
-PT<int> Fonts::BoxSize(const std::string& text, olc::Font* fontPtr)
+PT<int> Fonts::BoxSize(const std::string& text, const std::string& fontName, const FontSize fontSize)
 {
-  auto r = fontPtr->RenderStringToDecal(
-    utf8::utf8to32(std::string(text)), olc::WHITE);
+	for (auto& a : _impl->_fonts)
+	{
+		if (a.name == text && a.size == fontSize)
+		{
+			auto r = a.font->RenderStringToDecal(
+																				 utf8::utf8to32(std::string(text)), olc::WHITE);
+			return { r->sprite->width, r->sprite->height};
+		}
+	}
+	return {0,0};
+}
 
-  return { r->sprite->width, r->sprite->height};
+olc::Decal* Fonts::Decal(const std::string& text, const std::string& fontName, const FontSize fontSize)
+{
+	for (auto& a : _impl->_fonts)
+	{
+		if (a.name == text && a.size == fontSize)
+		{
+			return a.font->RenderStringToDecal(
+																				 utf8::utf8to32(std::string(text)), olc::WHITE);
+		}
+	}
+	return nullptr;
 }

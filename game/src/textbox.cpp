@@ -9,11 +9,9 @@ TextBox::TextBox(const std::string& text,
 								 const PT<int> position,
 								 const TextBoxLocation location,
 									const std::string& fontName,
-									const FontSize fontSize) : _text(text), _location(location)
+									const FontSize fontSize) : _text(text), _location(location), _fontName(fontName), _fontSize(fontSize)
 {
-
-
-	auto boxSize = FT.BoxSize(_text, FT.Font("CutiePatootie-Rgjv", fontSize));
+	auto boxSize = FT.BoxSize(_text, fontName, fontSize);
 	auto margin = std::min(boxSize.x, boxSize.y) / 5;
 	_frameboxSize = { boxSize.x + margin*2, boxSize.y + margin*2 };
 	

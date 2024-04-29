@@ -49,7 +49,7 @@ void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float
   auto screenElementsLevel = static_cast<ExampleScreenElementsLevelState*>(state);
 
   pge->Clear(olc::DARK_CYAN);
-	
+
 	for (auto& t : screenElementsLevel->_textboxes)
 	{
 		pge->FillRectDecal( { (float)t._frameboxUpperLeft.x,
@@ -58,12 +58,10 @@ void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float
 			(float)t._frameboxSize.y },
 			olc::Pixel(235,242,244, 224) );
 
-		auto font = FT.Font("CutiePatootie-Rgjv", FontSize::NORMAL);
-		auto textDecal = font->RenderStringToDecal(
-			utf8::utf8to32(std::string(t._text)), olc::WHITE);
 		pge->DrawDecal({ (float)t._boxUpperLeft.x,
 				(float)t._boxUpperLeft.y },
-			textDecal,{1.0f,1.0f});
+									 FT.Decal(t._text,
+														t._fontName, t._fontSize), {1.0f,1.0f});
 
 		pge->DrawWarpedDecal(_impl->GetLine(),
 			{{(float)t._points[0].x, (float)t._points[0].y},
