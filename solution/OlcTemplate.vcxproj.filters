@@ -483,6 +483,9 @@
     <ClInclude Include="..\sdk\soloud\include\soloud_internal.h">
       <Filter>sdk\soloud\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\textbox.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\sound.hpp">
       <Filter>game</Filter>
     </ClInclude>
@@ -564,9 +567,6 @@
     <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp">
       <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\textbox.hpp">
-      <Filter>game</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\olcTemplate.cpp">
@@ -588,6 +588,9 @@
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\game.cpp">
+      <Filter>game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\textbox.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\coordinates.cpp">
@@ -658,9 +661,6 @@
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\textbox.cpp">
-      <Filter>game\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
