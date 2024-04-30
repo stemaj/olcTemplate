@@ -94,7 +94,7 @@ int Fonts::toInt(FontSize f)
 			ret = int((float)fac * 0.1f);
       break;
 		case FontSize::BIG:
-      ret = int((float)fac * 0.5f);
+      ret = int((float)fac * 0.15f);
       break;
     default:
       throw;
@@ -106,7 +106,7 @@ PT<int> Fonts::BoxSize(const std::string& text, const std::string& fontName, con
 {
 	for (auto& a : _impl->_fonts)
 	{
-		if (a.name == text && a.size == fontSize)
+		if (a.name == fontName && a.size == fontSize)
 		{
 			auto r = a.font->RenderStringToDecal(
 																				 utf8::utf8to32(std::string(text)), olc::WHITE);
@@ -120,7 +120,7 @@ olc::Decal* Fonts::Decal(const std::string& text, const std::string& fontName, c
 {
 	for (auto& a : _impl->_fonts)
 	{
-		if (a.name == text && a.size == fontSize)
+		if (a.name == fontName && a.size == fontSize)
 		{
 			return a.font->RenderStringToDecal(
 																				 utf8::utf8to32(std::string(text)), olc::WHITE);

@@ -6,7 +6,8 @@
 #include <game/src/render/levelRender.hpp>
 using namespace stemaj;
 
-ExampleScreenElementsLevelState::ExampleScreenElementsLevelState() : _render(std::make_unique<ExampleScreenElementsLevelRender>())
+ExampleScreenElementsLevelState::ExampleScreenElementsLevelState() : 
+  _render(std::make_unique<ExampleScreenElementsLevelRender>())
 {
   LoadLevelData();
 }
@@ -16,16 +17,22 @@ ExampleScreenElementsLevelState::~ExampleScreenElementsLevelState()
   SaveLevelData();
 }
 
-std::optional<std::unique_ptr<State>> ExampleScreenElementsLevelState::ExampleScreenElementsLevelState::Update(
-  const Input& input, float fElapsedTime)
+std::optional<std::unique_ptr<State>> 
+  ExampleScreenElementsLevelState::ExampleScreenElementsLevelState::Update(
+    const Input& input, float fElapsedTime)
 {
   _textboxes.clear();
 
-	TextBox t("normal center", {input.mouseX,input.mouseY },TextBoxLocation::NORMAL, "CutiePatootie-Rgjv", FontSize::NORMAL);
+  std::string fontName = "CutiePatootie-Rgjv";
+
+	TextBox t("normal center", {input.mouseX,input.mouseY },
+    TextBoxLocation::NORMAL, fontName, FontSize::NORMAL);
   _textboxes.push_back(t);
-	TextBox t2("big upper left", {input.mouseX,input.mouseY },TextBoxLocation::UPPERLEFT, "CutiePatootie-Rgjv", FontSize::BIG);
+	TextBox t2("big upper left", {input.mouseX,input.mouseY },
+    TextBoxLocation::UPPERLEFT, fontName, FontSize::NORMAL);
 	_textboxes.push_back(t2);
-	TextBox t3("small lower right", {input.mouseX,input.mouseY },TextBoxLocation::LOWERRIGHT, "CutiePatootie-Rgjv", FontSize::SMALL);
+	TextBox t3("small lower right", {input.mouseX,input.mouseY },
+    TextBoxLocation::LOWERRIGHT, fontName, FontSize::NORMAL);
 	_textboxes.push_back(t3);
 
   return std::nullopt;
