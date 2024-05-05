@@ -1098,11 +1098,12 @@
 					"../sdk/sol2-3.3.0",
 					"../sdk/lua-5.4.2/include",
 					../sdk/soloud/include,
-					../../../../../opt/homebrew/include,
-					../../../../../opt/homebrew/include/freetype2,
+					"../sdk/freetype-2.13.1/include",
+					../../../../../usr/local/Cellar/libpng/1.6.43/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					../../../../../opt/homebrew/lib,
+					../../../../../usr/local/Cellar/freetype/2.13.2/lib,
+					../../../../../usr/local/Cellar/libpng/1.6.43/lib,
 					../sdk/soloud/macos,
 					"../sdk/lua-5.4.2/macos",
 				);
@@ -1170,11 +1171,12 @@
 					"../sdk/sol2-3.3.0",
 					"../sdk/lua-5.4.2/include",
 					../sdk/soloud/include,
-					../../../../../opt/homebrew/include,
-					../../../../../opt/homebrew/include/freetype2,
+					"../sdk/freetype-2.13.1/include",
+					../../../../../usr/local/Cellar/libpng/1.6.43/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					../../../../../opt/homebrew/lib,
+					../../../../../usr/local/Cellar/freetype/2.13.2/lib,
+					../../../../../usr/local/Cellar/libpng/1.6.43/lib,
 					../sdk/soloud/macos,
 					"../sdk/lua-5.4.2/macos",
 				);
@@ -1238,11 +1240,12 @@
 					"../sdk/sol2-3.3.0",
 					"../sdk/lua-5.4.2/include",
 					../sdk/soloud/include,
-					../../../../../opt/homebrew/include,
-					../../../../../opt/homebrew/include/freetype2,
+					"../sdk/freetype-2.13.1/include",
+					../../../../../usr/local/Cellar/libpng/1.6.43/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					../../../../../opt/homebrew/lib,
+					../../../../../usr/local/Cellar/freetype/2.13.2/lib,
+					../../../../../usr/local/Cellar/libpng/1.6.43/lib,
 					../sdk/soloud/macos,
 					"../sdk/lua-5.4.2/macos",
 				);

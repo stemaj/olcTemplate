@@ -49,11 +49,11 @@ project "OlcTemplate"
     "sdk/sol2-3.3.0",
     "sdk/lua-5.4.2/include",
     "sdk/soloud/include",
+    "sdk/freetype-2.13.1/include",
   }
 
   configuration "windows"
     includedirs {
-      "sdk/freetype-2.13.1/include",
     }
     libdirs {
       "sdk/lua-5.4.2/windows",
@@ -70,7 +70,6 @@ project "OlcTemplate"
   configuration "linux"
     includedirs {
       "/usr/include",
-      "sdk/freetype-2.13.1/include",
     }
     libdirs {
       "/usr/lib",
@@ -96,11 +95,11 @@ project "OlcTemplate"
       "-Wall",
     }
     includedirs {
-      "../../../../opt/homebrew/include",
-      "../../../../opt/homebrew/include/freetype2",
+      "/usr/local/Cellar/libpng/1.6.43/include"
     }
     libdirs {
-      "../../../../opt/homebrew/lib",
+      "/usr/local/Cellar/freetype/2.13.2/lib",
+      "/usr/local/Cellar/libpng/1.6.43/lib",
       "sdk/soloud/macos",
       "sdk/lua-5.4.2/macos",
     }
