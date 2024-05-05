@@ -54,7 +54,15 @@ public:
 
 	template <typename T>
 	bool IsInsidePolygon(const PT<T> point, const std::vector<PT<T>>& polygon);
+  
+  // Funktion zur Berechnung der Rotation eines Punktes um einen anderen Punkt
+  template <typename T>
+  PT<T> RotatePoint(const PT<T>& p, const PT<T>& center, float angle);
 
+  // Funktion zur Transformation des Rechtecks
+  template <typename T>
+  std::array<PT<T>, 4> TransformRectangle(const std::array<PT<T>, 4>& rectangle, const PT<T>& A1, const PT<T>& B1, const PT<T>& A2, const PT<T>& B2);
+  
 private:
 	Coordinates();
 	virtual ~Coordinates() {}

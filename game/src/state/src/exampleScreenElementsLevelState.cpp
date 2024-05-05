@@ -29,10 +29,10 @@ std::optional<std::unique_ptr<State>>
     TextBoxLocation::NORMAL, fontName, FontSize::NORMAL);
   _textboxes.push_back(t);
 	TextBox t2("big upper left", {input.mouseX,input.mouseY },
-    TextBoxLocation::UPPERLEFT, fontName, FontSize::NORMAL);
+    TextBoxLocation::UPPERLEFT, fontName, FontSize::SMALL );
 	_textboxes.push_back(t2);
 	TextBox t3("small lower right", {input.mouseX,input.mouseY },
-    TextBoxLocation::LOWERRIGHT, fontName, FontSize::NORMAL);
+    TextBoxLocation::LOWERRIGHT, fontName, FontSize::BIG);
 	_textboxes.push_back(t3);
 
   return std::nullopt;
