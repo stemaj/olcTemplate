@@ -141,41 +141,38 @@ template PT<int> Coordinates::RotatePoint(const PT<int>& p, const PT<int>& cente
 template PT<float> Coordinates::RotatePoint(const PT<float>& p, const PT<float>& center, float angle);
 
 template <typename T>
-std::array<PT<T>, 4> Coordinates::TransformRectangle(const std::array<PT<T>, 4>& rectangle, const PT<T>& A1, const PT<T>& B1, const PT<T>& A2, const PT<T>& B2)
+std::array<PT<T>, 4> Coordinates::TransformRectangle(const PT<T>& B1, const PT<T>& B2, T b, T h)
 {
-  float angleA = std::atan2((float)A2.y - (float)A1.y, (float)A2.x - (float)A1.x); // Winkel der Strecke A
-  float angleB = std::atan2((float)B2.y - (float)B1.y, (float)B2.x - (float)B1.x); // Winkel der Strecke B
-  float angleDiff = angleB - angleA; // Differenz der Winkel
-  
-  auto lengthA = Distance(A1, A2); // Länge der Strecke A
-  auto lengthB = Distance(B1, B2); // Länge der Strecke B
+  // Calculate midpoint of B1 and B2
+  PT<T> midPoint = {(B1.x + B2.x) / 2, (B1.y + B2.y) / 2};
 
-  // Mittelpunkt des Rechtecks berechnen
-  PT<float> center = {((float)rectangle[0].x + (float)rectangle[2].x) / 2.0f, ((float)rectangle[0].y + (float)rectangle[2].y) / 2.0f};
-  
-  std::array<PT<T>, 4> transformedRectangle;
+  // Calculate length of AB
+  T AB_length = std::hypot(B2.x - B1.x, B2.y - B1.y);
+
+  // Calculate rotation angle
+  T angle = std::atan2(B2.y - B1.y, B2.x - B1.x);
+
+  // Calculate new points A1 and A2
+  PT<T> A1 = {midPoint.x - (AB_length / 2), midPoint.y - (h / 2)};
+  PT<T> A2 = {midPoint.x + (AB_length / 2), midPoint.y + (h / 2)};
+
+  // Apply transformation to rectangle
+  std::array<PT<T>, 4> transformedRect;
+  transformedRect[0] = A1;
+  transformedRect[1] = {A1.x, A2.y};
+  transformedRect[2] = A2;
+  transformedRect[3] = {A2.x, A1.y};
+
+  // Rotate and translate rectangle
   for (int i = 0; i < 4; ++i)
   {
-    // Rechteckpunkt relativ zum Mittelpunkt
-    auto xRel = rectangle[i].x - center.x;
-    auto yRel = rectangle[i].y - center.y;
-
-    // Punkt um Mittelpunkt drehen
-    auto rotatedPoint = CO.RotatePoint(PT<float>{xRel, yRel}, PT<float>{0.0f, 0.0f}, angleDiff);
-
-    // Länge der Strecke B auf die Länge der Strecke A skalieren
-    auto scaleFactor = lengthA / lengthB;
-    rotatedPoint.x *= scaleFactor;
-    rotatedPoint.y *= scaleFactor;
-
-    // Punkt wieder zurück zum Ursprung des Rechtecks verschieben
-    rotatedPoint.x += center.x;
-    rotatedPoint.y += center.y;
-
-    transformedRectangle[i] = PT<T>{(T)rotatedPoint.x, (T)rotatedPoint.y};
+      T tempX = transformedRect[i].x;
+      T tempY = transformedRect[i].y;
+      transformedRect[i].x = midPoint.x + (tempX - midPoint.x) * std::cos(angle) - (tempY - midPoint.y) * std::sin(angle);
+      transformedRect[i].y = midPoint.y + (tempX - midPoint.x) * std::sin(angle) + (tempY - midPoint.y) * std::cos(angle);
   }
-  
-  return transformedRectangle;
+
+  return transformedRect;
 }
 
 
@@ -204,7 +201,7 @@ TEST_CASE("Rotate Point Test")
   SUBCASE("Rotate -45 degrees")
   {
     // Erwartetes Ergebnis
-    PT<float> expected = {std::sqrtf(2) / 2.0f, -std::sqrtf(2) / 2.0f};
+    PT<float> expected = {std::sqrt(2.0f) / 2.0f, -std::sqrt(2.0f) / 2.0f};
 
     // Rotation um -45 Grad im Bogenmaß
     float angle = -M_PI / 4.0f;
@@ -220,22 +217,25 @@ TEST_CASE("Rotate Point Test")
 
 TEST_CASE("Transform Rectangle Test")
 {
-  std::array<PT<int>, 4> rectangle = {{{0, 0}, {0, -2}, {3, -2}, {3, 0}}};
-  PT<int> A1 = {0, 0};
-  PT<int> A2 = {3, 0};
-  PT<int> B1 = {1, 1};
-  PT<int> B2 = {4, 1};
+  PT<double> B1 = {0, 0};
+  PT<double> B2 = {3, 3};
+  double b = 3;
+  double h = 2;
 
-  auto transformedRectangle = CO.TransformRectangle(rectangle, A1, B1, A2, B2);
+  std::array<PT<double>, 4> expected = {{{-0.707, 0.707}, {0.707, -0.707}, {3.707, 3.707}, {2.293, 2.293}}};
+  auto result = CO.TransformRectangle(B1, B2, b, h);
 
-  CHECK(transformedRectangle[0].x == 1);
-  CHECK(transformedRectangle[0].y == 1);
-  CHECK(transformedRectangle[1].x == 1);
-  CHECK(transformedRectangle[1].y == -2);
-  CHECK(transformedRectangle[2].x == 4);
-  CHECK(transformedRectangle[2].y == -2);
-  CHECK(transformedRectangle[3].x == 4);
-  CHECK(transformedRectangle[3].y == 1);
+  for (auto& a : result)
+    std::cout << a;
+
+  CHECK(result[0].x == 1/sqrt(2));
+  CHECK(result[0].y == doctest::Approx(-1/sqrt(2)).epsilon(1e-6));
+  CHECK(result[1].x == -1/sqrt(2));
+  CHECK(result[1].y == doctest::Approx(1/sqrt(2)).epsilon(1e-6));
+  CHECK(result[2].x == 3-1/sqrt(2));
+  CHECK(result[2].y == 3+1/sqrt(2));
+  CHECK(result[3].x == 3+1/sqrt(2));
+  CHECK(result[3].y == 3-1/sqrt(2));
 }
 
 #endif

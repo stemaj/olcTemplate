@@ -1,8 +1,10 @@
 #ifndef __COORDINATES_HPP
 #define __COORDINATES_HPP
 
+#include <iomanip>
 #include <ostream>
 #include <vector>
+#include <array>
 
 namespace stemaj {
 
@@ -21,7 +23,7 @@ struct PT
 	}
 	friend std::ostream& operator<<(std::ostream& os, const PT& obj)
 	{
-		os << "{ x: " << obj.x << ", y: " << obj.y << " }\n";
+		os << std::setprecision(3) << "{ x: " << obj.x << ", y: " << obj.y << " }\n";
 		return os;
 	}
 };
@@ -61,7 +63,7 @@ public:
 
   // Funktion zur Transformation des Rechtecks
   template <typename T>
-  std::array<PT<T>, 4> TransformRectangle(const std::array<PT<T>, 4>& rectangle, const PT<T>& A1, const PT<T>& B1, const PT<T>& A2, const PT<T>& B2);
+	std::array<PT<T>, 4> TransformRectangle(const PT<T>& B1, const PT<T>& B2, T b, T h);
   
 private:
 	Coordinates();
