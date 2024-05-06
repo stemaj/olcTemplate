@@ -35,23 +35,22 @@ TextBox::TextBox(const std::string& text,
 
 	_boxUpperLeft = { _frameboxUpperLeft.x + margin,
 		_frameboxUpperLeft.y + margin };
-	
-	_points = {
-		PT<int>{2+_frameboxUpperLeft.x+ _frameboxSize.x/2,
-			0+_frameboxUpperLeft.y+ _frameboxSize.y/2},
-		PT<int>{0+_frameboxUpperLeft.x+ _frameboxSize.x/2,
-			2+_frameboxUpperLeft.y+ _frameboxSize.y/2},
-		PT<int>{position.x-2, position.y},
-		PT<int>{position.x,   position.y-2}};
-	
+
+	_points = CO.TransformRectangle(
+		{ _frameboxUpperLeft.x + _frameboxSize.x / 2, _frameboxUpperLeft.y + _frameboxSize.y / 2 },
+		{ position.x, position.y },
+		60,
+		2);
 	
 	ImGui::Begin("Screen Elements Debug");
-	ImGui::Text("Text: (%s)", _text.c_str());
-	ImGui::Text("Mouse Position: (%d, %d)", position.x, position.y);
-	ImGui::Text("Box Upper Left: (%d, %d)", _boxUpperLeft.x, _boxUpperLeft.y);
-	ImGui::Text("Framebox Upper Left: (%d, %d)",
-							_frameboxUpperLeft.x, _frameboxUpperLeft.y);
-	ImGui::Text("Framebox Size: (%d, %d)", _frameboxSize.x, _frameboxSize.y);
+	for (int i = 0; i < 4; i++)
+		ImGui::Text("Point (%d): (%d, %d)", i, _points[i].x, _points[i].y);
+	// ImGui::Text("Text: (%s)", _text.c_str());
+	// ImGui::Text("Mouse Position: (%d, %d)", position.x, position.y);
+	// ImGui::Text("Box Upper Left: (%d, %d)", _boxUpperLeft.x, _boxUpperLeft.y);
+	// ImGui::Text("Framebox Upper Left: (%d, %d)",
+	// 						_frameboxUpperLeft.x, _frameboxUpperLeft.y);
+	// ImGui::Text("Framebox Size: (%d, %d)", _frameboxSize.x, _frameboxSize.y);
 	ImGui::End();
 }
 

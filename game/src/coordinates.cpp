@@ -166,14 +166,17 @@ std::array<PT<T>, 4> Coordinates::TransformRectangle(const PT<T>& B1, const PT<T
   // Rotate and translate rectangle
   for (int i = 0; i < 4; ++i)
   {
-      T tempX = transformedRect[i].x;
-      T tempY = transformedRect[i].y;
-      transformedRect[i].x = midPoint.x + (tempX - midPoint.x) * std::cos(angle) - (tempY - midPoint.y) * std::sin(angle);
-      transformedRect[i].y = midPoint.y + (tempX - midPoint.x) * std::sin(angle) + (tempY - midPoint.y) * std::cos(angle);
+    T tempX = transformedRect[i].x;
+    T tempY = transformedRect[i].y;
+    transformedRect[i].x = midPoint.x + (tempX - midPoint.x) * std::cos(angle) - (tempY - midPoint.y) * std::sin(angle);
+    transformedRect[i].y = midPoint.y + (tempX - midPoint.x) * std::sin(angle) + (tempY - midPoint.y) * std::cos(angle);
   }
 
   return transformedRect;
 }
+
+template std::array<PT<int>, 4> Coordinates::TransformRectangle(const PT<int>& B1, const PT<int>& B2, int b, int h);
+template std::array<PT<float>, 4> Coordinates::TransformRectangle(const PT<float>& B1, const PT<float>& B2, float b, float h);
 
 
 #ifdef RUN_TESTS
