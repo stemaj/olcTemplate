@@ -4,6 +4,10 @@
 #include <game/src/state/exampleScreenElementsLevelState.hpp>
 #include <game/src/render/exampleScreenElementsLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
+
+#include <game/geometryWrapper.hpp>
+
+
 using namespace stemaj;
 
 ExampleScreenElementsLevelState::ExampleScreenElementsLevelState() : 
@@ -35,6 +39,15 @@ std::optional<std::unique_ptr<State>>
 	TextBox t3("small lower right", {input.mouseX,input.mouseY },
     TextBoxLocation::LOWERRIGHT, fontName, FontSize::SMALL);
 	_textboxes.push_back(t3);
+
+  Line l({1,1},{2,2});
+  Circle c({3,3}, 5);
+
+  
+
+  
+
+
 
   return std::nullopt;
 }
