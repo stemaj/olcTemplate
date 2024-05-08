@@ -22,17 +22,18 @@ std::optional<std::unique_ptr<State>>
     const Input& input, float fElapsedTime)
 {
   _textboxes.clear();
+  _mousePos = PT<int>{input.mouseX, input.mouseY};
 
   std::string fontName = "CutiePatootie-Rgjv";
 
-	TextBox t("normal center", {input.mouseX,input.mouseY },
-    TextBoxLocation::NORMAL, fontName, FontSize::NORMAL);
-  _textboxes.push_back(t);
+	// TextBox t("normal center", {input.mouseX,input.mouseY },
+  //   TextBoxLocation::NORMAL, fontName, FontSize::NORMAL);
+  // _textboxes.push_back(t);
 	TextBox t2("big upper left", {input.mouseX,input.mouseY },
-    TextBoxLocation::UPPERLEFT, fontName, FontSize::SMALL );
+    TextBoxLocation::UPPERLEFT, fontName, FontSize::BIG );
 	_textboxes.push_back(t2);
 	TextBox t3("small lower right", {input.mouseX,input.mouseY },
-    TextBoxLocation::LOWERRIGHT, fontName, FontSize::BIG);
+    TextBoxLocation::LOWERRIGHT, fontName, FontSize::SMALL);
 	_textboxes.push_back(t3);
 
   return std::nullopt;

@@ -19,12 +19,12 @@ TextBox::TextBox(const std::string& text,
 	if (_location == TextBoxLocation::UPPERLEFT)
 	{
 		offset.x = -_frameboxSize.x / 4;
-		offset.y = -_frameboxSize.y * 2;
+		offset.y = -_frameboxSize.y * 1.5;
 	}
 	else if (_location == TextBoxLocation::LOWERRIGHT)
 	{
-		offset.x = _frameboxSize.x / 6;
-		offset.y = _frameboxSize.y * 2;
+		offset.x = _frameboxSize.x / 8;
+		offset.y = _frameboxSize.y * 1.5;
 	}
 
 	_frameboxUpperLeft = {
@@ -36,21 +36,20 @@ TextBox::TextBox(const std::string& text,
 	_boxUpperLeft = { _frameboxUpperLeft.x + margin,
 		_frameboxUpperLeft.y + margin };
 
-	_points = CO.TransformRectangle(
-		{ _frameboxUpperLeft.x + _frameboxSize.x / 2, _frameboxUpperLeft.y + _frameboxSize.y / 2 },
-		{ position.x, position.y },
-		60,
-		2);
+	_lineAnchorPoints[0] = { _frameboxUpperLeft.x + _frameboxSize.x / 2 - std::max(1,_frameboxSize.x / 100), 
+													 _frameboxUpperLeft.y + _frameboxSize.y / 2 };
+	_lineAnchorPoints[1] = { _frameboxUpperLeft.x + _frameboxSize.x / 2 + std::max(1,_frameboxSize.x / 100), 
+													 _frameboxUpperLeft.y + _frameboxSize.y / 2 };
 	
 	ImGui::Begin("Screen Elements Debug");
-	for (int i = 0; i < 4; i++)
-		ImGui::Text("Point (%d): (%d, %d)", i, _points[i].x, _points[i].y);
-	// ImGui::Text("Text: (%s)", _text.c_str());
-	// ImGui::Text("Mouse Position: (%d, %d)", position.x, position.y);
-	// ImGui::Text("Box Upper Left: (%d, %d)", _boxUpperLeft.x, _boxUpperLeft.y);
-	// ImGui::Text("Framebox Upper Left: (%d, %d)",
-	// 						_frameboxUpperLeft.x, _frameboxUpperLeft.y);
-	// ImGui::Text("Framebox Size: (%d, %d)", _frameboxSize.x, _frameboxSize.y);
+	for (int i = 0; i < 2; i++)
+		ImGui::Text("LineAnchorPoint (%d): (%d, %d)", i, _lineAnchorPoints[i].x, _lineAnchorPoints[i].y);
+		ImGui::Text("Text: (%s)", _text.c_str());
+		ImGui::Text("Mouse Position: (%d, %d)", position.x, position.y);
+		ImGui::Text("Box Upper Left: (%d, %d)", _boxUpperLeft.x, _boxUpperLeft.y);
+		ImGui::Text("Framebox Upper Left: (%d, %d)",
+								_frameboxUpperLeft.x, _frameboxUpperLeft.y);
+		ImGui::Text("Framebox Size: (%d, %d)", _frameboxSize.x, _frameboxSize.y);
 	ImGui::End();
 }
 

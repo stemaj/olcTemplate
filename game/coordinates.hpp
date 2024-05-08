@@ -61,10 +61,7 @@ public:
   template <typename T>
   PT<T> RotatePoint(const PT<T>& p, const PT<T>& center, float angle);
 
-  // Funktion zur Transformation des Rechtecks
-  template <typename T>
-	std::array<PT<T>, 4> TransformRectangle(const PT<T>& B1, const PT<T>& B2, T b, T h);
-  
+ 
 private:
 	Coordinates();
 	virtual ~Coordinates() {}

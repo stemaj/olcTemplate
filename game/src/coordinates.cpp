@@ -66,6 +66,9 @@ T Coordinates::Distance(const PT<T>& p1, const PT<T>& p2)
   return static_cast<T>(std::sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y)));
 }
 
+template int Coordinates::Distance(const PT<int>& p1, const PT<int>& p2);
+template float Coordinates::Distance(const PT<float>& p1, const PT<float>& p2);
+
 template <typename T>
 PT<T> Coordinates::ClosestPoint(const std::vector<PT<T>>& points, const PT<T>& p)
 {
@@ -140,44 +143,6 @@ PT<T> Coordinates::RotatePoint(const PT<T>& p, const PT<T>& center, float angle)
 template PT<int> Coordinates::RotatePoint(const PT<int>& p, const PT<int>& center, float angle);
 template PT<float> Coordinates::RotatePoint(const PT<float>& p, const PT<float>& center, float angle);
 
-template <typename T>
-std::array<PT<T>, 4> Coordinates::TransformRectangle(const PT<T>& B1, const PT<T>& B2, T b, T h)
-{
-  // Calculate midpoint of B1 and B2
-  PT<T> midPoint = {(B1.x + B2.x) / 2, (B1.y + B2.y) / 2};
-
-  // Calculate length of AB
-  T AB_length = std::hypot(B2.x - B1.x, B2.y - B1.y);
-
-  // Calculate rotation angle
-  T angle = std::atan2(B2.y - B1.y, B2.x - B1.x);
-
-  // Calculate new points A1 and A2
-  PT<T> A1 = {midPoint.x - (AB_length / 2), midPoint.y - (h / 2)};
-  PT<T> A2 = {midPoint.x + (AB_length / 2), midPoint.y + (h / 2)};
-
-  // Apply transformation to rectangle
-  std::array<PT<T>, 4> transformedRect;
-  transformedRect[0] = A1;
-  transformedRect[1] = {A1.x, A2.y};
-  transformedRect[2] = A2;
-  transformedRect[3] = {A2.x, A1.y};
-
-  // Rotate and translate rectangle
-  for (int i = 0; i < 4; ++i)
-  {
-    T tempX = transformedRect[i].x;
-    T tempY = transformedRect[i].y;
-    transformedRect[i].x = midPoint.x + (tempX - midPoint.x) * std::cos(angle) - (tempY - midPoint.y) * std::sin(angle);
-    transformedRect[i].y = midPoint.y + (tempX - midPoint.x) * std::sin(angle) + (tempY - midPoint.y) * std::cos(angle);
-  }
-
-  return transformedRect;
-}
-
-template std::array<PT<int>, 4> Coordinates::TransformRectangle(const PT<int>& B1, const PT<int>& B2, int b, int h);
-template std::array<PT<float>, 4> Coordinates::TransformRectangle(const PT<float>& B1, const PT<float>& B2, float b, float h);
-
 
 #ifdef RUN_TESTS
 TEST_CASE("Rotate Point Test")
@@ -216,29 +181,6 @@ TEST_CASE("Rotate Point Test")
     CHECK(result.x == doctest::Approx(expected.x).epsilon(1e-6));
     CHECK(result.y == doctest::Approx(expected.y).epsilon(1e-6));
   }
-}
-
-TEST_CASE("Transform Rectangle Test")
-{
-  PT<double> B1 = {0, 0};
-  PT<double> B2 = {3, 3};
-  double b = 3;
-  double h = 2;
-
-  std::array<PT<double>, 4> expected = {{{-0.707, 0.707}, {0.707, -0.707}, {3.707, 3.707}, {2.293, 2.293}}};
-  auto result = CO.TransformRectangle(B1, B2, b, h);
-
-  for (auto& a : result)
-    std::cout << a;
-
-  CHECK(result[0].x == 1/sqrt(2));
-  CHECK(result[0].y == doctest::Approx(-1/sqrt(2)).epsilon(1e-6));
-  CHECK(result[1].x == -1/sqrt(2));
-  CHECK(result[1].y == doctest::Approx(1/sqrt(2)).epsilon(1e-6));
-  CHECK(result[2].x == 3-1/sqrt(2));
-  CHECK(result[2].y == 3+1/sqrt(2));
-  CHECK(result[3].x == 3+1/sqrt(2));
-  CHECK(result[3].y == 3-1/sqrt(2));
 }
 
 #endif

@@ -21,6 +21,7 @@ public:
   Render* GetRender() override;
 
   std::vector<TextBox> _textboxes;
+  PT<int> _mousePos;
 
 private:
   void LoadLevelData() override;

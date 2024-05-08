@@ -15,12 +15,12 @@ namespace stemaj {
   public:
     ExampleScreenElementsLevelRenderImpl()
     {
-      int w = 6, h = 1;
+      int w = 10, h = 1;
       _r.Create(w,h);
       for (int x = 0; x < w; x++)
         for (int y = 0; y < h; y++)
         {
-          if (x < 2 || x > w-2)
+          if (x < 1 || x > w-4)
             _r.Sprite()->SetPixel({x,y},olc::BLANK);
           else 
             _r.Sprite()->SetPixel({x,y},olc::WHITE);
@@ -63,11 +63,12 @@ void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float
 									 FT.Decal(t._text,
 														t._fontName, t._fontSize), {1.0f,1.0f});
 
-		pge->DrawWarpedDecal(_impl->GetLine(),
-			{{(float)t._points[0].x, (float)t._points[0].y},
-			{(float)t._points[1].x, (float)t._points[1].y},
-			{(float)t._points[2].x, (float)t._points[2].y},
-			{(float)t._points[3].x, (float)t._points[3].y} }
-		);
+		auto lineEnd = std::abs(t._lineAnchorPoints[0].x-t._lineAnchorPoints[1].x);
+
+    pge->DrawWarpedDecal(_impl->GetLine(), {
+       {(float)(screenElementsLevel->_mousePos.x + lineEnd/2.0f), (float)screenElementsLevel->_mousePos.y},
+       {(float)(screenElementsLevel->_mousePos.x - lineEnd/2.0f), (float)screenElementsLevel->_mousePos.y},
+       {(float)(t._lineAnchorPoints[0].x - lineEnd/2.0f), (float)t._lineAnchorPoints[0].y},
+       {(float)(t._lineAnchorPoints[1].x + lineEnd/2.0f), (float)t._lineAnchorPoints[1].y} });
 	}
 }

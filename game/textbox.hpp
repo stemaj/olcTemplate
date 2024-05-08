@@ -33,7 +33,7 @@ public:
 	PT<int> _frameboxSize = {0,0 };
 	PT<int> _frameboxUpperLeft = {0,0 };
 	TextBoxLocation _location = TextBoxLocation::NORMAL;
-	std::array<PT<int>, 4> _points;
+	std::array<PT<int>, 2> _lineAnchorPoints;
 	std::string _fontName = "";
 	FontSize _fontSize = FontSize::NORMAL;
 };
