@@ -25,6 +25,21 @@ std::optional<std::unique_ptr<State>>
   _textboxes.clear();
   _mousePos = PT<int>{input.mouseX, input.mouseY};
 
+  _rect.pos = { _mousePos.x, _mousePos.y };
+
+  if (overlaps(_rect, _circle))
+  {
+    _color.r = 130;
+    _color.g = 130;
+    _color.b = 130;
+  }
+  else
+  {
+    _color.r = 200;
+    _color.g = 200;
+    _color.b = 200;
+  }
+
   std::string fontName = "CutiePatootie-Rgjv";
 
 	// TextBox t("normal center", {input.mouseX,input.mouseY },

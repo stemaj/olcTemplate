@@ -70,22 +70,23 @@ void ExampleScreenElementsLevelRender::DoRender(olc::PixelGameEngine* pge, float
        {(float)(screenElementsLevel->_mousePos.x - lineEnd/2.0f), (float)screenElementsLevel->_mousePos.y},
        {(float)(t._lineAnchorPoints[0].x - lineEnd/2.0f), (float)t._lineAnchorPoints[0].y},
        {(float)(t._lineAnchorPoints[1].x + lineEnd/2.0f), (float)t._lineAnchorPoints[1].y} });
-    
-    
-    
-    
-    int radius = screenElementsLevel->_circle.radius;
-    int offset_x = screenElementsLevel->_circle.pos.x;
-    int offset_y = screenElementsLevel->_circle.pos.y;
-    
-    std::vector<PT<int>> points;
-    for(int i=0; i<10; i++)
-      points.push_back(PT<int>{offset_x + radius * cos(i * (2*pi/10.0))}, PT<int>{offset_y + radius * sin(i * (2*pi/10.0))});
-
-    std::vector uvs;
-    uvs.resize(points.size());
-        DrawPolygonDecal(nullptr, points, uvs, olc::Pixel(255, 200, 200));
-
-  
 	}
+
+  int radius = screenElementsLevel->_circle.radius;
+  int offset_x = screenElementsLevel->_circle.pos.x;
+  int offset_y = screenElementsLevel->_circle.pos.y;
+
+  const int segments = 16;
+  std::vector<olc::vf2d> points;
+  for (int i = 0; i < segments; i++)
+    points.push_back(olc::vf2d(offset_x + radius * cos(i * (2 * pi / segments)), offset_y + radius * sin(i * (2 * pi / segments))));
+
+  std::vector<olc::vf2d> uvs;
+  uvs.resize(points.size());
+  pge->DrawPolygonDecal(nullptr, points, uvs, olc::Pixel(screenElementsLevel->_color.r, screenElementsLevel->_color.g, screenElementsLevel->_color.b));
+
+  pge->FillRectDecal({ (float)screenElementsLevel->_rect.pos.x, (float)screenElementsLevel->_rect.pos.y },
+    { (float)screenElementsLevel->_rect.size.x, (float)screenElementsLevel->_rect.size.y },
+    olc::Pixel(screenElementsLevel->_color.r, screenElementsLevel->_color.g, screenElementsLevel->_color.b));
+
 }

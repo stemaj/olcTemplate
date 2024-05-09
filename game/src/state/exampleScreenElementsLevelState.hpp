@@ -27,6 +27,19 @@ public:
   
   Circle _circle = Circle({100,100}, 25);
   Rect _rect = Rect({150,150}, {20,30});
+  struct Color
+  {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+    uint8_t alpha;
+    friend std::ostream& operator<<(std::ostream& os, const Color& obj) {
+      os << "{ r: " << obj.r << ", g: " << obj.g << ", b: " << obj.b << ", alpha: " << obj.alpha << " }\n";
+      return os;
+    }
+
+  };
+  Color _color;
 
 private:
   void LoadLevelData() override;
