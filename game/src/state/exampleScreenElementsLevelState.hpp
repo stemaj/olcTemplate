@@ -6,6 +6,8 @@
 #define SOL_ALL_SAFETIES_ON 1
 #include <sdk/sol2-3.3.0/sol.hpp>
 
+#include <game/geometryWrapper.hpp>
+
 namespace stemaj {
 
 class ExampleScreenElementsLevelRender;
@@ -22,6 +24,9 @@ public:
 
   std::vector<TextBox> _textboxes;
   PT<int> _mousePos;
+  
+  Circle _circle = Circle({100,100}, 25);
+  Rect _rect = Rect({150,150}, {20,30});
 
 private:
   void LoadLevelData() override;

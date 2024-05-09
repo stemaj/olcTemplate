@@ -72,8 +72,6 @@ std::vector<PT<int>> Pathfinding::FindPath(PT<int> start, PT<int> end)
 	std::vector<PT<int>> ret;
 	nodeStart = &nodes[start.y * nMapWidth + start.x];
 	nodeEnd = &nodes[end.y * nMapWidth + end.x];
-	auto x = nodeStart->x;
-	auto y = nodeStart->y;
 	if(nodeStart->x >=0 && nodeStart->x < nMapWidth)
 		if (nodeStart->y >= 0 && nodeStart->y < nMapHeight)
 			if(nodeEnd->x >=0 && nodeEnd->x < nMapWidth)

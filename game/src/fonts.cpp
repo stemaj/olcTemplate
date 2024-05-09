@@ -12,8 +12,9 @@ using namespace stemaj;
 namespace fs = std::filesystem;
 
 namespace stemaj {
-struct FontsImpl
+class FontsImpl
 {
+public:
   struct FontContainer
   {
     std::string name;

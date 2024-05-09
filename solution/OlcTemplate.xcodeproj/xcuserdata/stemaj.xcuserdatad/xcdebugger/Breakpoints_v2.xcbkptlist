@@ -15,9 +15,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "TEST_CASE()"
-            landmarkType = "9">
+            endingLineNumber = "229">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,8 +30,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
             endingLineNumber = "150"
-            landmarkName = "Coordinates::TransformRectangle(rectangle, A1, B1, A2, B2)"
-            landmarkType = "7">
+            landmarkName = "TEST_CASE()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -48,8 +46,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
             endingLineNumber = "154"
-            landmarkName = "Coordinates::TransformRectangle(rectangle, A1, B1, A2, B2)"
-            landmarkType = "7">
+            landmarkName = "TEST_CASE()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,8 +62,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "Coordinates::TransformRectangle(rectangle, A1, B1, A2, B2)"
-            landmarkType = "7">
+            landmarkName = "TEST_CASE()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,15 +78,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
             endingLineNumber = "167"
-            landmarkName = "Coordinates::TransformRectangle(rectangle, A1, B1, A2, B2)"
-            landmarkType = "7">
+            landmarkName = "TEST_CASE()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DECA65DF-7921-4E38-BA44-96E8778FF068"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../game/src/coordinates.cpp"
@@ -96,8 +94,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
-            landmarkName = "Coordinates::TransformRectangle(rectangle, A1, B1, A2, B2)"
-            landmarkType = "7">
+            landmarkName = "TEST_CASE()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

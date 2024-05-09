@@ -5,9 +5,10 @@ namespace wrapper {
   #include <game/src/engine/olcUTIL_Geometry2D_v2.h>
 } 
 
-using Line = wrapper::olc::utils::geom2d::line<int>;
-using Circle = wrapper::olc::utils::geom2d::circle<int>;
+using namespace wrapper::olc::utils::geom2d;
 
-wrapper::olc::utils::geom2d::contains()
+using Line = line<int>;
+using Circle = circle<int>;
+using Rect = rect<int>;
 
 #endif // __GEOMETRY_WRAPPER_HPP
