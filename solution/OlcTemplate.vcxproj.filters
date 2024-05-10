@@ -13,11 +13,20 @@
     <Filter Include="sdk">
       <UniqueIdentifier>{67A9880B-D3B2-887C-5C2E-9F7CC836947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sdk\utfcpp">
-      <UniqueIdentifier>{9553D309-810B-1557-EA12-EEB2D6E9AF47}</UniqueIdentifier>
+    <Filter Include="sdk\imgui-1.90.4">
+      <UniqueIdentifier>{75A6A6E9-619F-C53B-8AD1-AAC07629A547}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sdk\utfcpp\utf8">
-      <UniqueIdentifier>{38CA3224-A455-A0E8-AD66-23DD1971FCE8}</UniqueIdentifier>
+    <Filter Include="sdk\imgui-1.90.4\backends">
+      <UniqueIdentifier>{6C11CB3E-D8D3-FEC8-2184-8D558D85D7A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\lua-5.4.2">
+      <UniqueIdentifier>{294E811B-950E-FD51-5E49-46CFCAC8412E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\lua-5.4.2\include">
+      <UniqueIdentifier>{29FAFC20-9566-B81B-5E5A-5079CA85DA83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\doctest-2.4.11">
+      <UniqueIdentifier>{8AE5E45C-76C9-A5B2-DF29-A005CB2C9034}</UniqueIdentifier>
     </Filter>
     <Filter Include="sdk\freetype-2.13.1">
       <UniqueIdentifier>{771976FF-E37A-530D-6CE8-99BFD8488ACC}</UniqueIdentifier>
@@ -31,14 +40,11 @@
     <Filter Include="sdk\freetype-2.13.1\include\freetype\config">
       <UniqueIdentifier>{693ECF2E-D5A3-62B5-5E7C-048ECAE05724}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sdk\doctest-2.4.11">
-      <UniqueIdentifier>{8AE5E45C-76C9-A5B2-DF29-A005CB2C9034}</UniqueIdentifier>
+    <Filter Include="sdk\utfcpp">
+      <UniqueIdentifier>{9553D309-810B-1557-EA12-EEB2D6E9AF47}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sdk\lua-5.4.2">
-      <UniqueIdentifier>{294E811B-950E-FD51-5E49-46CFCAC8412E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="sdk\lua-5.4.2\include">
-      <UniqueIdentifier>{29FAFC20-9566-B81B-5E5A-5079CA85DA83}</UniqueIdentifier>
+    <Filter Include="sdk\utfcpp\utf8">
+      <UniqueIdentifier>{38CA3224-A455-A0E8-AD66-23DD1971FCE8}</UniqueIdentifier>
     </Filter>
     <Filter Include="sdk\soloud">
       <UniqueIdentifier>{B905D204-A5BD-1352-0EC5-ECADFA9BAE42}</UniqueIdentifier>
@@ -46,17 +52,11 @@
     <Filter Include="sdk\soloud\include">
       <UniqueIdentifier>{B94114D5-A525-D52A-0E86-CF7DFA88BFAC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sdk\imgui-1.90.4">
-      <UniqueIdentifier>{75A6A6E9-619F-C53B-8AD1-AAC07629A547}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="sdk\imgui-1.90.4\backends">
-      <UniqueIdentifier>{6C11CB3E-D8D3-FEC8-2184-8D558D85D7A6}</UniqueIdentifier>
+    <Filter Include="game\src\render">
+      <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\tools">
       <UniqueIdentifier>{70B7470C-5C85-3B12-4519-AC3831861777}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game\src\render">
-      <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\state">
       <UniqueIdentifier>{4022380C-2CF0-2B12-1584-9C3801F10777}</UniqueIdentifier>
@@ -67,26 +67,26 @@
     <Filter Include="sdk\sol2-3.3.0\sol">
       <UniqueIdentifier>{8CB6A755-789A-68AB-E1FA-62FECDFD522D}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\src\tools\src">
-      <UniqueIdentifier>{945A6ACF-803E-2B25-E99E-2578D5A115A7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game\src\render\src">
       <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\src\state\src">
-      <UniqueIdentifier>{64AD33D4-5091-F429-B9F1-EE7CA5F4DEAB}</UniqueIdentifier>
+    <Filter Include="game\src\tools\src">
+      <UniqueIdentifier>{945A6ACF-803E-2B25-E99E-2578D5A115A7}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\engine\src">
       <UniqueIdentifier>{19D989B7-853A-67C5-0EA8-AD777A089E84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="scripts">
-      <UniqueIdentifier>{6D076287-D9E6-E022-E2FE-6BF94E5D4784}</UniqueIdentifier>
+    <Filter Include="game\src\state\src">
+      <UniqueIdentifier>{64AD33D4-5091-F429-B9F1-EE7CA5F4DEAB}</UniqueIdentifier>
     </Filter>
     <Filter Include="assets">
       <UniqueIdentifier>{583885F2-44DA-AFC8-2D95-C31C19D63619}</UniqueIdentifier>
     </Filter>
     <Filter Include="assets\sheets">
       <UniqueIdentifier>{C08ED9A5-2C4F-55DC-F589-9E5961099AB8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts">
+      <UniqueIdentifier>{6D076287-D9E6-E022-E2FE-6BF94E5D4784}</UniqueIdentifier>
     </Filter>
     <Filter Include="assets\png">
       <UniqueIdentifier>{3902CEA8-25BA-0FF6-8EC1-E8517A98AAE6}</UniqueIdentifier>
@@ -100,6 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\genie.lua" />
+    <None Include="..\assets\sheets\bik.lua">
+      <Filter>assets\sheets</Filter>
+    </None>
     <None Include="..\scripts\examplePathLevel.lua">
       <Filter>scripts</Filter>
     </None>
@@ -109,9 +112,6 @@
     <None Include="..\scripts\mainMenu.lua">
       <Filter>scripts</Filter>
     </None>
-    <None Include="..\assets\sheets\bik.lua">
-      <Filter>assets\sheets</Filter>
-    </None>
     <None Include="..\assets\fonts\CutiePatootie-Rgjv.ttf">
       <Filter>assets\fonts</Filter>
     </None>
@@ -120,6 +120,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\game\src\engine\olcPGEX_TTF.h">
+      <Filter>game\src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\engine\olcPGEX_TransformedView.h">
+      <Filter>game\src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\engine\olcUTIL_Geometry2D.h">
+      <Filter>game\src\engine</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\engine\olcPixelGameEngine.h">
       <Filter>game\src\engine</Filter>
     </ClInclude>
@@ -132,343 +141,10 @@
     <ClInclude Include="..\game\src\engine\imgui_impl_pge.h">
       <Filter>game\src\engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\engine\olcPGEX_TTF.h">
-      <Filter>game\src\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\engine\olcUTIL_Geometry2D.h">
-      <Filter>game\src\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\engine\olcPGEX_TransformedView.h">
-      <Filter>game\src\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\utfcpp\utf8.h">
-      <Filter>sdk\utfcpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\utfcpp\utf8\cpp17.h">
-      <Filter>sdk\utfcpp\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\utfcpp\utf8\core.h">
-      <Filter>sdk\utfcpp\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\utfcpp\utf8\unchecked.h">
-      <Filter>sdk\utfcpp\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\utfcpp\utf8\cpp11.h">
-      <Filter>sdk\utfcpp\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\utfcpp\utf8\cpp20.h">
-      <Filter>sdk\utfcpp\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\utfcpp\utf8\checked.h">
-      <Filter>sdk\utfcpp\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\ft2build.h">
-      <Filter>sdk\freetype-2.13.1\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsnames.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftwinfnt.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsizes.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fttypes.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftparams.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmm.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcolor.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmodapi.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbzip2.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fttrigon.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbbox.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlogging.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgzip.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftdriver.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftoutln.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftadvanc.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsynth.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fterrors.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgasp.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftstroke.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcache.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftotval.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\freetype.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftincrem.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftfntfmt.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fterrdef.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ttnameid.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftpfr.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgxval.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftchapters.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\tttags.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlzw.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsystem.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\t1tables.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\otsvg.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftimage.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\tttables.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcid.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftglyph.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmoderr.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbitmap.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlist.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmac.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlcdfil.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbdf.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftrender.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\integer-types.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftstdlib.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftheader.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftconfig.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\mac-support.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftoption.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftmodule.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\public-macros.h">
-      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\doctest-2.4.11\doctest.h">
-      <Filter>sdk\doctest-2.4.11</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h">
-      <Filter>sdk\lua-5.4.2\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h">
-      <Filter>sdk\lua-5.4.2\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h">
-      <Filter>sdk\lua-5.4.2\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h">
-      <Filter>sdk\lua-5.4.2\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_bus.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_sfxr.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_biquadresonantfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_fft.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_duckfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_lofifilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_openmpt.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_filter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_noise.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_flangerfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_error.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_audiosource.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_wav.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_bassboostfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_thread.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_ay.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_speech.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_fader.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_off.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_eqfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_on.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_misc.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_c.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_file.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_tedsid.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_monotone.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_echofilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_vic.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_robotizefilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_freeverbfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_dcremovalfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_vizsn.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_queue.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\zx7decompress.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_wavstream.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_internal.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_waveshaperfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\soloud\include\soloud_fftfilter.h">
-      <Filter>sdk\soloud\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_textedit.h">
-      <Filter>sdk\imgui-1.90.4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h">
-      <Filter>sdk\imgui-1.90.4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\imgui_internal.h">
@@ -477,37 +153,352 @@
     <ClInclude Include="..\sdk\imgui-1.90.4\imstb_rectpack.h">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.h">
-      <Filter>sdk\imgui-1.90.4\backends</Filter>
+    <ClInclude Include="..\sdk\imgui-1.90.4\imstb_truetype.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
     </ClInclude>
-    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h">
+    <ClInclude Include="..\sdk\imgui-1.90.4\imconfig.h">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.h">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3_loader.h">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.h">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\luaconf.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lauxlib.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lualib.h">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\doctest-2.4.11\doctest.h">
+      <Filter>sdk\doctest-2.4.11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\ft2build.h">
+      <Filter>sdk\freetype-2.13.1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlzw.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgzip.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftparams.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgxval.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbitmap.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsnames.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlist.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\tttables.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftotval.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsystem.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmm.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmoderr.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fterrors.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlcdfil.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftglyph.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftrender.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsynth.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcache.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbbox.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fterrdef.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftadvanc.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmodapi.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftpfr.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftlogging.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftwinfnt.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftdriver.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftstroke.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftgasp.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftincrem.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftoutln.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\otsvg.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\freetype.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftimage.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fttypes.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\fttrigon.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcid.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftcolor.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ttnameid.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbzip2.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\tttags.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftbdf.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\t1tables.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftchapters.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftfntfmt.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftsizes.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\ftmac.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftoption.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftheader.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftmodule.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftstdlib.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\integer-types.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\ftconfig.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\public-macros.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\freetype-2.13.1\include\freetype\config\mac-support.h">
+      <Filter>sdk\freetype-2.13.1\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\utfcpp\utf8.h">
+      <Filter>sdk\utfcpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\utfcpp\utf8\cpp20.h">
+      <Filter>sdk\utfcpp\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\utfcpp\utf8\core.h">
+      <Filter>sdk\utfcpp\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\utfcpp\utf8\cpp11.h">
+      <Filter>sdk\utfcpp\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\utfcpp\utf8\checked.h">
+      <Filter>sdk\utfcpp\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\utfcpp\utf8\unchecked.h">
+      <Filter>sdk\utfcpp\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\utfcpp\utf8\cpp17.h">
+      <Filter>sdk\utfcpp\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_fftfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_duckfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_vic.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_vizsn.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_file.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_misc.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_freeverbfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_thread.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_openmpt.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_monotone.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_on.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_c.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_robotizefilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_noise.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_sfxr.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_tedsid.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_file_hack_off.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_filter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_lofifilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\zx7decompress.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_dcremovalfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_eqfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_bassboostfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_error.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_queue.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_flangerfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_biquadresonantfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_speech.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_echofilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_wav.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_fader.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_fft.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_ay.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_wavstream.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_waveshaperfilter.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_bus.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_audiosource.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdk\soloud\include\soloud_internal.h">
+      <Filter>sdk\soloud\include</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\textbox.hpp">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\game.hpp">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\coordinates.hpp">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\animation.hpp">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\game\sound.hpp">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\fonts.hpp">
+    <ClInclude Include="..\game\animation.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\coordinates.hpp">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\game\geometryWrapper.hpp">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\olcTemplate.hpp">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\game\input.hpp">
@@ -516,56 +507,62 @@
     <ClInclude Include="..\game\assets.hpp">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\olcTemplate.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\game.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\fonts.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\levelRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\exampleWalkLevelRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\render.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\exampleScreenElementsLevelRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\examplePathLevelRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\mainMenuRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\src\render\introRender.hpp">
+      <Filter>game\src\render</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\tools\pathfinding.hpp">
       <Filter>game\src\tools</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\tools\pathfollower.hpp">
       <Filter>game\src\tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\render\introRender.hpp">
-      <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\render\levelRender.hpp">
-      <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\render\examplePathLevelRender.hpp">
-      <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\render\exampleScreenElementsLevelRender.hpp">
-      <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\render\render.hpp">
-      <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\render\mainMenuRender.hpp">
-      <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\render\exampleWalkLevelRender.hpp">
-      <Filter>game\src\render</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\state\exampleScreenElementsLevelState.hpp">
+    <ClInclude Include="..\game\src\state\mainMenuState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\state\levelState.hpp">
+    <ClInclude Include="..\game\src\state\exampleScreenElementsLevelState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\examplePathLevelState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\state\state.hpp">
+    <ClInclude Include="..\game\src\state\exampleWalkLevelState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\state\mainMenuState.hpp">
+    <ClInclude Include="..\game\src\state\state.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\state\introState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\state\exampleWalkLevelState.hpp">
+    <ClInclude Include="..\game\src\state\levelState.hpp">
       <Filter>game\src\state</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp">
-      <Filter>sdk\lua-5.4.2\include</Filter>
     </ClInclude>
     <ClInclude Include="..\sdk\sol2-3.3.0\sol.hpp">
       <Filter>sdk\sol2-3.3.0</Filter>
@@ -573,27 +570,24 @@
     <ClInclude Include="..\sdk\sol2-3.3.0\sol\config.hpp">
       <Filter>sdk\sol2-3.3.0\sol</Filter>
     </ClInclude>
+    <ClInclude Include="..\sdk\lua-5.4.2\include\lua.hpp">
+      <Filter>sdk\lua-5.4.2\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\olcTemplate.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\assets.cpp">
+    <ClCompile Include="..\game\src\sound.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\fonts.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\coordinates.cpp">
+    <ClCompile Include="..\game\src\assets.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\animation.cpp">
-      <Filter>game\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\sound.cpp">
-      <Filter>game\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\textbox.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\main.cpp">
@@ -602,13 +596,22 @@
     <ClCompile Include="..\game\src\game.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
-      <Filter>game\src\tools\src</Filter>
+    <ClCompile Include="..\game\src\textbox.cpp">
+      <Filter>game\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
-      <Filter>game\src\tools\src</Filter>
+    <ClCompile Include="..\game\src\coordinates.cpp">
+      <Filter>game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\render\src\introRender.cpp">
+      <Filter>game\src\render\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\render\src\levelRender.cpp">
+      <Filter>game\src\render\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
+      <Filter>game\src\render\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\render\src\examplePathLevelRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\exampleWalkLevelRender.cpp">
@@ -617,64 +620,61 @@
     <ClCompile Include="..\game\src\render\src\exampleScreenElementsLevelRender.cpp">
       <Filter>game\src\render\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\render\src\introRender.cpp">
-      <Filter>game\src\render\src</Filter>
+    <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
+      <Filter>game\src\tools\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\render\src\levelRender.cpp">
-      <Filter>game\src\render\src</Filter>
+    <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
+      <Filter>game\src\tools\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\render\src\examplePathLevelRender.cpp">
-      <Filter>game\src\render\src</Filter>
+    <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
+      <Filter>game\src\engine\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\introState.cpp">
-      <Filter>game\src\state\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\state\src\exampleWalkLevelState.cpp">
-      <Filter>game\src\state\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\state\src\exampleScreenElementsLevelState.cpp">
-      <Filter>game\src\state\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\game\src\state\src\levelState.cpp">
       <Filter>game\src\state\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\state\src\examplePathLevelState.cpp">
       <Filter>game\src\state\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\game\src\state\src\exampleScreenElementsLevelState.cpp">
+      <Filter>game\src\state\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\game\src\state\src\mainMenuState.cpp">
       <Filter>game\src\state\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
-      <Filter>game\src\engine\src</Filter>
+    <ClCompile Include="..\game\src\state\src\exampleWalkLevelState.cpp">
+      <Filter>game\src\state\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
-      <Filter>sdk\imgui-1.90.4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
-      <Filter>sdk\imgui-1.90.4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_tables.cpp">
-      <Filter>sdk\imgui-1.90.4</Filter>
+    <ClCompile Include="..\game\src\state\src\levelState.cpp">
+      <Filter>game\src\state\src</Filter>
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_demo.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_widgets.cpp">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\imgui_draw.cpp">
       <Filter>sdk\imgui-1.90.4</Filter>
     </ClCompile>
-    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
-      <Filter>sdk\imgui-1.90.4\backends</Filter>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui_tables.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\imgui.cpp">
+      <Filter>sdk\imgui-1.90.4</Filter>
     </ClCompile>
     <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl3.cpp">
       <Filter>sdk\imgui-1.90.4\backends</Filter>
     </ClCompile>
+    <ClCompile Include="..\sdk\imgui-1.90.4\backends\imgui_impl_opengl2.cpp">
+      <Filter>sdk\imgui-1.90.4\backends</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\assets\sheets\bik.png">
-      <Filter>assets\sheets</Filter>
-    </Image>
     <Image Include="..\assets\png\japan_1.png">
       <Filter>assets\png</Filter>
+    </Image>
+    <Image Include="..\assets\sheets\bik.png">
+      <Filter>assets\sheets</Filter>
     </Image>
   </ItemGroup>
 </Project>
