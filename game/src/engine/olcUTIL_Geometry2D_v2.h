@@ -322,7 +322,7 @@ namespace olc
 		}
 
 		// Return this vector as a std::string, of the form "(x,y)"
-		inline constexpr std::string str() const
+		inline constexpr std::string_view str() const
 		{
 			return std::string("(") + std::to_string(this->x) + "," + std::to_string(this->y) + ")";
 		}
