@@ -44,6 +44,7 @@ project "OlcTemplate"
   }
   includedirs {
     ".",
+    "sdk/box2d/include",
     "sdk/imgui-1.90.4",
     "sdk/imgui-1.90.4/backends",
     "sdk/sol2-3.3.0",
@@ -56,13 +57,15 @@ project "OlcTemplate"
     includedirs {
     }
     libdirs {
-      "sdk/lua-5.4.2/windows",
+      "sdk/box2d/windows",
       "sdk/freetype-2.13.1/windows",
+      "sdk/lua-5.4.2/windows",
       "sdk/soloud/windows",
     }
     links {
-      "lua54",
+      "box2d",
       "freetype",
+      "lua54",
       "soloud_static_x64"
     }
     debugdir ".."
@@ -73,6 +76,7 @@ project "OlcTemplate"
     }
     libdirs {
       "/usr/lib",
+      "sdk/box2d/linux",
       "sdk/lua-5.4.2/linux",
       "sdk/soloud/linux",
     }
@@ -86,7 +90,8 @@ project "OlcTemplate"
        "lua54",
        "dl",
        "soloud_static",
-       "asound"
+       "asound",
+       "box2d"
     }
     debugdir "."
  
@@ -100,10 +105,12 @@ project "OlcTemplate"
     libdirs {
       "/usr/local/Cellar/freetype/2.13.2/lib",
       "/usr/local/Cellar/libpng/1.6.43/lib",
-      "sdk/soloud/macos",
+      "sdk/box2d/macos",
       "sdk/lua-5.4.2/macos",
+      "sdk/soloud/macos",
     }
     links {
+       "box2d",
        "freetype",
        "png",
        "lua",
