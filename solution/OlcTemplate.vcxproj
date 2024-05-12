@@ -512,6 +512,7 @@
     <ClInclude Include="..\game\src\render\render.hpp" />
     <ClInclude Include="..\game\src\render\mainMenuRender.hpp" />
     <ClInclude Include="..\game\src\render\exampleWalkLevelRender.hpp" />
+    <ClInclude Include="..\game\src\render\helper\olcHelper.hpp" />
     <ClInclude Include="..\game\src\state\exampleCollisionState.hpp" />
     <ClInclude Include="..\game\src\state\exampleScreenElementsLevelState.hpp" />
     <ClInclude Include="..\game\src\state\levelState.hpp" />
@@ -546,6 +547,8 @@
     <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\render\helper\src\olcHelper.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
     </ClCompile>

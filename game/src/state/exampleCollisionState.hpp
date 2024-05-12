@@ -7,6 +7,8 @@
 #include <sdk/sol2-3.3.0/sol.hpp>
 
 class b2World;
+class b2BodyDef;
+class b2Body;
 
 namespace stemaj {
 
@@ -22,6 +24,9 @@ public:
   
   // Define a conversion factor between Box2D units and screen pixels
   const float SCALE = 30.0f;
+  
+  std::unique_ptr<b2BodyDef> thingDef;
+  b2Body* thingBody;
 
   std::unique_ptr<b2World> _world;
 

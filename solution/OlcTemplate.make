@@ -76,6 +76,7 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -141,6 +142,7 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -206,6 +208,7 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -271,6 +274,7 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -336,6 +340,7 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -401,6 +406,7 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -467,6 +473,7 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -533,6 +540,7 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -599,6 +607,7 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/game.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
+	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
 	$(OBJDIR)/game/src/render/src/exampleCollisionRender.o \
 	$(OBJDIR)/game/src/render/src/examplePathLevelRender.o \
 	$(OBJDIR)/game/src/render/src/exampleScreenElementsLevelRender.o \
@@ -637,6 +646,7 @@ OBJDIRS := \
 	$(OBJDIR) \
 	$(OBJDIR)/game/src \
 	$(OBJDIR)/game/src/engine/src \
+	$(OBJDIR)/game/src/render/helper/src \
 	$(OBJDIR)/game/src/render/src \
 	$(OBJDIR)/game/src/state/src \
 	$(OBJDIR)/game/src/tools/src \
@@ -730,6 +740,10 @@ $(OBJDIR)/game/src/main.o: ../game/src/main.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/g
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/olcTemplate.o: ../game/src/olcTemplate.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/render/helper/src/olcHelper.o: ../game/src/render/helper/src/olcHelper.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/render/helper/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

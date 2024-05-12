@@ -64,6 +64,9 @@
     <Filter Include="game\src\render">
       <UniqueIdentifier>{5FAFDE8F-CB3A-4C54-D44B-CF484056A854}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\src\render\helper">
+      <UniqueIdentifier>{FBF2F89A-E7EC-21ED-D059-B8FDBCF28759}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\src\state">
       <UniqueIdentifier>{4022380C-2CF0-2B12-1584-9C3801F10777}</UniqueIdentifier>
     </Filter>
@@ -75,6 +78,9 @@
     </Filter>
     <Filter Include="game\src\tools\src">
       <UniqueIdentifier>{945A6ACF-803E-2B25-E99E-2578D5A115A7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\src\render\helper\src">
+      <UniqueIdentifier>{9F631484-8B73-C054-F42C-2573E05BAFED}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\src\render\src">
       <UniqueIdentifier>{03B289B4-6F13-67C2-F880-AD7464E19D81}</UniqueIdentifier>
@@ -672,6 +678,9 @@
     <ClInclude Include="..\game\src\render\exampleWalkLevelRender.hpp">
       <Filter>game\src\render</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\render\helper\olcHelper.hpp">
+      <Filter>game\src\render\helper</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\state\exampleCollisionState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
@@ -739,6 +748,9 @@
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
       <Filter>game\src\tools\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\render\helper\src\olcHelper.cpp">
+      <Filter>game\src\render\helper\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\render\src\mainMenuRender.cpp">
       <Filter>game\src\render\src</Filter>
