@@ -36,6 +36,7 @@ namespace olc {
         Font(std::string path, int fontSize) : fontSize(fontSize) {
             FT_Error error = FT_New_Face(library, path.c_str(), 0, &fontFace);
             if (error) {
+#ifndef __EMSCRIPTEN__
                 const char *errorString = FT_Error_String(error);
                 if (errorString == nullptr) {
                     std::cerr
@@ -44,10 +45,12 @@ namespace olc {
                 } else {
                     std::cerr << errorString << "\n";
                 }
+#endif
             }
 
             error = FT_Set_Pixel_Sizes(fontFace, 0, fontSize);
             if (error) {
+#ifndef __EMSCRIPTEN__
                 const char *errorString = FT_Error_String(error);
                 if (errorString == nullptr) {
                     std::cerr
@@ -56,6 +59,7 @@ namespace olc {
                 } else {
                     std::cerr << errorString << "\n";
                 }
+#endif
             }
         }
 
@@ -123,6 +127,7 @@ namespace olc {
                 FT_Error error = FT_Load_Char(toUse->fontFace, chr,
                                               FT_LOAD_RENDER | FT_LOAD_COLOR);
                 if (error) {
+#ifndef __EMSCRIPTEN__
                     const char *errorString = FT_Error_String(error);
                     if (errorString == nullptr) {
                         std::cerr
@@ -132,6 +137,7 @@ namespace olc {
                         std::cerr << errorString << "\n";
                     }
                     return;
+#endif
                 }
 
                 FT_Bitmap bmp = toUse->fontFace->glyph->bitmap;
@@ -202,8 +208,13 @@ namespace olc {
 
                 FT_Set_Transform(toUse->fontFace, &rotMat, &pen);
                 FT_Error error = FT_Load_Char(toUse->fontFace, chr,
+#ifndef __EMSCRIPTEN__
                                               FT_LOAD_BITMAP_METRICS_ONLY);
+#else
+                                              ( 1L << 22 ));
+#endif
                 if (error) {
+#ifndef __EMSCRIPTEN__
                     const char *errorString = FT_Error_String(error);
                     if (errorString == nullptr) {
                         std::cerr
@@ -212,6 +223,7 @@ namespace olc {
                     } else {
                         std::cerr << errorString << "\n";
                     }
+#endif
                     return olc::FontRect{{0, 0}, {0, 0}};
                 }
 
@@ -297,6 +309,7 @@ namespace olc {
                 FT_Error error = FT_Load_Char(toUse->fontFace, chr,
                                               FT_LOAD_RENDER | FT_LOAD_COLOR);
                 if (error) {
+#ifndef __EMSCRIPTEN__
                     const char *errorString = FT_Error_String(error);
                     if (errorString == nullptr) {
                         std::cerr
@@ -305,6 +318,7 @@ namespace olc {
                     } else {
                         std::cerr << errorString << "\n";
                     }
+#endif
                     return nullptr;
                 }
 
@@ -357,6 +371,7 @@ namespace olc {
             FT_Error error = FT_Init_FreeType(&library);
 
             if (error) {
+#ifndef __EMSCRIPTEN__
                 const char *errorString = FT_Error_String(error);
                 if (errorString == nullptr) {
                     std::cerr
@@ -366,7 +381,7 @@ namespace olc {
                 } else {
                     std::cerr << errorString << "\n";
                 }
-
+#endif
                 return false;
             }
             return true;

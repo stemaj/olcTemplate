@@ -4,12 +4,15 @@
 #include <game/src/state/exampleScreenElementsLevelState.hpp>
 #include <game/src/render/exampleScreenElementsLevelRender.hpp>
 #include <game/src/render/levelRender.hpp>
-
+#include <game/sound.hpp>
 using namespace stemaj;
 
 ExampleScreenElementsLevelState::ExampleScreenElementsLevelState() : 
   _render(std::make_unique<ExampleScreenElementsLevelRender>())
 {
+  SO.Play("1");
+
+
   LoadLevelData();
 }
 
