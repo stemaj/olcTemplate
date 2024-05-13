@@ -1,4 +1,5 @@
 #include <game/sound.hpp>
+#include <iostream>
 #include <sdk/soloud/include/soloud.h>
 #include <sdk/soloud/include/soloud_wav.h>
 
@@ -42,5 +43,9 @@ void Sound::Play(const std::string& name)
   _sample->load((std::string("./assets/wav/") + name + std::string(".wav")).c_str());
   _sample->setLooping(true);
   _soundEngine->play(*_sample);
+
+  std::cout << "playing sound\n";
+
+
   _currentlyPlaying = name;
 }
