@@ -23,16 +23,25 @@ public:
   Render* GetRender() override;
   
   // Define a conversion factor between Box2D units and screen pixels
-  const float SCALE = 30.0f;
+  float SCALE = 0.0f;
+
+  float _gravityY = 0.0f;
+  std::unique_ptr<b2World> _world;
+
+  PT<int> _groundCenter = {0,0};
+  PT<int> _groundSize = {0,0};
+  float _groundAngle = 0.0f;
+
   
   std::unique_ptr<b2BodyDef> thingDef;
   b2Body* thingBody;
 
-  std::unique_ptr<b2World> _world;
 
 private:
   void LoadLevelData() override;
   void SaveLevelData() override;
+
+  void InitValues();
   sol::state _lua;
   std::unique_ptr<ExampleCollisionRender> _render;
 

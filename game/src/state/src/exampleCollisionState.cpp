@@ -1,3 +1,4 @@
+#include "b2_body.h"
 #include <game/src/state/exampleCollisionState.hpp>
 #include <game/src/render/exampleCollisionRender.hpp>
 #include <game/src/render/levelRender.hpp>
@@ -10,24 +11,9 @@ using namespace stemaj;
 ExampleCollisionState::ExampleCollisionState() : _render(std::make_unique<ExampleCollisionRender>())
 {
   LoadLevelData();
+  InitValues();
 
 
-  
-  // Box2D World setup
-  b2Vec2 gravity(0.0f, 9.8f);
-  _world = std::make_unique<b2World>(gravity);
-  
-  
-  // Create ground body (static)
-          b2BodyDef groundBodyDef;
-          groundBodyDef.position.Set(CO.W / 2.0f / SCALE, CO.H * 8.0f / 10.0f / SCALE);
-  groundBodyDef.angle = -b2_pi / 12.0f;
-
-          b2Body* groundBody = _world->CreateBody(&groundBodyDef);
-          b2PolygonShape groundBox;
-          groundBox.SetAsBox(CO.W / 4.0f / SCALE, CO.H / 20.0f / SCALE);
-          groundBody->CreateFixture(&groundBox, 0.0f);
-  
   
   // Create circle body (dynamic)
           b2BodyDef circleBodyDef;
@@ -50,7 +36,7 @@ ExampleCollisionState::ExampleCollisionState() : _render(std::make_unique<Exampl
   
   thingDef = std::make_unique<b2BodyDef>();
   
-  thingDef->type = b2_kinematicBody;
+  thingDef->type = b2_staticBody;
   thingDef->position.Set(CO.W *8.0f / 9.0f / SCALE, 20.0f / SCALE);
   
   thingBody = _world->CreateBody(thingDef.get());
@@ -93,9 +79,43 @@ Render* ExampleCollisionState::GetRender()
 void ExampleCollisionState::LoadLevelData()
 {
   std::cout << "loading" << std::endl;
+
+  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
+	try
+	{
+		_lua.safe_script_file("scripts/exampleCollision.lua");
+	}
+	catch (const sol::error& e)
+	{
+		std::cout << std::string(e.what()) << std::endl;
+	}
+
+  SCALE = _lua["grid"].get<float>();
+  _gravityY = _lua["gravity_y"].get<float>();
+
+  std::array<int,2> arr = _lua["ground_center"].get<std::array<int,2>>();
+  _groundCenter = { arr[0], arr[1] };
+  arr = _lua["ground_size"].get<std::array<int,2>>();
+  _groundSize = { arr[0], arr[1] };
+  _groundAngle = _lua["ground_angle"].get<float>();
 }
 
 void ExampleCollisionState::SaveLevelData()
 {
   std::cout << "saving" << std::endl;
+}
+
+void ExampleCollisionState::InitValues()
+{
+  // Box2D World setup
+  b2Vec2 gravity(0.0f, _gravityY);
+  _world = std::make_unique<b2World>(gravity);
+
+  b2BodyDef groundBodyDef;
+  groundBodyDef.position.Set(_groundCenter.x, _groundCenter.y);
+  groundBodyDef.angle = _groundAngle;
+  b2Body* groundBody = _world->CreateBody(&groundBodyDef);
+  b2PolygonShape groundBox;
+  groundBox.SetAsBox(_groundSize.x, _groundSize.y);
+  groundBody->CreateFixture(&groundBox, 1.0f);
 }

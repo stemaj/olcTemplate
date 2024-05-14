@@ -20,9 +20,9 @@ Render* LevelState::GetRender()
 
 std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input, float fElapsedTime)
 {
-  //return std::make_unique<ExampleCollisionState>();
+  return std::make_unique<ExampleCollisionState>();
   //return std::make_unique<ExamplePathLevelState>();
   //  return std::make_unique<ExampleWalkLevelState>();
-  return std::make_unique<ExampleScreenElementsLevelState>();
+  //return std::make_unique<ExampleScreenElementsLevelState>();
 
 }
