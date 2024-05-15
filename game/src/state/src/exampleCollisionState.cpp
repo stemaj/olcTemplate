@@ -90,13 +90,13 @@ void ExampleCollisionState::LoadLevelData()
 		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  SCALE = _lua["grid"].get<float>();
+  SCALE = _lua["scale"].get<float>();
   _gravityY = _lua["gravity_y"].get<float>();
 
-  std::array<int,2> arr = _lua["ground_center"].get<std::array<int,2>>();
-  _groundCenter = { arr[0], arr[1] };
-  arr = _lua["ground_size"].get<std::array<int,2>>();
-  _groundSize = { arr[0], arr[1] };
+  std::array<float,2> arr = _lua["ground_center"].get<std::array<float,2>>();
+  _groundCenter = { int(arr[0]), int(arr[1]) };
+  arr = _lua["ground_size"].get<std::array<float,2>>();
+  _groundSize = { int(arr[0]), int(arr[1]) };
   _groundAngle = _lua["ground_angle"].get<float>();
 }
 
