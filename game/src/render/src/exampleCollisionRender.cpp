@@ -25,6 +25,7 @@ void ExampleCollisionRender::DoRender(olc::PixelGameEngine* pge, float fElapsedT
   b2Body* bodyListPtr = collisionLevel->_world->GetBodyList();
   while (bodyListPtr != nullptr)
   {
+
     b2Shape::Type type = bodyListPtr->GetFixtureList()->GetType();
     if (type == b2Shape::Type::e_circle)
     {
@@ -37,8 +38,8 @@ void ExampleCollisionRender::DoRender(olc::PixelGameEngine* pge, float fElapsedT
     else if (type == b2Shape::Type::e_polygon)
     {
       b2PolygonShape* shape = (b2PolygonShape*)bodyListPtr->GetFixtureList()->GetShape();
-      b2Vec2 vertices[4];
-      for (int i = 0; i < 4; i++)
+      b2Vec2 vertices[shape->m_count];
+      for (int i = 0; i < shape->m_count; i++)
       {
           vertices[i] = bodyListPtr->GetWorldPoint(shape->m_vertices[i]);
       }

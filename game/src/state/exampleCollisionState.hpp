@@ -25,17 +25,35 @@ public:
   // Define a conversion factor between Box2D units and screen pixels
   float SCALE = 0.0f;
 
+  int _velocityIterations = 0;
+  int _positionIterations = 0;
+
   float _gravityY = 0.0f;
   std::unique_ptr<b2World> _world;
 
-  PT<int> _groundCenter = {0,0};
-  PT<int> _groundSize = {0,0};
+  PT<float> _groundCenter = {0.f,0.f};
+  PT<float> _groundSize = {0.f,0.f};
   float _groundAngle = 0.0f;
+  int _groundType = 0;
+  float _groundDensity = 0;
 
-  
-  std::unique_ptr<b2BodyDef> thingDef;
-  b2Body* thingBody;
+  PT<float> _circleCenter = {0.f,0.f};
+  float _circleRadius = 0.0f;
+  int _circleType = 0;
+  float _circleDensity = 0;
 
+  PT<float> _rectCenter = {0.f,0.f};
+  PT<float> _rectSize = {0.f,0.f};
+  float _rectAngle = 0.0f;
+  int _rectType = 0;
+  float _rectDensity = 0;
+
+  PT<float> _triCenter = {0.f,0.f};
+  std::array<PT<float>,4> _triPolygon;
+  int _triType = 0;
+  float _triDensity = 0;
+
+  b2Body* _triBodyPtr = nullptr;
 
 private:
   void LoadLevelData() override;

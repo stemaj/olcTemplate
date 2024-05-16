@@ -115,6 +115,9 @@
     <None Include="..\assets\sheets\bik.lua">
       <Filter>assets\sheets</Filter>
     </None>
+    <None Include="..\scripts\exampleCollision.lua">
+      <Filter>scripts</Filter>
+    </None>
     <None Include="..\scripts\examplePathLevel.lua">
       <Filter>scripts</Filter>
     </None>

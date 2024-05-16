@@ -598,6 +598,7 @@
   <ItemGroup>
     <None Include="..\genie.lua" />
     <None Include="..\assets\sheets\bik.lua" />
+    <None Include="..\scripts\exampleCollision.lua" />
     <None Include="..\scripts\examplePathLevel.lua" />
     <None Include="..\scripts\settings.lua" />
     <None Include="..\scripts\mainMenu.lua" />
