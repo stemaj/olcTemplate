@@ -14,7 +14,9 @@ public:
   void DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state) override;
 
 private:
-  std::unique_ptr<olc::Renderable> _r;
+  std::unique_ptr<olc::Renderable> _rGround;
+  std::unique_ptr<olc::Renderable> _rRect;
+  std::unique_ptr<olc::Renderable> _rTri;
 };
 
 } // namespace stemaj

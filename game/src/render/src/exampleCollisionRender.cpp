@@ -11,9 +11,13 @@
 using namespace stemaj;
 
 ExampleCollisionRender::ExampleCollisionRender()
- : _r(std::make_unique<olc::Renderable>())
+ : _rGround(std::make_unique<olc::Renderable>()),
+   _rRect(std::make_unique<olc::Renderable>()),
+   _rTri(std::make_unique<olc::Renderable>())
 {
-  OlcHelper::CreateOneColorDecal(_r.get(), olc::YELLOW);
+  OlcHelper::CreateOneColorDecal(_rGround.get(), olc::YELLOW);
+  OlcHelper::CreateOneColorDecal(_rRect.get(), olc::BLUE);
+  OlcHelper::CreateOneColorDecal(_rTri.get(), olc::RED);
 }
 
 void ExampleCollisionRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
@@ -21,49 +25,32 @@ void ExampleCollisionRender::DoRender(olc::PixelGameEngine* pge, float fElapsedT
   auto collisionLevel = static_cast<ExampleCollisionState*>(state);
   
   pge->Clear(olc::DARK_MAGENTA);
-  
-  b2Body* bodyListPtr = collisionLevel->_world->GetBodyList();
-  while (bodyListPtr != nullptr)
+
+  std::array<olc::vf2d,4> arr;
+  for (int i = 0; i < 4; i++)
   {
-
-    b2Shape::Type type = bodyListPtr->GetFixtureList()->GetType();
-    if (type == b2Shape::Type::e_circle)
-    {
-      b2Vec2 circlePos = bodyListPtr->GetPosition();
-      float circleRadius = ((b2CircleShape*)bodyListPtr->GetFixtureList()->GetShape())->m_radius * collisionLevel->SCALE;
-      
-      OlcHelper::FillCircleDecal(pge, circleRadius,circlePos.x * collisionLevel->SCALE, 
-      circlePos.y * collisionLevel->SCALE, olc::GREEN);
-    }
-    else if (type == b2Shape::Type::e_polygon)
-    {
-      b2PolygonShape* shape = (b2PolygonShape*)bodyListPtr->GetFixtureList()->GetShape();
-      b2Vec2 vertices[shape->m_count];
-      for (int i = 0; i < shape->m_count; i++)
-      {
-          vertices[i] = bodyListPtr->GetWorldPoint(shape->m_vertices[i]);
-      }
-
-      std::array<olc::vf2d,4> arr = {
-          olc::vf2d{vertices[0].x * collisionLevel->SCALE, 
-        vertices[0].y * collisionLevel->SCALE},
-          olc::vf2d{vertices[1].x * collisionLevel->SCALE, 
-        vertices[1].y * collisionLevel->SCALE},
-          olc::vf2d{vertices[2].x * collisionLevel->SCALE, 
-        vertices[2].y * collisionLevel->SCALE},
-          olc::vf2d{vertices[3].x * collisionLevel->SCALE, 
-        vertices[3].y * collisionLevel->SCALE}
-      
-      };
-
-     pge->DrawWarpedDecal(
-              _r->Decal(),
-              arr,
-              olc::YELLOW);
-    }
-    
-    
-    bodyListPtr = bodyListPtr->GetNext();
-    
+    arr[i] = { collisionLevel->_groundShape[i].x * collisionLevel->SCALE, 
+               collisionLevel->_groundShape[i].y * collisionLevel->SCALE };
   }
+  pge->DrawWarpedDecal(_rGround->Decal(), arr);
+
+  OlcHelper::FillCircleDecal(pge,
+    collisionLevel->_circleRadius *  collisionLevel->SCALE,
+    { int(collisionLevel->_circleCenter.x * collisionLevel->SCALE),
+      int(collisionLevel->_circleCenter.y * collisionLevel->SCALE) },
+      olc::GREEN);
+
+  for (int i = 0; i < 4; i++)
+  {
+    arr[i] = { collisionLevel->_rectShape[i].x * collisionLevel->SCALE, 
+               collisionLevel->_rectShape[i].y * collisionLevel->SCALE };
+  }
+  pge->DrawWarpedDecal(_rRect->Decal(), arr);
+
+  for (int i = 0; i < 4; i++)
+  {
+    arr[i] = { collisionLevel->_triShape[i].x * collisionLevel->SCALE, 
+               collisionLevel->_triShape[i].y * collisionLevel->SCALE };
+  }
+  pge->DrawWarpedDecal(_rTri->Decal(), arr);
 }

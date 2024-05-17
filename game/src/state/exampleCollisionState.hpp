@@ -36,6 +36,7 @@ public:
   float _groundAngle = 0.0f;
   int _groundType = 0;
   float _groundDensity = 0;
+  std::array<PT<float>,4> _groundShape;
 
   PT<float> _circleCenter = {0.f,0.f};
   float _circleRadius = 0.0f;
@@ -47,9 +48,10 @@ public:
   float _rectAngle = 0.0f;
   int _rectType = 0;
   float _rectDensity = 0;
+  std::array<PT<float>,4> _rectShape;
 
   PT<float> _triCenter = {0.f,0.f};
-  std::array<PT<float>,4> _triPolygon;
+  std::array<PT<float>,4> _triShape;
   int _triType = 0;
   float _triDensity = 0;
 
@@ -58,6 +60,17 @@ public:
 private:
   void LoadLevelData() override;
   void SaveLevelData() override;
+
+  struct Identifier
+  {
+    int id;
+    Identifier(int id_) : id(id_) {}
+  };
+
+  Identifier _idGround = Identifier(1);
+  Identifier _idCircle = Identifier(2);
+  Identifier _idRect = Identifier(3);
+  Identifier _idTri = Identifier(4);
 
   void InitValues();
   sol::state _lua;

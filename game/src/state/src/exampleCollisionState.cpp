@@ -9,7 +9,6 @@
 
 #include <memory>
 #include <sdk/box2d/include/box2d.h>
-#include <vector>
 
 using namespace stemaj;
 
@@ -34,49 +33,54 @@ std::optional<std::unique_ptr<State>> ExampleCollisionState::Update(
   b2Body* bodyListPtr = _world->GetBodyList();
   while (bodyListPtr != nullptr)
   {
-    b2FixtureUserData data = bodyListPtr->GetFixtureList()->GetUserData();
-    //auto i = reinterpret_cast<int>(data.pointer);
-
-
-//    int shapeNr = std::reinterpret_reinterpret_cast<int>(bodyListPtr->GetFixtureList()->GetUserData());
-    b2Shape::Type type = bodyListPtr->GetFixtureList()->GetType();
-    if (type == b2Shape::Type::e_circle)
+    auto fixtureList = bodyListPtr->GetFixtureList();
+    b2PolygonShape* shape = (b2PolygonShape*)fixtureList->GetShape();
+    uintptr_t pointer = fixtureList->GetUserData().pointer;
+    Identifier* id = reinterpret_cast<Identifier*>(pointer);
+    if (id == nullptr)
+    {
+      std::cout << "Fehler beim Holen der Id\n";
+      std::exit(1);
+    }
+    if (id->id == 2)
     {
       b2Vec2 circlePos = bodyListPtr->GetPosition();
-      float circleRadius = ((b2CircleShape*)bodyListPtr->GetFixtureList()->GetShape())->m_radius * SCALE;
-      
-      // OlcHelper::FillCircleDecal(pge, circleRadius,circlePos.x * collisionLevel->SCALE, 
-      // circlePos.y * collisionLevel->SCALE, olc::GREEN);
+      _circleCenter = { circlePos.x, circlePos.y };
     }
-    else if (type == b2Shape::Type::e_polygon)
+    else
     {
-      b2PolygonShape* shape = (b2PolygonShape*)bodyListPtr->GetFixtureList()->GetShape();
-      b2Vec2 vertices[shape->m_count];
-      for (int i = 0; i < shape->m_count; i++)
+      if (id->id == 1)
       {
-          vertices[i] = bodyListPtr->GetWorldPoint(shape->m_vertices[i]);
+        for (int i = 0; i < shape->m_count; i++)
+        {
+          auto vertex = bodyListPtr->GetWorldPoint(shape->m_vertices[i]);
+          _groundShape[i] = { vertex.x, vertex.y };
+        }
+        _groundCenter = { bodyListPtr->GetPosition().x, bodyListPtr->GetPosition().y };
+        _groundAngle = bodyListPtr->GetAngle();
       }
-
-    //   std::array<olc::vf2d,4> arr = {
-    //       olc::vf2d{vertices[0].x * collisionLevel->SCALE, 
-    //     vertices[0].y * collisionLevel->SCALE},
-    //       olc::vf2d{vertices[1].x * collisionLevel->SCALE, 
-    //     vertices[1].y * collisionLevel->SCALE},
-    //       olc::vf2d{vertices[2].x * collisionLevel->SCALE, 
-    //     vertices[2].y * collisionLevel->SCALE},
-    //       olc::vf2d{vertices[3].x * collisionLevel->SCALE, 
-    //     vertices[3].y * collisionLevel->SCALE}
-      
-    //   };
-
-    //  pge->DrawWarpedDecal(
-    //           _r->Decal(),
-    //           arr,
-    //           olc::YELLOW);
+      else if (id->id == 3)
+      {
+        for (int i = 0; i < shape->m_count; i++)
+        {
+          auto vertex = bodyListPtr->GetWorldPoint(shape->m_vertices[i]);
+          _rectShape[i] = { vertex.x, vertex.y };
+        }
+        _rectCenter = { bodyListPtr->GetPosition().x, bodyListPtr->GetPosition().y };
+        _rectAngle = bodyListPtr->GetAngle();
+      }
+      else if (id->id == 4)
+      {
+        for (int i = 0; i < shape->m_count; i++)
+        {
+          auto vertex = bodyListPtr->GetWorldPoint(shape->m_vertices[i]);
+          _triShape[i] = { vertex.x, vertex.y };
+        }
+        _triCenter = { bodyListPtr->GetPosition().x, bodyListPtr->GetPosition().y };
+      }
     }
-  }
-    
     bodyListPtr = bodyListPtr->GetNext();
+  }
 
   return std::nullopt;
 }
@@ -134,7 +138,7 @@ void ExampleCollisionState::LoadLevelData()
   auto vec = _lua["tri_polygon"].get<std::array<std::array<float,2>,4>>();
   for (int i = 0; i < 4; i++)
   {
-    _triPolygon[i] = { vec[i][0], vec[i][1] };
+    _triShape[i] = { vec[i][0], vec[i][1] };
   }
   _triType = _lua["tri_type"].get<int>();
   _triDensity = _lua["tri_density"].get<float>();
@@ -144,11 +148,6 @@ void ExampleCollisionState::SaveLevelData()
 {
   std::cout << "saving" << std::endl;
 }
-
-struct Test
-{
-
-};
 
 void ExampleCollisionState::InitValues()
 {
@@ -160,46 +159,55 @@ void ExampleCollisionState::InitValues()
   groundBodyDef.position.Set(_groundCenter.x, _groundCenter.y);
   groundBodyDef.type = (b2BodyType)_groundType;
   groundBodyDef.angle = _groundAngle;
-  int* groundUserdata = new int(0);
-  groundBodyDef.userData.pointer = reinterpret_cast<uintptr_t>(groundUserdata);
+  groundBodyDef.userData.pointer = reinterpret_cast<uintptr_t>(&_idGround);
   b2Body* groundBody = _world->CreateBody(&groundBodyDef);
   b2PolygonShape groundBox;
   groundBox.SetAsBox(_groundSize.x, _groundSize.y);
-  groundBody->CreateFixture(&groundBox, _groundDensity);
+  b2FixtureDef groundFixtureDef;
+  groundFixtureDef.density = _groundDensity;
+  groundFixtureDef.shape = &groundBox;
+  groundFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(&_idGround);
+  groundBody->CreateFixture(&groundFixtureDef);
 
   b2BodyDef circleBodyDef;
   circleBodyDef.type = (b2BodyType)_circleType;
   circleBodyDef.position.Set(_circleCenter.x, _circleCenter.y);
-  int* circleUserdata = new int(1);
-  groundBodyDef.userData.pointer = reinterpret_cast<uintptr_t>(circleUserdata);
   b2Body* circleBody = _world->CreateBody(&circleBodyDef);
   b2CircleShape circleShape;
   circleShape.m_radius = _circleRadius;
-  circleBody->CreateFixture(&circleShape, _circleDensity);
+  b2FixtureDef circleFixtureDef;
+  circleFixtureDef.density = _circleDensity;
+  circleFixtureDef.shape = &circleShape;
+  circleFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(&_idCircle);
+  circleBody->CreateFixture(&circleFixtureDef);
 
   b2BodyDef rectBodyDef;
   rectBodyDef.type = (b2BodyType)_rectType;
   rectBodyDef.position.Set(_rectCenter.x, _rectCenter.y);
   rectBodyDef.angle = _rectAngle;
-  int* rectUserdata = new int(2);
-  groundBodyDef.userData.pointer = reinterpret_cast<uintptr_t>(rectUserdata);
   b2Body* rectBody = _world->CreateBody(&rectBodyDef);
   b2PolygonShape rectShape;
   rectShape.SetAsBox(_rectSize.x, _rectSize.y);
-  rectBody->CreateFixture(&rectShape, _rectDensity);
+  b2FixtureDef rectFixtureDef;
+  rectFixtureDef.density = _rectDensity;
+  rectFixtureDef.shape = &rectShape;
+  rectFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(&_idRect);
+  rectBody->CreateFixture(&rectFixtureDef);
 
   b2BodyDef triBodyDef;
   triBodyDef.type = (b2BodyType)_triType;
   triBodyDef.position.Set(_triCenter.x, _triCenter.y);
-  int* triUserData = new int(3);
-  groundBodyDef.userData.pointer = reinterpret_cast<uintptr_t>(triUserData);
   _triBodyPtr = _world->CreateBody(&triBodyDef);
   b2PolygonShape triShape;
-  b2Vec2 triVec[_triPolygon.size()];
-  for (int i = 0; i < _triPolygon.size(); i++)
+  b2Vec2 triVec[_triShape.size()];
+  for (int i = 0; i < _triShape.size(); i++)
   {
-    triVec[i].Set(_triPolygon[i].x, _triPolygon[i].y);
+    triVec[i].Set(_triShape[i].x, _triShape[i].y);
   }
-  triShape.Set(triVec, _triPolygon.size());
-  _triBodyPtr->CreateFixture(&triShape, _triDensity);
+  triShape.Set(triVec, _triShape.size());
+  b2FixtureDef triFixtureDef;
+  triFixtureDef.density = _triDensity;
+  triFixtureDef.shape = &triShape;
+  triFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(&_idTri);
+  _triBodyPtr->CreateFixture(&triFixtureDef);
 }
