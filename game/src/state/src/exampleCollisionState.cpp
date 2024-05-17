@@ -26,9 +26,13 @@ ExampleCollisionState::~ExampleCollisionState()
 std::optional<std::unique_ptr<State>> ExampleCollisionState::Update(
   const Input& input, float fElapsedTime)
 {
-  _world->Step(fElapsedTime, _velocityIterations, _positionIterations);
+  if (input.aHold) _force.x -= _triForce;
+  else if (input.dHold) _force.x += _triForce;
+  else _force.x = 0;
 
-  _triBodyPtr->SetTransform( b2Vec2(input.mouseX / SCALE, input.mouseY / SCALE) , 0.0f);
+  if (input.wHold) _force.y -= _triForce;
+  else if (input.sHold) _force.y += _triForce;
+  else _force.y = 0;
 
   b2Body* bodyListPtr = _world->GetBodyList();
   while (bodyListPtr != nullptr)
@@ -77,11 +81,16 @@ std::optional<std::unique_ptr<State>> ExampleCollisionState::Update(
           _triShape[i] = { vertex.x, vertex.y };
         }
         _triCenter = { bodyListPtr->GetPosition().x, bodyListPtr->GetPosition().y };
+        b2Vec2 force = {_force.x * fElapsedTime,_force.y * fElapsedTime};
+        force.Normalize();
+        _triBodyPtr->ApplyForceToCenter(force, true);
+        //_triBodyPtr->SetTransform( b2Vec2(input.mouseX / SCALE, input.mouseY / SCALE) , 0.0f);
       }
     }
     bodyListPtr = bodyListPtr->GetNext();
   }
 
+  _world->Step(fElapsedTime, _velocityIterations, _positionIterations);
   return std::nullopt;
 }
 
@@ -142,6 +151,7 @@ void ExampleCollisionState::LoadLevelData()
   }
   _triType = _lua["tri_type"].get<int>();
   _triDensity = _lua["tri_density"].get<float>();
+  _triForce = _lua["tri_force"].get<float>();
 }
 
 void ExampleCollisionState::SaveLevelData()
@@ -209,5 +219,6 @@ void ExampleCollisionState::InitValues()
   triFixtureDef.density = _triDensity;
   triFixtureDef.shape = &triShape;
   triFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(&_idTri);
+  _triBodyPtr->SetGravityScale(0);
   _triBodyPtr->CreateFixture(&triFixtureDef);
 }

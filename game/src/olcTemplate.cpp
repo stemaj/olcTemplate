@@ -49,10 +49,10 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
   Input input {GetMouseX(),
     GetMouseY(),
     ImGui::GetIO().WantCaptureMouse ? false : GetMouse(0).bPressed,
-    GetKey(olc::W).bHeld,
-    GetKey(olc::A).bHeld,
-    GetKey(olc::S).bHeld,
-    GetKey(olc::D).bHeld,
+    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::W).bHeld,
+    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::A).bHeld,
+    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::S).bHeld,
+    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::D).bHeld,
     };
 
   _game.Update(input, fElapsedTime);

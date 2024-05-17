@@ -57,6 +57,9 @@ public:
 
   b2Body* _triBodyPtr = nullptr;
 
+  float _triForce = 0.0f;
+  PT<float> _force = {0,0};
+
 private:
   void LoadLevelData() override;
   void SaveLevelData() override;
