@@ -82,9 +82,7 @@ std::optional<std::unique_ptr<State>> ExampleCollisionState::Update(
         }
         _triCenter = { bodyListPtr->GetPosition().x, bodyListPtr->GetPosition().y };
         b2Vec2 force = {_force.x * fElapsedTime,_force.y * fElapsedTime};
-        force.Normalize();
         _triBodyPtr->ApplyForceToCenter(force, true);
-        //_triBodyPtr->SetTransform( b2Vec2(input.mouseX / SCALE, input.mouseY / SCALE) , 0.0f);
       }
     }
     bodyListPtr = bodyListPtr->GetNext();
@@ -175,6 +173,8 @@ void ExampleCollisionState::InitValues()
   groundBox.SetAsBox(_groundSize.x, _groundSize.y);
   b2FixtureDef groundFixtureDef;
   groundFixtureDef.density = _groundDensity;
+  groundFixtureDef.friction = 0.3f; // Beispiel-Reibung je hoeher desto groessere Haftung 
+  groundFixtureDef.restitution = 0.5f; // Bounciness, je hoeher desto staerker Bounce
   groundFixtureDef.shape = &groundBox;
   groundFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(&_idGround);
   groundBody->CreateFixture(&groundFixtureDef);
@@ -207,6 +207,7 @@ void ExampleCollisionState::InitValues()
   b2BodyDef triBodyDef;
   triBodyDef.type = (b2BodyType)_triType;
   triBodyDef.position.Set(_triCenter.x, _triCenter.y);
+  triBodyDef.linearDamping = 100.0f; // Keine Daempfung
   _triBodyPtr = _world->CreateBody(&triBodyDef);
   b2PolygonShape triShape;
   b2Vec2 triVec[_triShape.size()];
