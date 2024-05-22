@@ -25,7 +25,12 @@ std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input, flo
 
 std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input)
 {
-  if (input.k1Pressed) return std::make_unique<ExampleCollisionState>();
+  if (fadeState == Fade::OUT) return std::nullopt;
+
+  if (input.k1Pressed) fadeState = Fade::OUT;
+  if (fadeState == Fade::OUT_DONE)
+    return std::make_unique<ExampleCollisionState>();
+
   if (input.k2Pressed) return std::make_unique<ExamplePathLevelState>();
   if (input.k3Pressed) return std::make_unique<ExampleWalkLevelState>();
   if (input.k4Pressed) return std::make_unique<ExampleScreenElementsLevelState>();
