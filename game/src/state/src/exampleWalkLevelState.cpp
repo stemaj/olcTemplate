@@ -55,7 +55,7 @@ std::optional<std::unique_ptr<State>> ExampleWalkLevelState::ExampleWalkLevelSta
   // std::cout << _sourceRectPos << std::endl;
   // std::cout << _sourceRectSize << std::endl;
 
-  return std::nullopt;
+  return ChangeLevel(input);
 }
 
 Render* ExampleWalkLevelState::GetRender()

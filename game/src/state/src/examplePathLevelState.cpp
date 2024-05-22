@@ -91,7 +91,7 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
   }
   ImGui::End();
 
-  return std::nullopt;
+  return ChangeLevel(input);
 }
 
 Render* ExamplePathLevelState::GetRender()

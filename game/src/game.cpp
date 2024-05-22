@@ -1,12 +1,12 @@
+#include <game/src/state/mainMenuState.hpp>
+#include <game/src/render/mainMenuRender.hpp>
 #include <game/src/state/introState.hpp>
 #include <game/game.hpp>
 #include <game/src/render/render.hpp>
-#include <game/src/render/levelRender.hpp>
-#include <game/src/state/levelState.hpp>
 
 using namespace stemaj;
 
-Game::Game() : _currentState(std::make_unique<LevelState>())
+Game::Game() : _currentState(std::make_unique<MainMenuState>())
 {
 }
 

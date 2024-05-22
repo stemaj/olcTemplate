@@ -16,6 +16,8 @@ public:
   explicit LevelState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
+protected:
+  std::optional<std::unique_ptr<State>> ChangeLevel(const Input& input);
 private:
   virtual void LoadLevelData() {}
   virtual void SaveLevelData() {}

@@ -55,7 +55,7 @@ std::optional<std::unique_ptr<State>>
     TextBoxLocation::LOWERRIGHT, fontName, FontSize::SMALL);
 	_textboxes.push_back(t3);
 
-  return std::nullopt;
+  return ChangeLevel(input);
 }
 
 Render* ExampleScreenElementsLevelState::GetRender()

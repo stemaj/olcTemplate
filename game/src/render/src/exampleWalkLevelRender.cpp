@@ -13,6 +13,8 @@ void ExampleWalkLevelRender::DoRender(olc::PixelGameEngine* pge, float fElapsedT
 {
   auto walkLevel = static_cast<ExampleWalkLevelState*>(state);
 
+  pge->Clear(olc::YELLOW);
+
   pge->DrawPartialDecal({(float)walkLevel->_drawPos.x, (float)walkLevel->_drawPos.y},
     walkLevel->_decal,
     {(float)walkLevel->_sourceRectPos.x,(float)walkLevel->_sourceRectPos.y},

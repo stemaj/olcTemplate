@@ -12,6 +12,10 @@ struct Input
   bool aHold;
   bool sHold;
   bool dHold;
+  bool k1Pressed;
+  bool k2Pressed;
+  bool k3Pressed;
+  bool k4Pressed;
 };
 
 } // namespace stemaj
