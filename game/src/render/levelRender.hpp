@@ -9,9 +9,7 @@ class LevelRender : public Render
 {
 public:
   void DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state) override;
-
-protected:
-  void Fade(olc::PixelGameEngine* pge, float fElapsedTime);
+  void Fade(olc::PixelGameEngine* pge, State* state) override final;
 };
 
 } // namespace stemaj

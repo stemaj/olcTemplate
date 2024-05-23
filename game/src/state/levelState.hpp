@@ -1,6 +1,7 @@
 #ifndef __LEVELSTATE_HPP
 #define __LEVELSTATE_HPP
 
+#include <game/src/tools/fader.hpp>
 #include <game/src/state/state.hpp>
 #include <game/src/tools/pathfinding.hpp>
 #include <game/src/tools/pathfollower.hpp>
@@ -14,23 +15,16 @@ class LevelState : public State
 {
 public:
   explicit LevelState();
-  std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
+  std::optional<std::unique_ptr<State>> Update(const Input& input,
+    float fElapsedTime) override;
   Render* GetRender() override;
-
-  enum class Fade
-  {
-    IN,
-    IN_DONE,
-    OUT,
-    OUT_DONE
-  };
-  Fade fadeState = Fade::IN;
-  float fadeTimer = 0.0f;
-  float fadeDuration = 0.5f;
+  Fader _fader;
 
 protected:
-  std::optional<std::unique_ptr<State>> ChangeLevel(const Input& input);
+  std::optional<std::unique_ptr<State>> ChangeLevel(
+    const Input& input, float fElapsedTime);
 private:
+  std::optional<std::unique_ptr<State>> _levelToChange;
   virtual void LoadLevelData() {}
   virtual void SaveLevelData() {}
 private:

@@ -684,6 +684,9 @@
     <ClInclude Include="..\game\src\tools\pathfollower.hpp">
       <Filter>game\src\tools</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\src\tools\fader.hpp">
+      <Filter>game\src\tools</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\state\mainMenuState.hpp">
       <Filter>game\src\state</Filter>
     </ClInclude>
@@ -774,6 +777,9 @@
       <Filter>game\src\tools\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
+      <Filter>game\src\tools\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\tools\src\fader.cpp">
       <Filter>game\src\tools\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">

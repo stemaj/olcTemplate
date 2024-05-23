@@ -513,6 +513,7 @@
     <ClInclude Include="..\game\src\render\helper\olcHelper.hpp" />
     <ClInclude Include="..\game\src\tools\pathfinding.hpp" />
     <ClInclude Include="..\game\src\tools\pathfollower.hpp" />
+    <ClInclude Include="..\game\src\tools\fader.hpp" />
     <ClInclude Include="..\game\src\state\mainMenuState.hpp" />
     <ClInclude Include="..\game\src\state\exampleScreenElementsLevelState.hpp" />
     <ClInclude Include="..\game\src\state\examplePathLevelState.hpp" />
@@ -563,6 +564,8 @@
     <ClCompile Include="..\game\src\tools\src\pathfinding.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\tools\src\pathfollower.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\tools\src\fader.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\engine\src\olcPixelGameEngine.cpp">
     </ClCompile>

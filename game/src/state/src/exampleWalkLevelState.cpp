@@ -10,6 +10,7 @@ using namespace stemaj;
 
 ExampleWalkLevelState::ExampleWalkLevelState() : _render(std::make_unique<ExampleWalkLevelRender>())
 {
+  _fader.StartFadeIn();
   LoadLevelData();
 }
 
@@ -55,7 +56,7 @@ std::optional<std::unique_ptr<State>> ExampleWalkLevelState::ExampleWalkLevelSta
   // std::cout << _sourceRectPos << std::endl;
   // std::cout << _sourceRectSize << std::endl;
 
-  return ChangeLevel(input);
+  return ChangeLevel(input, fElapsedTime);
 }
 
 Render* ExampleWalkLevelState::GetRender()

@@ -12,6 +12,7 @@ using namespace stemaj;
 
 ExamplePathLevelState::ExamplePathLevelState() : _render(std::make_unique<ExamplePathLevelRender>())
 {
+  _fader.StartFadeIn();
   LoadLevelData();
   InitValues();
 }
@@ -91,7 +92,7 @@ std::optional<std::unique_ptr<State>> ExamplePathLevelState::ExamplePathLevelSta
   }
   ImGui::End();
 
-  return ChangeLevel(input);
+  return ChangeLevel(input, fElapsedTime);
 }
 
 Render* ExamplePathLevelState::GetRender()

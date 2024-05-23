@@ -1,11 +1,11 @@
 #ifndef __EXAMPLEWALKLEVELRENDER_HPP
 #define __EXAMPLEWALKLEVELRENDER_HPP
 
-#include <game/src/render/render.hpp>
+#include <game/src/render/levelRender.hpp>
 
 namespace stemaj {
 
-class ExampleWalkLevelRender : public Render
+class ExampleWalkLevelRender : public LevelRender
 {
 public:
   void DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state) override;

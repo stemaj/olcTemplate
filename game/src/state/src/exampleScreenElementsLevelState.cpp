@@ -10,9 +10,8 @@ using namespace stemaj;
 ExampleScreenElementsLevelState::ExampleScreenElementsLevelState() : 
   _render(std::make_unique<ExampleScreenElementsLevelRender>())
 {
+  _fader.StartFadeIn();
   SO.Play("1");
-
-
   LoadLevelData();
 }
 
@@ -55,7 +54,7 @@ std::optional<std::unique_ptr<State>>
     TextBoxLocation::LOWERRIGHT, fontName, FontSize::SMALL);
 	_textboxes.push_back(t3);
 
-  return ChangeLevel(input);
+  return ChangeLevel(input, fElapsedTime);
 }
 
 Render* ExampleScreenElementsLevelState::GetRender()

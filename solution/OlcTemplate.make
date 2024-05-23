@@ -93,6 +93,7 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -159,6 +160,7 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -225,6 +227,7 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -291,6 +294,7 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -357,6 +361,7 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -423,6 +428,7 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -490,6 +496,7 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -557,6 +564,7 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -624,6 +632,7 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/state/src/levelState.o \
 	$(OBJDIR)/game/src/state/src/mainMenuState.o \
 	$(OBJDIR)/game/src/textbox.o \
+	$(OBJDIR)/game/src/tools/src/fader.o \
 	$(OBJDIR)/game/src/tools/src/pathfinding.o \
 	$(OBJDIR)/game/src/tools/src/pathfollower.o \
 	$(OBJDIR)/sdk/imgui-1.90.4/backends/imgui_impl_opengl2.o \
@@ -808,6 +817,10 @@ $(OBJDIR)/game/src/state/src/mainMenuState.o: ../game/src/state/src/mainMenuStat
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/textbox.o: ../game/src/textbox.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/tools/src/fader.o: ../game/src/tools/src/fader.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src/tools/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

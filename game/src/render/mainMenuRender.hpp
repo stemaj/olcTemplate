@@ -9,6 +9,7 @@ class MainMenuRender : public Render
 {
 public:
   void DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state) override;
+  void Fade(olc::PixelGameEngine* pge, State* state) override final {}
 };
 
 } // namespace stemaj

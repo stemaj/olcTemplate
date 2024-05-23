@@ -14,6 +14,7 @@ class Render
 public:
   virtual ~Render() = default;
   virtual void DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state) = 0;
+  virtual void Fade(olc::PixelGameEngine* pge, State* state) = 0;
 };
 
 } // namespace stemaj

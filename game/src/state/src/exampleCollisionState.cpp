@@ -14,6 +14,7 @@ using namespace stemaj;
 
 ExampleCollisionState::ExampleCollisionState() : _render(std::make_unique<ExampleCollisionRender>())
 {
+  _fader.StartFadeIn();
   LoadLevelData();
   InitValues();
 }
@@ -89,7 +90,7 @@ std::optional<std::unique_ptr<State>> ExampleCollisionState::Update(
   }
 
   _world->Step(fElapsedTime, _velocityIterations, _positionIterations);
-  return ChangeLevel(input);
+  return ChangeLevel(input, fElapsedTime);
 }
 
 Render* ExampleCollisionState::GetRender()

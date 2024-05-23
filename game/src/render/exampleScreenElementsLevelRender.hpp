@@ -1,13 +1,13 @@
 #ifndef __EXAMPLESCREENELEMENTSLEVELRENDER_HPP
 #define __EXAMPLESCREENELEMENTSLEVELRENDER_HPP
 
-#include <game/src/render/render.hpp>
+#include <game/src/render/levelRender.hpp>
 
 namespace stemaj {
 
 class ExampleScreenElementsLevelRenderImpl;
 
-class ExampleScreenElementsLevelRender : public Render
+class ExampleScreenElementsLevelRender : public LevelRender
 {
 public:
   ExampleScreenElementsLevelRender();

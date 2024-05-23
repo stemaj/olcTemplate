@@ -9,8 +9,9 @@
 
 using namespace stemaj;
 
-LevelState::LevelState() : _render(std::make_unique<LevelRender>())
+LevelState::LevelState() : _fader(0.3f), _render(std::make_unique<LevelRender>())
 {
+  _fader.StartFadeIn();
 }
 
 Render* LevelState::GetRender()
@@ -20,20 +21,42 @@ Render* LevelState::GetRender()
 
 std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input, float fElapsedTime)
 {
-  return ChangeLevel(input);
+ return ChangeLevel(input, fElapsedTime);
 }
 
-std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input)
+std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input, float fElapsedTime)
 {
-  if (fadeState == Fade::OUT) return std::nullopt;
+  if (!_fader.IsFading())
+  {
+    if (input.k1Pressed)
+    {
+      _fader.StartFadeOut();
+      _levelToChange = std::make_unique<ExampleCollisionState>();
+    }
+    if (input.k2Pressed)
+    {
+      _fader.StartFadeOut();
+      _levelToChange = std::make_unique<ExamplePathLevelState>();
+    }
+    if (input.k3Pressed)
+    {
+      _fader.StartFadeOut();
+      _levelToChange = std::make_unique<ExampleWalkLevelState>();
+    }
+    if (input.k4Pressed)
+    {
+      _fader.StartFadeOut();
+      _levelToChange = std::make_unique<ExampleScreenElementsLevelState>();
+    }
+  }
+  else
+  {
+    _fader.Update(fElapsedTime);
+    if (!_fader.IsFading())
+    {
+      return std::move(_levelToChange);
+    }
+  }
 
-  if (input.k1Pressed) fadeState = Fade::OUT;
-  if (fadeState == Fade::OUT_DONE)
-    return std::make_unique<ExampleCollisionState>();
-
-  if (input.k2Pressed) return std::make_unique<ExamplePathLevelState>();
-  if (input.k3Pressed) return std::make_unique<ExampleWalkLevelState>();
-  if (input.k4Pressed) return std::make_unique<ExampleScreenElementsLevelState>();
-
-  return std::nullopt;
+  return std::nullopt;  
 }
