@@ -493,6 +493,7 @@
     <ClInclude Include="..\sdk\soloud\include\soloud_audiosource.h" />
     <ClInclude Include="..\sdk\soloud\include\soloud_internal.h" />
     <ClInclude Include="..\game\textbox.hpp" />
+    <ClInclude Include="..\game\loadsave.hpp" />
     <ClInclude Include="..\game\sound.hpp" />
     <ClInclude Include="..\game\animation.hpp" />
     <ClInclude Include="..\game\coordinates.hpp" />
@@ -540,6 +541,8 @@
     <ClCompile Include="..\game\src\main.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\game.cpp">
+    </ClCompile>
+    <ClCompile Include="..\game\src\loadsave.cpp">
     </ClCompile>
     <ClCompile Include="..\game\src\textbox.cpp">
     </ClCompile>

@@ -7,8 +7,11 @@ namespace wrapper {
 
 using namespace wrapper::olc::utils::geom2d;
 
-using Line = line<int>;
-using Circle = circle<int>;
-using Rect = rect<int>;
+namespace stemaj
+{
+  using Line = line<int>;
+  using Circle = circle<int>;
+  using Rect = rect<int>;
+}
 
 #endif // __GEOMETRY_WRAPPER_HPP

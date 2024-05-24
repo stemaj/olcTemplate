@@ -624,6 +624,9 @@
     <ClInclude Include="..\game\textbox.hpp">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\game\loadsave.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\sound.hpp">
       <Filter>game</Filter>
     </ClInclude>
@@ -741,6 +744,9 @@
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\game.cpp">
+      <Filter>game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\src\loadsave.cpp">
       <Filter>game\src</Filter>
     </ClCompile>
     <ClCompile Include="..\game\src\textbox.cpp">

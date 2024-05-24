@@ -74,6 +74,7 @@ ifeq ($(config),debug)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -141,6 +142,7 @@ ifeq ($(config),test)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -208,6 +210,7 @@ ifeq ($(config),release)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -275,6 +278,7 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -342,6 +346,7 @@ ifeq ($(config),test64)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -409,6 +414,7 @@ ifeq ($(config),release64)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -477,6 +483,7 @@ ifeq ($(config),debuguniv64)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -545,6 +552,7 @@ ifeq ($(config),testuniv64)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -613,6 +621,7 @@ ifeq ($(config),releaseuniv64)
 	$(OBJDIR)/game/src/engine/src/olcPixelGameEngine.o \
 	$(OBJDIR)/game/src/fonts.o \
 	$(OBJDIR)/game/src/game.o \
+	$(OBJDIR)/game/src/loadsave.o \
 	$(OBJDIR)/game/src/main.o \
 	$(OBJDIR)/game/src/olcTemplate.o \
 	$(OBJDIR)/game/src/render/helper/src/olcHelper.o \
@@ -741,6 +750,10 @@ $(OBJDIR)/game/src/fonts.o: ../game/src/fonts.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/game/src/game.o: ../game/src/game.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/game/src/loadsave.o: ../game/src/loadsave.cpp $(GCH) $(MAKEFILE) | $(OBJDIR)/game/src
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
