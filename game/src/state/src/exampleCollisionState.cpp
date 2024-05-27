@@ -6,7 +6,7 @@
 #include <game/src/render/exampleCollisionRender.hpp>
 #include <game/src/render/levelRender.hpp>
 #include <game/coordinates.hpp>
-
+#include <game/loadsave.hpp>
 #include <memory>
 #include <sdk/box2d/include/box2d.h>
 
@@ -123,7 +123,7 @@ void ExampleCollisionState::LoadLevelData()
   _groundCenter = {arr[0], arr[1] };
   arr = _lua["ground_size"].get<std::array<float,2>>();
   _groundSize = { arr[0], arr[1] };
-  _groundAngle = _lua["ground_angle"].get<float>();
+  _groundAngle = _lua["ground_angle"].get_or(0.0f);
   _groundType = _lua["ground_type"].get<int>();
   _groundDensity = _lua["ground_density"].get<float>();
 
@@ -156,6 +156,26 @@ void ExampleCollisionState::LoadLevelData()
 void ExampleCollisionState::SaveLevelData()
 {
   std::cout << "saving" << std::endl;
+
+  std::ofstream outFile("scripts/profile/1/exampleCollision.lua");
+  if (!outFile)
+  {
+    std::cout << "Unable to open file for writing";
+    return;
+  }
+
+  //LS.saveFloat(outFile, SCALE);
+
+
+  outFile << "scale = " << SCALE << "\n";
+  
+  outFile << "triCenter = { ";
+  outFile << int(_triCenter.x * SCALE);
+  outFile << "/scale, ";
+  outFile << int(_triCenter.y * SCALE);
+  outFile << "/scale }\n";
+
+  outFile.close();
 }
 
 void ExampleCollisionState::InitValues()
