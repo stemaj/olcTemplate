@@ -4,6 +4,7 @@
 #include <string>
 #define SOL_ALL_SAFETIES_ON 1
 #include <sdk/sol2-3.3.0/sol.hpp>
+#include <fstream>
 
 namespace stemaj {
 
@@ -16,9 +17,13 @@ public:
 
 	void Init(const std::string& name);
 	float Float(const std::string& name);
+	void SaveFloat(const std::string& name, const float value);
+	
+	void End();
 
 	int Profile = 1;
 private:
+	std::ofstream _outFile;
   sol::state _luaProfile;
 	sol::state _luaDefault;
 

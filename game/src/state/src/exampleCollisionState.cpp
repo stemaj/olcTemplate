@@ -147,6 +147,10 @@ void ExampleCollisionState::SaveLevelData()
 {
   std::cout << "saving" << std::endl;
 
+  LS.SaveFloat("scale", SCALE);
+
+  LS.End();
+
   // std::ofstream outFile("scripts/profile/1/exampleCollision.lua");
   // if (!outFile)
   // {
