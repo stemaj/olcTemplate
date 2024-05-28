@@ -101,81 +101,71 @@ Render* ExampleCollisionState::GetRender()
 void ExampleCollisionState::LoadLevelData()
 {
   std::cout << "loading" << std::endl;
+  LS.Init("exampleCollision");
+  SCALE = LS.Float("scale");
 
-  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
-	try
-	{
-		_lua.safe_script_file("scripts/exampleCollision.lua");
-	}
-	catch (const sol::error& e)
-	{
-		std::cout << std::string(e.what()) << std::endl;
-	}
-
-  SCALE = _lua["scale"].get<float>();
-
-  _velocityIterations = _lua["velocity_iterations"].get<int>();
-  _positionIterations = _lua["position_iterations"].get<int>();
+  // _velocityIterations = _lua["velocity_iterations"].get<int>();
+  // _positionIterations = _lua["position_iterations"].get<int>();
   
-  _gravityY = _lua["gravity_y"].get<float>();
+  // _gravityY = _lua["gravity_y"].get<float>();
 
-  std::array<float,2> arr = _lua["ground_center"].get<std::array<float,2>>();
-  _groundCenter = {arr[0], arr[1] };
-  arr = _lua["ground_size"].get<std::array<float,2>>();
-  _groundSize = { arr[0], arr[1] };
-  _groundAngle = _lua["ground_angle"].get_or(0.0f);
-  _groundType = _lua["ground_type"].get<int>();
-  _groundDensity = _lua["ground_density"].get<float>();
+  // std::array<float,2> arr = _lua["ground_center"].get<std::array<float,2>>();
+  // _groundCenter = {arr[0], arr[1] };
+  // arr = _lua["ground_size"].get<std::array<float,2>>();
+  // _groundSize = { arr[0], arr[1] };
+  // _groundAngle = _lua["ground_angle"].get_or(0.0f);
+  // _groundType = _lua["ground_type"].get<int>();
+  // _groundDensity = _lua["ground_density"].get<float>();
 
-  arr = _lua["circle_center"].get<std::array<float,2>>();
-  _circleCenter = { arr[0], arr[1] };
-  _circleRadius = _lua["circle_radius"].get<float>();
-  _circleType = _lua["circle_type"].get<int>();
-  _circleDensity = _lua["circle_density"].get<float>();
+  // arr = _lua["circle_center"].get<std::array<float,2>>();
+  // _circleCenter = { arr[0], arr[1] };
+  // _circleRadius = _lua["circle_radius"].get<float>();
+  // _circleType = _lua["circle_type"].get<int>();
+  // _circleDensity = _lua["circle_density"].get<float>();
 
-  arr = _lua["rect_center"].get<std::array<float,2>>();
-  _rectCenter = { arr[0], arr[1] };
-  arr = _lua["rect_size"].get<std::array<float,2>>();
-  _rectSize = { arr[0], arr[1] };
-  _rectAngle = _lua["rect_angle"].get<float>();
-  _rectType = _lua["rect_type"].get<int>();
-  _rectDensity = _lua["rect_density"].get<float>();
+  // arr = _lua["rect_center"].get<std::array<float,2>>();
+  // _rectCenter = { arr[0], arr[1] };
+  // arr = _lua["rect_size"].get<std::array<float,2>>();
+  // _rectSize = { arr[0], arr[1] };
+  // _rectAngle = _lua["rect_angle"].get<float>();
+  // _rectType = _lua["rect_type"].get<int>();
+  // _rectDensity = _lua["rect_density"].get<float>();
 
-  arr = _lua["tri_center"].get<std::array<float,2>>();
-  _triCenter = { arr[0], arr[1] };
-  auto vec = _lua["tri_polygon"].get<std::array<std::array<float,2>,4>>();
-  for (int i = 0; i < 4; i++)
-  {
-    _triShape[i] = { vec[i][0], vec[i][1] };
-  }
-  _triType = _lua["tri_type"].get<int>();
-  _triDensity = _lua["tri_density"].get<float>();
-  _triForce = _lua["tri_force"].get<float>();
+  // arr = _lua["tri_center"].get<std::array<float,2>>();
+  // _triCenter = { arr[0], arr[1] };
+  // auto vec = _lua["tri_polygon"].get<std::array<std::array<float,2>,4>>();
+  // for (int i = 0; i < 4; i++)
+  // {
+  //   _triShape[i] = { vec[i][0], vec[i][1] };
+  // }
+  // _triType = _lua["tri_type"].get<int>();
+  // _triDensity = _lua["tri_density"].get<float>();
+  // _triForce = _lua["tri_force"].get<float>();
 }
 
 void ExampleCollisionState::SaveLevelData()
 {
   std::cout << "saving" << std::endl;
 
-  std::ofstream outFile("scripts/profile/1/exampleCollision.lua");
-  if (!outFile)
-  {
-    std::cout << "Unable to open file for writing";
-    return;
-  }
+  // std::ofstream outFile("scripts/profile/1/exampleCollision.lua");
+  // if (!outFile)
+  // {
+  //   std::cout << "Unable to open file for writing";
+  //   return;
+  // }
 
-  //LS.saveFloat(outFile, SCALE);
+  // //LS.saveFloat(outFile, SCALE);
 
 
-  outFile << "scale = " << SCALE << "\n";
+  // outFile << "scale = " << SCALE << "\n";
   
-  outFile << "triCenter = { ";
-  outFile << int(_triCenter.x * SCALE);
-  outFile << "/scale, ";
-  outFile << int(_triCenter.y * SCALE);
-  outFile << "/scale }\n";
+  // outFile << "triCenter = { ";
+  // outFile << int(_triCenter.x * SCALE);
+  // outFile << "/scale, ";
+  // outFile << int(_triCenter.y * SCALE);
+  // outFile << "/scale }\n";
 
-  outFile.close();
+  // outFile.close();
 }
 
 void ExampleCollisionState::InitValues()

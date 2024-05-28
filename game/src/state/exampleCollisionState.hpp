@@ -3,8 +3,6 @@
 
 #include <cstdint>
 #include <game/src/state/levelState.hpp>
-#define SOL_ALL_SAFETIES_ON 1
-#include <sdk/sol2-3.3.0/sol.hpp>
 
 class b2World;
 class b2BodyDef;
@@ -76,7 +74,6 @@ private:
   Identifier _idTri = Identifier(4);
 
   void InitValues();
-  sol::state _lua;
   std::unique_ptr<ExampleCollisionRender> _render;
 
   friend class ExampleCollisionRender;
