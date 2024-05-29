@@ -1,13 +1,34 @@
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/src/state/introState.hpp>
+#include <olcTemplate/game/src/render/introRender.hpp>
 #include <olcTemplate/game/game.hpp>
 #include <olcTemplate/game/src/render/render.hpp>
 
 using namespace stemaj;
 
-Game::Game() : _currentState(std::make_unique<MainMenuState>())
+Game::Game()
 {
+  sol::state lua;
+  lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
+	try
+	{
+		lua.safe_script_file("scripts/settings.lua");
+	}
+	catch (const sol::error& e)
+	{
+		std::cout << std::string(e.what()) << std::endl;
+	}
+
+  bool showIntro = lua["show_intro"].get_or(false);
+  if (showIntro)
+  {
+    _currentState = std::make_unique<IntroState>();
+  }
+  else
+  {
+    _currentState = std::make_unique<MainMenuState>();
+  }
 }
 
 void Game::Update(const Input& input, float fElapsedTime)
