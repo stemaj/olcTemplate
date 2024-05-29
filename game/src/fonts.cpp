@@ -1,12 +1,12 @@
-#include <game/fonts.hpp>
-#include <game/coordinates.hpp>
+#include <olcTemplate/game/fonts.hpp>
+#include <olcTemplate/game/coordinates.hpp>
 #include <filesystem>
 #include <unordered_map>
 #include <utility>
 
-#include <game/src/engine/olcPGEX_TTF.h>
+#include <olcTemplate/game/src/engine/olcPGEX_TTF.h>
 #define UTF_CPP_CPLUSPLUS 202002L
-#include <sdk/utfcpp/utf8.h>
+#include <olcTemplate/sdk/utfcpp/utf8.h>
 
 using namespace stemaj;
 namespace fs = std::filesystem;

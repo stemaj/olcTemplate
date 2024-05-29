@@ -1,8 +1,8 @@
 #ifndef __OLCHELPER_HPP
 #define __OLCHELPER_HPP
 
-#include <game/coordinates.hpp>
-#include <game/src/engine/olcPixelGameEngine.h>
+#include <olcTemplate/game/coordinates.hpp>
+#include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
 
 namespace stemaj {
 

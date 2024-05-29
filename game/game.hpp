@@ -1,7 +1,7 @@
 #ifndef __GAME_HPP
 #define __GAME_HPP
 
-#include <game/src/state/state.hpp>
+#include <olcTemplate/game/src/state/state.hpp>
 #include <memory>
 #include <optional>
 

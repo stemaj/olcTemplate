@@ -1,4 +1,4 @@
-#include <game/src/tools/fader.hpp>
+#include <olcTemplate/game/src/tools/fader.hpp>
 
 using namespace stemaj;
 

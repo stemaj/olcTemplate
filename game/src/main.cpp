@@ -1,10 +1,10 @@
 // doctest before pge
 #ifdef RUN_TESTS
-#include <sdk/doctest-2.4.11/doctest.h>
+#include <olcTemplate/sdk/doctest-2.4.11/doctest.h>
 #endif
 
-#include <game/olcTemplate.hpp>
-#include <game/coordinates.hpp>
+#include <olcTemplate/game/olcTemplate.hpp>
+#include <olcTemplate/game/coordinates.hpp>
 
 using namespace stemaj;
 

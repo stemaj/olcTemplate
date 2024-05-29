@@ -1,7 +1,7 @@
 #ifndef __PFADFOLLOWER_HPP
 #define __PFADFOLLOWER_HPP
 
-#include <game/src/tools/pathfinding.hpp>
+#include <olcTemplate/game/src/tools/pathfinding.hpp>
 #include <vector>
 
 namespace stemaj {

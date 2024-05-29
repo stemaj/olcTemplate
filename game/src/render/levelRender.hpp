@@ -1,7 +1,7 @@
 #ifndef __LEVELRENDER_HPP
 #define __LEVELRENDER_HPP
 
-#include <game/src/render/render.hpp>
+#include <olcTemplate/game/src/render/render.hpp>
 
 namespace stemaj {
 

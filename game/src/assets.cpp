@@ -1,12 +1,12 @@
-#include <game/assets.hpp>
-#include <game/src/engine/olcPixelGameEngine.h>
+#include <olcTemplate/game/assets.hpp>
+#include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
 
 #include <filesystem>
 #include <utility>
 #include <memory>
 
 #define SOL_ALL_SAFETIES_ON 1
-#include <sdk/sol2-3.3.0/sol.hpp>
+#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 
 using namespace stemaj;
 namespace fs = std::filesystem;

@@ -2,7 +2,7 @@
 #define __GEOMETRY_WRAPPER_HPP
 
 namespace wrapper {
-  #include <game/src/engine/olcUTIL_Geometry2D_v2.h>
+  #include <olcTemplate/game/src/engine/olcUTIL_Geometry2D_v2.h>
 } 
 
 using namespace wrapper::olc::utils::geom2d;

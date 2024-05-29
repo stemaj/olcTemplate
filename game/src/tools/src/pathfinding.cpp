@@ -4,9 +4,9 @@
 #include <iostream>
 #include <list>
 #ifdef RUN_TESTS
-#include <sdk/doctest-2.4.11/doctest.h>
+#include <olcTemplate/sdk/doctest-2.4.11/doctest.h>
 #endif
-#include <game/src/tools/pathfinding.hpp>
+#include <olcTemplate/game/src/tools/pathfinding.hpp>
 
 using namespace stemaj;
 

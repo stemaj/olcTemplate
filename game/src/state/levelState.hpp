@@ -1,10 +1,10 @@
 #ifndef __LEVELSTATE_HPP
 #define __LEVELSTATE_HPP
 
-#include <game/src/tools/fader.hpp>
-#include <game/src/state/state.hpp>
-#include <game/src/tools/pathfinding.hpp>
-#include <game/src/tools/pathfollower.hpp>
+#include <olcTemplate/game/src/tools/fader.hpp>
+#include <olcTemplate/game/src/state/state.hpp>
+#include <olcTemplate/game/src/tools/pathfinding.hpp>
+#include <olcTemplate/game/src/tools/pathfollower.hpp>
 #include <memory>
 
 namespace stemaj {

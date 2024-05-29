@@ -1,6 +1,6 @@
 #include <cmath>
-#include <game/src/render/helper/olcHelper.hpp>
-#include <game/src/engine/olcPixelGameEngine.h>
+#include <olcTemplate/game/src/render/helper/olcHelper.hpp>
+#include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
 
 using namespace stemaj;
 

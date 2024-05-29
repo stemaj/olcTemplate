@@ -1,8 +1,8 @@
-#include <game/coordinates.hpp>
+#include <olcTemplate/game/coordinates.hpp>
 #define SOL_ALL_SAFETIES_ON 1
-#include <sdk/sol2-3.3.0/sol.hpp>
+#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #ifdef RUN_TESTS
-#include <sdk/doctest-2.4.11/doctest.h>
+#include <olcTemplate/sdk/doctest-2.4.11/doctest.h>
 #endif
 
 using namespace stemaj;

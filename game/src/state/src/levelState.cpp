@@ -1,11 +1,11 @@
-#include <game/src/state/levelState.hpp>
-#include "game/src/render/levelRender.hpp"
-#include <game/src/state/exampleCollisionState.hpp>
-#include <game/src/state/examplePathLevelState.hpp>
-#include <game/src/state/exampleWalkLevelState.hpp>
-#include <game/src/state/exampleScreenElementsLevelState.hpp>
+#include <olcTemplate/game/src/state/levelState.hpp>
+#include <olcTemplate/game/src/render/levelRender.hpp>
+// #include <game/src/state/exampleCollisionState.hpp>
+// #include <game/src/state/examplePathLevelState.hpp>
+// #include <game/src/state/exampleWalkLevelState.hpp>
+// #include <game/src/state/exampleScreenElementsLevelState.hpp>
 #include <optional>
-#include <sdk/imgui-1.90.4/imgui.h>
+#include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 
 using namespace stemaj;
 
@@ -28,26 +28,26 @@ std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input
 {
   if (!_fader.IsFading())
   {
-    if (input.k1Pressed)
-    {
-      _fader.StartFadeOut();
-      _levelToChange = std::make_unique<ExampleCollisionState>();
-    }
-    if (input.k2Pressed)
-    {
-      _fader.StartFadeOut();
-      _levelToChange = std::make_unique<ExamplePathLevelState>();
-    }
-    if (input.k3Pressed)
-    {
-      _fader.StartFadeOut();
-      _levelToChange = std::make_unique<ExampleWalkLevelState>();
-    }
-    if (input.k4Pressed)
-    {
-      _fader.StartFadeOut();
-      _levelToChange = std::make_unique<ExampleScreenElementsLevelState>();
-    }
+    // if (input.k1Pressed)
+    // {
+    //   _fader.StartFadeOut();
+    //   _levelToChange = std::make_unique<ExampleCollisionState>();
+    // }
+    // if (input.k2Pressed)
+    // {
+    //   _fader.StartFadeOut();
+    //   _levelToChange = std::make_unique<ExamplePathLevelState>();
+    // }
+    // if (input.k3Pressed)
+    // {
+    //   _fader.StartFadeOut();
+    //   _levelToChange = std::make_unique<ExampleWalkLevelState>();
+    // }
+    // if (input.k4Pressed)
+    // {
+    //   _fader.StartFadeOut();
+    //   _levelToChange = std::make_unique<ExampleScreenElementsLevelState>();
+    // }
   }
   else
   {

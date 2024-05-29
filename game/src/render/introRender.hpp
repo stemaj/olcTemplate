@@ -1,7 +1,7 @@
 #ifndef __INTRORENDER_HPP
 #define __INTRORENDER_HPP
 
-#include <game/src/render/render.hpp>
+#include <olcTemplate/game/src/render/render.hpp>
 
 namespace stemaj {
 

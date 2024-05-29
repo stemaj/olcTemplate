@@ -5,8 +5,8 @@
 #include <string>
 #include <unordered_map>
 
-#include <game/src/engine/olcUTIL_Geometry2D.h>
-#include <game/src/engine/olcUTIL_Animate2D.h>
+#include <olcTemplate/game/src/engine/olcUTIL_Geometry2D.h>
+#include <olcTemplate/game/src/engine/olcUTIL_Animate2D.h>
 
 
 

@@ -1,9 +1,9 @@
-#include <game/src/state/mainMenuState.hpp>
-#include <game/src/render/mainMenuRender.hpp>
-#include <game/src/state/levelState.hpp>
-#include <game/src/render/levelRender.hpp>
+#include <olcTemplate/game/src/state/mainMenuState.hpp>
+#include <olcTemplate/game/src/render/mainMenuRender.hpp>
+#include <olcTemplate/game/src/state/levelState.hpp>
+#include <olcTemplate/game/src/render/levelRender.hpp>
 #include <optional>
-#include <sdk/imgui-1.90.4/imgui.h>
+#include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <vector>
 
 using namespace stemaj;

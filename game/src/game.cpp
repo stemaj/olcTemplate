@@ -1,8 +1,8 @@
-#include <game/src/state/mainMenuState.hpp>
-#include <game/src/render/mainMenuRender.hpp>
-#include <game/src/state/introState.hpp>
-#include <game/game.hpp>
-#include <game/src/render/render.hpp>
+#include <olcTemplate/game/src/state/mainMenuState.hpp>
+#include <olcTemplate/game/src/render/mainMenuRender.hpp>
+#include <olcTemplate/game/src/state/introState.hpp>
+#include <olcTemplate/game/game.hpp>
+#include <olcTemplate/game/src/render/render.hpp>
 
 using namespace stemaj;
 

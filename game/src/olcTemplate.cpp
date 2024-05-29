@@ -1,10 +1,10 @@
-#include <game/input.hpp>
-#include <game/src/render/render.hpp>
-#include <game/olcTemplate.hpp>
-#include <game/assets.hpp>
-#include <game/animation.hpp>
-#include <game/fonts.hpp>
-#include <sdk/imgui-1.90.4/imgui.h>
+#include <olcTemplate/game/input.hpp>
+#include <olcTemplate/game/src/render/render.hpp>
+#include <olcTemplate/game/olcTemplate.hpp>
+#include <olcTemplate/game/assets.hpp>
+#include <olcTemplate/game/animation.hpp>
+#include <olcTemplate/game/fonts.hpp>
+#include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <chrono>
 #include <thread>
 

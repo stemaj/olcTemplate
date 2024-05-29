@@ -1,6 +1,6 @@
-#include <game/textbox.hpp>
-#include <game/fonts.hpp>
-#include <sdk/imgui-1.90.4/imgui.h>
+#include <olcTemplate/game/textbox.hpp>
+#include <olcTemplate/game/fonts.hpp>
+#include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <algorithm>
 
 using namespace stemaj;

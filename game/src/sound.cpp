@@ -1,7 +1,7 @@
-#include <game/sound.hpp>
+#include <olcTemplate/game/sound.hpp>
 #include <iostream>
-#include <sdk/soloud/include/soloud.h>
-#include <sdk/soloud/include/soloud_wav.h>
+#include <olcTemplate/sdk/soloud/include/soloud.h>
+#include <olcTemplate/sdk/soloud/include/soloud_wav.h>
 
 using namespace stemaj;
 

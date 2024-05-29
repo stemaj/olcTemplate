@@ -1,7 +1,7 @@
 #ifndef __PFADFINDUNG_HPP
 #define __PFADFINDUNG_HPP
 
-#include <game/coordinates.hpp>
+#include <olcTemplate/game/coordinates.hpp>
 #include <vector>
 
 namespace stemaj {

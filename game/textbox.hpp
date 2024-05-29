@@ -1,8 +1,8 @@
 #ifndef __TEXTBOX_HPP
 #define __TEXTBOX_HPP
 
-#include <game/fonts.hpp>
-#include <game/coordinates.hpp>
+#include <olcTemplate/game/fonts.hpp>
+#include <olcTemplate/game/coordinates.hpp>
 #include <array>
 
 namespace olc {

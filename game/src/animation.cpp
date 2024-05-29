@@ -1,8 +1,8 @@
-#include <game/animation.hpp>
-#include <game/assets.hpp>
+#include <olcTemplate/game/animation.hpp>
+#include <olcTemplate/game/assets.hpp>
 
 #define SOL_ALL_SAFETIES_ON 1
-#include <sdk/sol2-3.3.0/sol.hpp>
+#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 
 #include <filesystem>
 

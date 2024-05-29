@@ -1,7 +1,7 @@
 #ifndef __STATE_HPP
 #define __STATE_HPP
 
-#include <game/input.hpp>
+#include <olcTemplate/game/input.hpp>
 #include <optional>
 #include <memory>
 

@@ -1,7 +1,7 @@
 #ifndef __MAINMENURENDER_HPP
 #define __MAINMENURENDER_HPP
 
-#include <game/src/render/render.hpp>
+#include <olcTemplate/game/src/render/render.hpp>
 
 namespace stemaj {
 

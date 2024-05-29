@@ -1,7 +1,7 @@
 #ifndef __FONTS_HPP
 #define __FONTS_HPP
 
-#include <game/coordinates.hpp>
+#include <olcTemplate/game/coordinates.hpp>
 #include <unordered_map>
 #include <memory>
 #include <string>

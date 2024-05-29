@@ -1,7 +1,7 @@
-#include <game/src/render/introRender.hpp>
-#include <game/src/state/introState.hpp>
-#include <game/src/engine/olcPixelGameEngine.h>
-#include <game/assets.hpp>
+#include <olcTemplate/game/src/render/introRender.hpp>
+#include <olcTemplate/game/src/state/introState.hpp>
+#include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
+#include <olcTemplate/game/assets.hpp>
 
 using namespace stemaj;
 

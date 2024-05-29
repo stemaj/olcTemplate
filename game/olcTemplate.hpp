@@ -1,9 +1,9 @@
 #ifndef __OLC_TEMPLATE_HPP
 #define __OLC_TEMPLATE_HPP
 
-#include <game/game.hpp>
-#include <game/src/engine/olcPixelGameEngine.h>
-#include <game/src/engine/imgui_impl_pge.h>
+#include <olcTemplate/game/game.hpp>
+#include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
+#include <olcTemplate/game/src/engine/imgui_impl_pge.h>
 
 namespace stemaj {
 
