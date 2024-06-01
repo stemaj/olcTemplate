@@ -71,6 +71,18 @@ PT<float> LoadSave::PTFloat(const std::string& name)
   return { arr.x, arr.y };
 }
 
+std::array<PT<float>,4> LoadSave::PTFloat4(const std::string& name)
+{
+  
+  std::array<PT<float>,4> arr;
+  auto vec = _luaProfile[name].get_or(_luaDefault[name].get_or(arr));
+   for (int i = 0; i < 4; i++)
+   {
+     arr[i] = { vec[i].x, vec[i].y };
+   }
+  return arr;
+}
+
 void LoadSave::SaveEmpty()
 {
   _outFile << "\n";
@@ -89,6 +101,11 @@ void LoadSave::SaveInt(const std::string& name, const int value)
 void LoadSave::SavePTFloat(const std::string& name, const PT<float>& value)
 {
   _outFile << name << " = { " << value.x << ", " << value.y << " }\n";
+}
+
+void LoadSave::SavePTFloat4(const std::string& name, const std::array<PT<float>,4>& value)
+{
+  _outFile << name << " = { { " << value[0].x << ", " << value[0].y << "}, " << value[1].x << ", " << value[1].y << "}, " << value[2].x << ", " << value[2].y << "}, " << value[3].x << ", " << value[3].y << "} }";
 }
 
 void LoadSave::End()
