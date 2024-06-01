@@ -5,6 +5,7 @@
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #include <fstream>
+#include <olcTemplate/game/coordinates.hpp>
 
 namespace stemaj {
 
@@ -15,10 +16,17 @@ public:
 	LoadSave(LoadSave const&) = delete;
 	void operator=(LoadSave const&) = delete;
 
-	void Init(const std::string& name);
+	void Init(const std::string& level);
+  
 	float Float(const std::string& name);
-	void SaveFloat(const std::string& name, const float value);
+	int Int(const std::string& name);
+	PT<float> PTFloat(const std::string& name);
 	
+  	void SaveEmpty();
+  	void SaveFloat(const std::string& name, const float value);
+  	void SaveInt(const std::string& name, const int value);
+  	void SavePTFloat(const std::string& name, const PT<float>& value);
+
 	void End();
 
 	int Profile = 1;
