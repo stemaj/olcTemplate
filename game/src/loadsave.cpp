@@ -46,12 +46,6 @@ void LoadSave::Init(const std::string& level)
 	{
 		std::cout << std::string(e.what()) << std::endl;
 	}
-
-	_outFile = std::ofstream("scripts/profile/1/"+level+".lua");
-	if (!_outFile)
-  {
-    std::cout << "Unable to open file for writing";
-  }
 }
 
 float LoadSave::Float(const std::string& name)
@@ -66,19 +60,21 @@ int LoadSave::Int(const std::string& name)
 
 PT<float> LoadSave::PTFloat(const std::string& name)
 {
-  auto f = PT<float>{0.0f,0.0f};
-  auto arr = _luaProfile[name].get_or(_luaDefault[name].get_or(f));
-  return { arr.x, arr.y };
+  std::array<float,2> f = {};
+  auto d = _luaDefault[name].get_or<std::array<float,2>>(f);
+  auto arr = _luaProfile[name].get_or<std::array<float,2>>(d);
+  return { arr[0], arr[1] };
 }
 
 std::array<PT<float>,4> LoadSave::PTFloat4(const std::string& name)
 {
-  
+  std::array<std::array<float,2>,4> f = {};
+  auto d = _luaDefault[name].get_or<std::array<std::array<float,2>,4>>(f);
+  auto vec = _luaProfile[name].get_or<std::array<std::array<float,2>,4>>(d);
   std::array<PT<float>,4> arr;
-  auto vec = _luaProfile[name].get_or(_luaDefault[name].get_or(arr));
-   for (int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
    {
-     arr[i] = { vec[i].x, vec[i].y };
+     arr[i] = { PT<float>{vec[i][0], vec[i][1]} };
    }
   return arr;
 }
@@ -105,10 +101,19 @@ void LoadSave::SavePTFloat(const std::string& name, const PT<float>& value)
 
 void LoadSave::SavePTFloat4(const std::string& name, const std::array<PT<float>,4>& value)
 {
-  _outFile << name << " = { { " << value[0].x << ", " << value[0].y << "}, " << value[1].x << ", " << value[1].y << "}, " << value[2].x << ", " << value[2].y << "}, " << value[3].x << ", " << value[3].y << "} }";
+  _outFile << name << " = { { " << value[0].x << ", " << value[0].y << " }, { " << value[1].x << ", " << value[1].y << " }, { " << value[2].x << ", " << value[2].y << " }, { " << value[3].x << ", " << value[3].y << " } }";
 }
 
-void LoadSave::End()
+void LoadSave::SaveStart(const std::string& level)
+{
+  _outFile = std::ofstream("scripts/profile/1/"+level+".lua");
+  if (!_outFile)
+  {
+    std::cout << "Unable to open file for writing";
+  }
+}
+
+void LoadSave::SaveEnd()
 {
 	_outFile.close();
 }

@@ -29,7 +29,8 @@ public:
   	void SavePTFloat(const std::string& name, const PT<float>& value);
   void SavePTFloat4(const std::string& name, const std::array<PT<float>,4>& value);
 
-	void End();
+  void SaveStart(const std::string& level);
+	void SaveEnd();
 
 	int Profile = 1;
 private:
