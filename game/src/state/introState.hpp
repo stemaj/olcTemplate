@@ -15,12 +15,24 @@ class IntroRender;
 class IntroState : public State
 {
 public:
+
+  enum class Parts
+  {
+    BLACK,
+    OLCLOGO,
+    RIEGEL,
+    DADDY,
+    VFC,
+    GAME,
+  };
+
   explicit IntroState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
-  float introEndDuration = 1.0f;
+  float introEndDuration = 11.0f;
   float currentDuration = 0.0f;
+  Parts _part = Parts::BLACK;
 
 private:
   timePoint _introStartTime;
