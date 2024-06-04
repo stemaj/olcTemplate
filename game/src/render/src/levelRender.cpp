@@ -15,7 +15,7 @@ void LevelRender::Fade(olc::PixelGameEngine* pge, State* state)
 {
   auto level = static_cast<LevelState*>(state);
 
-  if (level->_fader.IsFading())
+  if (level->_fader.IsFading() || level->_fader.IsTurning())
   {
     pge->FillRectDecal({0,0},pge->GetScreenSize(),
       olc::Pixel(0,0,0,level->_fader.GetAlpha()));

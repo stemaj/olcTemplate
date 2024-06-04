@@ -9,12 +9,13 @@ namespace stemaj
 class Fader
 {
 public:
-  enum class FadeState { NONE, FADE_OUT, FADE_IN };
+  enum class FadeState { NONE, FADE_OUT, FADE_TURN, FADE_IN };
   Fader(const float duration) : fadeDuration(duration) {}
 
   void StartFadeOut();
   void StartFadeIn();
   bool IsFading() const;
+  bool IsTurning() const;
   void Update(float fElapsedTime);
   uint8_t GetAlpha() const;
 
