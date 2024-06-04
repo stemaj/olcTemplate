@@ -1,6 +1,7 @@
 #ifndef __MAINMENUSTATE_HPP
 #define __MAINMENUSTATE_HPP
 
+#include <olcTemplate/game/coordinates.hpp>
 #include <string>
 #include <olcTemplate/game/input.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
@@ -18,10 +19,9 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
-  std::string someText = "Main Menu";
-  int someX = 80;
-  int someY = 100;
-  std::array<float,4> someColor = {1.0f,1.0f, 1.0f, 1.0f};
+  std::string _headerText;
+  PT<int> _headerPos = {0,0};
+  std::array<float,4> _headerColor = {1.0f,1.0f, 1.0f, 1.0f};
 private:
   sol::state _lua;
   std::unique_ptr<MainMenuRender> _render;

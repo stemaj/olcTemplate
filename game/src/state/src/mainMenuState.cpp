@@ -21,12 +21,14 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
 		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  someText = _lua["headerText"].get<std::string>();
-  std::vector<float> cppArray = _lua["headerColor"].get<std::vector<float>>();
+  _headerText = _lua["header_text"].get_or<std::string>("");
+  std::vector<float> cppArray = _lua["header_color"].get_or<std::vector<float>>({});
   for (int i = 0; i < cppArray.size(); i++)
   {
-    someColor[i] = cppArray[i];
+    _headerColor[i] = cppArray[i];
   }
+  auto pos = _lua["header_position"].get_or<std::array<float,2>>({0.0f,0.0f});
+  _headerPos = CO.D(PT<float>{pos[0], pos[1]});
 }
 
 Render* MainMenuState::GetRender()
@@ -36,19 +38,16 @@ Render* MainMenuState::GetRender()
 
 std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, float fElapsedTime)
 {
-  ImVec4 color = ImVec4(someColor[0], someColor[1], someColor[2], someColor[3]); // Anfangsfarbe
+  ImVec4 color = ImVec4(_headerColor[0], _headerColor[1], _headerColor[2], _headerColor[3]);
   ImGui::Begin("Main Menu Debug");
   ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
   ImGui::ColorEdit3("Color", (float*)&color);
 
-  someColor[0] = color.x;
-  someColor[1] = color.y;
-  someColor[2] = color.z;
-  someColor[3] = color.w;
+  _headerColor = { color.x, color.y, color.z, color.w };
 
   ImGui::End();
 
-  if (input.leftMouseClicked)
+  if (input.spacePressed)
   {
     return std::make_unique<LevelState>();
   }
