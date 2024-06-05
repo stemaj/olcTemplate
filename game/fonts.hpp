@@ -8,7 +8,6 @@
 
 namespace olc {
 	class Font;
-	class Pixel;
 	class Decal;
 }
 

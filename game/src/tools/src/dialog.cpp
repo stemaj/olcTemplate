@@ -67,5 +67,10 @@ void Dialog::Update(const Input& input, float fElapsedTime)
         displayingOptions = false;
         elapsedTime = 0.0f;
     }
+    if (displayingOptions && input.leftMouseClicked && _selection == 2) {
+        currentNode = node.options[2].second;
+        displayingOptions = false;
+        elapsedTime = 0.0f;
+    }
   } 
 }
