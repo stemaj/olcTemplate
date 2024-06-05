@@ -57,12 +57,12 @@ void Dialog::Update(const Input& input, float fElapsedTime)
         }
     }
 
-    if (displayingOptions && input.leftMouseClicked) {
+    if (displayingOptions && input.leftMouseClicked && _selection == 0) {
         currentNode = node.options[0].second;
         displayingOptions = false;
         elapsedTime = 0.0f;
     }
-    if (displayingOptions && input.spacePressed) {
+    if (displayingOptions && input.leftMouseClicked && _selection == 1) {
         currentNode = node.options[1].second;
         displayingOptions = false;
         elapsedTime = 0.0f;

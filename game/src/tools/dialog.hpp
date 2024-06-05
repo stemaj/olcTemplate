@@ -28,6 +28,8 @@ public:
   int currentNode = 0;
   float elapsedTime = 0.0f;
   bool displayingOptions = false;
+
+  int _selection = -1;
 };
 
 } // namespace
