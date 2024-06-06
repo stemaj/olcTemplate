@@ -2,8 +2,6 @@
 #define __FONTS_HPP
 
 #include <olcTemplate/game/coordinates.hpp>
-#include <unordered_map>
-#include <memory>
 #include <string>
 
 namespace olc {
@@ -18,7 +16,11 @@ enum class FontSize
 	NORMAL = 0,
 	SMALL = 1,
 	BIG = 2,
-	COUNT = 3
+	SMALLER = 3,
+	SMALLEST = 4,
+	BIGGER = 5,
+	BIGGEST = 6,
+	COUNT = 7
 };
 
 class FontsImpl;

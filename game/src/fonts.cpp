@@ -1,8 +1,6 @@
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/coordinates.hpp>
 #include <filesystem>
-#include <unordered_map>
-#include <utility>
 
 #include <olcTemplate/game/src/engine/olcPGEX_TTF.h>
 #define UTF_CPP_CPLUSPLUS 202002L
@@ -66,6 +64,15 @@ void Fonts::Load()
       loadFont(entry.path().stem().string(), entry.path().string());
     }
   }
+
+  directory = "./olcTemplate/assets/fonts";
+  for (const auto& entry : fs::directory_iterator(directory))
+  {
+    if (entry.is_regular_file() && entry.path().extension() == ".ttf")
+    {
+      loadFont(entry.path().stem().string(), entry.path().string());
+    }
+  }
 }
 
 olc::Font* Fonts::Font(const std::string& name, const FontSize fontSize)
@@ -88,14 +95,26 @@ int Fonts::toInt(FontSize f)
 
   switch (f)
   {
-		case FontSize::SMALL:
+		case FontSize::SMALLEST:
+			ret = int((float)fac * 0.02f);
+      break;
+		case FontSize::SMALLER:
 			ret = int((float)fac * 0.05f);
+      break;
+		case FontSize::SMALL:
+			ret = int((float)fac * 0.08f);
       break;
 		case FontSize::NORMAL:
 			ret = int((float)fac * 0.1f);
       break;
 		case FontSize::BIG:
       ret = int((float)fac * 0.15f);
+      break;
+		case FontSize::BIGGER:
+      ret = int((float)fac * 0.25f);
+      break;
+		case FontSize::BIGGEST:
+      ret = int((float)fac * 0.4f);
       break;
     default:
       throw;

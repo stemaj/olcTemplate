@@ -37,6 +37,15 @@ void Assets::Load()
     }
   }
 
+  directory = "./olcTemplate/assets/png";
+  for (const auto& entry : fs::directory_iterator(directory))
+  {
+    if (entry.is_regular_file() && entry.path().extension() == ".png")
+    {
+      loadSprite(entry.path().stem().string(), entry.path().string());
+    }
+  }
+
   auto loadSpriteSheet = [&](const std::string& sName, 
     const std::string& sFileName)
   {

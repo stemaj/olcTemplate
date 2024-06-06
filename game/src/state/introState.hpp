@@ -5,6 +5,7 @@
 #include <olcTemplate/game/input.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
 #include <olcTemplate/game/coordinates.hpp>
+#include <olcTemplate/game/src/tools/fader.hpp>
 
 using timePoint = std::chrono::time_point<std::chrono::steady_clock,
   std::chrono::duration<long, std::ratio<1, 1000000000>>>;
@@ -34,8 +35,9 @@ public:
   explicit IntroState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
+  Fader _fader;
 
-  float introEndDuration = 11.0f;
+  float introEndDuration = 18.0f;
   float currentDuration = 0.0f;
   Parts _part = Parts::BLACK;
 
@@ -44,6 +46,12 @@ public:
   PT<int> _bgSourceRectPos;
   PT<int> _bgSourceRectSize;
   PT<float> _bgScale;
+
+  PT<int> _chDrawPos;
+  olc::Decal* _chDecal;
+  PT<int> _chSourceRectPos;
+  PT<int> _chSourceRectSize;
+  PT<float> _chScale;
 
 private:
   timePoint _introStartTime;
