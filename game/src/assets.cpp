@@ -53,6 +53,15 @@ void Assets::Load()
       loadSpriteSheet(entry.path().stem().string(), entry.path().string());
     }
   }
+
+  directory = "./olcTemplate/assets/sheets";
+  for (const auto& entry : fs::directory_iterator(directory))
+  {
+    if (entry.is_regular_file() && entry.path().extension() == ".png")
+    {
+      loadSpriteSheet(entry.path().stem().string(), entry.path().string());
+    }
+  }
 }
 
 olc::Sprite* Assets::Sprite(const std::string& name)

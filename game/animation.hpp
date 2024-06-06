@@ -38,13 +38,15 @@ public:
 	AnimationMap(AnimationMap const&) = delete;
 	void operator=(AnimationMap const&) = delete;
 
-  stemaj::Animation GetAnimation(const std::string& name);
+  stemaj::Animation& GetAnimation(const std::string& name);
 
   void Load();
 private:
 	AnimationMap() {}
 	virtual ~AnimationMap() {}	
   bool _loaded = false;
+
+  void LoadFrom(const std::string& path);
 
   std::unordered_map<std::string, stemaj::Animation> _map;
 };

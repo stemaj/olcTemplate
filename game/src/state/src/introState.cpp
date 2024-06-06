@@ -2,10 +2,13 @@
 #include <olcTemplate/game/src/render/introRender.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
+#include <olcTemplate/game/animation.hpp>
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 
 using namespace stemaj;
+
+olc::utils::Animate2D::AnimationState introBackgroundAnimationState;
 
 IntroState::IntroState() : _render(std::make_unique<IntroRender>())
 {
@@ -23,6 +26,18 @@ std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input, flo
   ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
   ImGui::Text("Duration: (%f)", currentDuration);
   ImGui::End();
+
+  auto bikAnim = AN.GetAnimation("pretty_pretty_bg_25pc");
+  bikAnim.animation.ChangeState(introBackgroundAnimationState, IDLE);
+  const auto& frame = bikAnim.animation.GetFrame(introBackgroundAnimationState);
+  bikAnim.animation.UpdateState(introBackgroundAnimationState, fElapsedTime);
+
+  _bgDrawPos = PT<int>{ 0,0 };
+  _bgDecal = frame.GetSourceImage()->Decal();
+  _bgSourceRectPos = {frame.GetSourceRect().pos.x,frame.GetSourceRect().pos.y};
+  _bgSourceRectSize = {frame.GetSourceRect().size.x,frame.GetSourceRect().size.y};
+  float scale =  CO.W / (float)_bgSourceRectSize.x;
+  _bgScale = PT<float>{scale,scale};
 
   auto now = std::chrono::steady_clock::now();
   currentDuration = std::chrono::duration_cast<std::chrono::milliseconds>(now - _introStartTime).count() / 1000.0f;

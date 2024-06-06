@@ -1,5 +1,6 @@
 #include <olcTemplate/game/animation.hpp>
 #include <olcTemplate/game/assets.hpp>
+#include <vector>
 
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
@@ -15,18 +16,17 @@ AnimationMap& AnimationMap::get()
   return me;
 }
 
-stemaj::Animation AnimationMap::GetAnimation(const std::string& name)
+stemaj::Animation& AnimationMap::GetAnimation(const std::string& name)
 {
   return _map[name];
 }
 
-void AnimationMap::Load()
+void AnimationMap::LoadFrom(const std::string& directory)
 {
   std::string sName;
   sol::state lua;
   lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
-  std::string directory = "./assets/sheets";
   for (const auto& entry : fs::directory_iterator(directory))
   {
     if (!entry.is_regular_file() || entry.path().extension() != ".lua")
@@ -48,10 +48,14 @@ void AnimationMap::Load()
     a.spriteHeight = lua["spriteHeight"];
     a.ox = lua["ox"];
     a.oy = lua["oy"];
+
+    auto details = lua["details"].get<std::map<int, std::vector<std::array<int, 2>>>>();
     for (int i = 0; i < AnimationKind::COUNT; i++)
     {
+      if (!details.contains(i)) continue;
+
       olc::utils::Animate2D::FrameSequence frameSequence(0.3f);
-      auto indicies = lua["details"][i].get<std::vector<std::array<int, 2>>>();
+      auto indicies = details[i];
       auto e = static_cast<AnimationKind>(i);
       for (auto& j : indicies)
       {
@@ -71,4 +75,10 @@ void AnimationMap::Load()
     }
     _map[entry.path().stem().string()] = a;
   }
+}
+
+void AnimationMap::Load()
+{
+  LoadFrom("./assets/sheets");
+  LoadFrom("./olcTemplate/assets/sheets");
 }
