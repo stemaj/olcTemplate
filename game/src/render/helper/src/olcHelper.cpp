@@ -1,6 +1,7 @@
 #include <cmath>
 #include <olcTemplate/game/src/render/helper/olcHelper.hpp>
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
+#include <numbers>
 
 using namespace stemaj;
 
@@ -9,8 +10,8 @@ void OlcHelper::FillCircleDecal(olc::PixelGameEngine* pge, const int radius, con
   const int segments = 32;
   std::vector<olc::vf2d> points;
   for (int i = 0; i < segments; i++)
-    points.push_back(olc::vf2d(position.x + radius * cos(i * (2 * M_PI / segments)), 
-        position.y + radius * sin(i * (2 * M_PI / segments))));
+    points.push_back(olc::vf2d(position.x + radius * cosf(i * (2 * std::numbers::pi / segments)), 
+        position.y + radius * sinf(i * (2 * std::numbers::pi / segments))));
 
   std::vector<olc::vf2d> uvs;
   uvs.resize(points.size());
