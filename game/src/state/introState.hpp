@@ -7,9 +7,6 @@
 #include <olcTemplate/game/coordinates.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
 
-using timePoint = std::chrono::time_point<std::chrono::steady_clock,
-  std::chrono::duration<long, std::ratio<1, 1000000000>>>;
-
 namespace olc {
   class Decal;
 }
@@ -54,7 +51,7 @@ public:
   PT<float> _chScale;
 
 private:
-  timePoint _introStartTime;
+  std::chrono::high_resolution_clock::time_point _introStartTime = std::chrono::high_resolution_clock::now();
 
   std::unique_ptr<IntroRender> _render;
 };

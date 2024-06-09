@@ -19,12 +19,12 @@ TextBox::TextBox(const std::string& text,
 	if (_location == TextBoxLocation::UPPERLEFT)
 	{
 		offset.x = -_frameboxSize.x / 4;
-		offset.y = -_frameboxSize.y * 1.5;
+		offset.y = -_frameboxSize.y * 3 / 2;
 	}
 	else if (_location == TextBoxLocation::LOWERRIGHT)
 	{
 		offset.x = _frameboxSize.x / 8;
-		offset.y = _frameboxSize.y * 1.5;
+		offset.y = _frameboxSize.y * 3 / 2;
 	}
 
 	_frameboxUpperLeft = {

@@ -13,7 +13,6 @@ olc::utils::Animate2D::AnimationState introCharacterAnimationState;
 
 IntroState::IntroState() : _fader(3.0f), _render(std::make_unique<IntroRender>())
 {
-  _introStartTime = std::chrono::steady_clock::now();
   _fader.StartFadeIn();
 }
 
@@ -28,6 +27,7 @@ std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input, flo
   ImGui::Begin("Intro Debug");
   ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
   ImGui::Text("Duration: (%f)", currentDuration);
+  ImGui::Text("Part: (%d)", _part);
   ImGui::End();
 */
   auto bgAnim = AN.GetAnimation("pretty_pretty_bg_25pc");
