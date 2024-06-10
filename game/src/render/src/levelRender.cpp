@@ -6,8 +6,6 @@ using namespace stemaj;
 
 void LevelRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
 {
-  auto level = static_cast<LevelState*>(state);
-
   pge->Clear(olc::RED);
 }
 

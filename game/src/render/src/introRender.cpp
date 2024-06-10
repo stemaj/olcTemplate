@@ -35,12 +35,12 @@ void IntroRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
 
   olc::Decal* r = nullptr;
 
-  auto t = CO.D(PT<float>(0.05f,0.8f));
+  auto t = CO.D(PT<float>{0.05f,0.8f});
   switch (intro->_part)
   {
   case IntroState::Parts::OLCLOGO:
     {
-      auto d = CO.D(PT<float>(0.03f,0.8f));
+      auto d = CO.D(PT<float>{0.03f,0.8f});
       float scale = 0.7f * CO.W / AS.Sprite("pge2_logo")->width;
       pge->DrawDecal({(float)d.x, (float)d.y}, AS.Decal("pge2_logo"), {scale,scale});
     }
@@ -59,10 +59,10 @@ void IntroRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
     break;
   case IntroState::Parts::GAME:
     {
-      auto p1 = CO.D(PT<float>(0.05f,0.2f));
+      auto p1 = CO.D(PT<float>{0.05f,0.2f});
       r = fontBigger->RenderStringToDecal(utf8::utf8to32(std::string("Name of the game")), olc::WHITE);
       pge->DrawDecal({ (float)p1.x, (float)p1.y }, r);
-      auto p2 = CO.D(PT<float>(0.05f,0.85f));
+      auto p2 = CO.D(PT<float>{0.05f,0.85f});
       r = fontNormal->RenderStringToDecal(utf8::utf8to32(std::string("(c) 2024 riegel games")), olc::WHITE);
       pge->DrawDecal({ (float)p2.x, (float)p2.y }, r);
     }

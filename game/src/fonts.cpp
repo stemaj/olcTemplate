@@ -57,11 +57,14 @@ void Fonts::Load()
 	};
 
   std::string directory = "./assets/fonts";
-  for (const auto& entry : fs::directory_iterator(directory))
+  if (fs::exists(directory) && fs::is_directory(directory))
   {
-    if (entry.is_regular_file() && entry.path().extension() == ".ttf")
+    for (const auto& entry : fs::directory_iterator(directory))
     {
-      loadFont(entry.path().stem().string(), entry.path().string());
+      if (entry.is_regular_file() && entry.path().extension() == ".ttf")
+      {
+        loadFont(entry.path().stem().string(), entry.path().string());
+      }
     }
   }
 

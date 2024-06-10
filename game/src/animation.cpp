@@ -23,6 +23,8 @@ stemaj::Animation& AnimationMap::GetAnimation(const std::string& name)
 
 void AnimationMap::LoadFrom(const std::string& directory)
 {
+  if (!fs::exists(directory) || !fs::is_directory(directory)) return;
+
   std::string sName;
   sol::state lua;
   lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);

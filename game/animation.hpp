@@ -44,7 +44,6 @@ public:
 private:
 	AnimationMap() {}
 	virtual ~AnimationMap() {}	
-  bool _loaded = false;
 
   void LoadFrom(const std::string& path);
 
