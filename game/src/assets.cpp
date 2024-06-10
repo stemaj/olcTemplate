@@ -29,20 +29,26 @@ void Assets::Load()
 	};
 
   std::string directory = "./assets/png";
-  for (const auto& entry : fs::directory_iterator(directory))
+  if (fs::exists(directory) && fs::is_directory(directory))
   {
-    if (entry.is_regular_file() && entry.path().extension() == ".png")
+    for (const auto& entry : fs::directory_iterator(directory))
     {
-      loadSprite(entry.path().stem().string(), entry.path().string());
+      if (entry.is_regular_file() && entry.path().extension() == ".png")
+      {
+        loadSprite(entry.path().stem().string(), entry.path().string());
+      }
     }
   }
 
   directory = "./olcTemplate/assets/png";
-  for (const auto& entry : fs::directory_iterator(directory))
+  if (fs::exists(directory) && fs::is_directory(directory))
   {
-    if (entry.is_regular_file() && entry.path().extension() == ".png")
+    for (const auto& entry : fs::directory_iterator(directory))
     {
-      loadSprite(entry.path().stem().string(), entry.path().string());
+      if (entry.is_regular_file() && entry.path().extension() == ".png")
+      {
+        loadSprite(entry.path().stem().string(), entry.path().string());
+      }
     }
   }
 
@@ -55,20 +61,26 @@ void Assets::Load()
   };
 
   directory = "./assets/sheets";
-  for (const auto& entry : fs::directory_iterator(directory))
+  if (fs::exists(directory) && fs::is_directory(directory))
   {
-    if (entry.is_regular_file() && entry.path().extension() == ".png")
+    for (const auto& entry : fs::directory_iterator(directory))
     {
-      loadSpriteSheet(entry.path().stem().string(), entry.path().string());
+      if (entry.is_regular_file() && entry.path().extension() == ".png")
+      {
+        loadSpriteSheet(entry.path().stem().string(), entry.path().string());
+      }
     }
   }
 
   directory = "./olcTemplate/assets/sheets";
-  for (const auto& entry : fs::directory_iterator(directory))
+  if (fs::exists(directory) && fs::is_directory(directory))
   {
-    if (entry.is_regular_file() && entry.path().extension() == ".png")
+    for (const auto& entry : fs::directory_iterator(directory))
     {
-      loadSpriteSheet(entry.path().stem().string(), entry.path().string());
+      if (entry.is_regular_file() && entry.path().extension() == ".png")
+      {
+        loadSpriteSheet(entry.path().stem().string(), entry.path().string());
+      }
     }
   }
 }
