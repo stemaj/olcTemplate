@@ -1,10 +1,11 @@
+#include <memory>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
-#include <olcTemplate/game/src/render/mainMenuRender.hpp>
-#include <game/src/state/levelState.hpp>
-#include <olcTemplate/game/src/render/levelRender.hpp>
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <vector>
+
+// entry point for the real game
+#include <game/starter.hpp>
 
 using namespace stemaj;
 
@@ -47,9 +48,6 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
 
   ImGui::End();
 
-  if (input.spacePressed)
-  {
-    return std::make_unique<LevelState>();
-  }
-  return std::nullopt;
+  auto starter = std::make_unique<Starter>();
+  return starter->Update(input, fElapsedTime);
 }

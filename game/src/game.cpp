@@ -1,7 +1,5 @@
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
-#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/src/state/introState.hpp>
-#include <olcTemplate/game/src/render/introRender.hpp>
 #include <olcTemplate/game/game.hpp>
 #include <olcTemplate/game/src/render/render.hpp>
 
@@ -38,8 +36,11 @@ void Game::Update(const Input& input, float fElapsedTime)
 
 void Game::Render(olc::PixelGameEngine* pge, float fElapsedTime)
 {
-  _currentState->GetRender()->DoRender(pge,fElapsedTime,_currentState.get());
-  _currentState->GetRender()->Fade(pge,_currentState.get());
+  if (_currentState->GetRender() != nullptr)
+  {
+    _currentState->GetRender()->DoRender(pge,fElapsedTime,_currentState.get());
+    _currentState->GetRender()->Fade(pge,_currentState.get());
+  }
 }
 
 void Game::UpdateState()

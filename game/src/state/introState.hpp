@@ -6,14 +6,13 @@
 #include <olcTemplate/game/src/state/state.hpp>
 #include <olcTemplate/game/coordinates.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
+#include <olcTemplate/game/src/render/introRender.hpp>
 
 namespace olc {
   class Decal;
 }
 
 namespace stemaj {
-
-class IntroRender;
 
 class IntroState : public State
 {

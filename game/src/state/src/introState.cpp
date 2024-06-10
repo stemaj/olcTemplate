@@ -1,8 +1,6 @@
 #include <chrono>
 #include <olcTemplate/game/src/state/introState.hpp>
-#include <olcTemplate/game/src/render/introRender.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
-#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/animation.hpp>
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>

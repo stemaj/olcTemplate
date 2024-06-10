@@ -1,6 +1,7 @@
 #ifndef __MAINMENUSTATE_HPP
 #define __MAINMENUSTATE_HPP
 
+#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/coordinates.hpp>
 #include <string>
 #include <olcTemplate/game/input.hpp>
@@ -9,8 +10,6 @@
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 
 namespace stemaj {
-
-class MainMenuRender;
 
 class MainMenuState : public State
 {
