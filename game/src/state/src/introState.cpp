@@ -1,3 +1,4 @@
+#include <chrono>
 #include <olcTemplate/game/src/state/introState.hpp>
 #include <olcTemplate/game/src/render/introRender.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
@@ -54,7 +55,7 @@ std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input, flo
   scale =  CO.H / (float)_bgSourceRectSize.y;
   _chScale = PT<float>{scale,scale};
 
-  auto now = std::chrono::steady_clock::now();
+  auto now = std::chrono::high_resolution_clock::now();
   currentDuration = std::chrono::duration_cast<std::chrono::milliseconds>(now - _introStartTime).count() / 1000.0f;
   if (currentDuration < introEndDuration)
   {
