@@ -19,7 +19,8 @@ enum AnimationKind : uint8_t
   MOVEUP = 2,
   MOVELEFT = 3,
   MOVEDOWN = 4,
-  COUNT = 5
+  IDLE_LEFT = 5,
+  COUNT = 6
 };
 
 struct Animation
