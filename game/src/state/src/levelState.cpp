@@ -9,6 +9,7 @@ using namespace stemaj;
 LevelState::LevelState() : _fader(0.3f), _render(std::make_unique<LevelRender>())
 {
   _fader.StartFadeIn();
+  _camera = olc::utils::Camera2D({(float)CO.W, (float)CO.H});
 }
 
 Render* LevelState::GetRender()

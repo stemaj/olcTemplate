@@ -4,6 +4,7 @@
 #include <olcTemplate/game/src/tools/fader.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
 #include <olcTemplate/game/src/render/levelRender.hpp>
+#include <olcTemplate/game/src/engine/olcUTIL_Camera2D.h>
 #include <memory>
 
 namespace stemaj {
@@ -22,6 +23,10 @@ public:
 protected:
   std::optional<std::unique_ptr<State>> ChangeLevel(
     const Input& input, float fElapsedTime);
+
+  olc::utils::Camera2D _camera;
+  bool _cameraConfigured = false;
+
 private:
   std::optional<std::unique_ptr<State>> _levelToChange;
   virtual void LoadLevelData() {}
