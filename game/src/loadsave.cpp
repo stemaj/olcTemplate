@@ -66,6 +66,14 @@ PT<float> LoadSave::PTFloat(const std::string& name)
   return { arr[0], arr[1] };
 }
 
+PT<int> LoadSave::PTInt(const std::string& name)
+{
+  std::array<int,2> f = {};
+  auto d = _luaDefault[name].get_or<std::array<int,2>>(f);
+  auto arr = _luaProfile[name].get_or<std::array<int,2>>(d);
+  return { arr[0], arr[1] };
+}
+
 std::array<PT<float>,4> LoadSave::PTFloat4(const std::string& name)
 {
   std::array<std::array<float,2>,4> f = {};
@@ -95,6 +103,11 @@ void LoadSave::SaveInt(const std::string& name, const int value)
 }
 
 void LoadSave::SavePTFloat(const std::string& name, const PT<float>& value)
+{
+  _outFile << name << " = { " << value.x << ", " << value.y << " }\n";
+}
+
+void LoadSave::SavePTInt(const std::string& name, const PT<int>& value)
 {
   _outFile << name << " = { " << value.x << ", " << value.y << " }\n";
 }

@@ -21,12 +21,14 @@ public:
 	float Float(const std::string& name);
 	int Int(const std::string& name);
 	PT<float> PTFloat(const std::string& name);
+	PT<int> PTInt(const std::string& name);
   std::array<PT<float>,4> PTFloat4(const std::string& name);
-	
-  	void SaveEmpty();
-  	void SaveFloat(const std::string& name, const float value);
-  	void SaveInt(const std::string& name, const int value);
-  	void SavePTFloat(const std::string& name, const PT<float>& value);
+
+	void SaveEmpty();
+  void SaveFloat(const std::string& name, const float value);
+  void SaveInt(const std::string& name, const int value);
+	void SavePTInt(const std::string& name, const PT<int>& value);
+  void SavePTFloat(const std::string& name, const PT<float>& value);
   void SavePTFloat4(const std::string& name, const std::array<PT<float>,4>& value);
 
   void SaveStart(const std::string& level);
