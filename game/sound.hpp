@@ -20,8 +20,10 @@ public:
 
   void Play(const std::string& name);
 private:
-  Sound() = default;
+  Sound();
   virtual ~Sound();
+  
+  bool _soundEnabled = false;
 
   bool _engineInitialized = false;
   std::string _currentlyPlaying = "";
