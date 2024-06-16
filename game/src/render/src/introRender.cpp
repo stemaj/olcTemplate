@@ -28,7 +28,7 @@ void IntroRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
   {(float)intro->_chSourceRectSize.x,(float)intro->_chSourceRectSize.y},
   {intro->_chScale.x,intro->_chScale.y});
 
-  const std::string fontName = "dogica";
+  const std::string fontName = "ES_Build";
   auto fontNormal = FT.Font(fontName, FontSize::SMALLER);
   auto fontBig = FT.Font(fontName, FontSize::SMALL);
   auto fontBigger = FT.Font(fontName, FontSize::NORMAL);
@@ -46,21 +46,21 @@ void IntroRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
     }
     break;
   case IntroState::Parts::RIEGEL:
-    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("Riegel")), olc::WHITE);
+    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("RIEGEL")), olc::WHITE);
     pge->DrawDecal({ (float)t.x, (float)t.y }, r);
     break;
   case IntroState::Parts::DADDY:
-    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("Daddy Daddy")), olc::WHITE);
+    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("DADDY DADDY")), olc::WHITE);
     pge->DrawDecal({ (float)t.x, (float)t.y }, r);
     break;
   case IntroState::Parts::VFC:
-    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("Volcano Fish Cat")), olc::WHITE);
+    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("VOLCANO FISH CAT")), olc::WHITE);
     pge->DrawDecal({ (float)t.x, (float)t.y }, r);
     break;
   case IntroState::Parts::GAME:
     {
       auto p1 = CO.D(PT<float>{0.05f,0.2f});
-      r = fontBigger->RenderStringToDecal(utf8::utf8to32(std::string("Name of the game")), olc::WHITE);
+      r = fontBigger->RenderStringToDecal(utf8::utf8to32(std::string("NAME OF THE GAME")), olc::WHITE);
       pge->DrawDecal({ (float)p1.x, (float)p1.y }, r);
       auto p2 = CO.D(PT<float>{0.05f,0.85f});
       r = fontNormal->RenderStringToDecal(utf8::utf8to32(std::string("(c) 2024 riegel games")), olc::WHITE);
