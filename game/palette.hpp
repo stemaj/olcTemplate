@@ -2,6 +2,7 @@
 #define __PALETTE_HPP
 
 #include <array>
+#include <string>
 
 namespace olc {
 

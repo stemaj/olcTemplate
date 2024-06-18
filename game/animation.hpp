@@ -20,7 +20,11 @@ enum AnimationKind : uint8_t
   MOVELEFT = 3,
   MOVEDOWN = 4,
   IDLE_LEFT = 5,
-  COUNT = 6
+  NIGHT = 6,
+  DOOR = 7,
+  ROTATING = 8,
+  WIND = 9,
+  COUNT = 10
 };
 
 struct Animation
