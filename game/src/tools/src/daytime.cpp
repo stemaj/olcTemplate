@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <iostream>
 #include <olcTemplate/game/src/tools/daytime.hpp>
+#include <sstream>
 
 #ifdef RUN_TESTS
 #include <olcTemplate/sdk/doctest-2.4.11/doctest.h>
@@ -32,7 +33,7 @@ std::string DayTime::GetFormattedTime() const
   float hours = currentTime * 24.0f;
   int hh = static_cast<int>(hours);
   int mm = static_cast<int>((hours - hh) * 60);
-  std::ostringstream oss;
+  std::stringstream oss;
   oss << std::setfill('0') << std::setw(2) << hh << ":"
       << std::setfill('0') << std::setw(2) << mm;
   return oss.str();
