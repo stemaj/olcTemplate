@@ -33,10 +33,12 @@ bool OlcTemplate::OnUserCreate()
 void reduceFrameRate(const timePoint& start, const float frameTime)
 {
   auto now = std::chrono::steady_clock::now();
-  auto frameDuration = std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count() / 1000.0f;
+  auto frameDuration = std::chrono::duration_cast<std::chrono::milliseconds>
+    (now - start).count() / 1000.0f;
   if (frameDuration < frameTime)
   {
-    std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>((frameTime - frameDuration) * 1000)));
+    std::this_thread::sleep_for(std::chrono::milliseconds(
+      static_cast<int>((frameTime - frameDuration) * 1000)));
   }
 }
 
@@ -49,10 +51,14 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
   Input input {GetMouseX(),
     GetMouseY(),
     ImGui::GetIO().WantCaptureMouse ? false : GetMouse(0).bPressed,
-    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::W).bHeld,
-    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::A).bHeld,
-    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::S).bHeld,
-    ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::D).bHeld,
+    ImGui::GetIO().WantCaptureKeyboard ? false :
+      (GetKey(olc::W).bHeld || GetKey(olc::UP).bHeld),
+    ImGui::GetIO().WantCaptureKeyboard ? false :
+      (GetKey(olc::A).bHeld || GetKey(olc::LEFT).bHeld),
+    ImGui::GetIO().WantCaptureKeyboard ? false :
+      (GetKey(olc::S).bHeld || GetKey(olc::DOWN).bHeld),
+    ImGui::GetIO().WantCaptureKeyboard ? false :
+      (GetKey(olc::D).bHeld || GetKey(olc::RIGHT).bHeld),
     ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::K1).bPressed,
     ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::K2).bPressed,
     ImGui::GetIO().WantCaptureKeyboard ? false : GetKey(olc::K3).bPressed,

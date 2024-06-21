@@ -22,14 +22,34 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
 		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  _headerText = _lua["header_text"].get_or<std::string>("");
+  _font = _lua["font"].get_or<std::string>("dogica");
+
   std::vector<float> cppArray = _lua["header_color"].get_or<std::vector<float>>({});
   for (int i = 0; i < cppArray.size(); i++)
   {
     _headerColor[i] = cppArray[i];
   }
-  auto pos = _lua["header_position"].get_or<std::array<float,2>>({0.0f,0.0f});
-  _headerPos = CO.D(PT<float>{pos[0], pos[1]});
+
+  sol::table texts = _lua["texts"];
+  for (auto& pair : texts)
+  {
+    sol::table entry = pair.second;
+    Texts t;
+    t.pos = { entry[1][1], entry[1][2] };
+    t.text = entry[2];
+    _texts.push_back(t);
+  }
+
+  sol::table graphics = _lua["graphics"];
+  for (auto& pair : graphics)
+  {
+    sol::table entry = pair.second;
+    Graphics g;
+    g.name = entry[1];
+    g.pos = { entry[2][1], entry[2][2] };
+    g.scale = { entry[3][1], entry[3][2] };
+    _graphics.push_back(g);
+  }
 }
 
 Render* MainMenuState::GetRender()
