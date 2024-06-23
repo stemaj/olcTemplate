@@ -59,6 +59,7 @@ Render* MainMenuState::GetRender()
 
 std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, float fElapsedTime)
 {
+#if defined(STEMAJ_DEBUG)
   ImVec4 color = ImVec4(_headerColor[0], _headerColor[1], _headerColor[2], _headerColor[3]);
   ImGui::Begin("Main Menu Debug");
   ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
@@ -67,6 +68,7 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
   _headerColor = { color.x, color.y, color.z, color.w };
 
   ImGui::End();
+#endif
 
   auto starter = std::make_unique<Starter>();
   return starter->Update(input, fElapsedTime);
