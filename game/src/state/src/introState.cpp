@@ -13,6 +13,40 @@ olc::utils::Animate2D::AnimationState introCharacterAnimationState;
 IntroState::IntroState() : _fader(3.0f), _render(std::make_unique<IntroRender>())
 {
   _fader.StartFadeIn();
+
+  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
+
+	try
+	{
+		_lua.safe_script_file("scripts/intro.lua");
+	}
+	catch (const sol::error& e)
+	{
+		std::cout << std::string(e.what()) << std::endl;
+	}
+
+  _font = _lua["font"].get_or<std::string>("dogica");
+  _nameOfTheGame = _lua["name_of_the_game"].get_or<std::string>("NAME OF THE GAME");
+  _copyright = _lua["copyright"].get_or<std::string>("(c) riegel games");
+
+  std::vector<float> cppArray = _lua["header_color"].get_or<std::vector<float>>({});
+  for (int i = 0; i < cppArray.size(); i++)
+  {
+    _headerColor[i] = cppArray[i];
+  }
+
+  auto pt = _lua["olc_logo_pos"].get_or<std::array<float,2>>({});
+  _olcLogoPos = PT<float>{pt[0],pt[1]};
+  pt = _lua["riegel_pos"].get_or<std::array<float,2>>({});
+  _riegelPos = PT<float>{pt[0],pt[1]};
+  pt = _lua["daddy_pos"].get_or<std::array<float,2>>({});
+  _daddyPos = PT<float>{pt[0],pt[1]};
+  pt = _lua["vfc_pos"].get_or<std::array<float,2>>({});
+  _vfcPos = PT<float>{pt[0],pt[1]};
+  pt = _lua["name_of_the_game_pos"].get_or<std::array<float,2>>({});
+  _nameOfTheGamePos = PT<float>{pt[0],pt[1]};
+  pt = _lua["copyright_pos"].get_or<std::array<float,2>>({});
+  _copyrightPos = PT<float>{pt[0],pt[1]};
 }
 
 Render* IntroState::GetRender()

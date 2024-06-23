@@ -28,42 +28,54 @@ void IntroRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
   {(float)intro->_chSourceRectSize.x,(float)intro->_chSourceRectSize.y},
   {intro->_chScale.x,intro->_chScale.y});
 
-  const std::string fontName = "ES_Build";
-  auto fontNormal = FT.Font(fontName, FontSize::SMALLER);
-  auto fontBig = FT.Font(fontName, FontSize::SMALL);
-  auto fontBigger = FT.Font(fontName, FontSize::NORMAL);
+  auto fontNormal = FT.Font(intro->_font, FontSize::SMALLER);
+  auto fontBig = FT.Font(intro->_font, FontSize::SMALL);
+  auto fontBigger = FT.Font(intro->_font, FontSize::NORMAL);
 
   olc::Decal* r = nullptr;
 
-  auto t = CO.D(PT<float>{0.05f,0.8f});
+  auto color = olc::Pixel(int(intro->_headerColor[0]*255.0f),
+                int(intro->_headerColor[1]*255.0f),
+                int(intro->_headerColor[2]*255.0f),
+                int(intro->_headerColor[3]*255.0f));
+
   switch (intro->_part)
   {
   case IntroState::Parts::OLCLOGO:
     {
-      auto d = CO.D(PT<float>{0.03f,0.8f});
       float scale = 0.7f * CO.W / AS.Sprite("pge2_logo")->width;
+      auto d = CO.D(intro->_olcLogoPos);
       pge->DrawDecal({(float)d.x, (float)d.y}, AS.Decal("pge2_logo"), {scale,scale});
     }
     break;
   case IntroState::Parts::RIEGEL:
-    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("RIEGEL")), olc::WHITE);
-    pge->DrawDecal({ (float)t.x, (float)t.y }, r);
+    {
+      r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("RIEGEL")), color);
+      auto t = CO.D(intro->_riegelPos);
+      pge->DrawDecal({ (float)t.x, (float)t.y }, r);
+    }
     break;
   case IntroState::Parts::DADDY:
-    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("DADDY DADDY")), olc::WHITE);
-    pge->DrawDecal({ (float)t.x, (float)t.y }, r);
+    {
+      r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("DADDY DADDY")), color);
+      auto t = CO.D(intro->_daddyPos);
+      pge->DrawDecal({ (float)t.x, (float)t.y }, r);
+    }
     break;
   case IntroState::Parts::VFC:
-    r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("VOLCANO FISH CAT")), olc::WHITE);
-    pge->DrawDecal({ (float)t.x, (float)t.y }, r);
+    {
+      r = fontBig->RenderStringToDecal(utf8::utf8to32(std::string("VOLCANO FISH CAT")), color);
+      auto t = CO.D(intro->_vfcPos);
+      pge->DrawDecal({ (float)t.x, (float)t.y }, r);
+    }
     break;
   case IntroState::Parts::GAME:
     {
-      auto p1 = CO.D(PT<float>{0.05f,0.2f});
-      r = fontBigger->RenderStringToDecal(utf8::utf8to32(std::string("NAME OF THE GAME")), olc::WHITE);
+      auto p1 = CO.D(intro->_nameOfTheGamePos);
+      r = fontBigger->RenderStringToDecal(utf8::utf8to32(std::string(intro->_nameOfTheGame)), color);
       pge->DrawDecal({ (float)p1.x, (float)p1.y }, r);
-      auto p2 = CO.D(PT<float>{0.05f,0.85f});
-      r = fontNormal->RenderStringToDecal(utf8::utf8to32(std::string("(c) 2024 riegel games")), olc::WHITE);
+      auto p2 = CO.D(intro->_copyrightPos);
+      r = fontNormal->RenderStringToDecal(utf8::utf8to32(std::string(intro->_copyright)), color);
       pge->DrawDecal({ (float)p2.x, (float)p2.y }, r);
     }
   case IntroState::Parts::BLACK:
