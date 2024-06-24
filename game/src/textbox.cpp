@@ -41,7 +41,8 @@ TextBox::TextBox(const std::string& text,
 	_lineAnchorPoints[1] = { _frameboxUpperLeft.x + _frameboxSize.x / 2 + std::max(1,_frameboxSize.x / 100), 
 													 _frameboxUpperLeft.y + _frameboxSize.y / 2 };
 	
-	ImGui::Begin("Screen Elements Debug");
+#if defined(STEMAJ_DEBUG)
+	ImGui::Begin("Textbox Debug");
 	for (int i = 0; i < 2; i++)
 		ImGui::Text("LineAnchorPoint (%d): (%d, %d)", i, _lineAnchorPoints[i].x, _lineAnchorPoints[i].y);
 		ImGui::Text("Text: (%s)", _text.c_str());
@@ -51,6 +52,7 @@ TextBox::TextBox(const std::string& text,
 								_frameboxUpperLeft.x, _frameboxUpperLeft.y);
 		ImGui::Text("Framebox Size: (%d, %d)", _frameboxSize.x, _frameboxSize.y);
 	ImGui::End();
+#endif
 }
 
 olc::Decal* Decal()

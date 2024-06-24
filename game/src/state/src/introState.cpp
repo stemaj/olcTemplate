@@ -56,13 +56,14 @@ Render* IntroState::GetRender()
 
 std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input, float fElapsedTime)
 {
-/*
-  ImGui::Begin("Intro Debug");
-  ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
-  ImGui::Text("Duration: (%f)", currentDuration);
-  ImGui::Text("Part: (%d)", _part);
-  ImGui::End();
-*/
+#if defined(STEMAJ_DEBUG)
+  // ImGui::Begin("Intro Debug");
+  // ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
+  // ImGui::Text("Duration: (%f)", currentDuration);
+  // ImGui::Text("Part: (%d)", _part);
+  // ImGui::End();
+#endif
+
   auto bgAnim = AN.GetAnimation("pretty_pretty_bg_25pc");
   bgAnim.animation.ChangeState(introBackgroundAnimationState, IDLE);
   const auto& bgFrame = bgAnim.animation.GetFrame(introBackgroundAnimationState);
