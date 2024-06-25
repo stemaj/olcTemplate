@@ -30,25 +30,31 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
     _headerColor[i] = cppArray[i];
   }
 
-  sol::table texts = _lua["texts"];
-  for (auto& pair : texts)
+  if (_lua["texts"].valid())
   {
-    sol::table entry = pair.second;
-    Texts t;
-    t.pos = { entry[1][1], entry[1][2] };
-    t.text = entry[2];
-    _texts.push_back(t);
+    sol::table texts = _lua["texts"];
+    for (auto& pair : texts)
+    {
+      sol::table entry = pair.second;
+      Texts t;
+      t.pos = { entry[1][1], entry[1][2] };
+      t.text = entry[2];
+      _texts.push_back(t);
+    }
   }
 
-  sol::table graphics = _lua["graphics"];
-  for (auto& pair : graphics)
+  if (_lua["graphics"].valid())
   {
-    sol::table entry = pair.second;
-    Graphics g;
-    g.name = entry[1];
-    g.pos = { entry[2][1], entry[2][2] };
-    g.scale = { entry[3][1], entry[3][2] };
-    _graphics.push_back(g);
+    sol::table graphics = _lua["graphics"].get_or<sol::table>({});
+    for (auto& pair : graphics)
+    {
+      sol::table entry = pair.second;
+      Graphics g;
+      g.name = entry[1];
+      g.pos = { entry[2][1], entry[2][2] };
+      g.scale = { entry[3][1], entry[3][2] };
+      _graphics.push_back(g);
+    }
   }
 }
 
