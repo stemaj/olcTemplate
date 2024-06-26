@@ -32,6 +32,8 @@ Sound::~Sound()
 {
   if (_soundEnabled)
   {
+    _currentlyPlaying.clear();
+    _soundEngine->stopAll();
     _soundEngine->deinit();
   }
 }
@@ -54,12 +56,29 @@ void Sound::Play(const std::string& name)
   }
 
   _soundEngine->stopAll();
+  if (_volume > 1e-3)
+  {
+    _soundEngine->setVolume(_handle, _volume);
+  }
   _sample->load((std::string("./assets/wav/") + name + std::string(".wav")).c_str());
   _sample->setLooping(true);
-  _soundEngine->play(*_sample);
+  _handle = _soundEngine->play(*_sample);
+  _volume = _soundEngine->getVolume(_handle);
 
   std::cout << "playing sound\n";
 
 
   _currentlyPlaying = name;
+}
+
+void Sound::Stop(const float fadeTimeMs)
+{
+  if (!_soundEnabled) return;
+
+  if (fadeTimeMs < 1e-3)
+  {
+    _soundEngine->stopAll();
+  }
+  _soundEngine->fadeVolume(_handle, 0.0f, fadeTimeMs);
+  _currentlyPlaying.clear();
 }

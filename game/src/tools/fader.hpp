@@ -18,6 +18,7 @@ public:
   bool IsTurning() const;
   void Update(float fElapsedTime);
   uint8_t GetAlpha() const;
+  float GetFadeDuration() const { return fadeDuration; }
 
 private:
   FadeState fadeState = FadeState::NONE;

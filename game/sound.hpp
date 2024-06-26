@@ -19,6 +19,7 @@ public:
 	void operator=(Sound const&) = delete;
 
   void Play(const std::string& name);
+  void Stop(const float fadeTimeMs);
 private:
   Sound();
   virtual ~Sound();
@@ -28,6 +29,9 @@ private:
   bool _engineInitialized = false;
   std::string _currentlyPlaying = "";
 
+  float _volume = 0.0f;
+
+  unsigned int _handle;
   std::unique_ptr<SoLoud::Soloud> _soundEngine;
   std::unique_ptr<SoLoud::Wav> _sample;
 };

@@ -1,5 +1,6 @@
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/state/levelState.hpp>
+#include <olcTemplate/game/sound.hpp>
 #include <memory>
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
@@ -26,9 +27,20 @@ std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input
 {
    if (input.backSpacePressed)
    {
+    stopMusic(_fader.GetFadeDuration());
     _fader.StartFadeOut();
     _levelToChange = std::make_unique<MainMenuState>();
    }
    _fader.Update(fElapsedTime);
    return _fader.IsTurning() ? std::move(_levelToChange) : std::nullopt;
+}
+
+void LevelState::playMusic(const std::string& name)
+{
+  SO.Play(name);
+}
+
+void LevelState::stopMusic(const float fadingMs)
+{
+  SO.Stop(fadingMs);
 }

@@ -24,6 +24,9 @@ protected:
   std::optional<std::unique_ptr<State>> ChangeLevel(
     const Input& input, float fElapsedTime);
 
+  void playMusic(const std::string& name);
+  void stopMusic(const float fadingMs);
+
   olc::utils::Camera2D _camera;
   bool _cameraConfigured = false;
 
