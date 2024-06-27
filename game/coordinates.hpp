@@ -38,6 +38,7 @@ public:
 
 	int W;
 	int H;
+	int P;
 
 	// some helper functions
 	PT<int> D(PT<float> relativeCoordinate);
