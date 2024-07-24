@@ -30,7 +30,7 @@ Sound::Sound()
 
 Sound::~Sound()
 {
-  if (_soundEnabled)
+  if (_soundEnabled && _engineInitialized)
   {
     _currentlyPlaying.clear();
     _soundEngine->stopAll();
@@ -40,7 +40,7 @@ Sound::~Sound()
 
 void Sound::Play(const std::string& name)
 {
-  if (!_soundEnabled) return;
+  if (!_soundEnabled || !_engineInitialized) return;
 
   if (name.empty() || _currentlyPlaying == name)
   {
@@ -73,7 +73,7 @@ void Sound::Play(const std::string& name)
 
 void Sound::Stop(const float fadeTimeMs)
 {
-  if (!_soundEnabled) return;
+  if (!_soundEnabled || !_engineInitialized) return;
 
   if (fadeTimeMs < 1e-3)
   {
