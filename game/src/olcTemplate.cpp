@@ -67,7 +67,7 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
     wck ? false : GetKey(olc::K4).bPressed,
     wck ? false : GetKey(olc::K5).bPressed,
     wck ? false : GetKey(olc::SPACE).bPressed,
-    wck ? false : GetKey(olc::BACK).bPressed,
+    wck ? false : GetKey(olc::ESCAPE).bPressed,
     };
 
   _game.Update(input, fElapsedTime);
@@ -76,5 +76,5 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
 
   reduceFrameRate(frameStartTime, 1.0f/60.f); // 60 FPS
 
-  return !GetKey(olc::ESCAPE).bPressed;
+  return !GetKey(olc::F12).bPressed;
 }

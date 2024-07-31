@@ -18,7 +18,7 @@ struct Input
   bool k4Pressed;
   bool k5Pressed;
   bool spacePressed;
-  bool backSpacePressed;
+  bool escapePressed;
 };
 
 } // namespace stemaj

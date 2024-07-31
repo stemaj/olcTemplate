@@ -25,7 +25,7 @@ std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input, flo
 
 std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input, float fElapsedTime)
 {
-   if (input.backSpacePressed)
+   if (input.escapePressed)
    {
     stopMusic(_fader.GetFadeDuration());
     _fader.StartFadeOut();
