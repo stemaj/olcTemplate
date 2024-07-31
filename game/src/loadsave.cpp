@@ -58,6 +58,11 @@ int LoadSave::Int(const std::string& name)
   return _luaProfile[name].get_or(_luaDefault[name].get_or(0));
 }
 
+bool LoadSave::Boolean(const std::string& name)
+{
+  return _luaProfile[name].get_or(_luaDefault[name].get_or(false));
+}
+
 PT<float> LoadSave::PTFloat(const std::string& name)
 {
   std::array<float,2> f = {};

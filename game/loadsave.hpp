@@ -20,6 +20,7 @@ public:
   
 	float Float(const std::string& name);
 	int Int(const std::string& name);
+	bool Boolean(const std::string& name);
 	PT<float> PTFloat(const std::string& name);
 	PT<int> PTInt(const std::string& name);
   std::array<PT<float>,4> PTFloat4(const std::string& name);
