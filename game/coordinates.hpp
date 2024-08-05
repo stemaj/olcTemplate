@@ -4,7 +4,6 @@
 #include <iomanip>
 #include <ostream>
 #include <vector>
-#include <array>
 
 namespace stemaj {
 
@@ -13,6 +12,45 @@ struct PT
 {
 	T x;
 	T y;
+
+	// Standardkonstruktor
+	PT() : x(T()), y(T()) {}
+
+	// Konstruktor, der Typumwandlungen erlaubt
+	template <typename U, typename V>
+	PT(U x_, V y_) : x(static_cast<T>(x_)), y(static_cast<T>(y_)) {}
+
+	// Method to convert to another PT type
+	template <typename U>
+	PT<U> to() const
+	{
+		return PT<U>(static_cast<U>(x), static_cast<U>(y));
+	}
+
+	// Addition
+	PT operator+(const PT& other) const
+	{
+			return PT(x + other.x, y + other.y);
+	}
+
+	// Subtraktion
+	PT operator-(const PT& other) const
+	{
+			return PT(x - other.x, y - other.y);
+	}
+
+	// Multiplikation (elementweise)
+	PT operator*(const PT& other) const
+	{
+			return PT(x * other.x, y * other.y);
+	}
+
+	// Division (elementweise)
+	PT operator/(const PT& other) const
+	{
+			return PT(x / other.x, y / other.y);
+	}
+
   bool operator==(const PT& other) const
 	{
 		return x == other.x && y == other.y;
