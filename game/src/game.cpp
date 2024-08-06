@@ -1,3 +1,4 @@
+#include <olcTemplate/game/src/state/logoState.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/state/introState.hpp>
 #include <olcTemplate/game/game.hpp>
@@ -21,7 +22,7 @@ Game::Game()
   bool showIntro = lua["show_intro"].get_or(false);
   if (showIntro)
   {
-    _currentState = std::make_unique<IntroState>();
+    _currentState = std::make_unique<LogoState>();
   }
   else
   {

@@ -1,3 +1,4 @@
+#include "olcTemplate/game/src/state/logoState.hpp"
 #include <memory>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <optional>
@@ -76,6 +77,6 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
   ImGui::End();
 #endif
 
-  auto starter = std::make_unique<Starter>();
+  auto starter = std::make_unique<LogoState>();
   return starter->Update(input, fElapsedTime);
 }
