@@ -7,10 +7,8 @@ using namespace stemaj;
 
 void LoadingRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
 {
-  auto l  = static_cast<Loading*>(state);
-
-  pge->Clear(olc::BLACK);
-  pge->DrawStringDecal({10,10}, "Loading...");
+  pge->Clear(olc::WHITE);
+  pge->DrawStringDecal({10,10}, "Loading...", olc::BLACK);
 }
 
 void LoadingRender::Fade(olc::PixelGameEngine* pge, State* state)

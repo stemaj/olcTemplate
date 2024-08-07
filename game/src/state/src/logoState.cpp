@@ -27,19 +27,12 @@ std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, floa
     return std::make_unique<MainMenuState>();
   }
 
-  std::cout << "State\n";
   auto bgAnim = AN.GetAnimation("Sing_With_Me");
 
   if (!one)
   {
-
-  bgAnim.animation.ChangeState(logoBackgroundAnimationState, IDLE);
-    logoBackgroundAnimationState.fTime = 0.0f;
-    logoBackgroundAnimationState.nIndex = 0;
-  
-  // bgAnim.animation.ChangeState(logoBackgroundAnimationState, MOVERIGHT);
-  // bgAnim.animation.UpdateState(logoBackgroundAnimationState, fElapsedTime);
-  one = true;
+		fElapsedTime = 0.0f;
+		one = true;
   }
   const auto& bgFrame = bgAnim.animation.GetFrame(logoBackgroundAnimationState);
   bgAnim.animation.UpdateState(logoBackgroundAnimationState, fElapsedTime);

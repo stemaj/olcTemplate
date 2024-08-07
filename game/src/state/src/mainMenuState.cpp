@@ -77,6 +77,6 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
   ImGui::End();
 #endif
 
-  auto starter = std::make_unique<LogoState>();
+  auto starter = std::make_unique<Starter>();
   return starter->Update(input, fElapsedTime);
 }

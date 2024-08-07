@@ -22,7 +22,7 @@ std::optional<std::unique_ptr<State>> Loading::Update(const Input& input, float 
 {
   timer += fElapsedTime;
 
-  if (timer > 0.2f && !loadingStarted)
+  if (/*timer > 0.01f && */!loadingStarted)
   {
     AS.Load();
     AN.Load();
@@ -32,7 +32,6 @@ std::optional<std::unique_ptr<State>> Loading::Update(const Input& input, float 
 
   if (AS.Loaded && AN.Loaded && FT.Loaded)
   {
-    std::cout << "geladen\n";
     return std::make_unique<LogoState>();
   }
   return std::nullopt;
