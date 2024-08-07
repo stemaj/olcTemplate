@@ -21,22 +21,35 @@ Render* LogoState::GetRender()
 
 std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, float fElapsedTime)
 {
+  if (input.spacePressed || input.leftMouseClicked)
+  {
+    return std::make_unique<MainMenuState>();
+  }
+
+  if (loading < loadingTime)
+  {
+    loading += fElapsedTime;
+    return std::nullopt;
+  }
+  else
+  {
+    loaded = true;
+  }
+
   auto bgAnim = AN.GetAnimation("Sing_With_Me");
   bgAnim.animation.ChangeState(logoBackgroundAnimationState, IDLE);
   const auto& bgFrame = bgAnim.animation.GetFrame(logoBackgroundAnimationState);
   bgAnim.animation.UpdateState(logoBackgroundAnimationState, fElapsedTime);
 
-  _bgDrawPos = PT<int>{ 0,0 };
   _bgDecal = bgFrame.GetSourceImage()->Decal();
   _bgSourceRectPos = {bgFrame.GetSourceRect().pos.x,bgFrame.GetSourceRect().pos.y};
   _bgSourceRectSize = {bgFrame.GetSourceRect().size.x,bgFrame.GetSourceRect().size.y};
-  float scale =  CO.H / (float)_bgSourceRectSize.x;
+  float scale =  std::min(CO.H / (float)_bgSourceRectSize.y, CO.W / (float)_bgSourceRectSize.x);
   _bgScale = PT<float>{scale,scale};
+  PT<int> mid = { CO.W / 2, CO.H / 2 };
+  _bgDrawPos = PT<int>{ mid.x - (_bgSourceRectSize.x * _bgScale.x) / 2,mid.y - (_bgSourceRectSize.y * _bgScale.y) / 2 };
 
-  if (input.spacePressed || input.leftMouseClicked)
-  {
-    return std::make_unique<MainMenuState>();
-  }
+
   // else if (!_fader.IsFading())
   // {
   //   _fader.StartFadeOut();
