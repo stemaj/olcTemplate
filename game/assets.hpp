@@ -26,6 +26,7 @@ public:
   olc::Renderable* Renderable(const std::string& name);
   
   void Load();
+  bool Loaded = false;
 
 private:
 	Assets() {}

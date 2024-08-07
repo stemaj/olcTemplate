@@ -46,6 +46,7 @@ public:
   stemaj::Animation& GetAnimation(const std::string& name);
 
   void Load();
+  bool Loaded = false;
 private:
 	AnimationMap() {}
 	virtual ~AnimationMap() {}	

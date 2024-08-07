@@ -1,0 +1,39 @@
+#include <olcTemplate/game/assets.hpp>
+#include <olcTemplate/game/animation.hpp>
+#include <olcTemplate/game/fonts.hpp>
+#include "olcTemplate/game/sound.hpp"
+#include "olcTemplate/game/src/render/loadingRender.hpp"
+#include "olcTemplate/game/src/state/logoState.hpp"
+#include <olcTemplate/game/src/state/loading.hpp>
+#include <optional>
+
+using namespace stemaj;
+
+Loading::Loading() : _render(std::make_unique<LoadingRender>())
+{
+}
+
+Render* Loading::GetRender()
+{
+  return _render.get();
+}
+
+std::optional<std::unique_ptr<State>> Loading::Update(const Input& input, float fElapsedTime)
+{
+  timer += fElapsedTime;
+
+  if (timer > 0.2f && !loadingStarted)
+  {
+    AS.Load();
+    AN.Load();
+    FT.Load();
+    loadingStarted = true;
+  }
+
+  if (AS.Loaded && AN.Loaded && FT.Loaded)
+  {
+    std::cout << "geladen\n";
+    return std::make_unique<LogoState>();
+  }
+  return std::nullopt;
+}

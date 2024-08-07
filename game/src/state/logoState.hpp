@@ -35,9 +35,11 @@ public:
   PT<int> _bgSourceRectSize;
   PT<float> _bgScale;
 
-  float loadingTime = 2.0f;
+  float loadingTime = 5.0f;
   float loading = 0.0f;
   bool loaded = false;
+
+  bool one = false;
 
 private:
 

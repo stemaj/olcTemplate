@@ -76,6 +76,8 @@ void Fonts::Load()
       loadFont(entry.path().stem().string(), entry.path().string());
     }
   }
+
+  Loaded = true;
 }
 
 olc::Font* Fonts::Font(const std::string& name, const FontSize fontSize)

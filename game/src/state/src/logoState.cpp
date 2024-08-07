@@ -1,3 +1,4 @@
+#include "olcTemplate/game/sound.hpp"
 #include <chrono>
 #include <olcTemplate/game/src/state/logoState.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
@@ -26,18 +27,20 @@ std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, floa
     return std::make_unique<MainMenuState>();
   }
 
-  if (loading < loadingTime)
-  {
-    loading += fElapsedTime;
-    return std::nullopt;
-  }
-  else
-  {
-    loaded = true;
-  }
-
+  std::cout << "State\n";
   auto bgAnim = AN.GetAnimation("Sing_With_Me");
+
+  if (!one)
+  {
+
   bgAnim.animation.ChangeState(logoBackgroundAnimationState, IDLE);
+    logoBackgroundAnimationState.fTime = 0.0f;
+    logoBackgroundAnimationState.nIndex = 0;
+  
+  // bgAnim.animation.ChangeState(logoBackgroundAnimationState, MOVERIGHT);
+  // bgAnim.animation.UpdateState(logoBackgroundAnimationState, fElapsedTime);
+  one = true;
+  }
   const auto& bgFrame = bgAnim.animation.GetFrame(logoBackgroundAnimationState);
   bgAnim.animation.UpdateState(logoBackgroundAnimationState, fElapsedTime);
 

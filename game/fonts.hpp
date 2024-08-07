@@ -36,6 +36,7 @@ public:
 	olc::Font* Font(const std::string& name, const FontSize fontSize);
 	
 	void Load();
+	bool Loaded = false;
 	
 	PT<int> BoxSize(const std::string& text, const std::string& fontName, const FontSize fontSize);
 	olc::Decal* Decal(const std::string& text, const std::string& fontName, const FontSize fontSize);

@@ -87,4 +87,6 @@ void AnimationMap::Load()
 {
   LoadFrom("./assets/sheets");
   LoadFrom("./olcTemplate/assets/sheets");
+
+  Loaded = true;
 }

@@ -14,11 +14,6 @@ using timePoint = std::chrono::time_point<std::chrono::steady_clock,
 
 bool OlcTemplate::OnUserCreate()
 {
-  std::cout << "Now\n";
-  AS.Load();
-  AN.Load();
-  FT.Load();
-  std::cout << "Now 2\n";
 
 #if defined(STEMAJ_DEBUG)
   _gameLayer = CreateLayer();

@@ -11,11 +11,7 @@ void LogoRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* 
 
   pge->Clear(olc::WHITE);
 
-  if (!intro->loaded)
-  {
-    return;
-  }
-
+  std::cout << "Zeichne " << intro->_bgSourceRectPos.x << " " << intro->_bgSourceRectPos.y << std::endl;
   pge->DrawPartialDecal({(float)intro->_bgDrawPos.x, (float)intro->_bgDrawPos.y},
   intro->_bgDecal,
   {(float)intro->_bgSourceRectPos.x,(float)intro->_bgSourceRectPos.y},
