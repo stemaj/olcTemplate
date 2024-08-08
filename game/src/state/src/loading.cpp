@@ -1,7 +1,6 @@
 #include <olcTemplate/game/assets.hpp>
 #include <olcTemplate/game/animation.hpp>
 #include <olcTemplate/game/fonts.hpp>
-#include "olcTemplate/game/sound.hpp"
 #include "olcTemplate/game/src/render/loadingRender.hpp"
 #include "olcTemplate/game/src/state/logoState.hpp"
 #include <olcTemplate/game/src/state/loading.hpp>
@@ -20,14 +19,19 @@ Render* Loading::GetRender()
 
 std::optional<std::unique_ptr<State>> Loading::Update(const Input& input, float fElapsedTime)
 {
-  timer += fElapsedTime;
+  if (_firstStart && !_loadingStarted)
+  {
+    // give it a little bit to render the loading screen before loading asset stuff
+    _firstStart = false;
+    return std::nullopt;
+  }
 
-  if (/*timer > 0.01f && */!loadingStarted)
+  if (!_loadingStarted)
   {
     AS.Load();
     AN.Load();
     FT.Load();
-    loadingStarted = true;
+    _loadingStarted = true;
   }
 
   if (AS.Loaded && AN.Loaded && FT.Loaded)

@@ -24,6 +24,9 @@ public:
   bool ended = false;
   bool loadingStarted = false;
 private:
+  bool _firstStart = true;
+  bool _loadingStarted = false;
+
   std::unique_ptr<LoadingRender> _render;
 };
 
