@@ -22,7 +22,11 @@ enum AnimationKind : uint8_t
   DOOR = 7,
   ROTATING = 8,
   WIND = 9,
-  COUNT = 10
+  DIE = 10,
+  DIE_LEFT = 11,
+  FIGHT = 12,
+  FIGHT_LEFT = 13,
+  COUNT = 14
 };
 
 struct Animation
