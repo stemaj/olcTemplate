@@ -20,15 +20,7 @@ Game::Game()
 		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  bool showIntro = lua["show_intro"].get_or(false);
-  if (showIntro)
-  {
-    _currentState = std::make_unique<Loading>();
-  }
-  else
-  {
-    _currentState = std::make_unique<MainMenuState>();
-  }
+  _currentState = std::make_unique<Loading>();
 }
 
 void Game::Update(const Input& input, float fElapsedTime)

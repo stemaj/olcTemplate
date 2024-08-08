@@ -1,3 +1,4 @@
+#include "olcTemplate/game/src/state/introState.hpp"
 #include <olcTemplate/game/src/state/logoState.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/animation.hpp>
@@ -9,6 +10,16 @@ using namespace stemaj;
 LogoState::LogoState() : _fader(0.9f), _render(std::make_unique<LogoRender>())
 {
   // no fade in
+
+  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
+	try
+	{
+		_lua.safe_script_file("scripts/settings.lua");
+	}
+	catch (const sol::error& e)
+	{
+		std::cout << std::string(e.what()) << std::endl;
+	}
 }
 
 Render* LogoState::GetRender()
@@ -16,11 +27,21 @@ Render* LogoState::GetRender()
   return _render.get();
 }
 
+std::optional<std::unique_ptr<State>> LogoState::nextState()
+{
+  bool showIntro = _lua["show_intro"].get_or(false);
+  if (showIntro)
+  {
+    return std::make_unique<IntroState>();                
+  }
+  return std::make_unique<MainMenuState>();
+}
+
 std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, float fElapsedTime)
 {
   if (input.spacePressed || input.leftMouseClicked)
   {
-    return std::make_unique<MainMenuState>();
+    return nextState();
   }
   if (!_animationRewindedForStartup)
   {
@@ -54,7 +75,7 @@ std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, floa
     _fader.Update(fElapsedTime);
     if (_fader.IsTurning())
     {
-      return std::make_unique<MainMenuState>();
+      return nextState();
     }
   }
 
