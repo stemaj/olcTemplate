@@ -7,24 +7,24 @@ using namespace stemaj;
 
 void LogoRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
 {
-  auto intro = static_cast<LogoState*>(state);
+  auto l = static_cast<LogoState*>(state);
 
   pge->Clear(olc::WHITE);
 
-  pge->DrawPartialDecal({(float)intro->_bgDrawPos.x, (float)intro->_bgDrawPos.y},
-  intro->_bgDecal,
-  {(float)intro->_bgSourceRectPos.x,(float)intro->_bgSourceRectPos.y},
-  {(float)intro->_bgSourceRectSize.x,(float)intro->_bgSourceRectSize.y},
-  {intro->_bgScale.x,intro->_bgScale.y});
+  pge->DrawPartialDecal({l->_logoSheet.pos.x, l->_logoSheet.pos.y},
+    l->_logoSheet.decal,
+    {l->_logoSheet.sourceRectPos.x,l->_logoSheet.sourceRectPos.y},
+    {l->_logoSheet.sourceRectSize.x,l->_logoSheet.sourceRectSize.y},
+    {l->_logoSheet.scale.x,l->_logoSheet.scale.y});
 }
 
 void LogoRender::Fade(olc::PixelGameEngine* pge, State* state)
 {
-  // auto logo = static_cast<LogoState*>(state);
+  auto logo = static_cast<LogoState*>(state);
 
-  // if (logo->_fader.IsFading() || logo->_fader.IsTurning())
-  // {
-  //   pge->FillRectDecal({0,0},pge->GetScreenSize(),
-  //     olc::Pixel(0,0,0,logo->_fader.GetAlpha()));
-  // }
+  if (logo->_fader.IsFading() || logo->_fader.IsTurning())
+  {
+    pge->FillRectDecal({0,0},pge->GetScreenSize(),
+      olc::Pixel(0,0,0,logo->_fader.GetAlpha()));
+  }
 }

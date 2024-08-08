@@ -1,5 +1,3 @@
-#include "olcTemplate/game/sound.hpp"
-#include <chrono>
 #include <olcTemplate/game/src/state/logoState.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/animation.hpp>
@@ -8,11 +6,9 @@
 
 using namespace stemaj;
 
-olc::utils::Animate2D::AnimationState logoBackgroundAnimationState;
-
-LogoState::LogoState() : _fader(0.01f), _render(std::make_unique<LogoRender>())
+LogoState::LogoState() : _fader(0.9f), _render(std::make_unique<LogoRender>())
 {
-  _fader.StartFadeIn();
+  // no fade in
 }
 
 Render* LogoState::GetRender()
@@ -26,35 +22,41 @@ std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, floa
   {
     return std::make_unique<MainMenuState>();
   }
-
-  auto bgAnim = AN.GetAnimation("Sing_With_Me");
-
-  if (!one)
+  if (!_animationRewindedForStartup)
   {
 		fElapsedTime = 0.0f;
-		one = true;
+		_animationRewindedForStartup = true;
   }
-  const auto& bgFrame = bgAnim.animation.GetFrame(logoBackgroundAnimationState);
-  bgAnim.animation.UpdateState(logoBackgroundAnimationState, fElapsedTime);
 
-  _bgDecal = bgFrame.GetSourceImage()->Decal();
-  _bgSourceRectPos = {bgFrame.GetSourceRect().pos.x,bgFrame.GetSourceRect().pos.y};
-  _bgSourceRectSize = {bgFrame.GetSourceRect().size.x,bgFrame.GetSourceRect().size.y};
-  float scale =  std::min(CO.H / (float)_bgSourceRectSize.y, CO.W / (float)_bgSourceRectSize.x);
-  _bgScale = PT<float>{scale,scale};
+  auto a = AN.GetAnimation("Sing_With_Me");
+  const auto& frame = a.animation.GetFrame(_logoSheet.animationState);
+  a.animation.UpdateState(_logoSheet.animationState, fElapsedTime);
+
+  _logoSheet.decal = frame.GetSourceImage()->Decal();
+  _logoSheet.sourceRectPos = {frame.GetSourceRect().pos.x,frame.GetSourceRect().pos.y};
+  _logoSheet.sourceRectSize = {frame.GetSourceRect().size.x,frame.GetSourceRect().size.y};
+  float scale =  std::min(CO.H / (float)_logoSheet.sourceRectSize.y,
+                          CO.W / (float)_logoSheet.sourceRectSize.x);
+  _logoSheet.scale = PT<float>{scale,scale};
+
   PT<int> mid = { CO.W / 2, CO.H / 2 };
-  _bgDrawPos = PT<int>{ mid.x - (_bgSourceRectSize.x * _bgScale.x) / 2,mid.y - (_bgSourceRectSize.y * _bgScale.y) / 2 };
+  _logoSheet.pos = {mid.x - (_logoSheet.sourceRectSize.x * _logoSheet.scale.x) / 2,
+                    mid.y - (_logoSheet.sourceRectSize.y * _logoSheet.scale.y) / 2};
 
 
-  // else if (!_fader.IsFading())
-  // {
-  //   _fader.StartFadeOut();
-  // }
+  _logoTimeCounter += fElapsedTime;
+  if (_logoTimeCounter > _logoTime)
+  {
+    if (!_fader.IsFading())
+    {
+      _fader.StartFadeOut();
+    }
+    _fader.Update(fElapsedTime);
+    if (_fader.IsTurning())
+    {
+      return std::make_unique<MainMenuState>();
+    }
+  }
 
-  // _fader.Update(fElapsedTime);
-  // if (_fader.IsTurning())
-  // {
-  //   return std::make_unique<MainMenuState>();
-  // }
   return std::nullopt;
 }

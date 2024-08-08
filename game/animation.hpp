@@ -1,14 +1,12 @@
 #ifndef __ANIMATION_HPP
 #define __ANIMATION_HPP
 
+#include <olcTemplate/game/coordinates.hpp>
+#include <olcTemplate/game/src/engine/olcUTIL_Geometry2D.h>
+#include <olcTemplate/game/src/engine/olcUTIL_Animate2D.h>
 #include <cstdint>
 #include <string>
 #include <unordered_map>
-
-#include <olcTemplate/game/src/engine/olcUTIL_Geometry2D.h>
-#include <olcTemplate/game/src/engine/olcUTIL_Animate2D.h>
-
-
 
 namespace stemaj {
 
@@ -34,6 +32,19 @@ struct Animation
   float ox = 0.0f;
   float oy = 0.0f;
   olc::utils::Animate2D::Animation<AnimationKind> animation;
+};
+
+struct Sheet
+{
+  bool initialized = false;
+  PT<float> pos = {0.0f,0.0f};
+  olc::Decal* decal = nullptr;
+  PT<float> sourceRectPos = {0.0f,0.0f};
+  PT<float> sourceRectSize = {0.0f,0.0f};
+  PT<float> scale = {0.0f,0.0f};
+  AnimationKind currentKind = AnimationKind::IDLE;
+  stemaj::Animation asset;
+  olc::utils::Animate2D::AnimationState animationState = {};
 };
 
 class AnimationMap
