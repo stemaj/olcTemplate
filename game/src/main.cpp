@@ -16,7 +16,7 @@ int main()
 #else
   OlcTemplate t;
   
-  if (t.Construct(CO.W, CO.H, CO.P, CO.P))
+  if (t.Construct(CO.W, CO.H, CO.P, CO.P, CO.F))
   {
     t.Start();
   }

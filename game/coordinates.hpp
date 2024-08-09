@@ -77,6 +77,7 @@ public:
 	int W;
 	int H;
 	int P;
+	bool F;
 
 	// some helper functions
 	PT<int> D(PT<float> relativeCoordinate);

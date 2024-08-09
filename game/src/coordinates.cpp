@@ -29,6 +29,7 @@ Coordinates::Coordinates()
   W = lua["width"].get<int>();
   H = lua["height"].get<int>();
   P = lua["pixel_size"].get<int>();
+  F = lua["full_screen"].get<bool>();
 }
 
 PT<int> Coordinates::D(PT<float> relativeCoordinate)
