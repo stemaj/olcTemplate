@@ -52,15 +52,19 @@ void AnimationMap::LoadFrom(const std::string& directory)
     a.ox = lua["ox"];
     a.oy = lua["oy"];
 
-    float frameDuration = lua["frame_duration"].get_or(0.3f);
-    int frameStyle = lua["frame_style"].get_or(0);
+    auto frameDurations = lua["frame_duration"].get_or(std::map<int, float>{});
+    auto frameStyles = lua["frame_style"].get_or(std::map<int, int>{});
 
     auto details = lua["details"].get<std::map<int, std::vector<std::array<int, 2>>>>();
     for (int i = 0; i < AnimationKind::COUNT; i++)
     {
       if (!details.contains(i)) continue;
 
-      olc::utils::Animate2D::FrameSequence frameSequence(frameDuration, (olc::utils::Animate2D::Style)frameStyle);
+      auto fd = frameDurations.contains(i) ? frameDurations[i] : 0.3f;
+      auto fs = frameStyles.contains(i)
+        ? (olc::utils::Animate2D::Style)frameStyles[i]
+        : olc::utils::Animate2D::Style::Repeat;
+      olc::utils::Animate2D::FrameSequence frameSequence(fd, fs);
       auto indicies = details[i];
       auto e = static_cast<AnimationKind>(i);
       for (auto& j : indicies)
