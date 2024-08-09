@@ -1,4 +1,5 @@
-#include <chrono>
+#include <olcTemplate/game/fonts.hpp>
+#include <olcTemplate/game/src/tools/fader.hpp>
 #include <olcTemplate/game/src/state/introState.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/animation.hpp>
@@ -10,10 +11,8 @@ using namespace stemaj;
 olc::utils::Animate2D::AnimationState introBackgroundAnimationState;
 olc::utils::Animate2D::AnimationState introCharacterAnimationState;
 
-IntroState::IntroState() : _fader(3.0f), _render(std::make_unique<IntroRender>())
+IntroState::IntroState() : _render(std::make_unique<IntroRender>())
 {
-  _fader.StartFadeIn();
-
   _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
 	try
@@ -25,28 +24,50 @@ IntroState::IntroState() : _fader(3.0f), _render(std::make_unique<IntroRender>()
 		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  _font = _lua["font"].get_or<std::string>("dogica");
-  _nameOfTheGame = _lua["name_of_the_game"].get_or<std::string>("NAME OF THE GAME");
-  _copyright = _lua["copyright"].get_or<std::string>("(c) riegel games");
 
-  std::vector<float> cppArray = _lua["header_color"].get_or<std::vector<float>>({});
-  for (int i = 0; i < cppArray.size(); i++)
+  _font = _lua["font"].get_or<std::string>("dogica");
+  _fader = std::make_unique<Fader>(_lua["fade_time"].get_or(3.0f));
+  _introTime = _lua["intro_time"].get_or(18.0f);
+  _colors = _lua["colors"].get<std::vector<IntroColor>>();
+  _backgroundColorIndex = _lua["background_color"].get_or(0);
+  
+  sol::table textsTable = _lua["texts"];
+  for (size_t i = 1; i <= textsTable.size(); i++)
   {
-    _headerColor[i] = cppArray[i];
+    sol::table t = textsTable[i];
+    auto p = t.get<std::array<float,2>>(2);
+    _texts.push_back( {
+      t.get<std::string>(1),
+      CO.D({p[0],p[1]}),
+      (FontSize)t.get<int>(3),
+      t.get<float>(4),
+      t.get<float>(5),
+      t.get<int>(6)});
   }
 
-  auto pt = _lua["olc_logo_pos"].get_or<std::array<float,2>>({});
-  _olcLogoPos = PT<float>{pt[0],pt[1]};
-  pt = _lua["riegel_pos"].get_or<std::array<float,2>>({});
-  _riegelPos = PT<float>{pt[0],pt[1]};
-  pt = _lua["daddy_pos"].get_or<std::array<float,2>>({});
-  _daddyPos = PT<float>{pt[0],pt[1]};
-  pt = _lua["vfc_pos"].get_or<std::array<float,2>>({});
-  _vfcPos = PT<float>{pt[0],pt[1]};
-  pt = _lua["name_of_the_game_pos"].get_or<std::array<float,2>>({});
-  _nameOfTheGamePos = PT<float>{pt[0],pt[1]};
-  pt = _lua["copyright_pos"].get_or<std::array<float,2>>({});
-  _copyrightPos = PT<float>{pt[0],pt[1]};
+  sol::table graphicsTable = _lua["graphics"];
+  for (size_t i = 1; i <= graphicsTable.size(); i++)
+  {
+    sol::table t = graphicsTable[i];
+    auto p = t.get<std::array<float,2>>(2);
+    _graphics.push_back( {
+      t.get<std::string>(1),
+      CO.D({p[0],p[1]}),
+      t.get<float>(3),
+      t.get<float>(4),
+      t.get<float>(5)});
+  }
+
+  _animations = _lua["animations"].get<std::vector<IntroAnimations>>();
+
+ 
+  for (const auto a : _animations)
+  {
+    Sheet s;
+    s.asset = AN.GetAnimation(a);
+    s.asset.animation.ChangeState(s.animationState, IDLE);
+    _sheets.push_back(s);
+  }
 }
 
 Render* IntroState::GetRender()
@@ -56,81 +77,74 @@ Render* IntroState::GetRender()
 
 std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input, float fElapsedTime)
 {
-#if defined(STEMAJ_DEBUG)
-  // ImGui::Begin("Intro Debug");
-  // ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
-  // ImGui::Text("Duration: (%f)", currentDuration);
-  // ImGui::Text("Part: (%d)", _part);
-  // ImGui::End();
-#endif
-
-  auto bgAnim = AN.GetAnimation("pretty_pretty_bg_25pc");
-  bgAnim.animation.ChangeState(introBackgroundAnimationState, IDLE);
-  const auto& bgFrame = bgAnim.animation.GetFrame(introBackgroundAnimationState);
-  bgAnim.animation.UpdateState(introBackgroundAnimationState, fElapsedTime);
-
-  _bgDrawPos = PT<int>{ 0,0 };
-  _bgDecal = bgFrame.GetSourceImage()->Decal();
-  _bgSourceRectPos = {bgFrame.GetSourceRect().pos.x,bgFrame.GetSourceRect().pos.y};
-  _bgSourceRectSize = {bgFrame.GetSourceRect().size.x,bgFrame.GetSourceRect().size.y};
-  float scale =  CO.W / (float)_bgSourceRectSize.x;
-  _bgScale = PT<float>{scale,scale};
-
-  auto chAnim = AN.GetAnimation("pretty_pretty_ch_25pc");
-  chAnim.animation.ChangeState(introCharacterAnimationState, IDLE);
-  const auto& chFrame = chAnim.animation.GetFrame(introCharacterAnimationState);
-  chAnim.animation.UpdateState(introCharacterAnimationState, fElapsedTime);
-
-  _chDrawPos = PT<int>{ CO.W * 3 / 5,0 };
-  _chDecal = chFrame.GetSourceImage()->Decal();
-  _chSourceRectPos = {chFrame.GetSourceRect().pos.x,chFrame.GetSourceRect().pos.y};
-  _chSourceRectSize = {chFrame.GetSourceRect().size.x,chFrame.GetSourceRect().size.y};
-  scale =  CO.H / (float)_bgSourceRectSize.y;
-  _chScale = PT<float>{scale,scale};
-
-  auto now = std::chrono::high_resolution_clock::now();
-  currentDuration = std::chrono::duration_cast<std::chrono::milliseconds>(now - _introStartTime).count() / 1000.0f;
-  if (currentDuration < introEndDuration)
+  if (!_animationRewindedForStartup)
   {
-    if (currentDuration > (introEndDuration * 0.19f) && currentDuration < (introEndDuration * 0.31f))
-    {
-      _part = Parts::OLCLOGO;
-    }
-    else if (currentDuration > (introEndDuration * 0.33f) && currentDuration < (introEndDuration * 0.45f))
-    {
-      _part = Parts::RIEGEL;
-    }
-    else if (currentDuration > (introEndDuration * 0.47f) && currentDuration < (introEndDuration * 0.59f))
-    {
-      _part = Parts::DADDY;
-    }
-    else if (currentDuration > (introEndDuration * 0.61f) && currentDuration < (introEndDuration * 0.73f))
-    {
-      _part = Parts::VFC;
-    }
-    else if (currentDuration > (introEndDuration * 0.75f))
-    {
-      _part = Parts::GAME;
-    }
-    else
-    {
-      _part = Parts::BLACK;
-    }
-
-    if (input.spacePressed)
-    {
-      return std::make_unique<MainMenuState>();
-    }
-  }
-  else if (!_fader.IsFading())
-  {
-    _fader.StartFadeOut();
+		fElapsedTime = 0.0f;
+    _fader->StartFadeIn();
+		_animationRewindedForStartup = true;
   }
 
-  _fader.Update(fElapsedTime);
-  if (_fader.IsTurning())
+  _currentTime += fElapsedTime;
+  auto timeInPercent = _currentTime / _introTime;
+
+  for (auto& s : _sheets)
+  {
+    s.asset.animation.UpdateState(s.animationState, fElapsedTime);
+
+    const auto& frame = s.asset.animation.GetFrame(s.animationState);
+    s.decal = frame.GetSourceImage()->Decal();
+    s.sourceRectPos = { frame.GetSourceRect().pos.x, frame.GetSourceRect().pos.y };
+    s.sourceRectSize = { frame.GetSourceRect().size.x, frame.GetSourceRect().size.y };
+    float scale =  std::max(CO.W / (float)s.sourceRectSize.x, CO.H / (float)s.sourceRectSize.y);
+    s.scale = {scale,scale};
+  }
+
+  _activeTextIndicies.clear();
+  for (int i = 0; i < _texts.size(); i++)
+  {
+    if (timeInPercent > _texts[i].startTime && timeInPercent < _texts[i].endTime)
+    {
+      _activeTextIndicies.push_back(i);
+    }
+  }
+  _activeGraphicIndicies.clear();
+  for (int i = 0; i < _graphics.size(); i++)
+  {
+    if (timeInPercent > _graphics[i].startTime && timeInPercent < _graphics[i].endTime)
+    {
+      _activeGraphicIndicies.push_back(i);
+    }
+  }
+
+  if (input.spacePressed || input.leftMouseClicked)
   {
     return std::make_unique<MainMenuState>();
   }
+
+  if (_currentTime < _introTime)
+  {
+    if (_fader->IsFading())
+    {
+      // fade in
+      _fader->Update(fElapsedTime);
+    }
+  }
+  else
+  {
+    if (_fader->IsTurning())
+    {
+      return std::make_unique<MainMenuState>();
+    }
+    else if (!_fader->IsFading())
+    {
+      _fader->StartFadeOut();
+    }
+    else
+    {
+      // fade out
+      _fader->Update(fElapsedTime);
+    }
+  }
+
   return std::nullopt;
 }
