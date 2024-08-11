@@ -11,26 +11,25 @@ using namespace stemaj;
 
 void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
 {
-  auto mainMenu = static_cast<MainMenuState*>(state);
+  auto m = static_cast<MainMenuState*>(state);
 
   pge->Clear(olc::DARK_BLUE);
 
-  for (const auto& g : mainMenu->_graphics)
+  for (const auto& g : m->_graphics)
   {
-    auto a = CO.D({g.pos[0],g.pos[1]});
-    pge->DrawDecal({(float)a.x,(float)a.y} , AS.Decal(g.name), {g.scale[0], g.scale[1]});
+    pge->DrawDecal({ (float)g.pos.x, (float)g.pos.y }, AS.Decal(g.file), {g.scale, g.scale});
   }
 
-  auto fontNormal = FT.Font(mainMenu->_font, FontSize::SMALLER);
-  for (const auto& t : mainMenu->_texts)
+  auto fontNormal = FT.Font(m->_font, FontSize::SMALLER);
+  for (const auto& t : m->_texts)
   {
-    auto a = CO.D({t.pos[0],t.pos[1]});
-
     olc::Decal* r = nullptr;
-    r = fontNormal->RenderStringToDecal(utf8::utf8to32(std::string(t.text)), olc::Pixel(int(mainMenu->_headerColor[0]*255.0f),
-                int(mainMenu->_headerColor[1]*255.0f),
-                int(mainMenu->_headerColor[2]*255.0f),
-                int(mainMenu->_headerColor[3]*255.0f)));
-    pge->DrawDecal({(float)a.x, (float)a.y}, r);
+    r = fontNormal->RenderStringToDecal(
+      utf8::utf8to32(std::string(t.text)),
+      olc::Pixel(m->_colors[t.colorListIndex][0],
+        m->_colors[t.colorListIndex][1],
+        m->_colors[t.colorListIndex][2],
+        m->_colors[t.colorListIndex][3]));
+    pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
   }
 }

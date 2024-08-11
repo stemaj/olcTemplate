@@ -3,6 +3,7 @@
 
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/coordinates.hpp>
+#include <olcTemplate/game/fonts.hpp>
 #include <string>
 #include <olcTemplate/game/input.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
@@ -19,27 +20,29 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
-  std::string _font;
-  std::array<float,4> _headerColor = {1.0f,1.0f, 1.0f, 1.0f};
-
-  struct Graphics
+  using MainMenuColor = std::array<int, 4>;
+  struct MainMenuText
   {
-    std::string name;
-    std::array<float,2> pos;
-    std::array<float,2> scale;
-  };
-  struct Texts
-  {
-    std::array<float,2> pos;
     std::string text;
+    PT<int> pos;
+    FontSize fontSize;
+    int colorListIndex;
+  };
+  struct MainMenuGraphic
+  {
+    std::string file;
+    PT<int> pos;
+    float scale;
   };
 
-  std::vector<Graphics> _graphics;
-  std::vector<Texts> _texts;
+  std::string _font;
 
+  std::vector<MainMenuColor> _colors;
+  int _backgroundColorIndex = 0;
+  std::vector<MainMenuText> _texts;
+  std::vector<MainMenuGraphic> _graphics;
 
 private:
-
   sol::state _lua;
   std::unique_ptr<MainMenuRender> _render;
 };
