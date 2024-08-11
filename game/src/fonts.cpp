@@ -78,6 +78,7 @@ void Fonts::Load()
   }
 
   Loaded = true;
+  std::cout << "Fonts loaded\n";
 }
 
 olc::Font* Fonts::Font(const std::string& name, const FontSize fontSize)

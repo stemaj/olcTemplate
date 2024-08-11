@@ -93,4 +93,5 @@ void AnimationMap::Load()
   LoadFrom("./olcTemplate/assets/sheets");
 
   Loaded = true;
+  std::cout << "Animations loaded\n";
 }

@@ -85,6 +85,7 @@ void Assets::Load()
   }
 
   Loaded = true;
+  std::cout << "Assets loaded\n";
 }
 
 olc::Sprite* Assets::Sprite(const std::string& name)
