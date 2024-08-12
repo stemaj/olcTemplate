@@ -13,23 +13,54 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 {
   auto m = static_cast<MainMenuState*>(state);
 
+  if (_guiManager == nullptr)
+  {
+    _guiManager = std::make_unique<olc::QuickGUI::Manager>(false);
+
+    for (auto& [key, value] : m->_buttons)
+    {
+      if (key == MainMenuState::START_GAME)
+      {
+        auto col = m->_colors[value.colorListIndex];
+        auto font = FT.Font(m->_font, value.fontSize);
+
+        _newGameText = std::make_unique<olc::Renderable>(font->RenderStringToRenderable(
+          utf8::utf8to32(std::string(value.text)),
+          olc::Pixel(col[0],col[1],col[2],col[3])));
+
+        _newGameButton = std::make_unique<olc::QuickGUI::ImageButton>(
+          *_guiManager, *_newGameText, 
+          olc::vf2d{(float)value.pos.x,(float)value.pos.y}, olc::vf2d{
+            (float)_newGameText->Sprite()->width+10,
+            (float)_newGameText->Sprite()->height+10});
+      }
+    }
+  }
+
   pge->Clear(olc::DARK_BLUE);
 
   for (const auto& g : m->_graphics)
   {
-    pge->DrawDecal({ (float)g.pos.x, (float)g.pos.y }, AS.Decal(g.file), {g.scale, g.scale});
+    pge->DrawDecal({ (float)g.pos.x, (float)g.pos.y }, 
+      AS.Decal(g.file), {g.scale, g.scale});
   }
 
-  auto fontNormal = FT.Font(m->_font, FontSize::SMALLER);
   for (const auto& t : m->_texts)
   {
     olc::Decal* r = nullptr;
-    r = fontNormal->RenderStringToDecal(
+    auto col = m->_colors[t.colorListIndex];
+    auto font = FT.Font(m->_font, t.fontSize);
+    r = font->RenderStringToDecal(
       utf8::utf8to32(std::string(t.text)),
-      olc::Pixel(m->_colors[t.colorListIndex][0],
-        m->_colors[t.colorListIndex][1],
-        m->_colors[t.colorListIndex][2],
-        m->_colors[t.colorListIndex][3]));
+      olc::Pixel(col[0],col[1],col[2],col[3]));
     pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
+  }
+
+  _guiManager->Update(pge);
+  _guiManager->DrawDecal(pge);
+
+  if (_newGameButton->bPressed)
+  {
+    m->_startGame = true;
   }
 }

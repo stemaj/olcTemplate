@@ -1,13 +1,11 @@
-#include "olcTemplate/game/src/state/logoState.hpp"
 #include <memory>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
-#include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
-#include <vector>
 
 // entry point for the real game
 #include <game/starter.hpp>
-#include <olcTemplate/game/fonts.hpp>
+#include <optional>
+#include <string>
 
 using namespace stemaj;
 
@@ -50,6 +48,20 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
       CO.D({p[0],p[1]}),
       t.get<float>(3) });
   }
+
+  sol::table buttonsTable = _lua["buttons"];
+  for (auto& pair : buttonsTable)
+  {
+    int key = pair.first.as<int>();
+    sol::table values = pair.second;
+    auto p = values.get<std::array<float, 2>>(2);
+    _buttons[(ButtonAction)key] = {
+      values[1],
+      CO.D({p[0],p[1]}),
+      values[3],
+      values[4]
+    };
+  }
 }
 
 Render* MainMenuState::GetRender()
@@ -75,6 +87,10 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
   ImGui::End();
 #endif
 
-  auto starter = std::make_unique<Starter>();
-  return starter->Update(input, fElapsedTime);
+  if (_startGame)
+  {
+    auto starter = std::make_unique<Starter>();
+    return starter->Update(input, fElapsedTime);
+  }
+  return std::nullopt;
 }

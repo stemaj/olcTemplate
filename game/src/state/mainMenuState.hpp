@@ -20,6 +20,11 @@ public:
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
 
+  enum ButtonAction
+  {
+    START_GAME,
+  };
+
   using MainMenuColor = std::array<int, 4>;
   struct MainMenuText
   {
@@ -41,6 +46,9 @@ public:
   int _backgroundColorIndex = 0;
   std::vector<MainMenuText> _texts;
   std::vector<MainMenuGraphic> _graphics;
+  std::map<ButtonAction, MainMenuText> _buttons;
+
+  bool _startGame = false;
 
 private:
   sol::state _lua;

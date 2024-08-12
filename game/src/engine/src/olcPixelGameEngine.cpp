@@ -21,5 +21,8 @@
 #define OLC_PGEX_TRANSFORMEDVIEW
 #include <olcTemplate/game/src/engine/olcPGEX_TransformedView.h>
 
+#define OLC_PGEX_QUICKGUI
+#include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
+
 #define OLC_PGE_APPLICATION
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
