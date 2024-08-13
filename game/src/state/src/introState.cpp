@@ -61,7 +61,7 @@ IntroState::IntroState() : _render(std::make_unique<IntroRender>())
   _animations = _lua["animations"].get<std::vector<IntroAnimations>>();
 
  
-  for (const auto a : _animations)
+  for (const auto& a : _animations)
   {
     Sheet s;
     s.asset = AN.GetAnimation(a);
