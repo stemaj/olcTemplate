@@ -87,7 +87,11 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
   ImGui::End();
 #endif
 
-  if (_startGame)
+  if (_startGame
+#if defined(STEMAJ_DEBUG)
+    || input.spacePressed
+#endif
+  )
   {
     auto starter = std::make_unique<Starter>();
     return starter->Update(input, fElapsedTime);
