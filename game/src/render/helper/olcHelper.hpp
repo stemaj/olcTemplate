@@ -11,6 +11,8 @@ class OlcHelper
     public:
     static void FillCircleDecal(olc::PixelGameEngine* pge, const int radius, 
         const PT<int> position, const olc::Pixel& color);
+    static void DrawCircleDecal(olc::PixelGameEngine* pge, const int radius,
+        const PT<int> position, const olc::Pixel& color);
 
     static void CreateOneColorDecal(olc::Renderable* r, const olc::Pixel& color);
 };
