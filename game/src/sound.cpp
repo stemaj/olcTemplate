@@ -64,10 +64,6 @@ void Sound::Play(const std::string& name)
   _sample->setLooping(true);
   _handle = _soundEngine->play(*_sample);
   _volume = _soundEngine->getVolume(_handle);
-
-  std::cout << "playing sound\n";
-
-
   _currentlyPlaying = name;
 }
 

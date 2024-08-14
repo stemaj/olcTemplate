@@ -69,13 +69,6 @@ void AnimationMap::LoadFrom(const std::string& directory)
       auto e = static_cast<AnimationKind>(i);
       for (auto& j : indicies)
       {
-        // std::cout << j[0] << std::endl;
-        // std::cout << j[1] << std::endl;
-        // std::cout << entry.path().stem() << std::endl;
-        // std::cout << a.spriteHeight << std::endl;
-        // std::cout << a.spriteWidth << std::endl;
-        // std::cout << e << std::endl;
-
         auto pair = std::make_pair(j[0],j[1]);
         frameSequence.AddFrame( { AS.Renderable(entry.path().stem().string()),
           { {pair.first * a.spriteWidth,pair.second * a.spriteHeight}, 

@@ -196,10 +196,8 @@ PT<int> Pathfinding::ToGridPoint(PT<int> gridDimension, PT<int> displaySize, PT<
 			int distance = CO.Distance(point, location);
 			if (distance < minDistance)
 			{
-				//std::cout << "Distance between " << point << " and " << location << "  --> " << distance;
 				minDistance = distance;
 				ret = {x,y };
-				//std::cout << "    --> new minDistance, PT: " << ret;
 			}
 		}
 	return ret;
