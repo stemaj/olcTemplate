@@ -18,7 +18,7 @@ public:
 	Sound(Sound const&) = delete;
 	void operator=(Sound const&) = delete;
 
-  void Play(const std::string& name);
+  void Play(const std::string& name, bool loop = true);
   void Stop(const float fadeTimeMs);
 private:
   Sound();

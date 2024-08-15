@@ -1,6 +1,7 @@
 #include <memory>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
+#include <olcTemplate/game/sound.hpp>
 
 // entry point for the real game
 #include <game/starter.hpp>
@@ -11,6 +12,8 @@ using namespace stemaj;
 
 MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
 {
+  SO.Play("./olcTemplate/assets/wav/hard-rock-logo-108960.mp3");
+
   _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
   try
@@ -93,6 +96,7 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
 #endif
   )
   {
+    SO.Stop(0.0f);
     auto starter = std::make_unique<Starter>();
     return starter->Update(input, fElapsedTime);
   }

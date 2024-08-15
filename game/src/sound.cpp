@@ -38,14 +38,9 @@ Sound::~Sound()
   }
 }
 
-void Sound::Play(const std::string& name)
+void Sound::Play(const std::string& fileName, bool loop)
 {
-  if (!_soundEnabled || !_engineInitialized) return;
-
-  if (name.empty() || _currentlyPlaying == name)
-  {
-    return;
-  }
+  if (!_soundEnabled) return;
 
   if (!_engineInitialized)
   {
@@ -55,16 +50,29 @@ void Sound::Play(const std::string& name)
     _engineInitialized = true;
   }
 
-  _soundEngine->stopAll();
+  if (fileName.empty())// || _currentlyPlaying == fileName)
+  {
+    return;
+  }
+
+  //_soundEngine->stopAll();
   if (_volume > 1e-3)
   {
     _soundEngine->setVolume(_handle, _volume);
   }
-  _sample->load((std::string("./assets/wav/") + name + std::string(".wav")).c_str());
-  _sample->setLooping(true);
-  _handle = _soundEngine->play(*_sample);
-  _volume = _soundEngine->getVolume(_handle);
-  _currentlyPlaying = name;
+  _sample->load(fileName.c_str());
+  _sample->setLooping(loop);
+	
+	if (loop)
+	{
+		_handle = _soundEngine->playBackground(*_sample);
+		_volume = _soundEngine->getVolume(_handle);
+		_currentlyPlaying = fileName;
+	}
+	else
+	{
+		_soundEngine->play(*_sample);
+	}
 }
 
 void Sound::Stop(const float fadeTimeMs)

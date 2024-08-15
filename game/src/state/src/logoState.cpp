@@ -4,11 +4,14 @@
 #include <olcTemplate/game/animation.hpp>
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
+#include <olcTemplate/game/sound.hpp>
 
 using namespace stemaj;
 
 LogoState::LogoState() : _fader(0.9f), _render(std::make_unique<LogoRender>())
 {
+	SO.Play("./olcTemplate/assets/wav/breaking-news-177297.mp3");
+
   // no fade in
 
   _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
@@ -70,6 +73,7 @@ std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, floa
   {
     if (!_fader.IsFading())
     {
+			SO.Stop(0.9f);
       _fader.StartFadeOut();
     }
     _fader.Update(fElapsedTime);

@@ -35,9 +35,9 @@ std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input
    return _fader.IsTurning() ? std::move(_levelToChange) : std::nullopt;
 }
 
-void LevelState::playMusic(const std::string& name)
+void LevelState::playMusic(const std::string& name, bool loop)
 {
-  SO.Play(name);
+  SO.Play(name, loop);
 }
 
 void LevelState::stopMusic(const float fadingMs)

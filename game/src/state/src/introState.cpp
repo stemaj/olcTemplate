@@ -5,6 +5,7 @@
 #include <olcTemplate/game/animation.hpp>
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
+#include <olcTemplate/game/sound.hpp>
 
 using namespace stemaj;
 
@@ -13,6 +14,8 @@ olc::utils::Animate2D::AnimationState introCharacterAnimationState;
 
 IntroState::IntroState() : _render(std::make_unique<IntroRender>())
 {
+	SO.Play("./olcTemplate/assets/wav/groovy-energy-sports-80-bpm-short-12275.mp3");
+	
   _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
 	try
@@ -137,6 +140,7 @@ std::optional<std::unique_ptr<State>> IntroState::Update(const Input& input, flo
     }
     else if (!_fader->IsFading())
     {
+      SO.Stop(0.9f);
       _fader->StartFadeOut();
     }
     else
