@@ -14537,8 +14537,10 @@ namespace sol { namespace stack {
 namespace sol { namespace stack {
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
+#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
 #endif
 
 	namespace stack_detail {
@@ -14628,7 +14630,9 @@ namespace sol { namespace stack {
 	} // namespace stack_detail
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
+#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic pop
+#endif
 #endif
 
 	template <typename T, typename>
@@ -17290,8 +17294,10 @@ namespace sol {
 		}
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
+#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
 #endif
 
 		template <typename T>
@@ -17336,7 +17342,9 @@ namespace sol {
 		}
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
+#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic pop
+#endif
 #endif
 
 		type get_type(int index_offset = 0) const noexcept {
@@ -28890,7 +28898,9 @@ namespace sol {
 // end of sol/variadic_results.hpp
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
+#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic pop
+#endif
 #elif SOL_IS_ON(SOL_COMPILER_CLANG)
 #elif SOL_IS_ON(SOL_COMPILER_VCXX)
 #pragma warning(pop)

@@ -49,7 +49,7 @@
 
 	Author
 	~~~~~~
-	David Barr, aka javidx9, ©OneLoneCoder 2019, 2020, 2021, 2022
+	David Barr, aka javidx9, ï¿½OneLoneCoder 2019, 2020, 2021, 2022
 
 	Changes:
 	v1.01:		+Made constants inline
@@ -178,10 +178,10 @@ namespace olc::utils::geom2d
 		// Get a line from an indexed side, starting top, going clockwise
 		inline line<T> side(const size_t i) const
 		{
-			if (i & 0b11 == 0) return top();
-			if (i & 0b11 == 1) return right();
-			if (i & 0b11 == 2) return bottom();
-			if (i & 0b11 == 3) return left();
+			if ((i & 0b11) == 0) return top();
+			if ((i & 0b11) == 1) return right();
+			if ((i & 0b11) == 2) return bottom();
+			if ((i & 0b11) == 3) return left();
 		}
 
 		// Get area of rectangle
