@@ -14537,9 +14537,11 @@ namespace sol { namespace stack {
 namespace sol { namespace stack {
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
-#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
+#if defined(__clang__) && defined(__has_warning)
+#if __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
 #endif
 #endif
 
@@ -14630,8 +14632,10 @@ namespace sol { namespace stack {
 	} // namespace stack_detail
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
-#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
+#if defined(__clang__) && defined(__has_warning)
+#if __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic pop
+#endif
 #endif
 #endif
 
@@ -17294,9 +17298,11 @@ namespace sol {
 		}
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
-#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
+#if defined(__clang__) && defined(__has_warning)
+#if __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
 #endif
 #endif
 
@@ -17342,8 +17348,10 @@ namespace sol {
 		}
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
-#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
+#if defined(__clang__) && defined(__has_warning)
+#if __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic pop
+#endif
 #endif
 #endif
 
@@ -28898,8 +28906,10 @@ namespace sol {
 // end of sol/variadic_results.hpp
 
 #if SOL_IS_ON(SOL_COMPILER_GCC)
-#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
+#if defined(__clang__) && defined(__has_warning)
+#if __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic pop
+#endif
 #endif
 #elif SOL_IS_ON(SOL_COMPILER_CLANG)
 #elif SOL_IS_ON(SOL_COMPILER_VCXX)
