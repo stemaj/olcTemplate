@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace SoLoud {
   class Soloud;
@@ -18,22 +19,20 @@ public:
 	Sound(Sound const&) = delete;
 	void operator=(Sound const&) = delete;
 
-  void Play(const std::string& name, bool loop = true);
-  void Stop(const float fadeTimeMs);
+  void StartMusic(const std::string& filePath, float volume, float fadeInTime = 0.0f);
+  void StopMusic(float fadeOutTime = 0.0f);
+  void StartEffect(const std::string& filepath, float volume);
+  void StopAllEffects();
 private:
   Sound();
   virtual ~Sound();
   
   bool _soundEnabled = false;
 
-  bool _engineInitialized = false;
-  std::string _currentlyPlaying = "";
-
-  float _volume = 0.0f;
-
-  unsigned int _handle;
+  unsigned int _musicHandle;
   std::unique_ptr<SoLoud::Soloud> _soundEngine;
-  std::unique_ptr<SoLoud::Wav> _sample;
+  std::unique_ptr<SoLoud::Wav> _music;
+  std::vector<std::unique_ptr<SoLoud::Wav>> _effects;
 };
 
 #define SO Sound::get()

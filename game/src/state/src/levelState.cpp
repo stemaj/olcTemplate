@@ -27,7 +27,8 @@ std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input
 {
    if (input.escapePressed)
    {
-    stopMusic(_fader.GetFadeDuration());
+    stopAllEffects();
+	  stopMusic();
     _fader.StartFadeOut();
     _levelToChange = std::make_unique<MainMenuState>();
    }
@@ -35,12 +36,23 @@ std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input
    return _fader.IsTurning() ? std::move(_levelToChange) : std::nullopt;
 }
 
-void LevelState::playMusic(const std::string& name, bool loop)
+void LevelState::playMusic(const std::string& filePath, const float fadeTime)
 {
-  SO.Play(name, loop);
+  SO.StartMusic(filePath, 0.2f, fadeTime);
 }
 
-void LevelState::stopMusic(const float fadingMs)
+void LevelState::stopMusic(const float fadeTime)
 {
-  SO.Stop(fadingMs);
+  SO.StopAllEffects();
+  SO.StopMusic(fadeTime);
+}
+
+void LevelState::playEffect(const std::string& filePath)
+{
+  SO.StartEffect(filePath, 1.0f);
+}
+
+void LevelState::stopAllEffects()
+{
+  SO.StopAllEffects();
 }

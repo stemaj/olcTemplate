@@ -12,7 +12,7 @@ using namespace stemaj;
 
 MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
 {
-  SO.Play("./olcTemplate/assets/wav/hard-rock-logo-108960.mp3");
+  SO.StartMusic("./olcTemplate/assets/wav/hard-rock-logo-108960.mp3", 0.5f);
 
   _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
@@ -96,7 +96,7 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
 #endif
   )
   {
-    SO.Stop(0.0f);
+    SO.StopMusic();
     auto starter = std::make_unique<Starter>();
     return starter->Update(input, fElapsedTime);
   }

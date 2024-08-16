@@ -1,6 +1,8 @@
+#include <memory>
 #include <olcTemplate/game/sound.hpp>
 #include <olcTemplate/sdk/soloud/include/soloud.h>
 #include <olcTemplate/sdk/soloud/include/soloud_wav.h>
+#include <thread>
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 
@@ -26,63 +28,91 @@ Sound::Sound()
   }
 
   _soundEnabled = lua["sound"].get_or(false);
+
+  if (_soundEnabled)
+  {
+    _soundEngine = std::make_unique<SoLoud::Soloud>();
+    _soundEngine->init();
+  }
 }
 
 Sound::~Sound()
 {
-  if (_soundEnabled && _engineInitialized)
+  if (_soundEnabled && _soundEngine != nullptr)
   {
-    _currentlyPlaying.clear();
     _soundEngine->stopAll();
+    _effects.clear();
     _soundEngine->deinit();
   }
 }
 
-void Sound::Play(const std::string& fileName, bool loop)
+void Sound::StartMusic(const std::string& filePath, float volume, float fadeInTime)
 {
-  if (!_soundEnabled) return;
-
-  if (!_engineInitialized)
-  {
-    _soundEngine = std::make_unique<SoLoud::Soloud>();
-    _soundEngine->init();
-    _sample = std::make_unique<SoLoud::Wav>();
-    _engineInitialized = true;
-  }
-
-  if (fileName.empty())// || _currentlyPlaying == fileName)
+  if (!_soundEnabled || _soundEngine == nullptr)
   {
     return;
   }
 
-  //_soundEngine->stopAll();
-  if (_volume > 1e-3)
+  StopMusic();
+  while (_soundEngine->getActiveVoiceCount() > 0)
   {
-    _soundEngine->setVolume(_handle, _volume);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
-  _sample->load(fileName.c_str());
-  _sample->setLooping(loop);
-	
-	if (loop)
-	{
-		_handle = _soundEngine->playBackground(*_sample);
-		_volume = _soundEngine->getVolume(_handle);
-		_currentlyPlaying = fileName;
-	}
-	else
-	{
-		_soundEngine->play(*_sample);
-	}
+
+  _music = std::make_unique<SoLoud::Wav>();
+  _music->load(filePath.c_str());
+  _music->setLooping(true);
+  _music->setVolume(volume);
+
+  if (fadeInTime > 0.0f)
+  {
+    _soundEngine->fadeVolume(_musicHandle, 0.0f, fadeInTime);
+  }
+  _musicHandle = _soundEngine->play(*_music, volume);
 }
 
-void Sound::Stop(const float fadeTimeMs)
+void Sound::StopMusic(float fadeOutTime)
 {
-  if (!_soundEnabled || !_engineInitialized) return;
-
-  if (fadeTimeMs < 1e-3)
+  if (!_soundEnabled || _soundEngine == nullptr)
   {
-    _soundEngine->stopAll();
+    return;
   }
-  _soundEngine->fadeVolume(_handle, 0.0f, fadeTimeMs);
-  _currentlyPlaying.clear();
+
+  if (fadeOutTime > 0.0f)
+  {
+    _soundEngine->fadeVolume(_musicHandle, 0.0f, fadeOutTime);
+    _soundEngine->scheduleStop(_musicHandle,
+      _soundEngine->getStreamTime(_musicHandle) + fadeOutTime);
+  }
+  else
+  {
+    _soundEngine->stop(_musicHandle);
+  }
+}
+
+void Sound::StartEffect(const std::string& filepath, float volume)
+{
+  if (!_soundEnabled || _soundEngine == nullptr)
+  {
+    return;
+  }
+
+  _effects.emplace_back(std::make_unique<SoLoud::Wav>());
+  _effects[_effects.size()-1]->load(filepath.c_str());
+  _effects[_effects.size()-1]->setVolume(volume);
+  _soundEngine->play(*_effects[_effects.size()-1]);
+}
+
+void Sound::StopAllEffects()
+{
+  if (!_soundEnabled || _soundEngine == nullptr)
+  {
+    return;
+  }
+
+  for (auto& e : _effects)
+  {
+    e->stop();
+  }
+  _effects.clear();
 }

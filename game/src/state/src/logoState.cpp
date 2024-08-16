@@ -10,7 +10,7 @@ using namespace stemaj;
 
 LogoState::LogoState() : _fader(0.9f), _render(std::make_unique<LogoRender>())
 {
-	SO.Play("./olcTemplate/assets/wav/breaking-news-177297.mp3");
+	SO.StartMusic("./olcTemplate/assets/wav/breaking-news-177297.mp3", 0.5f, 0.9f);
 
   // no fade in
 
@@ -73,7 +73,7 @@ std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, floa
   {
     if (!_fader.IsFading())
     {
-			SO.Stop(0.9f);
+			SO.StopMusic(0.9f);
       _fader.StartFadeOut();
     }
     _fader.Update(fElapsedTime);
