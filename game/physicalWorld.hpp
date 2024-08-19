@@ -22,7 +22,7 @@ class PhysicalWorld
 public:
 	virtual ~PhysicalWorld();
 	
-	void LoadFromScript(const std::string& name);
+	void LoadFromScript(const std::string& name, const std::string& prefix);
 	
 	void Step(float fElapsedTime);
 	

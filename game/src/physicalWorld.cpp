@@ -21,7 +21,7 @@ PhysicalWorld::~PhysicalWorld()
 	_world = nullptr;
 }
 
-void PhysicalWorld::LoadFromScript(const std::string& name)
+void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& prefix)
 {
 	//LS.Init(name);
 	
@@ -46,7 +46,7 @@ void PhysicalWorld::LoadFromScript(const std::string& name)
 	
 	_world = std::make_unique<b2World>(b2Vec2(gravity[0], gravity[1]));
 	
-	sol::table rectsTable = lua["box2d_rects"];
+	sol::table rectsTable = lua[prefix + "_rects"];
 	for (size_t i = 1; i <= rectsTable.size(); i++)
 	{
 		sol::table t = rectsTable[i];
