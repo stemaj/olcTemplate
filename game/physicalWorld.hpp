@@ -35,6 +35,10 @@ public:
 	std::pair<PT<float>,float> GetCirclePosAndRadius(const int id);
 	std::pair<PT<float>,PT<float>> GetEdgeEndpoints(const int id);
 	std::vector<PT<float>> GetChainVertex(const int id);
+
+	void SetBoostX(const int id, const float forceX, const float maxSpeedX);
+
+	float GetSpeedX(const int id);
 private:
 
 	float _box2dScale = 0.0f;

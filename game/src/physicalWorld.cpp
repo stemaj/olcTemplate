@@ -82,6 +82,25 @@ void PhysicalWorld::Step(float fElapsedTime)
 	_world->Step(fElapsedTime, 6, 2);
 }
 
+void PhysicalWorld::SetBoostX(const int id, const float forceX, const float maxSpeedX)
+{
+	b2Body* body = _bodyPtrs[id];
+	b2Vec2 velocity = body->GetLinearVelocity();
+	if (velocity.x < maxSpeedX)
+	{
+		b2Vec2 force(forceX, 0.0f);
+		b2Vec2 point = body->GetWorldCenter();
+		body->ApplyForce(force, point, true);
+	}
+}
+
+float PhysicalWorld::GetSpeedX(const int id)
+{
+	if (_bodyPtrs.contains(id))
+		return _bodyPtrs[id]->GetLinearVelocity().x;
+	return 0.0f;
+}
+
 std::unordered_map<int, std::vector<PT<float>>> PhysicalWorld::GetPolygons()
 {
 	std::unordered_map<int, std::vector<PT<float>>> ret;
