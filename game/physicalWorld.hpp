@@ -25,6 +25,8 @@ public:
 	void LoadFromScript(const std::string& name, const std::string& prefix);
 	
 	void Step(float fElapsedTime);
+
+	PT<float> GetCenterPoint(const int id);
 	
 	std::unordered_map<int, std::vector<PT<float>>> GetPolygons();
 	std::unordered_map<int, std::pair<PT<float>,float>> GetCircles();

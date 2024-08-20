@@ -87,6 +87,12 @@ void PhysicalWorld::Step(float fElapsedTime)
 	_world->Step(fElapsedTime, 6, 2);
 }
 
+PT<float> PhysicalWorld::GetCenterPoint(const int id)
+{
+	auto wc = _bodyPtrs[id]->GetWorldCenter();
+	return { wc.x/_box2dScale, wc.y/_box2dScale };
+}
+
 void PhysicalWorld::SetBoostX(const int id, const float forceX, const float maxSpeedX)
 {
 	b2Body* body = _bodyPtrs[id];
