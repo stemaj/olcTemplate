@@ -26,7 +26,11 @@ enum AnimationKind : uint8_t
   DIE_LEFT = 11,
   FIGHT = 12,
   FIGHT_LEFT = 13,
-  COUNT = 14
+  JUMP = 14,
+  JUMP_LEFT = 15,
+  FLY = 16,
+  FLY_LEFT = 17,
+  COUNT = 18
 };
 
 struct Animation
