@@ -55,14 +55,19 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		auto size = t.get<std::array<float,2>>(3);
 		auto angle = t.get<float>(4);
 		auto type = t.get<int>(5);
-		
+		auto dens = t.get<float>(6);
+		auto rest = t.get<float>(7);
+		auto fric = t.get<float>(8);
+		auto lDamp = t.get<float>(9);
+		auto aDamp = t.get<float>(10);		
+
 		b2PolygonShape polygonShape;
 		polygonShape.SetAsBox(size[0]*_box2dScale,size[1]*_box2dScale);
 		
 		b2FixtureDef fixtureDef;
-		fixtureDef.density = 1.0f;
-		fixtureDef.restitution = 0.2f;
-		fixtureDef.friction = 0.0f;
+		fixtureDef.density = dens;
+		fixtureDef.restitution = rest;
+		fixtureDef.friction = fric;
 		fixtureDef.shape = &polygonShape;
 
 		b2BodyDef bodyDef;
@@ -71,8 +76,8 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		bodyDef.angle = angle;
 		_bodyPtrs[id] = _world->CreateBody(&bodyDef);
 		_bodyPtrs[id]->CreateFixture(&fixtureDef);
-//		_bodyPtrs[id]->SetLinearDamping(10.0f);
-//		_bodyPtrs[id]->SetAngularDamping(10.0f);
+		_bodyPtrs[id]->SetLinearDamping(lDamp);
+		_bodyPtrs[id]->SetAngularDamping(aDamp);
 		_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)id;
 	}
 }
