@@ -21,7 +21,7 @@ PhysicalWorld::~PhysicalWorld()
 	_world = nullptr;
 }
 
-void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& prefix)
+void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& prefix, Userdata* userdata)
 {
 	//LS.Init(name);
 	
@@ -59,7 +59,7 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		auto rest = t.get<float>(7);
 		auto fric = t.get<float>(8);
 		auto lDamp = t.get<float>(9);
-		auto aDamp = t.get<float>(10);		
+		auto aDamp = t.get<float>(10);
 
 		b2PolygonShape polygonShape;
 		polygonShape.SetAsBox(size[0]*_box2dScale,size[1]*_box2dScale);
@@ -78,7 +78,7 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		_bodyPtrs[id]->CreateFixture(&fixtureDef);
 		_bodyPtrs[id]->SetLinearDamping(lDamp);
 		_bodyPtrs[id]->SetAngularDamping(aDamp);
-		_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)id;
+		_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)userdata;
 	}
 }
 
@@ -264,4 +264,63 @@ std::vector<PT<float>> PhysicalWorld::GetChainVertex(const int id)
 		}
 	}
 	return ret;
+}
+
+void PhysicalWorld::SetListener(b2ContactListener* listener)
+{
+	_world->SetContactListener(listener);
+}
+
+void GroundedListener::BeginContact(b2Contact* contact)
+{
+	b2Body* bodyA = contact->GetFixtureA()->GetBody();
+  b2Body* bodyB = contact->GetFixtureB()->GetBody();
+
+	if ((bodyA->GetType() == b2_dynamicBody && bodyB->GetType() == b2_staticBody) ||
+	    (bodyA->GetType() == b2_staticBody && bodyB->GetType() == b2_dynamicBody))
+	{
+		if (bodyA->GetType() == b2_dynamicBody)
+		{
+			_aInContact++;
+			if (_aInContact == 1)
+			{
+				reinterpret_cast<PhysicalWorld::Userdata*>(bodyA->GetUserData().pointer)->inContact = true;
+			}
+		}
+		else
+		{
+			_bInContact++;
+			if (_bInContact == 1)
+			{
+				reinterpret_cast<PhysicalWorld::Userdata*>(bodyB->GetUserData().pointer)->inContact = true;
+			}
+		}
+	}
+}
+
+void GroundedListener::EndContact(b2Contact* contact)
+{
+	b2Body* bodyA = contact->GetFixtureA()->GetBody();
+  b2Body* bodyB = contact->GetFixtureB()->GetBody();
+
+	if ((bodyA->GetType() == b2_dynamicBody && bodyB->GetType() == b2_staticBody) ||
+	    (bodyA->GetType() == b2_staticBody && bodyB->GetType() == b2_dynamicBody))
+	{
+		if (bodyA->GetType() == b2_dynamicBody)
+		{
+			_aInContact--;
+			if (_aInContact == 0)
+			{
+				reinterpret_cast<PhysicalWorld::Userdata*>(bodyA->GetUserData().pointer)->inContact = false;
+			}
+		}
+		else
+		{
+			_bInContact--;
+			if (_bInContact == 0)
+			{
+				reinterpret_cast<PhysicalWorld::Userdata*>(bodyB->GetUserData().pointer)->inContact = false;
+			}
+		}
+	}
 }

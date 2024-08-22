@@ -1,6 +1,7 @@
 #ifndef __PHYSICALWORLD_HPP
 #define __PHYSICALWORLD_HPP
 
+#include <memory>
 #include <olcTemplate/sdk/box2d/include/box2d.h>
 #include <olcTemplate/game/coordinates.hpp>
 #include <string>
@@ -17,12 +18,26 @@ struct PhysicalRectangle
 	float h;
 };
 
+class GroundedListener : public b2ContactListener
+{
+public:
+  void BeginContact(b2Contact* contact) override;
+	void EndContact(b2Contact* contact) override;
+private:
+	int _aInContact = 0;
+	int _bInContact = 0;
+};
+
 class PhysicalWorld
 {
 public:
+	struct Userdata {
+		bool inContact = false;
+	};
+
 	virtual ~PhysicalWorld();
 	
-	void LoadFromScript(const std::string& name, const std::string& prefix);
+	void LoadFromScript(const std::string& name, const std::string& prefix, Userdata* userdata);
 	
 	void Step(float fElapsedTime);
 
@@ -41,6 +56,8 @@ public:
 	void SetBoostX(const int id, const float forceX, const float maxSpeedX);
 
 	float GetSpeedX(const int id);
+
+	void SetListener(b2ContactListener* listener);
 private:
 
 	float _box2dScale = 0.0f;
