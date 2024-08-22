@@ -48,6 +48,11 @@ void LoadSave::Init(const std::string& level)
 	}
 }
 
+std::string LoadSave::String(const std::string& name)
+{
+  return _luaProfile[name].get_or(_luaDefault[name].get_or(std::string()));
+}
+
 float LoadSave::Float(const std::string& name)
 {
   return _luaProfile[name].get_or(_luaDefault[name].get_or(0.0f));
@@ -95,6 +100,11 @@ std::array<PT<float>,4> LoadSave::PTFloat4(const std::string& name)
 void LoadSave::SaveEmpty()
 {
   _outFile << "\n";
+}
+
+void LoadSave::SaveString(const std::string& name, const std::string& value)
+{
+  _outFile << name << " = " << value << "\n";
 }
 
 void LoadSave::SaveFloat(const std::string& name, const float value)
