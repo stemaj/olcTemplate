@@ -9,15 +9,6 @@
 
 namespace stemaj {
 
-struct PhysicalRectangle
-{
-	int id;
-	float x;
-	float y;
-	float w;
-	float h;
-};
-
 class GroundedListener : public b2ContactListener
 {
 public:
@@ -52,6 +43,10 @@ public:
 	std::pair<PT<float>,float> GetCirclePosAndRadius(const int id);
 	std::pair<PT<float>,PT<float>> GetEdgeEndpoints(const int id);
 	std::vector<PT<float>> GetChainVertex(const int id);
+
+	bool IsBodyGrounded(const int id);
+
+	void SetBoostXY(const int id, const float forceX, const float forceY);
 
 	void SetBoostX(const int id, const float forceX, const float maxSpeedX);
 

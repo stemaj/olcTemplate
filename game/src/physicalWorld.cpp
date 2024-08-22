@@ -93,6 +93,14 @@ PT<float> PhysicalWorld::GetCenterPoint(const int id)
 	return { wc.x/_box2dScale, wc.y/_box2dScale };
 }
 
+void PhysicalWorld::SetBoostXY(const int id, const float forceX, const float forceY)
+{
+	b2Body* body = _bodyPtrs[id];
+	b2Vec2 force(forceX, forceY);
+	b2Vec2 point = body->GetWorldCenter();
+	body->ApplyForce(force, point, true);
+}
+
 void PhysicalWorld::SetBoostX(const int id, const float forceX, const float maxSpeedX)
 {
 	b2Body* body = _bodyPtrs[id];
@@ -264,6 +272,11 @@ std::vector<PT<float>> PhysicalWorld::GetChainVertex(const int id)
 		}
 	}
 	return ret;
+}
+
+bool PhysicalWorld::IsBodyGrounded(const int id)
+{
+	return reinterpret_cast<PhysicalWorld::Userdata*>(_bodyPtrs[id]->GetUserData().pointer)->inContact;
 }
 
 void PhysicalWorld::SetListener(b2ContactListener* listener)
