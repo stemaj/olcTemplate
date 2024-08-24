@@ -102,10 +102,10 @@ int Fonts::toInt(FontSize f)
   switch (f)
   {
 		case FontSize::SMALLEST:
-			ret = int((float)fac * 0.02f);
+			ret = int((float)fac * 0.03f);
       break;
 		case FontSize::SMALLER:
-			ret = int((float)fac * 0.03f);
+			ret = int((float)fac * 0.05f);
       break;
 		case FontSize::SMALL:
 			ret = int((float)fac * 0.08f);

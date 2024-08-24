@@ -37,7 +37,7 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
     }
   }
 
-  pge->Clear(olc::DARK_BLUE);
+  pge->Clear(olc::WHITE);
 
   for (const auto& g : m->_graphics)
   {
@@ -56,6 +56,10 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
     pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
   }
 
+  _guiManager->colNormal = olc::Pixel(255,207,131);
+  _guiManager->colHover = olc::WHITE;
+  _guiManager->colClick = olc::WHITE;
+ 
   _guiManager->Update(pge);
   _guiManager->DrawDecal(pge);
 
