@@ -51,9 +51,9 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 	{
 		sol::table t = rectsTable[i];
 		int id = t.get<int>(1);
-		auto pos = t.get<std::array<float,2>>(2);
-		auto size = t.get<std::array<float,2>>(3);
-		auto angle = t.get<float>(4);
+		auto p1 = t.get<std::array<float,2>>(2);
+		auto p2 = t.get<std::array<float,2>>(3);
+		auto height = t.get<float>(4);
 		auto type = t.get<int>(5);
 		auto dens = t.get<float>(6);
 		auto rest = t.get<float>(7);
@@ -61,8 +61,12 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		auto lDamp = t.get<float>(9);
 		auto aDamp = t.get<float>(10);
 
+		PT<float> midpoint = {(p1[0] + p2[0])/2.0f, (p1[1] + p2[1])/2.0f };
+		float length = sqrt( pow(p2[0] - p1[0],2) + pow(p2[1] - p1[1],2) );
+		float angle = std::atan2( p2[1] - p1[1], p2[0] - p1[0] );
+
 		b2PolygonShape polygonShape;
-		polygonShape.SetAsBox(size[0]*_box2dScale,size[1]*_box2dScale);
+		polygonShape.SetAsBox(length*_box2dScale/2.0f,height*_box2dScale/2.0f);
 		
 		b2FixtureDef fixtureDef;
 		fixtureDef.density = dens;
@@ -71,7 +75,7 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		fixtureDef.shape = &polygonShape;
 
 		b2BodyDef bodyDef;
-		bodyDef.position.Set(pos[0]*_box2dScale,pos[1]*_box2dScale);
+		bodyDef.position.Set(midpoint.x*_box2dScale,midpoint.y*_box2dScale);
 		bodyDef.type = (b2BodyType)type;
 		bodyDef.angle = angle;
 		_bodyPtrs[id] = _world->CreateBody(&bodyDef);
