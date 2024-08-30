@@ -40,26 +40,26 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		std::cout << std::string(e.what()) << std::endl;
 	}
 	
-	_box2dScale = lua["box2d_scale"].get<float>();
+	_box2dScale = lua["box2d_scale"].get_or(0.0f);
 	
-	auto gravity = lua["box2d_gravity"].get<std::array<float,2>>();
+	auto gravity = lua["box2d_gravity"].get_or<std::array<float,2>>({});
 	
 	_world = std::make_unique<b2World>(b2Vec2(gravity[0], gravity[1]));
 	
-	sol::table rectsTable = lua[prefix + "_rects"];
+	sol::table rectsTable = lua[prefix + "_rects"].get_or(sol::table());
 	for (size_t i = 1; i <= rectsTable.size(); i++)
 	{
 		sol::table t = rectsTable[i];
-		int id = t.get<int>(1);
-		auto p1 = t.get<std::array<float,2>>(2);
-		auto p2 = t.get<std::array<float,2>>(3);
-		auto height = t.get<float>(4);
-		auto type = t.get<int>(5);
-		auto dens = t.get<float>(6);
-		auto rest = t.get<float>(7);
-		auto fric = t.get<float>(8);
-		auto lDamp = t.get<float>(9);
-		auto aDamp = t.get<float>(10);
+		int id = t.get_or(1, 0);
+		auto p1 = t.get_or<std::array<float,2>>(2,{});
+		auto p2 = t.get_or<std::array<float,2>>(3,{});
+		float height = t.get_or(4,0.0f);
+		int type = t.get_or(5,0);
+		float dens = t.get_or(6,0.0f);
+		float rest = t.get_or(7,0.0f);
+		float fric = t.get_or(8,0.0f);
+		float lDamp = t.get_or(9,0.0f);
+		float aDamp = t.get_or(10,0.0f);
 
 		PT<float> midpoint = {(p1[0] + p2[0])/2.0f, (p1[1] + p2[1])/2.0f };
 		float length = sqrt( pow(p2[0] - p1[0],2) + pow(p2[1] - p1[1],2) );

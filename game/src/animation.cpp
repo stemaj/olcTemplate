@@ -47,15 +47,15 @@ void AnimationMap::LoadFrom(const std::string& directory)
     }
 
     stemaj::Animation a;
-    a.spriteWidth = lua["spriteWidth"];
-    a.spriteHeight = lua["spriteHeight"];
-    a.ox = lua["ox"];
-    a.oy = lua["oy"];
+    a.spriteWidth = lua["spriteWidth"].get_or(0);
+    a.spriteHeight = lua["spriteHeight"].get_or(0);
+    a.ox = lua["ox"].get_or(0.0f);
+    a.oy = lua["oy"].get_or(0.0f);
 
     auto frameDurations = lua["frame_duration"].get_or(std::map<int, float>{});
     auto frameStyles = lua["frame_style"].get_or(std::map<int, int>{});
 
-    auto details = lua["details"].get<std::map<int, std::vector<std::array<int, 2>>>>();
+    auto details = lua["details"].get_or<std::map<int, std::vector<std::array<int, 2>>>>({});
     for (int i = 0; i < AnimationKind::COUNT; i++)
     {
       if (!details.contains(i)) continue;

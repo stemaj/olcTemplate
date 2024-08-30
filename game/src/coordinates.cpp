@@ -26,10 +26,10 @@ Coordinates::Coordinates()
 		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  W = lua["width"].get<int>();
-  H = lua["height"].get<int>();
-  P = lua["pixel_size"].get<int>();
-  F = lua["full_screen"].get<bool>();
+  W = lua["width"].get_or(800);
+  H = lua["height"].get_or(360);
+  P = lua["pixel_size"].get_or(1);
+  F = lua["full_screen"].get_or(false);
 }
 
 PT<int> Coordinates::D(PT<float> relativeCoordinate)

@@ -31,21 +31,21 @@ IntroState::IntroState() : _render(std::make_unique<IntroRender>())
   _font = _lua["font"].get_or<std::string>("dogica");
   _fader = std::make_unique<Fader>(_lua["fade_time"].get_or(3.0f));
   _introTime = _lua["intro_time"].get_or(18.0f);
-  _colors = _lua["colors"].get<std::vector<IntroColor>>();
+  _colors = _lua["colors"].get_or<std::vector<IntroColor>>({});
   _backgroundColorIndex = _lua["background_color"].get_or(0);
   
-  sol::table textsTable = _lua["texts"];
+  sol::table textsTable = _lua["texts"].get_or(sol::table());
   for (size_t i = 1; i <= textsTable.size(); i++)
   {
     sol::table t = textsTable[i];
-    auto p = t.get<std::array<float,2>>(2);
+    auto p = t.get_or<std::array<float,2>>(2,{});
     _texts.push_back( {
-      t.get<std::string>(1),
+      t.get_or<std::string>(1,""),
       CO.D({p[0],p[1]}),
-      (FontSize)t.get<int>(3),
-      t.get<float>(4),
-      t.get<float>(5),
-      t.get<int>(6)});
+      (FontSize)t.get_or(3,0),
+      t.get_or(4,0.0f),
+      t.get_or(5,0.0f),
+      t.get_or(6,0)});
   }
 
   sol::table graphicsTable = _lua["graphics"];
@@ -61,7 +61,7 @@ IntroState::IntroState() : _render(std::make_unique<IntroRender>())
       t.get<float>(5)});
   }
 
-  _animations = _lua["animations"].get<std::vector<IntroAnimations>>();
+  _animations = _lua["animations"].get_or<std::vector<IntroAnimations>>({});
 
  
   for (const auto& a : _animations)

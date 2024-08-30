@@ -1,3 +1,5 @@
+#include "olcTemplate/game/fonts.hpp"
+#include "sol.hpp"
 #include <memory>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
@@ -26,10 +28,10 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
   }
 
   _font = _lua["font"].get_or<std::string>("dogica");
-  _colors = _lua["colors"].get<std::vector<MainMenuColor>>();
+  _colors = _lua["colors"].get_or<std::vector<MainMenuColor>>({});
   _backgroundColorIndex = _lua["background_color"].get_or(0);
 
-  sol::table textsTable = _lua["texts"];
+  sol::table textsTable = _lua["texts"].get_or(sol::table(_lua,sol::create));
   for (size_t i = 1; i <= textsTable.size(); i++)
   {
     sol::table t = textsTable[i];
@@ -41,28 +43,28 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
       t.get<int>(4) });
   }
 
-  sol::table graphicsTable = _lua["graphics"];
+  sol::table graphicsTable = _lua["graphics"].get_or(sol::table(_lua,sol::create));
   for (size_t i = 1; i <= graphicsTable.size(); i++)
   {
     sol::table t = graphicsTable[i];
-    auto p = t.get<std::array<float, 2>>(2);
+    auto p = t.get_or<std::array<float, 2>>(2,{});
     _graphics.push_back({
-      t.get<std::string>(1),
+      t.get_or<std::string>(1,""),
       CO.D({p[0],p[1]}),
-      t.get<float>(3) });
+      t.get_or(3,0.0f) });
   }
 
-  sol::table buttonsTable = _lua["buttons"];
-  for (auto& pair : buttonsTable)
+  sol::table buttonsTable = _lua["buttons"].get_or(sol::table(_lua,sol::create));
+  for (auto& [key, values] : buttonsTable)
   {
-    int key = pair.first.as<int>();
-    sol::table values = pair.second;
-    auto p = values.get<std::array<float, 2>>(2);
-    _buttons[(ButtonAction)key] = {
-      values[1],
+    //int key = pair.first.as<int>();
+    //sol::table values = pair.second;
+    auto p = ((sol::table)values).get_or<std::array<float, 2>>(2,{});
+    _buttons[(ButtonAction)key.as<int>()] = {
+      ((sol::table)values).get_or<std::string>(1,""),
       CO.D({p[0],p[1]}),
-      values[3],
-      values[4]
+      ((sol::table)values).get_or(3,(FontSize)0),
+      ((sol::table)values).get_or(4,0),
     };
   }
 }
