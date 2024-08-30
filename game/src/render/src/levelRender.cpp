@@ -1,3 +1,4 @@
+#include <olcTemplate/game/src/render/render.hpp>
 #include <olcTemplate/game/src/render/levelRender.hpp>
 #include <olcTemplate/game/src/state/levelState.hpp>
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>

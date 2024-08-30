@@ -1,6 +1,9 @@
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
+#include <olcTemplate/game/src/render/introRender.hpp>
 #include <olcTemplate/game/src/state/introState.hpp>
+#include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
+#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/animation.hpp>
 #include <optional>

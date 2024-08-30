@@ -1,9 +1,13 @@
-#include <olcTemplate/game/src/state/loading.hpp>
-#include <olcTemplate/game/src/state/logoState.hpp>
-#include <olcTemplate/game/src/state/mainMenuState.hpp>
-#include <olcTemplate/game/src/state/introState.hpp>
 #include <olcTemplate/game/game.hpp>
-#include <olcTemplate/game/src/render/render.hpp>
+#include <olcTemplate/game/src/render/loadingRender.hpp>
+#include <olcTemplate/game/src/state/loading.hpp>
+#define SOL_ALL_SAFETIES_ON 1
+#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
+
+// #include <olcTemplate/game/src/state/logoState.hpp>
+// #include <olcTemplate/game/src/state/mainMenuState.hpp>
+// #include <olcTemplate/game/src/state/introState.hpp>
+// #include <olcTemplate/game/src/render/render.hpp>
 
 using namespace stemaj;
 

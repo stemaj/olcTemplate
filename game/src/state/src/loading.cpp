@@ -1,9 +1,10 @@
+#include <olcTemplate/game/src/render/loadingRender.hpp>
+#include <olcTemplate/game/src/state/loading.hpp>
+#include <olcTemplate/game/src/render/logoRender.hpp>
+#include <olcTemplate/game/src/state/logoState.hpp>
 #include <olcTemplate/game/assets.hpp>
 #include <olcTemplate/game/animation.hpp>
 #include <olcTemplate/game/fonts.hpp>
-#include "olcTemplate/game/src/render/loadingRender.hpp"
-#include "olcTemplate/game/src/state/logoState.hpp"
-#include <olcTemplate/game/src/state/loading.hpp>
 #include <optional>
 
 using namespace stemaj;

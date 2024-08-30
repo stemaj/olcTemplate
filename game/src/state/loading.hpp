@@ -3,13 +3,15 @@
 
 #include <olcTemplate/game/src/state/state.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
-#include <olcTemplate/game/src/render/loadingRender.hpp>
 
 namespace olc {
   class Decal;
 }
 
 namespace stemaj {
+
+class Render;
+class LoadingRender;
 
 class Loading : public State
 {

@@ -1,7 +1,9 @@
+#include <olcTemplate/game/src/render/render.hpp>
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
 #include <olcTemplate/game/src/engine/olcPGEX_TTF.h>
+#include "olcTemplate/game/src/engine/olcPGEX_QuickGUI.h"
 #include <olcTemplate/game/assets.hpp>
 #include <olcTemplate/game/fonts.hpp>
 #define UTF_CPP_CPLUSPLUS 202002L
@@ -13,9 +15,9 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 {
   auto m = static_cast<MainMenuState*>(state);
 
-  if (_guiManager == nullptr)
+  if (m->_guiManager == nullptr)
   {
-    _guiManager = std::make_unique<olc::QuickGUI::Manager>(false);
+    m->_guiManager = std::make_unique<olc::QuickGUI::Manager>(false);
 
     for (auto& [key, value] : m->_buttons)
     {
@@ -29,7 +31,7 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
           olc::Pixel(col[0],col[1],col[2],col[3])));
 
         _newGameButton = std::make_unique<olc::QuickGUI::ImageButton>(
-          *_guiManager, *_newGameText, 
+          *m->_guiManager, *_newGameText, 
           olc::vf2d{(float)value.pos.x,(float)value.pos.y}, olc::vf2d{
             (float)_newGameText->Sprite()->width+10,
             (float)_newGameText->Sprite()->height+10});
@@ -56,12 +58,12 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
     pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
   }
 
-  _guiManager->colNormal = olc::Pixel(255,207,131);
-  _guiManager->colHover = olc::WHITE;
-  _guiManager->colClick = olc::WHITE;
+  m->_guiManager->colNormal = olc::Pixel(255,207,131);
+  m->_guiManager->colHover = olc::WHITE;
+  m->_guiManager->colClick = olc::WHITE;
  
-  _guiManager->Update(pge);
-  _guiManager->DrawDecal(pge);
+  m->_guiManager->Update(pge);
+  m->_guiManager->DrawDecal(pge);
 
   if (_newGameButton && _newGameButton->bPressed)
   {

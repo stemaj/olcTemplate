@@ -3,12 +3,12 @@
 
 #include <olcTemplate/game/src/tools/fader.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
-#include <olcTemplate/game/src/render/levelRender.hpp>
 #include <olcTemplate/game/src/engine/olcUTIL_Camera2D.h>
 #include <memory>
 
 namespace stemaj {
 
+class Render;
 class LevelRender;
 
 class LevelState : public State

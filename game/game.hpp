@@ -11,8 +11,6 @@ namespace olc {
 
 namespace stemaj {
 
-class Render;
-
 class Game
 {
 public:

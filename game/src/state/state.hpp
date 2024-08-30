@@ -1,13 +1,12 @@
 #ifndef __STATE_HPP
 #define __STATE_HPP
 
+#include <olcTemplate/game/src/render/render.hpp>
 #include <olcTemplate/game/input.hpp>
 #include <optional>
 #include <memory>
 
 namespace stemaj {
-
-class Render;
 
 class State
 {

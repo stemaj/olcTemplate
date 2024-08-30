@@ -2,9 +2,14 @@
 #define __MAINMENURENDER_HPP
 
 #include <olcTemplate/game/src/render/render.hpp>
-#include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
 #include <memory>
 
+namespace olc {
+  class Renderable;
+  namespace QuickGUI {
+    class ImageButton;
+  }
+}
 
 namespace stemaj {
 
@@ -15,8 +20,6 @@ public:
   void Fade(olc::PixelGameEngine* pge, State* state) override final {}
 
 private:
-  std::unique_ptr<olc::QuickGUI::Manager> _guiManager;
-
   std::unique_ptr<olc::Renderable> _newGameText;
   std::unique_ptr<olc::QuickGUI::ImageButton> _newGameButton;
 };

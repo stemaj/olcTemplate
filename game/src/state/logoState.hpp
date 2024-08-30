@@ -6,7 +6,6 @@
 #include <olcTemplate/game/coordinates.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
-#include <olcTemplate/game/src/render/logoRender.hpp>
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 
@@ -16,6 +15,9 @@ namespace olc {
 }
 
 namespace stemaj {
+
+class Render;
+class LogoRender;
 
 class LogoState : public State
 {

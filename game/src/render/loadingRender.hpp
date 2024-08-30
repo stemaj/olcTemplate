@@ -2,6 +2,7 @@
 #define __LOADINGRENDER_HPP
 
 #include <olcTemplate/game/src/render/render.hpp>
+#include <olcTemplate/game/src/render/loadingRender.hpp>
 
 namespace stemaj {
 

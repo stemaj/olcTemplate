@@ -1,3 +1,4 @@
+#include <olcTemplate/game/src/render/render.hpp>
 #include <olcTemplate/game/src/render/logoRender.hpp>
 #include <olcTemplate/game/src/state/logoState.hpp>
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>

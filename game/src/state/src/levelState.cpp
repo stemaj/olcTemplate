@@ -1,9 +1,12 @@
-#include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/state/levelState.hpp>
+#include <olcTemplate/game/src/render/levelRender.hpp>
+#include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
+#include <olcTemplate/game/src/state/mainMenuState.hpp>
+#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/sound.hpp>
+#include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <memory>
 #include <optional>
-#include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 
 using namespace stemaj;
 

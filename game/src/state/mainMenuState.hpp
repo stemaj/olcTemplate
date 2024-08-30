@@ -1,17 +1,24 @@
 #ifndef __MAINMENUSTATE_HPP
 #define __MAINMENUSTATE_HPP
 
-#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/coordinates.hpp>
 #include <olcTemplate/game/fonts.hpp>
-#include <string>
 #include <olcTemplate/game/input.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
-#include <vector>
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
+#include <map>
+
+namespace olc {
+  namespace QuickGUI {
+    class Manager;
+  }
+}
 
 namespace stemaj {
+
+class Render;
+class MainMenuRender;
 
 class MainMenuState : public State
 {
@@ -49,6 +56,8 @@ public:
   std::map<ButtonAction, MainMenuText> _buttons;
 
   bool _startGame = false;
+
+  std::unique_ptr<olc::QuickGUI::Manager> _guiManager;
 
 private:
   sol::state _lua;
