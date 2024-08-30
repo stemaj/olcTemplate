@@ -63,7 +63,7 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
   _guiManager->Update(pge);
   _guiManager->DrawDecal(pge);
 
-  if (_newGameButton->bPressed)
+  if (_newGameButton && _newGameButton->bPressed)
   {
     m->_startGame = true;
   }
