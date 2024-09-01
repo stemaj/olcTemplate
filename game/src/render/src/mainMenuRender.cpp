@@ -14,29 +14,26 @@ using namespace stemaj;
 void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
 {
   auto m = static_cast<MainMenuState*>(state);
+	
+	if (m->_guiManager == nullptr)
+	{
+		m->_guiManager = std::make_unique<olc::QuickGUI::Manager>(false);
 
-  if (m->_guiManager == nullptr)
-  {
-    m->_guiManager = std::make_unique<olc::QuickGUI::Manager>(false);
+		for (auto& [key, value] : m->_buttons)
+		{
+			auto col = m->_colors[value.colorListIndex];
+			auto font = FT.Font(m->_font, value.fontSize);
+			
+			_texts[key] = std::make_unique<olc::Renderable>(font->RenderStringToRenderable(
+				utf8::utf8to32(std::string(value.text)), olc::Pixel(col[0],col[1],col[2],col[3])));
 
-    for (auto& [key, value] : m->_buttons)
-    {
-      if (key == MainMenuState::START_GAME)
-      {
-        auto col = m->_colors[value.colorListIndex];
-        auto font = FT.Font(m->_font, value.fontSize);
-
-        _newGameText = std::make_unique<olc::Renderable>(font->RenderStringToRenderable(
-          utf8::utf8to32(std::string(value.text)),
-          olc::Pixel(col[0],col[1],col[2],col[3])));
-
-        _newGameButton = std::make_unique<olc::QuickGUI::ImageButton>(
-          *m->_guiManager, *_newGameText, 
-          olc::vf2d{(float)value.pos.x,(float)value.pos.y}, olc::vf2d{
-            (float)_newGameText->Sprite()->width+10,
-            (float)_newGameText->Sprite()->height+10});
-      }
-    }
+			_controls[key] =
+			std::make_unique<olc::QuickGUI::ImageButton>(
+				*m->_guiManager, *_texts[key],
+				olc::vf2d{(float)value.pos.x,(float)value.pos.y}, olc::vf2d{
+					(float)_texts[key]->Sprite()->width+10,
+					(float)_texts[key]->Sprite()->height+10});
+		}
   }
 
   pge->Clear(olc::WHITE);
@@ -64,9 +61,37 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
  
   m->_guiManager->Update(pge);
   m->_guiManager->DrawDecal(pge);
-
-  if (_newGameButton && _newGameButton->bPressed)
-  {
-    m->_startGame = true;
-  }
+	
+	for (const auto& [key,value] : _controls)
+	{
+		switch (key) {
+			case START_GAME:
+				if (value->bPressed)
+					m->_buttonHit = START_GAME;
+				break;
+			case OPTION_1:
+				if (value->bPressed)
+					m->_buttonHit = OPTION_1;
+				break;
+			case OPTION_2:
+				if (value->bPressed)
+					m->_buttonHit = OPTION_2;
+				break;
+			case OPTION_3:
+				if (value->bPressed)
+					m->_buttonHit = OPTION_3;
+				break;
+			case OPTION_4:
+				if (value->bPressed)
+					m->_buttonHit = OPTION_4;
+				break;
+			case OPTION_5:
+				if (value->bPressed)
+					m->_buttonHit = OPTION_5;
+				break;
+			default:
+				m->_buttonHit = NO_ACTION;
+				break;
+		}
+	}
 }

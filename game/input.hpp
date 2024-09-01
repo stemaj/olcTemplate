@@ -3,6 +3,17 @@
 
 namespace stemaj {
 
+enum ButtonAction
+{
+	START_GAME,
+	OPTION_1,
+	OPTION_2,
+	OPTION_3,
+	OPTION_4,
+	OPTION_5,
+	NO_ACTION,
+};
+
 struct Input
 {
   int mouseX;

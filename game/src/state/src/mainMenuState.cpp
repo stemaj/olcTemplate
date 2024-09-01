@@ -94,16 +94,12 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
 #if defined(STEMAJ_DEBUG)
   ImGui::End();
 #endif
+	
+	if (input.k1Pressed) _buttonHit = OPTION_1;
+	if (input.k2Pressed) _buttonHit = OPTION_2;
+	if (input.k3Pressed) _buttonHit = OPTION_3;
+	if (input.k4Pressed) _buttonHit = OPTION_4;
+	if (input.k5Pressed) _buttonHit = OPTION_5;
 
-  if (_startGame
-#if defined(STEMAJ_DEBUG)
-    || input.spacePressed
-#endif
-  )
-  {
-    SO.StopMusic();
-    auto starter = std::make_unique<Starter>();
-    return starter->Update(input, fElapsedTime);
-  }
-  return std::nullopt;
+	return Starter::SwitchState(_buttonHit);
 }
