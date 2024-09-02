@@ -37,7 +37,7 @@ IntroState::IntroState() : _render(std::make_unique<IntroRender>())
   _colors = _lua["colors"].get_or<std::vector<IntroColor>>({});
   _backgroundColorIndex = _lua["background_color"].get_or(0);
   
-  sol::table textsTable = _lua["texts"].get_or(sol::table());
+  sol::table textsTable = _lua["texts"].get_or(sol::table(_lua,sol::create));
   for (size_t i = 1; i <= textsTable.size(); i++)
   {
     sol::table t = textsTable[i];
@@ -51,7 +51,7 @@ IntroState::IntroState() : _render(std::make_unique<IntroRender>())
       t.get_or(6,0)});
   }
 
-  sol::table graphicsTable = _lua["graphics"];
+  sol::table graphicsTable = _lua["graphics"].get_or(sol::table(_lua,sol::create));
   for (size_t i = 1; i <= graphicsTable.size(); i++)
   {
     sol::table t = graphicsTable[i];
