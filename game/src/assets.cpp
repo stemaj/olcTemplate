@@ -56,7 +56,10 @@ void Assets::Load()
     const std::string& sFileName)
   {
     auto spritesheet = std::make_unique<olc::Renderable>();
-    spritesheet->Load(sFileName);
+    if (spritesheet->Load(sFileName) != olc::rcode::OK)
+    {
+      std::cout << "could not load spritesheet " << sFileName << std::endl;
+    }
     _renderables[sName] = std::move(spritesheet);
   };
 

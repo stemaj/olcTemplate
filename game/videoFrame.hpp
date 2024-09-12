@@ -31,7 +31,7 @@ namespace stemaj
 
     int _frameCount;
     float _fps;
-    std::unique_ptr<cv::VideoCapture> _videoCapture;
+    //std::unique_ptr<cv::VideoCapture> _videoCapture;
   };
 }
 
