@@ -2,6 +2,7 @@
 #define __VIDEOFRAME_HPP
 
 #include "b2_types.h"
+#include "olcTemplate/game/src/tools/videoLoader.hpp"
 #include <olcTemplate/game/coordinates.hpp>
 #include <memory>
 #include <string>
@@ -10,6 +11,8 @@
 
 namespace stemaj
 {
+  class VideoProcessor;
+
   class VideoFrame
   {
   public:
@@ -30,6 +33,9 @@ namespace stemaj
 
     int _frameCount;
     float _fps;
+
+    std::unique_ptr<VideoProcessor> l;
+
 
     class FFmpegImpl;
     FFmpegImpl* ffmpeg;

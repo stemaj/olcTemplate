@@ -4,6 +4,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <olcTemplate/game/src/tools/videoLoader.hpp>
 
 extern "C" {
     #include <olcTemplate/sdk/ffmpeg-7.0.2/include/libavformat/avformat.h>
@@ -20,10 +21,10 @@ public:
   virtual ~FFmpegImpl()
   {
     avcodec_free_context(&codecContext);
-    avformat_close_input(&formatContext);
+    //avformat_close_input(&formatContext);
     sws_freeContext(swsContext);
   }
-  AVFormatContext* formatContext = nullptr;
+  //AVFormatContext* formatContext = nullptr;
   AVCodecContext* codecContext = nullptr;
   SwsContext* swsContext = nullptr;
   int videoStreamIndex = -1;
@@ -33,24 +34,28 @@ VideoFrame::VideoFrame(const std::string& filePath) : ffmpeg(new FFmpegImpl())
 {
   // Video öffnen
   // AVFormatContext erstellen und Datei öffnen
-  ffmpeg->formatContext = avformat_alloc_context();
-  if (avformat_open_input(&ffmpeg->formatContext, filePath.c_str(), nullptr, nullptr) != 0)
-  {
-    std::cout << "Konnte Video nicht öffnen\n";
-    return;
-  }
+  // ffmpeg->formatContext = avformat_alloc_context();
+  // if (avformat_open_input(&ffmpeg->formatContext, filePath.c_str(), nullptr, nullptr) != 0)
+  // {
+  //   std::cout << "Konnte Video nicht öffnen\n";
+  //   return;
+  // }
+
+  l = std::make_unique<VideoProcessor>();
+  l->openVideo(filePath);  // URL des Videos
+  //emscripten_exit_with_live_runtime();  // Halte das Programm am Leben, bis alle Downloads abgeschlossen sind
 
   // Streams suchen
-  if (avformat_find_stream_info(ffmpeg->formatContext, nullptr) < 0)
+  if (avformat_find_stream_info(l->formatContext, nullptr) < 0)
   {
     std::cout << "Konnte Stream-Infos nicht finden\n";
     return;
   }
 
   // Finde den Video-Stream
-  for (unsigned int i = 0; i < ffmpeg->formatContext->nb_streams; i++)
+  for (unsigned int i = 0; i < l->formatContext->nb_streams; i++)
   {
-    if (ffmpeg->formatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
+    if (l->formatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
     {
       ffmpeg->videoStreamIndex = i;
       break;
@@ -65,7 +70,7 @@ VideoFrame::VideoFrame(const std::string& filePath) : ffmpeg(new FFmpegImpl())
 
   // Codec Kontext erstellen
   AVCodecParameters* codecParams =
-    ffmpeg->formatContext->streams[ffmpeg->videoStreamIndex]->codecpar;
+    l->formatContext->streams[ffmpeg->videoStreamIndex]->codecpar;
 
   auto codec = avcodec_find_decoder(codecParams->codec_id);
   if (!codec)
@@ -128,7 +133,7 @@ std::vector<VideoFrame::RGB> VideoFrame::Frame(float timestamp)
 
   //std::cout << stamp << std::endl;
 
-  if (av_seek_frame(ffmpeg->formatContext, ffmpeg->videoStreamIndex,
+  if (av_seek_frame(l->formatContext, ffmpeg->videoStreamIndex,
     stamp, AVSEEK_FLAG_BACKWARD) < 0) 
     {
       std::cerr << "Error seeking to timestamp" << std::endl;
@@ -160,7 +165,7 @@ avcodec_flush_buffers(ffmpeg->codecContext);
   //av_init_packet(&packet);
 
   // Schleife durch die Pakete bis ein Frame dekodiert wurde
-  while (av_read_frame(ffmpeg->formatContext, &packet) >= 0)
+  while (av_read_frame(l->formatContext, &packet) >= 0)
   {
     if (packet.stream_index == ffmpeg->videoStreamIndex)
     {
@@ -195,7 +200,7 @@ avcodec_flush_buffers(ffmpeg->codecContext);
             frameDecoded = true;
 
             // Hier könntest du überprüfen, ob der Zeitstempel korrekt ist:
-            if (frame->pts * av_q2d(ffmpeg->formatContext->streams[ffmpeg->videoStreamIndex]->time_base) >= stamp) {
+            if (frame->pts * av_q2d(l->formatContext->streams[ffmpeg->videoStreamIndex]->time_base) >= stamp) {
                 std::cout << "Dies ist der richtige Frame\n";
                 break;
             }
@@ -249,6 +254,6 @@ avcodec_flush_buffers(ffmpeg->codecContext);
     // << int(_pixelData[30000].g) 
     // << int(_pixelData[30000].b) <<  std::endl;
 
-  std::cout << "got data\n";
+  // std::cout << "got data\n";
   return _pixelData;
 }
