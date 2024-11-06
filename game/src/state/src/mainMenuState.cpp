@@ -33,6 +33,9 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
   _font = _lua["font"].get_or<std::string>("dogica");
   _colors = _lua["colors"].get_or<std::vector<MainMenuColor>>({std::array<int, 4>({255,255,255,255})});
   _backgroundColorIndex = _lua["background_color"].get_or(0);
+  _buttonNormalColorIndex = _lua["button_normal_color"].get_or(0);
+  _buttonHoverColorIndex = _lua["button_hover_color"].get_or(0);
+  _buttonClickColorIndex = _lua["button_click_color"].get_or(0);
 
   sol::table textsTable = _lua["texts"].get_or(sol::table(_lua,sol::create));
   for (size_t i = 1; i <= textsTable.size(); i++)
@@ -79,21 +82,21 @@ Render* MainMenuState::GetRender()
 
 std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, float fElapsedTime)
 {
-  std::array<float,4> colorOne = { _colors[0][0] / 255.0f, _colors[0][1] / 255.0f, 
-                                   _colors[0][2] / 255.0f, _colors[0][3] / 255.0f };
-#if defined(STEMAJ_DEBUG)
-  ImVec4 color = ImVec4(colorOne[0], colorOne[1], colorOne[2], colorOne[3]);
-  ImGui::Begin("Main Menu Debug");
-  ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
-  ImGui::ColorEdit3("Color", (float*)&color);
-#endif
+//   std::array<float,4> colorOne = { _colors[0][0] / 255.0f, _colors[0][1] / 255.0f, 
+//                                    _colors[0][2] / 255.0f, _colors[0][3] / 255.0f };
+// #if defined(STEMAJ_DEBUG)
+//   ImVec4 color = ImVec4(colorOne[0], colorOne[1], colorOne[2], colorOne[3]);
+//   ImGui::Begin("Main Menu Debug");
+//   ImGui::Text("Mouse Position: (%d, %d)", input.mouseX, input.mouseY);
+//   ImGui::ColorEdit3("Color", (float*)&color);
+// #endif
 
-  _colors[0] = { int(colorOne[0] * 255.0f), int(colorOne[1] * 255.0f),
-                 int(colorOne[2] * 255.0f), int(colorOne[3] * 255.0f) };
+//   _colors[0] = { int(colorOne[0] * 255.0f), int(colorOne[1] * 255.0f),
+//                  int(colorOne[2] * 255.0f), int(colorOne[3] * 255.0f) };
 
-#if defined(STEMAJ_DEBUG)
-  ImGui::End();
-#endif
+// #if defined(STEMAJ_DEBUG)
+//   ImGui::End();
+// #endif
 	
 	if (input.k1Pressed) _buttonHit = OPTION_1;
 	if (input.k2Pressed) _buttonHit = OPTION_2;

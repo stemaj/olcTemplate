@@ -43,9 +43,20 @@ public:
   };
 
   std::string _font;
+	
+	
+	int colorIndexNormal = 0;
+	int colorIndexHover = 0;
+	int colorIndexClick = 0;
 
-  std::vector<MainMenuColor> _colors;
+
+  std::vector<MainMenuColor> _colors = {};
   int _backgroundColorIndex = 0;
+  int _buttonNormalColorIndex = 0;
+  int _buttonHoverColorIndex = 0;
+  int _buttonClickColorIndex = 0;
+
+
   std::vector<MainMenuText> _texts;
   std::vector<MainMenuGraphic> _graphics;
   std::unordered_map<ButtonAction, MainMenuText> _buttons;

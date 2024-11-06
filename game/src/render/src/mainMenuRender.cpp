@@ -19,6 +19,14 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 	{
 		m->_guiManager = std::make_unique<olc::QuickGUI::Manager>(false);
 
+    	auto col = m->_colors[m->_buttonNormalColorIndex];
+		m->_guiManager->colNormal = olc::Pixel(col[0],col[1],col[2],col[3]);
+		col = m->_colors[m->_buttonHoverColorIndex];
+		m->_guiManager->colHover = olc::Pixel(col[0],col[1],col[2],col[3]);
+		col = m->_colors[m->_buttonClickColorIndex];
+		m->_guiManager->colClick = olc::Pixel(col[0],col[1],col[2],col[3]);
+
+
 		for (auto& [key, value] : m->_buttons)
 		{
 			auto col = m->_colors[value.colorListIndex];
@@ -36,7 +44,8 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 		}
   }
 
-  pge->Clear(olc::WHITE);
+  auto col = m->_colors[m->_backgroundColorIndex];
+  pge->Clear(olc::Pixel(col[0],col[1],col[2],col[3]));
 
   for (const auto& g : m->_graphics)
   {
@@ -55,9 +64,6 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
     pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
   }
 
-  m->_guiManager->colNormal = olc::Pixel(255,207,131);
-  m->_guiManager->colHover = olc::WHITE;
-  m->_guiManager->colClick = olc::WHITE;
  
   m->_guiManager->Update(pge);
   m->_guiManager->DrawDecal(pge);
