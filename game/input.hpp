@@ -11,6 +11,7 @@ enum ButtonAction
 	OPTION_3,
 	OPTION_4,
 	OPTION_5,
+  OPTION_6,
 	NO_ACTION,
 };
 
@@ -19,6 +20,14 @@ struct Input
   int mouseX;
   int mouseY;
   bool leftMouseClicked;
+  bool rightMouseClicked;
+  bool middleMouseClicked;
+  bool leftMouseHeld;
+  bool rightMouseHeld;
+  bool middleMouseHeld;
+  bool leftMouseReleased;
+  bool rightMouseReleased;
+  bool middleMouseReleased;
   bool wHold;
   bool aHold;
   bool sHold;
@@ -28,6 +37,7 @@ struct Input
   bool k3Pressed;
   bool k4Pressed;
   bool k5Pressed;
+  bool k6Pressed;
   bool spacePressed;
   bool escapePressed;
 };

@@ -100,6 +100,7 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
 	if (input.k3Pressed) _buttonHit = OPTION_3;
 	if (input.k4Pressed) _buttonHit = OPTION_4;
 	if (input.k5Pressed) _buttonHit = OPTION_5;
+  if (input.k6Pressed) _buttonHit = OPTION_6;
 
 	return Starter::SwitchState(_buttonHit);
 }

@@ -54,6 +54,14 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
 
   Input input {GetMouseX(), GetMouseY(),
     wcm ? false : GetMouse(0).bPressed,
+    wcm ? false : GetMouse(1).bPressed,
+    wcm ? false : GetMouse(2).bPressed,
+    wcm ? false : GetMouse(0).bHeld,
+    wcm ? false : GetMouse(1).bHeld,
+    wcm ? false : GetMouse(2).bHeld,
+    wcm ? false : GetMouse(0).bReleased,
+    wcm ? false : GetMouse(1).bReleased,
+    wcm ? false : GetMouse(2).bReleased,
     wck ? false : (GetKey(olc::W).bHeld || GetKey(olc::UP).bHeld),
     wck ? false : (GetKey(olc::A).bHeld || GetKey(olc::LEFT).bHeld),
     wck ? false : (GetKey(olc::S).bHeld || GetKey(olc::DOWN).bHeld),
@@ -63,6 +71,7 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
     wck ? false : GetKey(olc::K3).bPressed,
     wck ? false : GetKey(olc::K4).bPressed,
     wck ? false : GetKey(olc::K5).bPressed,
+    wck ? false : GetKey(olc::K6).bPressed,
     wck ? false : GetKey(olc::SPACE).bPressed,
     wck ? false : GetKey(olc::ESCAPE).bPressed,
     };

@@ -89,6 +89,10 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 				if (value->bPressed)
 					m->_buttonHit = OPTION_5;
 				break;
+			case OPTION_6:
+				if (value->bPressed)
+					m->_buttonHit = OPTION_6;
+				break;
 			default:
 				m->_buttonHit = NO_ACTION;
 				break;
