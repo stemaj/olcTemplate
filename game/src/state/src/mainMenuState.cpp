@@ -1,4 +1,5 @@
 #include "olcTemplate/game/fonts.hpp"
+#include "olcTemplate/game/input.hpp"
 #include "sol.hpp"
 #include <memory>
 #include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
@@ -98,7 +99,8 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
 //   ImGui::End();
 // #endif
 	
-	if (input.k1Pressed) _buttonHit = OPTION_1;
+	if (input.spacePressed) _buttonHit = START_GAME;
+  if (input.k1Pressed) _buttonHit = OPTION_1;
 	if (input.k2Pressed) _buttonHit = OPTION_2;
 	if (input.k3Pressed) _buttonHit = OPTION_3;
 	if (input.k4Pressed) _buttonHit = OPTION_4;

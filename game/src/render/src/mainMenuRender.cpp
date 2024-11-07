@@ -19,13 +19,12 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 	{
 		m->_guiManager = std::make_unique<olc::QuickGUI::Manager>(false);
 
-    	auto col = m->_colors[m->_buttonNormalColorIndex];
+    auto col = m->_colors[m->_buttonNormalColorIndex];
 		m->_guiManager->colNormal = olc::Pixel(col[0],col[1],col[2],col[3]);
 		col = m->_colors[m->_buttonHoverColorIndex];
 		m->_guiManager->colHover = olc::Pixel(col[0],col[1],col[2],col[3]);
 		col = m->_colors[m->_buttonClickColorIndex];
 		m->_guiManager->colClick = olc::Pixel(col[0],col[1],col[2],col[3]);
-
 
 		for (auto& [key, value] : m->_buttons)
 		{
@@ -42,32 +41,31 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 					(float)_texts[key]->Sprite()->width+10,
 					(float)_texts[key]->Sprite()->height+10});
 		}
-  }
 
-  auto col = m->_colors[m->_backgroundColorIndex];
-  pge->Clear(olc::Pixel(col[0],col[1],col[2],col[3]));
+		col = m->_colors[m->_backgroundColorIndex];
+		pge->Clear(olc::Pixel(col[0],col[1],col[2],col[3]));
+	}
 
-  for (const auto& g : m->_graphics)
-  {
-    pge->DrawDecal({ (float)g.pos.x, (float)g.pos.y }, 
-      AS.Decal(g.file), {g.scale, g.scale});
-  }
+	for (const auto& g : m->_graphics)
+	{
+		pge->DrawDecal({ (float)g.pos.x, (float)g.pos.y }, 
+			AS.Decal(g.file), {g.scale, g.scale});
+	}
 
-  for (const auto& t : m->_texts)
-  {
-    olc::Decal* r = nullptr;
-    auto col = m->_colors[t.colorListIndex];
-    auto font = FT.Font(m->_font, t.fontSize);
-    r = font->RenderStringToDecal(
-      utf8::utf8to32(std::string(t.text)),
-      olc::Pixel(col[0],col[1],col[2],col[3]));
-    pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
-  }
+	for (const auto& t : m->_texts)
+	{
+		olc::Decal* r = nullptr;
+		auto col = m->_colors[t.colorListIndex];
+		auto font = FT.Font(m->_font, t.fontSize);
+		r = font->RenderStringToDecal(
+			utf8::utf8to32(std::string(t.text)),
+			olc::Pixel(col[0],col[1],col[2],col[3]));
+		pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
+	}
 
- 
-  m->_guiManager->Update(pge);
+	m->_guiManager->Update(pge);
   m->_guiManager->DrawDecal(pge);
-	
+
 	for (const auto& [key,value] : _controls)
 	{
 		switch (key) {
