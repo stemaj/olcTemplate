@@ -372,8 +372,8 @@ namespace olc::utils::geom2d
 	template<typename T1, typename T2>
 	inline constexpr bool contains(const rect<T1>& r, const olc::v2d_generic<T2>& p)
 	{
-		return !(p.x < r.pos.x || p.y < r.pos.y ||
-			p.x > (r.pos.x + r.size.x) || p.y > (r.pos.y + r.size.y));
+		return !((p.x) < (r.pos.x) || (p.y) < (r.pos.y) ||
+			(p.x) > (r.pos.x + r.size.x) || (p.y) > (r.pos.y + r.size.y));
 	}
 
 	// Checks if circle contains a point
