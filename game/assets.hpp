@@ -32,8 +32,6 @@ private:
 	Assets() {}
 	virtual ~Assets() {}	
 
-  std::unordered_map<std::string, std::unique_ptr<olc::Sprite>> _sprites;
-  std::unordered_map<std::string, std::unique_ptr<olc::Decal>> _decals;
   std::unordered_map<std::string, std::unique_ptr<olc::Renderable>> _renderables;
 };
 

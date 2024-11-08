@@ -22,10 +22,9 @@ void Assets::Load()
   auto loadSprite = [&](const std::string& sName, 
     const std::string& sFileName)
   {
-    auto s = std::make_unique<olc::Sprite>(sFileName);
-    auto d = std::make_unique<olc::Decal>(s.get());
-		_sprites[sName] = std::move(s);
-    _decals[sName] = std::move(d);
+    auto s = std::make_unique<olc::Renderable>();
+    s->Load(sFileName);
+    _renderables[sName] = std::move(s);
 	};
 
   std::string directory = "./assets/png";
@@ -93,12 +92,12 @@ void Assets::Load()
 
 olc::Sprite* Assets::Sprite(const std::string& name)
 {
-  return _sprites[name].get();
+  return _renderables[name]->Sprite();
 }
 
 olc::Decal* Assets::Decal(const std::string& name)
 {
-  return _decals[name].get();
+  return _renderables[name]->Decal();
 }
 
 olc::Renderable* Assets::Renderable(const std::string& name)
