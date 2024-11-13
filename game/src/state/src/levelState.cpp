@@ -36,7 +36,7 @@ std::optional<std::unique_ptr<State>> LevelState::RequestForMainMenu(bool escape
    _fader.Update(fElapsedTime);
    if (_fader.IsTurning())
    {
-     return std::move(std::make_unique<MainMenuState>());
+     return std::make_unique<MainMenuState>();
    }
    return std::nullopt;   
 }

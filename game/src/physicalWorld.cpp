@@ -218,7 +218,8 @@ std::pair<PT<float>,float> PhysicalWorld::GetCirclePosAndRadius(const int id)
 {
 	std::pair<PT<float>,float> ret;
 	auto body = _bodyPtrs[id];
-	for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
+//	for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
+		b2Fixture* fixture = body->GetFixtureList();
 	{
 		b2Shape* shape = fixture->GetShape();
 		if (shape->GetType() != b2Shape::e_circle) return {};
@@ -245,7 +246,10 @@ std::pair<PT<float>,PT<float>> PhysicalWorld::GetEdgeEndpoints(const int id)
 	std::pair<PT<float>,PT<float>> ret;
 	
 	auto body = _bodyPtrs[id];
-	for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
+	//for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
+	
+		b2Fixture* fixture = body->GetFixtureList();
+	
 	{
 		b2Shape* shape = fixture->GetShape();
 		if (shape->GetType() != b2Shape::e_edge) return {};
