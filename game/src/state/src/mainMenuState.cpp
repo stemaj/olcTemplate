@@ -2,12 +2,9 @@
 #include "olcTemplate/game/input.hpp"
 #include "sol.hpp"
 #include <memory>
-#include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
-#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <olcTemplate/game/sound.hpp>
-#include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
 
 // entry point for the real game
 #include <game/starter.hpp>

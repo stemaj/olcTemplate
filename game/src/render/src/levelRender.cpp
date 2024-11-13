@@ -1,9 +1,15 @@
+#include <olcTemplate/game/gui.hpp>
 #include <olcTemplate/game/src/render/render.hpp>
 #include <olcTemplate/game/src/render/levelRender.hpp>
 #include <olcTemplate/game/src/state/levelState.hpp>
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
 
 using namespace stemaj;
+
+LevelRender::LevelRender() : _gui(std::make_unique<Gui>())
+{
+  
+}
 
 void LevelRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State* state)
 {

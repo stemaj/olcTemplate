@@ -12,6 +12,7 @@ enum ButtonAction
 	OPTION_4,
 	OPTION_5,
   OPTION_6,
+  BACK,
 	NO_ACTION,
 };
 

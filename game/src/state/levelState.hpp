@@ -33,7 +33,6 @@ protected:
   bool _cameraConfigured = false;
 
 private:
-  std::optional<std::unique_ptr<State>> _levelToChange;
   virtual void LoadLevelData() {}
   virtual void SaveLevelData() {}
 private:

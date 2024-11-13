@@ -1,6 +1,7 @@
 #ifndef __FONTS_HPP
 #define __FONTS_HPP
 
+#include <memory>
 #include <olcTemplate/game/coordinates.hpp>
 #include <string>
 
@@ -46,8 +47,8 @@ private:
 	virtual ~Fonts();
 	
 	int toInt(FontSize f);
-	
-	FontsImpl* _impl = nullptr;
+
+	std::unique_ptr<FontsImpl> _impl;
 };
 
 #define FT Fonts::get()

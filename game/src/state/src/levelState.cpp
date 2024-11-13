@@ -1,6 +1,5 @@
 #include <olcTemplate/game/src/state/levelState.hpp>
 #include <olcTemplate/game/src/render/levelRender.hpp>
-#include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/sound.hpp>
@@ -33,10 +32,13 @@ std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input
     stopAllEffects();
 	  stopMusic();
     _fader.StartFadeOut();
-    _levelToChange = std::make_unique<MainMenuState>();
    }
    _fader.Update(fElapsedTime);
-   return _fader.IsTurning() ? std::move(_levelToChange) : std::nullopt;
+   if (_fader.IsTurning())
+   {
+     return std::move(std::make_unique<MainMenuState>());
+   }
+   return std::nullopt;   
 }
 
 void LevelState::playMusic(const std::string& filePath, const float fadeTime)

@@ -7,18 +7,11 @@
 #include <olcTemplate/game/src/state/state.hpp>
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
-#include <map>
-
-namespace olc {
-  namespace QuickGUI {
-    class Manager;
-  }
-}
+#include <olcTemplate/game/src/render/mainMenuRender.hpp>
 
 namespace stemaj {
 
 class Render;
-class MainMenuRender;
 
 class MainMenuState : public State
 {
@@ -62,8 +55,6 @@ public:
   std::unordered_map<ButtonAction, MainMenuText> _buttons;
 	
 	ButtonAction _buttonHit = ButtonAction::NO_ACTION;
-
-  std::unique_ptr<olc::QuickGUI::Manager> _guiManager;
 
 private:
   sol::state _lua;

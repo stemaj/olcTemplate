@@ -1,3 +1,4 @@
+#include <memory>
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/coordinates.hpp>
 #include <filesystem>
@@ -23,14 +24,13 @@ public:
 };
 }
 
-Fonts::Fonts() : _impl(new FontsImpl())
+Fonts::Fonts() : _impl(std::make_unique<FontsImpl>())
 {
 	
 }
 
 Fonts::~Fonts()
 {
-	delete _impl;
 }
 
 Fonts& stemaj::Fonts::get()
