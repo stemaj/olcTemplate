@@ -22,12 +22,12 @@ Render* LevelState::GetRender()
 
 std::optional<std::unique_ptr<State>> LevelState::Update(const Input& input, float fElapsedTime)
 {
-  return ChangeLevel(input, fElapsedTime);
+  return std::nullopt;
 }
 
-std::optional<std::unique_ptr<State>> LevelState::ChangeLevel(const Input& input, float fElapsedTime)
+std::optional<std::unique_ptr<State>> LevelState::RequestForMainMenu(bool escapeTriggered, float fElapsedTime)
 {
-   if (input.escapePressed)
+   if (escapeTriggered)
    {
     stopAllEffects();
 	  stopMusic();

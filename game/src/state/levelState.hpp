@@ -21,8 +21,8 @@ public:
   Fader _fader;
 
 protected:
-  std::optional<std::unique_ptr<State>> ChangeLevel(
-    const Input& input, float fElapsedTime);
+  std::optional<std::unique_ptr<State>> RequestForMainMenu(
+    bool escapeTriggered, float fElapsedTime);
 
   void playMusic(const std::string& filePath, const float fadeTime = 0.0f);
   void stopMusic(const float fadeTime = 0.0f);
