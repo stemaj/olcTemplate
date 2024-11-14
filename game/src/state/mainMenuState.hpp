@@ -8,6 +8,7 @@
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
+#include <olcTemplate/game/guiElements.hpp>
 
 namespace stemaj {
 
@@ -19,21 +20,6 @@ public:
   explicit MainMenuState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
-
-  using MainMenuColor = std::array<int, 4>;
-  struct MainMenuText
-  {
-    std::string text;
-    PT<int> pos;
-    FontSize fontSize;
-    int colorListIndex;
-  };
-  struct MainMenuGraphic
-  {
-    std::string file;
-    PT<int> pos;
-    float scale;
-  };
 
   std::string _font;
 	

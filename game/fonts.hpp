@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <olcTemplate/game/coordinates.hpp>
+#include <olcTemplate/game/guiElements.hpp>
 #include <string>
 
 namespace olc {
@@ -11,18 +12,6 @@ namespace olc {
 }
 
 namespace stemaj {
-
-enum class FontSize
-{
-	NORMAL = 0,
-	SMALL = 1,
-	BIG = 2,
-	SMALLER = 3,
-	SMALLEST = 4,
-	BIGGER = 5,
-	BIGGEST = 6,
-	COUNT = 7
-};
 
 class FontsImpl;
 

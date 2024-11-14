@@ -6,7 +6,6 @@
 #include <olcTemplate/game/src/engine/olcPGEX_TTF.h>
 #include "olcTemplate/game/gui.hpp"
 #include "olcTemplate/game/input.hpp"
-#include "olcTemplate/game/src/engine/olcPGEX_QuickGUI.h"
 #include <olcTemplate/game/assets.hpp>
 #include <olcTemplate/game/fonts.hpp>
 #define UTF_CPP_CPLUSPLUS 202002L
@@ -61,13 +60,6 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 	}
 
 	_gui->Update(pge);
-
-	if (_gui->buttonActionPressed(START_GAME)) m->_buttonHit = START_GAME;
-	else if (_gui->buttonActionPressed(OPTION_1)) m->_buttonHit = OPTION_1;
-	else if (_gui->buttonActionPressed(OPTION_2)) m->_buttonHit = OPTION_2;
-	else if (_gui->buttonActionPressed(OPTION_3)) m->_buttonHit = OPTION_3;
-	else if (_gui->buttonActionPressed(OPTION_4)) m->_buttonHit = OPTION_4;
-	else if (_gui->buttonActionPressed(OPTION_5)) m->_buttonHit = OPTION_5;
-	else if (_gui->buttonActionPressed(OPTION_6)) m->_buttonHit = OPTION_6;
-	else m->_buttonHit = NO_ACTION;
+	
+	m->_buttonHit = _gui->buttonActionPressed();
 }

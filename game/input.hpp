@@ -1,9 +1,10 @@
 #ifndef __INPUT_HPP
 #define __INPUT_HPP
 
+#include <cstdint>
 namespace stemaj {
 
-enum ButtonAction
+enum ButtonAction : uint8_t
 {
 	START_GAME,
 	OPTION_1,

@@ -28,7 +28,7 @@ public:
   void setText(olc::Font* font, const ButtonAction ba, const std::string& value, int r, int g, int b, int alpha);
   void setControl(ButtonAction key, float x, float y, int fontDelta);
 
-  bool buttonActionPressed(ButtonAction ba);
+  ButtonAction buttonActionPressed() const;
 
   void Update(olc::PixelGameEngine* pge);
 

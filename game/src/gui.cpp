@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <memory>
 #include <olcTemplate/game/gui.hpp>
 #include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
@@ -82,13 +83,17 @@ void Gui::setControl(ButtonAction key, float x, float y, int fontDelta)
 
 }
 
-bool Gui::buttonActionPressed(ButtonAction ba)
+ButtonAction Gui::buttonActionPressed() const
 {
-  if (_impl->_controls.contains(ba))
+  for (uint8_t ba = 0; ba < ButtonAction::NO_ACTION; ba++)
   {
-    return _impl->_controls[ba]->bPressed;
+    if (_impl->_controls.contains((ButtonAction)ba)
+      && _impl->_controls[(ButtonAction)ba]->bPressed)
+    {
+      return (ButtonAction)ba;
+    }
   }
-  return false;
+  return ButtonAction::NO_ACTION;
 }
 
 
