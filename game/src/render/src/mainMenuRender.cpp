@@ -5,7 +5,6 @@
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
 #include <olcTemplate/game/src/engine/olcPGEX_TTF.h>
 #include "olcTemplate/game/gui.hpp"
-#include "olcTemplate/game/input.hpp"
 #include <olcTemplate/game/assets.hpp>
 #include <olcTemplate/game/fonts.hpp>
 #define UTF_CPP_CPLUSPLUS 202002L
@@ -30,9 +29,9 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 
 		for (auto& [ba, text] : m->_buttons)
 		{
-			auto col = m->_colors[text.colorListIndex];
-			_gui->prepareText(ba, text.text, m->_font, text.fontSize, col);
-			_gui->prepareControl(ba, text.pos, text.buttonDelta);
+			_gui->prepareTextButton(ba, text.text, m->_font,
+				text.fontSize, m->_colors[text.colorListIndex],
+				text.pos, text.buttonDelta);
 		}
 
 		col = m->_colors[m->_backgroundColorIndex];
@@ -57,6 +56,6 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 	}
 
 	_gui->Update(pge);
-	
-	m->_buttonHit = _gui->buttonActionPressed();
+
+	m->_buttonHit = _gui->pressedOn();
 }
