@@ -28,14 +28,11 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 		col = m->_colors[m->_buttonClickColorIndex];
 		_gui->setColNormal(col[0],col[1],col[2],col[3]);
 
-		for (auto& [key, value] : m->_buttons)
+		for (auto& [ba, text] : m->_buttons)
 		{
-			auto col = m->_colors[value.colorListIndex];
-			auto font = FT.Font(m->_font, value.fontSize);
-			
-			_gui->setText(font, key, value.text, col[0],col[1],col[2],col[3]);
-
-			_gui->setControl(key, (float)value.pos.x, (float)value.pos.y, 10);
+			auto col = m->_colors[text.colorListIndex];
+			_gui->prepareText(ba, text.text, m->_font, text.fontSize, col);
+			_gui->prepareControl(ba, text.pos, text.buttonDelta);
 		}
 
 		col = m->_colors[m->_backgroundColorIndex];

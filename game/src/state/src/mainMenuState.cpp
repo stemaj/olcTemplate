@@ -1,10 +1,12 @@
 #include "olcTemplate/game/fonts.hpp"
 #include "olcTemplate/game/input.hpp"
 #include "sol.hpp"
+#include <cstdint>
 #include <memory>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <olcTemplate/game/sound.hpp>
+#include <olcTemplate/game/guiElements.hpp>
 
 // entry point for the real game
 #include <game/starter.hpp>
@@ -29,7 +31,7 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
   }
 
   _font = _lua["font"].get_or<std::string>("dogica");
-  _colors = _lua["colors"].get_or<std::vector<MainMenuColor>>({std::array<int, 4>({255,255,255,255})});
+  _colors = _lua["colors"].get_or<std::vector<MainMenuColor>>({std::array<uint8_t, 4>({255,255,255,255})});
   _backgroundColorIndex = _lua["background_color"].get_or(0);
   _buttonNormalColorIndex = _lua["button_normal_color"].get_or(0);
   _buttonHoverColorIndex = _lua["button_hover_color"].get_or(0);
@@ -69,6 +71,7 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
       CO.D({p[0],p[1]}),
       ((sol::table)values).get_or(3,(FontSize)0),
       ((sol::table)values).get_or(4,0),
+      ((sol::table)values).get_or(5,0),
     };
   }
 }

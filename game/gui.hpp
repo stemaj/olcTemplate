@@ -1,6 +1,7 @@
 #ifndef __GUI_HPP
 #define __GUI_HPP
 
+#include "olcTemplate/game/guiElements.hpp"
 #include "olcTemplate/game/input.hpp"
 #include <memory>
 #include <string>
@@ -25,8 +26,9 @@ public:
   bool created() const { return _created; }
   void setCreated() { _created = true; }
 
-  void setText(olc::Font* font, const ButtonAction ba, const std::string& value, int r, int g, int b, int alpha);
-  void setControl(ButtonAction key, float x, float y, int fontDelta);
+  void prepareText(const ButtonAction ba, const std::string& text,
+    const std::string& fontName, const FontSize fontSize, const MainMenuColor color);
+  void prepareControl(ButtonAction key, PT<int> coord, int buttonDelta);
 
   ButtonAction buttonActionPressed() const;
 

@@ -1,8 +1,10 @@
+#include "olcTemplate/game/guiElements.hpp"
 #include <cstdint>
 #include <memory>
 #include <olcTemplate/game/gui.hpp>
 #include <olcTemplate/game/src/engine/olcPGEX_QuickGUI.h>
 #include <olcTemplate/game/src/engine/olcPGEX_TTF.h>
+#include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/assets.hpp>
 #include <olcTemplate/game/input.hpp>
 #define UTF_CPP_CPLUSPLUS 202002L
@@ -66,21 +68,24 @@ bool Gui::backButtonPressed()
   return _impl->backButton->bPressed;
 }
 
-void Gui::setText(olc::Font* font, const ButtonAction key, const std::string& value, int r, int g, int b, int alpha)
+void Gui::prepareText(const ButtonAction ba, const std::string& text,
+    const std::string& fontName, const FontSize fontSize, const MainMenuColor color)
 {
-  _impl->_texts[key] = std::make_unique<olc::Renderable>(font->RenderStringToRenderable(
-				utf8::utf8to32(std::string(value)), olc::Pixel(r,g,b,alpha)));
-
+  auto font = FT.Font(fontName, fontSize);
+  _impl->_texts[ba] = std::make_unique<olc::Renderable>(font->RenderStringToRenderable(
+				utf8::utf8to32(std::string(text)),
+        olc::Pixel(color[0],color[1],color[2],color[3])));
 }
 
-void Gui::setControl(ButtonAction key, float x, float y, int fontDelta)
+void Gui::prepareControl(ButtonAction key, PT<int> coord, int buttonDelta)
 {
-  _impl->_controls[key] = std::make_unique<olc::QuickGUI::ImageButton>(
-				*_impl->guiManager, *_impl->_texts[key],
-				olc::vf2d{x,y}, olc::vf2d{
-					(float)_impl->_texts[key]->Sprite()->width+fontDelta,
-					(float)_impl->_texts[key]->Sprite()->height+fontDelta});
+  if (!_impl->_texts.contains(key)) return;
 
+  _impl->_controls[key] = std::make_unique<olc::QuickGUI::ImageButton>(
+    *_impl->guiManager, *_impl->_texts[key],
+    olc::vf2d { (float)coord.x, (float)coord.y },
+    olc::vf2d { (float)(_impl->_texts[key]->Sprite()->width+buttonDelta),
+      (float)(_impl->_texts[key]->Sprite()->height+buttonDelta)});
 }
 
 ButtonAction Gui::buttonActionPressed() const
