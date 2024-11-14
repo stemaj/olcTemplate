@@ -40,22 +40,23 @@ void LoadSave::Init(const std::string& level)
 			}
 			std::ofstream("scripts/profile/"+std::to_string(Profile)+"/"+level+".lua");
 		}
-		_luaProfile.safe_script_file("scripts/profile/"+std::to_string(Profile)+"/"+level+".lua");
+		_luaProfile.safe_script_file(
+      "scripts/profile/"+std::to_string(Profile)+"/"+level+".lua");
 	}
 	catch (const sol::error& e)
 	{
-		std::cout << std::string(e.what()) << std::endl;
+		//std::cout << std::string(e.what()) << std::endl;
 	}
 }
 
-std::string LoadSave::String(const std::string& name)
+std::string LoadSave::String(const std::string& name, const std::string& defaultValue)
 {
-  return _luaProfile[name].get_or(_luaDefault[name].get_or(std::string()));
+  return _luaProfile[name].get_or(_luaDefault[name].get_or(defaultValue));
 }
 
-float LoadSave::Float(const std::string& name)
+float LoadSave::Float(const std::string& name, const float defaultValue)
 {
-  return _luaProfile[name].get_or(_luaDefault[name].get_or(0.0f));
+  return _luaProfile[name].get_or(_luaDefault[name].get_or(defaultValue));
 }
 
 int LoadSave::Int(const std::string& name)
@@ -87,8 +88,10 @@ PT<int> LoadSave::PTInt(const std::string& name)
 std::array<PT<float>,4> LoadSave::PTFloat4(const std::string& name)
 {
   std::array<std::array<float,2>,4> f = {};
-  auto d = _luaDefault[name].get_or<std::array<std::array<float,2>,4>>(f);
-  auto vec = _luaProfile[name].get_or<std::array<std::array<float,2>,4>>(d);
+  auto d = _luaDefault[name].get_or<
+    std::array<std::array<float,2>,4>>(f);
+  auto vec = _luaProfile[name].get_or<
+    std::array<std::array<float,2>,4>>(d);
   std::array<PT<float>,4> arr;
   for (int i = 0; i < 4; i++)
    {
@@ -97,10 +100,101 @@ std::array<PT<float>,4> LoadSave::PTFloat4(const std::string& name)
   return arr;
 }
 
+std::vector<PT<float>> LoadSave::VPTFloat(const std::string& name)
+{
+  std::vector<PT<float>> ret;  
+  auto vec = _luaDefault[name].get<std::vector<std::array<float,2>>>();
+  for (const auto& v : vec)
+  {
+    ret.push_back({v[0],v[1]});
+  }
+  return ret;  
+}
+
+std::vector<std::string> LoadSave::VString(const std::string& name)
+{
+  return _luaDefault["animations"].get_or<std::vector<std::string>>({});
+}
+
+std::vector<MainMenuGraphic> LoadSave::Graphics()
+{
+  std::vector<MainMenuGraphic> ret;
+  sol::table graphicsTable = _luaDefault["graphics"].get_or(
+    sol::table(_luaDefault,sol::create));
+  for (size_t i = 1; i <= graphicsTable.size(); i++)
+  {
+    sol::table t = graphicsTable[i];
+    auto p = t.get_or<std::array<float, 2>>(2,{});
+    ret.push_back({
+      t.get_or<std::string>(1,""),
+      CO.D({p[0],p[1]}),
+      t.get_or(3,0.0f) });
+  }
+  return ret;
+}
+
+std::vector<IntroGraphic> LoadSave::IntroGraphics()
+{
+  std::vector<IntroGraphic> ret;
+  sol::table graphicsTable = _luaDefault["graphics"].get_or(
+    sol::table(_luaDefault,sol::create));
+  for (size_t i = 1; i <= graphicsTable.size(); i++)
+  {
+    sol::table t = graphicsTable[i];
+    auto p = t.get<std::array<float,2>>(2);
+    ret.push_back( {
+      t.get<std::string>(1),
+      CO.D({p[0],p[1]}),
+      t.get<float>(3),
+      t.get<float>(4),
+      t.get<float>(5)});
+  }
+  return ret;
+}
+
+std::vector<MainMenuText> LoadSave::Texts()
+{
+  std::vector<MainMenuText> ret;
+  sol::table textsTable = _luaDefault["texts"].get_or(
+    sol::table(_luaDefault,sol::create));
+  for (size_t i = 1; i <= textsTable.size(); i++)
+  {
+    sol::table t = textsTable[i];
+    auto p = t.get<std::array<float, 2>>(2);
+    ret.push_back({
+      t.get<std::string>(1),
+      CO.D({p[0],p[1]}),
+      (FontSize)t.get<int>(3),
+      t.get<int>(4) });
+  }
+  return ret;
+}
+
+std::vector<IntroText> LoadSave::IntroTexts()
+{
+  std::vector<IntroText> ret;
+  sol::table textsTable = _luaDefault["texts"].get_or(
+    sol::table(_luaDefault,sol::create));
+  for (size_t i = 1; i <= textsTable.size(); i++)
+  {
+    sol::table t = textsTable[i];
+    auto p = t.get_or<std::array<float,2>>(2,{});
+    ret.push_back( {
+      t.get_or<std::string>(1,""),
+      CO.D({p[0],p[1]}),
+      (FontSize)t.get_or(3,0),
+      t.get_or(4,0.0f),
+      t.get_or(5,0.0f),
+      t.get_or(6,0)});
+  }
+  return ret;
+}
+
 std::unordered_map<ButtonAction, MainMenuGraphic> LoadSave::ButtonGraphics()
 {
   std::unordered_map<ButtonAction, MainMenuGraphic> ret;
-  sol::table buttonsTable = _luaDefault["imageButtons"].get_or(sol::table(_luaDefault,sol::create));
+  sol::table buttonsTable = _luaDefault["imageButtons"].get_or(
+    sol::table(_luaDefault,sol::create));
   for (auto& [key, values] : buttonsTable)
   {
     auto p = ((sol::table)values).get_or<std::array<float, 2>>(2,{});
@@ -113,6 +207,33 @@ std::unordered_map<ButtonAction, MainMenuGraphic> LoadSave::ButtonGraphics()
       };
   }
   return ret;
+}
+
+std::unordered_map<ButtonAction, MainMenuText> LoadSave::ButtonTexts()
+{
+  std::unordered_map<ButtonAction, MainMenuText> ret;
+  sol::table buttonsTable = _luaDefault["buttons"].get_or(
+    sol::table(_luaDefault,sol::create));
+  for (auto& [key, values] : buttonsTable)
+  {
+    //int key = pair.first.as<int>();
+    //sol::table values = pair.second;
+    auto p = ((sol::table)values).get_or<std::array<float, 2>>(2,{});
+    ret[(ButtonAction)key.as<int>()] = {
+      ((sol::table)values).get_or<std::string>(1,""),
+      CO.D({p[0],p[1]}),
+      ((sol::table)values).get_or(3,(FontSize)0),
+      ((sol::table)values).get_or(4,0),
+      ((sol::table)values).get_or(5,0),
+    };
+  }
+  return ret;  
+}
+
+std::vector<MainMenuColor> LoadSave::Colors()
+{
+  return _luaDefault["colors"].get_or<std::vector<MainMenuColor>>(
+    {std::array<uint8_t, 4>({255,255,255,255})});
 }
 
 void LoadSave::SaveEmpty()
@@ -147,7 +268,9 @@ void LoadSave::SavePTInt(const std::string& name, const PT<int>& value)
 
 void LoadSave::SavePTFloat4(const std::string& name, const std::array<PT<float>,4>& value)
 {
-  _outFile << name << " = { { " << value[0].x << ", " << value[0].y << " }, { " << value[1].x << ", " << value[1].y << " }, { " << value[2].x << ", " << value[2].y << " }, { " << value[3].x << ", " << value[3].y << " } }";
+  _outFile << name << " = { { " << value[0].x << ", " << value[0].y << " }, { "
+    << value[1].x << ", " << value[1].y << " }, { " << value[2].x << ", " << value[2].y
+    << " }, { " << value[3].x << ", " << value[3].y << " } }";
 }
 
 void LoadSave::SaveStart(const std::string& level)

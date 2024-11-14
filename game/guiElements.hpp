@@ -1,7 +1,6 @@
 #ifndef __GUIELEMENTS_HPP
 #define __GUIELEMENTS_HPP
 
-#include "b2_types.h"
 #include <array>
 #include <olcTemplate/game/coordinates.hpp>
 
@@ -19,6 +18,7 @@ enum class FontSize
 	COUNT = 7
 };
 
+using IntroAnimations = std::string;
 using MainMenuColor = std::array<uint8_t, 4>;
 struct MainMenuText
 {
@@ -28,12 +28,30 @@ struct MainMenuText
   int colorListIndex;
 	int buttonDelta;
 };
+struct IntroText
+{
+	std::string text;
+	PT<int> pos;
+	FontSize fontSize;
+	float startTime;
+	float endTime;
+	int colorListIndex;
+};
+
 struct MainMenuGraphic
 {
   std::string file;
   PT<int> pos;
   float scale;
 	int buttonDelta;
+};
+struct IntroGraphic
+{
+	std::string file;
+	PT<int> pos;
+	float scale;
+	float startTime;
+	float endTime;
 };
 
 } // namespace stemaj

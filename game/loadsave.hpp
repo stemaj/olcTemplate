@@ -5,6 +5,7 @@
 #include "olcTemplate/game/input.hpp"
 #include <string>
 #include <unordered_map>
+#include <vector>
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #include <fstream>
@@ -21,15 +22,23 @@ public:
 
 	void Init(const std::string& level);
   
-	std::string String(const std::string& name);
-	float Float(const std::string& name);
+	std::string String(const std::string& name, const std::string& defaultValue = "");
+	float Float(const std::string& name, const float defaultValue = 0.0f);
 	int Int(const std::string& name);
 	bool Boolean(const std::string& name);
 	PT<float> PTFloat(const std::string& name);
 	PT<int> PTInt(const std::string& name);
   std::array<PT<float>,4> PTFloat4(const std::string& name);
+	std::vector<PT<float>> VPTFloat(const std::string& name);
 
+	std::vector<std::string> VString(const std::string& name);
 	std::unordered_map<ButtonAction, MainMenuGraphic> ButtonGraphics();
+	std::unordered_map<ButtonAction, MainMenuText> ButtonTexts();
+	std::vector<MainMenuColor> Colors();
+	std::vector<MainMenuText> Texts();
+	std::vector<MainMenuGraphic> Graphics();
+	std::vector<IntroText> IntroTexts();
+	std::vector<IntroGraphic> IntroGraphics();
 
 	void SaveEmpty();
 	void SaveString(const std::string& name, const std::string& value);

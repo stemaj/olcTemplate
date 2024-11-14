@@ -6,9 +6,6 @@
 #include <olcTemplate/game/coordinates.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
-#define SOL_ALL_SAFETIES_ON 1
-#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
-
 
 namespace olc {
   class Decal;
@@ -36,7 +33,6 @@ private:
   float _logoTimeCounter = 0.0f;
   bool _animationRewindedForStartup = false;
 
-  sol::state _lua;
   std::unique_ptr<LogoRender> _render;
 };
 

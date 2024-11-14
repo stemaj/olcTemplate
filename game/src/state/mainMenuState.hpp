@@ -5,10 +5,9 @@
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/input.hpp>
 #include <olcTemplate/game/src/state/state.hpp>
-#define SOL_ALL_SAFETIES_ON 1
-#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/guiElements.hpp>
+#include <unordered_map>
 
 namespace stemaj {
 
@@ -43,7 +42,6 @@ public:
 	ButtonAction _buttonHit = ButtonAction::NO_ACTION;
 
 private:
-  sol::state _lua;
   std::unique_ptr<MainMenuRender> _render;
 };
 

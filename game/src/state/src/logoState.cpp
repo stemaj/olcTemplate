@@ -1,3 +1,4 @@
+#include "olcTemplate/game/loadsave.hpp"
 #include <olcTemplate/game/src/render/logoRender.hpp>
 #include <olcTemplate/game/src/state/logoState.hpp>
 #include <olcTemplate/game/src/render/introRender.hpp>
@@ -16,16 +17,6 @@ LogoState::LogoState() : _fader(0.9f), _render(std::make_unique<LogoRender>())
 	SO.StartMusic("./olcTemplate/assets/wav/breaking-news-177297.mp3", 0.5f, 0.9f);
 
   // no fade in
-
-  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
-	try
-	{
-		_lua.safe_script_file("scripts/settings.lua");
-	}
-	catch (const sol::error& e)
-	{
-		std::cout << std::string(e.what()) << std::endl;
-	}
 }
 
 Render* LogoState::GetRender()
@@ -35,8 +26,8 @@ Render* LogoState::GetRender()
 
 std::optional<std::unique_ptr<State>> LogoState::nextState()
 {
-  bool showIntro = _lua["show_intro"].get_or(false);
-  if (showIntro)
+  LS.Init("settings");
+  if (LS.Boolean("show_intro"))
   {
     return std::make_unique<IntroState>();                
   }

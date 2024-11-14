@@ -1,3 +1,4 @@
+#include "olcTemplate/game/loadsave.hpp"
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
 #include <olcTemplate/game/src/render/introRender.hpp>
@@ -17,54 +18,16 @@ olc::utils::Animate2D::AnimationState introCharacterAnimationState;
 IntroState::IntroState() : _render(std::make_unique<IntroRender>())
 {
   SO.StartMusic("./olcTemplate/assets/wav/groovy-energy-sports-80-bpm-short-12275.mp3", 0.5f);
-	
-  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
-	try
-	{
-		_lua.safe_script_file("scripts/intro.lua");
-	}
-	catch (const sol::error& e)
-	{
-		std::cout << std::string(e.what()) << std::endl;
-	}
-
-
-  _font = _lua["font"].get_or<std::string>("dogica");
-  _fader = std::make_unique<Fader>(_lua["fade_time"].get_or(3.0f));
-  _introTime = _lua["intro_time"].get_or(18.0f);
-  _colors = _lua["colors"].get_or<std::vector<IntroColor>>({});
-  _backgroundColorIndex = _lua["background_color"].get_or(0);
-  
-  sol::table textsTable = _lua["texts"].get_or(sol::table(_lua,sol::create));
-  for (size_t i = 1; i <= textsTable.size(); i++)
-  {
-    sol::table t = textsTable[i];
-    auto p = t.get_or<std::array<float,2>>(2,{});
-    _texts.push_back( {
-      t.get_or<std::string>(1,""),
-      CO.D({p[0],p[1]}),
-      (FontSize)t.get_or(3,0),
-      t.get_or(4,0.0f),
-      t.get_or(5,0.0f),
-      t.get_or(6,0)});
-  }
-
-  sol::table graphicsTable = _lua["graphics"].get_or(sol::table(_lua,sol::create));
-  for (size_t i = 1; i <= graphicsTable.size(); i++)
-  {
-    sol::table t = graphicsTable[i];
-    auto p = t.get<std::array<float,2>>(2);
-    _graphics.push_back( {
-      t.get<std::string>(1),
-      CO.D({p[0],p[1]}),
-      t.get<float>(3),
-      t.get<float>(4),
-      t.get<float>(5)});
-  }
-
-  _animations = _lua["animations"].get_or<std::vector<IntroAnimations>>({});
-
+  LS.Init("intro");
+  _font = LS.String("font", "dogica");
+  _fader = std::make_unique<Fader>(LS.Float("fade_time", 3.0f));
+  _introTime = LS.Float("intro_time", 18.0f);
+  _colors = LS.Colors();
+  _backgroundColorIndex = LS.Int("background_color");
+  _texts = LS.IntroTexts();
+  _graphics = LS.IntroGraphics();
+  _animations = LS.VString("animations");
  
   for (const auto& a : _animations)
   {
