@@ -97,6 +97,24 @@ std::array<PT<float>,4> LoadSave::PTFloat4(const std::string& name)
   return arr;
 }
 
+std::unordered_map<ButtonAction, MainMenuGraphic> LoadSave::ButtonGraphics()
+{
+  std::unordered_map<ButtonAction, MainMenuGraphic> ret;
+  sol::table buttonsTable = _luaDefault["imageButtons"].get_or(sol::table(_luaDefault,sol::create));
+  for (auto& [key, values] : buttonsTable)
+  {
+    auto p = ((sol::table)values).get_or<std::array<float, 2>>(2,{});
+    ret[(ButtonAction)key.as<int>()] =
+      {
+        ((sol::table)values).get_or<std::string>(1,""),
+        CO.D({p[0],p[1]}),
+        1.0f,
+        ((sol::table)values).get_or(3,0)
+      };
+  }
+  return ret;
+}
+
 void LoadSave::SaveEmpty()
 {
   _outFile << "\n";

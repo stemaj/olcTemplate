@@ -1,7 +1,10 @@
 #ifndef __LOADSAVE_HPP
 #define __LOADSAVE_HPP
 
+#include "olcTemplate/game/guiElements.hpp"
+#include "olcTemplate/game/input.hpp"
 #include <string>
+#include <unordered_map>
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #include <fstream>
@@ -25,6 +28,8 @@ public:
 	PT<float> PTFloat(const std::string& name);
 	PT<int> PTInt(const std::string& name);
   std::array<PT<float>,4> PTFloat4(const std::string& name);
+
+	std::unordered_map<ButtonAction, MainMenuGraphic> ButtonGraphics();
 
 	void SaveEmpty();
 	void SaveString(const std::string& name, const std::string& value);
