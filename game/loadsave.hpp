@@ -20,7 +20,7 @@ public:
 	LoadSave(LoadSave const&) = delete;
 	void operator=(LoadSave const&) = delete;
 
-	void Init(const std::string& level);
+	void Init(const std::string& luaFilePath, bool tryProfile);
   
 	std::string String(const std::string& name, const std::string& defaultValue = "");
 	float Float(const std::string& name, const float defaultValue = 0.0f);
@@ -30,6 +30,12 @@ public:
 	PT<int> PTInt(const std::string& name);
   std::array<PT<float>,4> PTFloat4(const std::string& name);
 	std::vector<PT<float>> VPTFloat(const std::string& name);
+
+	template<typename T1,typename T2>
+	std::unordered_map<T1, T2> Map(const std::string& name)
+	{
+	  return _luaDefault[name].get_or(std::unordered_map<T1, T2>{});
+	}
 
 	std::vector<std::string> VString(const std::string& name);
 	std::unordered_map<ButtonAction, MainMenuGraphic> ButtonGraphics();

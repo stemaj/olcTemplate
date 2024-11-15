@@ -19,7 +19,7 @@ IntroState::IntroState() : _render(std::make_unique<IntroRender>())
 {
   SO.StartMusic("./olcTemplate/assets/wav/groovy-energy-sports-80-bpm-short-12275.mp3", 0.5f);
 
-  LS.Init("intro");
+  LS.Init("scripts/intro.lua", false);
   _font = LS.String("font", "dogica");
   _fader = std::make_unique<Fader>(LS.Float("fade_time", 3.0f));
   _introTime = LS.Float("intro_time", 18.0f);

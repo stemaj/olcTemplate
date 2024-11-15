@@ -16,37 +16,40 @@ LoadSave::~LoadSave()
 {
 }
 
-void LoadSave::Init(const std::string& level)
+void LoadSave::Init(const std::string& luaFilePath, bool tryProfile)
 {
   _luaDefault.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 	try
 	{
-		_luaDefault.safe_script_file("scripts/"+level+".lua");
+		_luaDefault.safe_script_file(luaFilePath);
 	}
 	catch (const sol::error& e)
 	{
 		std::cout << std::string(e.what()) << std::endl;
 	}
 
-  _luaProfile.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
-	try
-	{
-		fs::path dir = "scripts/profile/"+std::to_string(Profile);
-		if (!fs::exists(dir))
-		{
-			if (!fs::create_directories(dir))
-			{
-				std::cout << "failed to create profile directory\n";
-			}
-			std::ofstream("scripts/profile/"+std::to_string(Profile)+"/"+level+".lua");
-		}
-		_luaProfile.safe_script_file(
-      "scripts/profile/"+std::to_string(Profile)+"/"+level+".lua");
-	}
-	catch (const sol::error& e)
-	{
-		//std::cout << std::string(e.what()) << std::endl;
-	}
+  if (tryProfile)
+  {
+    // _luaProfile.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
+    // try
+    // {
+    //   fs::path dir = "scripts/profile/"+std::to_string(Profile);
+    //   if (!fs::exists(dir))
+    //   {
+    //     if (!fs::create_directories(dir))
+    //     {
+    //       std::cout << "failed to create profile directory\n";
+    //     }
+    //     std::ofstream("scripts/profile/"+std::to_string(Profile)+"/"+level+".lua");
+    //   }
+    //   _luaProfile.safe_script_file(
+    //     "scripts/profile/"+std::to_string(Profile)+"/"+level+".lua");
+    // }
+    // catch (const sol::error& e)
+    // {
+    //   //std::cout << std::string(e.what()) << std::endl;
+    // }
+  }
 }
 
 std::string LoadSave::String(const std::string& name, const std::string& defaultValue)

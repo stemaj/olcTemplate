@@ -26,7 +26,7 @@ Render* LogoState::GetRender()
 
 std::optional<std::unique_ptr<State>> LogoState::nextState()
 {
-  LS.Init("settings");
+  LS.Init("scripts/settings.lua", false);
   if (LS.Boolean("show_intro"))
   {
     return std::make_unique<IntroState>();                

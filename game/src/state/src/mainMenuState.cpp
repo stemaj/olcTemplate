@@ -1,8 +1,5 @@
-#include "olcTemplate/game/fonts.hpp"
 #include "olcTemplate/game/input.hpp"
 #include "olcTemplate/game/loadsave.hpp"
-#include "sol.hpp"
-#include <cstdint>
 #include <memory>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
@@ -20,7 +17,7 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
 {
   SO.StartMusic("./olcTemplate/assets/wav/hard-rock-logo-108960.mp3", 0.5f);
 
-  LS.Init("mainMenu");
+  LS.Init("scripts/mainMenu.lua", false);
   _font = LS.String("font", "dogica");
   _colors = LS.Colors();
   _backgroundColorIndex = LS.Int("background_color");
