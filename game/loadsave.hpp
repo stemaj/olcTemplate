@@ -3,6 +3,7 @@
 
 #include "olcTemplate/game/guiElements.hpp"
 #include "olcTemplate/game/input.hpp"
+#include "olcTemplate/game/src/tools/dialog.hpp"
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -24,7 +25,7 @@ public:
   
 	std::string String(const std::string& name, const std::string& defaultValue = "");
 	float Float(const std::string& name, const float defaultValue = 0.0f);
-	int Int(const std::string& name);
+	int Int(const std::string& name, const int defaultValue = 0);
 	bool Boolean(const std::string& name);
 	PT<float> PTFloat(const std::string& name);
 	PT<int> PTInt(const std::string& name);
@@ -38,6 +39,9 @@ public:
 	}
 
 	std::vector<std::string> VString(const std::string& name);
+
+	std::vector<Dialog::DialogNode> DialogNodes();
+
 	std::unordered_map<ButtonAction, MainMenuGraphic> ButtonGraphics();
 	std::unordered_map<ButtonAction, MainMenuText> ButtonTexts();
 	std::vector<MainMenuColor> Colors();

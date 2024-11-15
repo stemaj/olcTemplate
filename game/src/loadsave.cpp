@@ -62,9 +62,9 @@ float LoadSave::Float(const std::string& name, const float defaultValue)
   return _luaProfile[name].get_or(_luaDefault[name].get_or(defaultValue));
 }
 
-int LoadSave::Int(const std::string& name)
+int LoadSave::Int(const std::string& name, const int defaultValue)
 {
-  return _luaProfile[name].get_or(_luaDefault[name].get_or(0));
+  return _luaProfile[name].get_or(_luaDefault[name].get_or(defaultValue));
 }
 
 bool LoadSave::Boolean(const std::string& name)
@@ -237,6 +237,33 @@ std::vector<MainMenuColor> LoadSave::Colors()
 {
   return _luaDefault["colors"].get_or<std::vector<MainMenuColor>>(
     {std::array<uint8_t, 4>({255,255,255,255})});
+}
+
+std::vector<Dialog::DialogNode> LoadSave::DialogNodes()
+{
+  std::vector<Dialog::DialogNode> ret;
+  sol::table dialog = _luaDefault["dialog"];
+  for (size_t i = 1; i <= dialog.size(); i++)
+  {
+    sol::table node = dialog[i];
+    Dialog::DialogNode dialogNode;
+    dialogNode.speaker = node["speaker"];
+    dialogNode.text = node["text"];
+    dialogNode.duration = node["duration"];
+    if (node["next"].valid()) {
+        dialogNode.next = node["next"];
+    }
+
+    if (node["options"].valid()) {
+        sol::table options = node["options"];
+        for (size_t j = 1; j <= options.size(); ++j) {
+            sol::table option = options[j];
+            dialogNode.options.emplace_back(option["text"], option["next"]);
+        }
+    }
+    ret.push_back(dialogNode);
+  }
+  return ret;
 }
 
 void LoadSave::SaveEmpty()

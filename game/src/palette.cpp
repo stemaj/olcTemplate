@@ -1,7 +1,6 @@
 #include <olcTemplate/game/palette.hpp>
+#include <olcTemplate/game/loadsave.hpp>
 #include <string>
-#define SOL_ALL_SAFETIES_ON 1
-#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 
 using namespace stemaj;
 
@@ -13,18 +12,8 @@ Palette& Palette::get()
 
 int Palette::Init(const std::string& pal)
 {
-  sol::state lua;
-  lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
-	try
-	{
-		lua.safe_script_file("scripts/settings.lua");
-	}
-	catch (const sol::error& e)
-	{
-		std::cout << std::string(e.what()) << std::endl;
-	}
-
-  auto hexValues = lua[pal].get_or<std::vector<std::string>>({});
+  LS.Init("scripts/settings.lua", false);
+  LS.VString(pal);
   return 0;
 }
 

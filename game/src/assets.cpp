@@ -5,9 +5,6 @@
 #include <utility>
 #include <memory>
 
-#define SOL_ALL_SAFETIES_ON 1
-#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
-
 using namespace stemaj;
 namespace fs = std::filesystem;
 

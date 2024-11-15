@@ -1,6 +1,5 @@
+#include "olcTemplate/game/loadsave.hpp"
 #include <olcTemplate/game/coordinates.hpp>
-#define SOL_ALL_SAFETIES_ON 1
-#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #ifdef RUN_TESTS
 #include <olcTemplate/sdk/doctest-2.4.11/doctest.h>
 #endif
@@ -15,21 +14,11 @@ Coordinates& Coordinates::get()
 
 Coordinates::Coordinates()
 {
-  sol::state lua;
-  lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
-	try
-	{
-		lua.safe_script_file("scripts/settings.lua");
-	}
-	catch (const sol::error& e)
-	{
-		std::cout << std::string(e.what()) << std::endl;
-	}
-
-  W = lua["width"].get_or(800);
-  H = lua["height"].get_or(360);
-  P = lua["pixel_size"].get_or(1);
-  F = lua["full_screen"].get_or(false);
+  LS.Init("scripts/settings.lua", false);
+  W = LS.Int("width", 800);
+  H = LS.Int("height", 360);
+  P = LS.Int("pixel_size", 1);
+  F = LS.Boolean("full_screen");
 }
 
 PT<int> Coordinates::D(PT<float> relativeCoordinate)

@@ -2,9 +2,8 @@
 #include <olcTemplate/game/sound.hpp>
 #include <olcTemplate/sdk/soloud/include/soloud.h>
 #include <olcTemplate/sdk/soloud/include/soloud_wav.h>
+#include <olcTemplate/game/loadsave.hpp>
 #include <thread>
-#define SOL_ALL_SAFETIES_ON 1
-#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 
 using namespace stemaj;
 
@@ -16,18 +15,8 @@ Sound& Sound::get()
 
 Sound::Sound()
 {
-  sol::state lua;
-  lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
-  try
-  {
-    lua.safe_script_file("scripts/settings.lua");
-  }
-  catch (const sol::error& e)
-  {
-    std::cout << std::string(e.what()) << std::endl;
-  }
-
-  _soundEnabled = lua["sound"].get_or(false);
+  LS.Init("scripts/settings.lua", false);
+  _soundEnabled = LS.Boolean("sound");
 
   if (_soundEnabled)
   {
