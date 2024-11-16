@@ -519,7 +519,6 @@ namespace olc
 
 	void TransformedView::DrawPartialSprite(const olc::vf2d& pos, Sprite* sprite, const olc::vi2d& sourcepos, const olc::vi2d& size, const olc::vf2d& scale, uint8_t flip)
 	{
-		olc::vf2d vSpriteSize = size;
 		if (IsRectVisible(pos, size * scale))
 		{
 			olc::vf2d vSpriteScaledSize = olc::vf2d(size) * m_vRecipPixel * m_vWorldScale * scale;

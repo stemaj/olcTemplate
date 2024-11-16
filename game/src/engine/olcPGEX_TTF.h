@@ -27,7 +27,7 @@ namespace olc {
     public:
         Font() = default;
 
-        ~Font() {
+        virtual ~Font() {
             if (fontFace != nullptr) {
                 FT_Done_Face(fontFace);
             }

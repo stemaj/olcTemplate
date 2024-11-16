@@ -379,7 +379,6 @@ namespace olc::QuickGUI
 		bool m_bShowDialog = false;
 
 		Manager m_manFileSelect;
-		ListBox* m_listVolumes = nullptr;
 		ListBox* m_listDirectory = nullptr;
 		ListBox* m_listFiles = nullptr;
 
