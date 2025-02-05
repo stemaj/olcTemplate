@@ -46,7 +46,7 @@ std::optional<std::unique_ptr<State>> LogoState::Update(const Input& input, floa
 		_animationRewindedForStartup = true;
   }
 
-  auto a = AN.GetAnimation("Sing_With_Me");
+  auto a = AN.GetAnimation("Sing_With_Me_Emscripten");
   const auto& frame = a.animation.GetFrame(_logoSheet.animationState);
   a.animation.UpdateState(_logoSheet.animationState, fElapsedTime);
 
