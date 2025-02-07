@@ -59,6 +59,10 @@ std::optional<std::unique_ptr<State>> MainMenuState::Update(const Input& input, 
 	if (input.k4Pressed) _buttonHit = OPTION_4;
 	if (input.k5Pressed) _buttonHit = OPTION_5;
   if (input.k6Pressed) _buttonHit = OPTION_6;
+  if (input.k7Pressed) _buttonHit = OPTION_7;
+  if (input.k8Pressed) _buttonHit = OPTION_8;
+  if (input.k9Pressed) _buttonHit = OPTION_9;
+  if (input.k0Pressed) _buttonHit = OPTION_0;
 
 	return Starter::SwitchState(_buttonHit);
 }

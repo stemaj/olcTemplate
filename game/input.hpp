@@ -13,6 +13,10 @@ enum ButtonAction : uint8_t
 	OPTION_4,
 	OPTION_5,
   OPTION_6,
+  OPTION_7,
+  OPTION_8,
+  OPTION_9,
+  OPTION_0,
   BACK,
 	NO_ACTION,
 };
@@ -40,6 +44,10 @@ struct Input
   bool k4Pressed;
   bool k5Pressed;
   bool k6Pressed;
+  bool k7Pressed;
+  bool k8Pressed;
+  bool k9Pressed;
+  bool k0Pressed;
   bool spacePressed;
   bool escapePressed;
 };

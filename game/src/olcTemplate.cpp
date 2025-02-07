@@ -72,6 +72,10 @@ bool OlcTemplate::OnUserUpdate(float fElapsedTime)
     wck ? false : GetKey(olc::K4).bPressed,
     wck ? false : GetKey(olc::K5).bPressed,
     wck ? false : GetKey(olc::K6).bPressed,
+    wck ? false : GetKey(olc::K7).bPressed,
+    wck ? false : GetKey(olc::K8).bPressed,
+    wck ? false : GetKey(olc::K9).bPressed,
+    wck ? false : GetKey(olc::K0).bPressed,
     wck ? false : GetKey(olc::SPACE).bPressed,
     wck ? false : GetKey(olc::ESCAPE).bPressed,
     };
