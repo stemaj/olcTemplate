@@ -4,11 +4,30 @@
 #include <olcTemplate/game/src/state/state.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
 
+#ifdef __EMSCRIPTEN__
+  #include <experimental/coroutine>
+  using suspend_never = std::experimental::suspend_never;
+#else
+  #include <coroutine>
+  using suspend_never = std::suspend_never;
+#endif
+
 namespace olc {
   class Decal;
 }
 
 namespace stemaj {
+
+// Eine einfache Coroutine für asynchrone Aufgaben
+struct Task {
+    struct promise_type {
+        Task get_return_object() { return {}; }
+        suspend_never initial_suspend() { return {}; } 
+        suspend_never final_suspend() noexcept { return {}; } 
+        void return_void() {}
+        void unhandled_exception() { std::terminate(); }
+    };
+};
 
 class Render;
 class LoadingRender;

@@ -14,7 +14,7 @@ Assets& stemaj::Assets::get()
   return me;
 }
 
-void Assets::Load()
+Task Assets::Load()
 {
   auto loadSprite = [&](const std::string& sName, 
     const std::string& sFileName)
@@ -85,6 +85,8 @@ void Assets::Load()
 
   Loaded = true;
   std::cout << "Assets loaded\n";
+
+  co_return;
 }
 
 olc::Sprite* Assets::Sprite(const std::string& name)

@@ -5,6 +5,8 @@
 #include <olcTemplate/game/coordinates.hpp>
 #include <olcTemplate/game/guiElements.hpp>
 #include <string>
+#include <olcTemplate/game/src/state/loading.hpp>
+
 
 namespace olc {
 	class Font;
@@ -25,7 +27,7 @@ public:
 	
 	olc::Font* Font(const std::string& name, const FontSize fontSize);
 	
-	void Load();
+	Task Load();
 	bool Loaded = false;
 	
 	PT<int> BoxSize(const std::string& text, const std::string& fontName, const FontSize fontSize);

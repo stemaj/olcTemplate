@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <string>
 #include <unordered_map>
+#include <olcTemplate/game/src/state/loading.hpp>
 
 namespace stemaj {
 
@@ -64,7 +65,7 @@ public:
 
   stemaj::Animation& GetAnimation(const std::string& name);
 
-  void Load();
+  Task Load();
   bool Loaded = false;
 private:
 	AnimationMap() {}

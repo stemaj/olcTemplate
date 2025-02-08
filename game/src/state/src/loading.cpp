@@ -29,15 +29,18 @@ std::optional<std::unique_ptr<State>> Loading::Update(const Input& input, float 
 
   if (!_loadingStarted)
   {
-    AS.Load();
-    AN.Load();
-    FT.Load();
+    auto as = AS.Load();
+    auto an = AN.Load();
+    auto ft = FT.Load();
     _loadingStarted = true;
-  }
 
-  if (AS.Loaded && AN.Loaded && FT.Loaded)
-  {
+    // Warten, bis alle drei abgeschlossen sind
+    co_await as;
+    co_await an;
+    co_await ft;
+
     return std::make_unique<LogoState>();
   }
+
   return std::nullopt;
 }

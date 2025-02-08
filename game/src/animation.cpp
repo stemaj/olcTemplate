@@ -68,11 +68,13 @@ void AnimationMap::LoadFrom(const std::string& directory)
   }
 }
 
-void AnimationMap::Load()
+Task AnimationMap::Load()
 {
   LoadFrom("./assets/sheets");
   LoadFrom("./olcTemplate/assets/sheets");
 
   Loaded = true;
   std::cout << "Animations loaded\n";
+
+  co_return;
 }

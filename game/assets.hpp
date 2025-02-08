@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <unordered_map>
+#include <olcTemplate/game/src/state/loading.hpp>
 
 namespace olc {
   class Sprite;
@@ -25,7 +26,7 @@ public:
   olc::Decal* Decal(const std::string& name);
   olc::Renderable* Renderable(const std::string& name);
   
-  void Load();
+  Task Load();
   bool Loaded = false;
 
 private:

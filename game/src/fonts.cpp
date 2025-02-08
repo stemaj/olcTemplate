@@ -39,7 +39,7 @@ Fonts& stemaj::Fonts::get()
   return me;
 }
 
-void Fonts::Load()
+Task Fonts::Load()
 {
   olc::Font::init();
   
@@ -79,6 +79,8 @@ void Fonts::Load()
 
   Loaded = true;
   std::cout << "Fonts loaded\n";
+
+  co_return;
 }
 
 olc::Font* Fonts::Font(const std::string& name, const FontSize fontSize)
