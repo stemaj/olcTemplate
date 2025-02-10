@@ -80,7 +80,7 @@ Task Fonts::Load()
   Loaded = true;
   std::cout << "Fonts loaded\n";
 
-  co_return;
+  //co_return;
 }
 
 olc::Font* Fonts::Font(const std::string& name, const FontSize fontSize)

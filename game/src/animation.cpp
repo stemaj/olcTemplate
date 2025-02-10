@@ -76,5 +76,5 @@ Task AnimationMap::Load()
   Loaded = true;
   std::cout << "Animations loaded\n";
 
-  co_return;
+  //co_return;
 }

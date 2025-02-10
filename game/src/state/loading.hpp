@@ -18,16 +18,17 @@ namespace olc {
 
 namespace stemaj {
 
-// Eine einfache Coroutine für asynchrone Aufgaben
-struct Task {
-    struct promise_type {
-        Task get_return_object() { return {}; }
-        suspend_never initial_suspend() { return {}; } 
-        suspend_never final_suspend() noexcept { return {}; } 
-        void return_void() {}
-        void unhandled_exception() { std::terminate(); }
-    };
-};
+  using Task = void;
+// // Eine einfache Coroutine für asynchrone Aufgaben
+// struct Task {
+//     struct promise_type {
+//         Task get_return_object() { return {}; }
+//         suspend_never initial_suspend() { return {}; } 
+//         suspend_never final_suspend() noexcept { return {}; } 
+//         void return_void() {}
+//         void unhandled_exception() { std::terminate(); }
+//     };
+// };
 
 class Render;
 class LoadingRender;

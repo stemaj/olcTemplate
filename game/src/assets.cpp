@@ -86,7 +86,7 @@ Task Assets::Load()
   Loaded = true;
   std::cout << "Assets loaded\n";
 
-  co_return;
+  //co_return;
 }
 
 olc::Sprite* Assets::Sprite(const std::string& name)
