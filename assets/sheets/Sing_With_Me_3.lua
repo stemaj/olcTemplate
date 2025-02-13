@@ -1,7 +1,7 @@
 --
 
-spriteWidth = 159
-spriteHeight = 159
+spriteWidth = 318
+spriteHeight = 318
 ox = 0.0
 oy = 0.0
 details = { [0] = {

@@ -5,12 +5,28 @@ from PIL import Image, ImageCms
 def convert_to_srgb(image):
     """Convert image to sRGB color profile."""
     srgb_profile = ImageCms.createProfile("sRGB")
-    if "icc_profile" in image.info:
-        input_profile = ImageCms.ImageCmsProfile(image.info["icc_profile"])
-        image = ImageCms.profileToProfile(image, input_profile, srgb_profile)
-    else:
-        image = ImageCms.profileToProfile(image, srgb_profile, srgb_profile)
-    return image
+    
+    icc_profile = image.info.get("icc_profile")
+    
+    if icc_profile:
+        try:
+            input_profile = ImageCms.ImageCmsProfile(icc_profile)
+            return ImageCms.profileToProfile(image, input_profile, srgb_profile)
+        except Exception as e:
+            print(f"Warnung: ICC-Profil fehlerhaft, keine Konvertierung. Fehler: {e}")
+            return image  # Gib das Bild unverändert zurück
+    
+    return image  # Falls kein ICC-Profil vorhanden, auch unverändert zurückgeben
+
+# def convert_to_srgb(image):
+#     """Convert image to sRGB color profile."""
+#     srgb_profile = ImageCms.createProfile("sRGB")
+#     if "icc_profile" in image.info:
+#         input_profile = ImageCms.ImageCmsProfile(image.info["icc_profile"])
+#         image = ImageCms.profileToProfile(image, input_profile, srgb_profile)
+#     else:
+#         image = ImageCms.profileToProfile(image, srgb_profile, srgb_profile)
+#     return image
 
 def extract_visible_layers_from_psd(psd_file, sprite_width, sprite_height):
     psd = PSDImage.open(psd_file)
@@ -52,9 +68,9 @@ def process_multiple_psd_files(psd_files, output_file, sprite_width, sprite_heig
     create_spritesheet(all_layers, output_file, sprite_width, sprite_height)
 
 # Beispielverwendung
-psd_files = ['Sing_With_Me.psd']  # Liste von PSD-Dateien
-output_file = 'Sing_With_Me.png'
-sprite_width = 635  # Breite jedes einzelnen Sprites
-sprite_height = 636  # Höhe jedes einzelnen Sprites
+psd_files = ['Sing_With_Me_3.psd']  # Liste von PSD-Dateien
+output_file = 'Sing_With_Me_3.png'
+sprite_width = 318  # Breite jedes einzelnen Sprites
+sprite_height = 318  # Höhe jedes einzelnen Sprites
 
 process_multiple_psd_files(psd_files, output_file, sprite_width, sprite_height)
