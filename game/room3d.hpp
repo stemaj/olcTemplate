@@ -1,11 +1,106 @@
 #ifndef __ROOM_3D
 #define __ROOM_3D
 
+#include "b2_types.h"
+#include <array>
+#include <olcTemplate/game/coordinates.hpp>
+
 namespace stemaj {
 
-class room3d
+class Room3d
 {
+public:
+  // Perspektivische Projektion mit Kameraverschiebung
+  PT<int> Project(float x, float y, float z) const;
 
+  // Abstand zwischen zwei 3D-Punkten berechnen
+  static float Distance(float x1, float y1, float z1, float x2, float y2, float z2);
+
+  void MoveCamX(float val);
+  void MoveCamY(float val);
+  void MoveCamZ(float val);
+
+  bool isBumping = false;
+  void StartBumpEffect(const PT<float>& bumpDir);
+
+  void UpdateBumpEffect(float fElapsedTime);
+
+  void CalcBackgroundPosition();
+
+  PT<int> GetBackgroundPosition() const;
+  float GetBackgroundScale() const;
+
+  void Debug();
+  std::vector<std::pair<PT<float>,PT<float>>> debugLinesX;
+  std::vector<std::pair<PT<float>,PT<float>>> debugLinesY;
+  std::vector<std::pair<PT<float>,PT<float>>> debugLinesZ;
+
+  uint32_t GetColorX() { return static_cast<uint32_t> 
+    (uint8_t(_colorXLines[0]*255.f) << 24 |
+      uint8_t(_colorXLines[1]*255.f) << 16 |
+      uint8_t(_colorXLines[2]*255.f) << 8 |
+      uint8_t(0)); }
+  uint32_t GetColorY() { return static_cast<uint32_t> 
+    (uint8_t(_colorYLines[0]*255.f) << 24 |
+      uint8_t(_colorYLines[1]*255.f) << 16 |
+      uint8_t(_colorYLines[2]*255.f) << 8 |
+      uint8_t(0)); }
+  uint32_t GetColorZ() { return static_cast<uint32_t> 
+    (uint8_t(_colorZLines[0]*255.f) << 24 |
+      uint8_t(_colorZLines[1]*255.f) << 16 |
+      uint8_t(_colorZLines[2]*255.f) << 8 |
+      uint8_t(0)); }
+            
+private:
+
+  float _colorXLines[3] = {64/255.f, 64/255.f, 64/255.f};
+  float _colorYLines[3] = {128/255.f, 128/255.f, 128/255.f};
+  float _colorZLines[3] = {192/255.f, 192/255.f, 192/255.f};
+
+  float _decalPos;
+
+  float _cameraMoveSpeed = 50.0f;
+
+  float fov = 100.0f;   // Brennweite
+  float depth = 500.0f; // Maximale Tiefe des Gitters
+  float gridSize = 100.0f;  // Abstand der Gitterlinien
+  float gridWidth = 2000.0f; // Breite des Gitters (x-Richtung)
+  float gridHeight = 500.0f; // Höhe des Gitters (y-Richtung)
+  float startZ = -20.0f;  // Starttiefe des Gitters
+
+  // Steuerung der Gitterlinien
+  bool drawXLines = true; // Linien in x-Richtung (vertikal)
+  bool drawYLines = true; // Linien in y-Richtung (horizontal)
+  bool drawZLines = true; // Linien in z-Richtung (Tiefe)
+
+  // Kamera-Position
+  float camX = 0.0f, camY = 0.0f, camZ = 0.0f; // Startet leicht nach hinten versetzt
+  float baseCamX = camX; // Basis-Kamerahöhe (zum Zurücksetzen)
+  float baseCamY = camY; // Basis-Kamerahöhe (zum Zurücksetzen)
+
+  float currentCamX;
+  float currentCamY;
+
+  // "Bump"-Effekt
+  float bumpTime = 0.0f;
+  float bumpDuration = 0.3f; // Gesamtdauer des Bumps
+  
+  PT<float> vfBumpDir; // Richtung des Bumps
+  float bumpBaseAmplitude = 5.0f; // Maximale Stärke
+ 
+  // Startposition
+  float startX = 6000.0f, startY = 200.0f, startZPos = 2500.0f;
+  // Endposition
+  float endX = 150.0f, endY = -150.0f, endZ = 50.0f;
+  // Aktuelle Position
+  float posX = startX, posY = startY, posZ = startZPos;
+  // Geschwindigkeit
+  float speed = 800.0f;
+
+  // Decal-Position im 3D-Raum
+  float decalX = -50.0f;
+  float decalY = -10.0f;
+  float decalZ = 200.0f;
 };
 
 } // namespace stemaj
