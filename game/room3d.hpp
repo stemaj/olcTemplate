@@ -1,8 +1,6 @@
 #ifndef __ROOM_3D
 #define __ROOM_3D
 
-#include "b2_types.h"
-#include <array>
 #include <olcTemplate/game/coordinates.hpp>
 
 namespace stemaj {
@@ -19,6 +17,7 @@ public:
   void MoveCamX(float val);
   void MoveCamY(float val);
   void MoveCamZ(float val);
+  float GetCamZ() const { return camZ; }
 
   bool isBumping = false;
   void StartBumpEffect(const PT<float>& bumpDir);
@@ -35,21 +34,21 @@ public:
   std::vector<std::pair<PT<float>,PT<float>>> debugLinesY;
   std::vector<std::pair<PT<float>,PT<float>>> debugLinesZ;
 
-  uint32_t GetColorX() { return static_cast<uint32_t> 
+  uint32_t GetColorXLines() { return static_cast<uint32_t> 
     (uint8_t(_colorXLines[0]*255.f) << 24 |
-      uint8_t(_colorXLines[1]*255.f) << 16 |
-      uint8_t(_colorXLines[2]*255.f) << 8 |
-      uint8_t(0)); }
-  uint32_t GetColorY() { return static_cast<uint32_t> 
+      uint8_t(_colorXLines[2]*255.f) << 16 |
+      uint8_t(_colorXLines[1]*255.f) << 8 |
+      uint8_t(255.f)); }
+  uint32_t GetColorYLines() { return static_cast<uint32_t> 
     (uint8_t(_colorYLines[0]*255.f) << 24 |
-      uint8_t(_colorYLines[1]*255.f) << 16 |
-      uint8_t(_colorYLines[2]*255.f) << 8 |
-      uint8_t(0)); }
-  uint32_t GetColorZ() { return static_cast<uint32_t> 
+      uint8_t(_colorYLines[2]*255.f) << 16 |
+      uint8_t(_colorYLines[1]*255.f) << 8 |
+      uint8_t(255.f)); }
+  uint32_t GetColorZLines() { return static_cast<uint32_t> 
     (uint8_t(_colorZLines[0]*255.f) << 24 |
-      uint8_t(_colorZLines[1]*255.f) << 16 |
-      uint8_t(_colorZLines[2]*255.f) << 8 |
-      uint8_t(0)); }
+      uint8_t(_colorZLines[2]*255.f) << 16 |
+      uint8_t(_colorZLines[1]*255.f) << 8 |
+      uint8_t(255.f)); }
             
 private:
 
@@ -88,15 +87,6 @@ private:
   PT<float> vfBumpDir; // Richtung des Bumps
   float bumpBaseAmplitude = 5.0f; // Maximale Stärke
  
-  // Startposition
-  float startX = 6000.0f, startY = 200.0f, startZPos = 2500.0f;
-  // Endposition
-  float endX = 150.0f, endY = -150.0f, endZ = 50.0f;
-  // Aktuelle Position
-  float posX = startX, posY = startY, posZ = startZPos;
-  // Geschwindigkeit
-  float speed = 800.0f;
-
   // Decal-Position im 3D-Raum
   float decalX = -50.0f;
   float decalY = -10.0f;
