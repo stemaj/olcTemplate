@@ -34,27 +34,27 @@ public:
   std::vector<std::pair<PT<float>,PT<float>>> debugLinesY;
   std::vector<std::pair<PT<float>,PT<float>>> debugLinesZ;
 
-  uint32_t GetColorXLines() { return static_cast<uint32_t> 
-    (uint8_t(_colorXLines[0]*255.f) << 24 |
-      uint8_t(_colorXLines[2]*255.f) << 16 |
-      uint8_t(_colorXLines[1]*255.f) << 8 |
-      uint8_t(255.f)); }
-  uint32_t GetColorYLines() { return static_cast<uint32_t> 
-    (uint8_t(_colorYLines[0]*255.f) << 24 |
-      uint8_t(_colorYLines[2]*255.f) << 16 |
-      uint8_t(_colorYLines[1]*255.f) << 8 |
-      uint8_t(255.f)); }
-  uint32_t GetColorZLines() { return static_cast<uint32_t> 
-    (uint8_t(_colorZLines[0]*255.f) << 24 |
-      uint8_t(_colorZLines[2]*255.f) << 16 |
-      uint8_t(_colorZLines[1]*255.f) << 8 |
-      uint8_t(255.f)); }
+  uint32_t GetColorXLines() const { 
+    return (static_cast<uint32_t>(255) << 24) | // Alpha Volle Deckkraft (kein Transparent) (Bits 24-31)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorXLines[2] * 255.0f)) << 16) | // Blau   (Bits 16-23)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorXLines[1] * 255.0f)) << 8)  | // Grün  (Bits 8-15)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorXLines[0] * 255.0f))); }       // Rot  (Bits 0-7)
+  uint32_t GetColorYLines() const {
+    return (static_cast<uint32_t>(255) << 24) | // Alpha Volle Deckkraft (kein Transparent) (Bits 24-31)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorYLines[2] * 255.0f)) << 16) | // Blau   (Bits 16-23)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorYLines[1] * 255.0f)) << 8)  | // Grün  (Bits 8-15)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorYLines[0] * 255.0f))); }       // Rot  (Bits 0-7)
+  uint32_t GetColorZLines() const {
+    return (static_cast<uint32_t>(255) << 24) | // Alpha Volle Deckkraft (kein Transparent) (Bits 24-31)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorZLines[2] * 255.0f)) << 16) | // Blau   (Bits 16-23)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorZLines[1] * 255.0f)) << 8)  | // Grün  (Bits 8-15)
+           (static_cast<uint32_t>(static_cast<uint8_t>(_colorZLines[0] * 255.0f))); }       // Rot  (Bits 0-7)
             
 private:
 
-  float _colorXLines[3] = {64/255.f, 64/255.f, 64/255.f};
+  float _colorZLines[3] = {64/255.f, 64/255.f, 64/255.f};
   float _colorYLines[3] = {128/255.f, 128/255.f, 128/255.f};
-  float _colorZLines[3] = {192/255.f, 192/255.f, 192/255.f};
+  float _colorXLines[3] = {192/255.f, 192/255.f, 192/255.f};
 
   float _decalPos;
 
