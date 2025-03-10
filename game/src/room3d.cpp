@@ -1,11 +1,12 @@
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <olcTemplate/game/room3d.hpp>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 
 using namespace stemaj;
 
-PT<int> Room3d::Project(float x, float y, float z) const
+PT<int> Room3d::Projected(float x, float y, float z) const
 {
   // Relativ zur Kamera berechnen
   float relX = x - camX;
@@ -90,12 +91,39 @@ void Room3d::UpdateBumpEffect(float fElapsedTime)
 
 PT<int> Room3d::GetBackgroundPosition() const
 {
-  return Project(decalX,decalY,decalZ);
+  return Projected(decalX,decalY,decalZ);
 }
 
 float Room3d::GetBackgroundScale() const
 {
   return fov / (decalZ - camZ + fov); // Skalierung mit Tiefe
+}
+
+std::array<float, 3> Room3d::MoveObject(const std::array<float, 3>& from, const std::array<float, 3>& to,
+  float speed, float fElapsedTime)
+{
+  float distance = Distance(from[0], from[1], from[2], to[0], to[1], to[2]);
+  if (distance < 10.0f)
+  {
+    return from;
+  }
+
+  float norm = 1.0f / distance;
+  float dx = (to[0] - from[0]) * norm;
+  float dy = (to[1] - from[1]) * norm;
+  float dz = (to[2] - from[2]) * norm;
+
+  return { from[0] + dx * speed * fElapsedTime,
+           from[1] + dy * speed * fElapsedTime,
+           from[2] + dz * speed * fElapsedTime };
+}
+
+float Room3d::ObjectSizeFactor(float posZ) const
+{
+  float distance = posZ - camZ;
+  if (distance >= _farestZVisibility) return 0.0f;
+
+  return (_farestZVisibility-distance) * _camMaxObjectScale / _farestZVisibility;
 }
 
 void Room3d::Debug()
@@ -122,8 +150,8 @@ void Room3d::Debug()
       // Vertikale Linien in x-Richtung
       for (float x = -gridWidth / 2; x <= gridWidth / 2; x += gridSize)
       {
-        auto p1 = Project(x, -gridHeight / 2, z);
-        auto p2 = Project(x, gridHeight / 2, z);
+        auto p1 = Projected(x, -gridHeight / 2, z);
+        auto p2 = Projected(x, gridHeight / 2, z);
         debugLinesX.push_back({{p1.x,p1.y},{p2.x,p2.y}});
       }
     }
@@ -132,8 +160,8 @@ void Room3d::Debug()
       // Horizontale Linien in y-Richtung
       for (float y = -gridHeight / 2; y <= gridHeight / 2; y += gridSize)
       {
-        auto p1 = Project(-gridWidth / 2, y, z);
-        auto p2 = Project(gridWidth / 2, y, z);
+        auto p1 = Projected(-gridWidth / 2, y, z);
+        auto p2 = Projected(gridWidth / 2, y, z);
         debugLinesY.push_back({{p1.x,p1.y},{p2.x,p2.y}});
       }
     }
@@ -146,8 +174,8 @@ void Room3d::Debug()
     {
       for (float y = -gridHeight / 2; y <= gridHeight / 2; y += gridSize)
       {
-        auto p1 = Project(x, y, startZ);
-        auto p2 = Project(x, y, depth);
+        auto p1 = Projected(x, y, startZ);
+        auto p2 = Projected(x, y, depth);
         debugLinesZ.push_back({{p1.x,p1.y},{p2.x,p2.y}});
       }
     }

@@ -1,6 +1,7 @@
 #ifndef __ROOM_3D
 #define __ROOM_3D
 
+#include <array>
 #include <olcTemplate/game/coordinates.hpp>
 
 namespace stemaj {
@@ -9,10 +10,13 @@ class Room3d
 {
 public:
   // Perspektivische Projektion mit Kameraverschiebung
-  PT<int> Project(float x, float y, float z) const;
+  PT<int> Projected(float x, float y, float z) const;
 
   // Abstand zwischen zwei 3D-Punkten berechnen
   static float Distance(float x1, float y1, float z1, float x2, float y2, float z2);
+
+  std::array<float, 3> MoveObject(const std::array<float, 3>& from, const std::array<float, 3>& to,
+    float speed, float fElapsedTime);
 
   void MoveCamX(float val);
   void MoveCamY(float val);
@@ -28,6 +32,8 @@ public:
 
   PT<int> GetBackgroundPosition() const;
   float GetBackgroundScale() const;
+
+  float ObjectSizeFactor(float posZ) const;
 
   void Debug();
   std::vector<std::pair<PT<float>,PT<float>>> debugLinesX;
@@ -52,13 +58,13 @@ public:
             
 private:
 
+  // Steuerung der Gitterlinien
+  bool drawXLines = true; // Linien in x-Richtung (vertikal)
+  bool drawYLines = true; // Linien in y-Richtung (horizontal)
+  bool drawZLines = true; // Linien in z-Richtung (Tiefe)
   float _colorZLines[3] = {64/255.f, 64/255.f, 64/255.f};
   float _colorYLines[3] = {128/255.f, 128/255.f, 128/255.f};
   float _colorXLines[3] = {192/255.f, 192/255.f, 192/255.f};
-
-  float _decalPos;
-
-  float _cameraMoveSpeed = 50.0f;
 
   float fov = 100.0f;   // Brennweite
   float depth = 500.0f; // Maximale Tiefe des Gitters
@@ -67,23 +73,21 @@ private:
   float gridHeight = 500.0f; // Höhe des Gitters (y-Richtung)
   float startZ = -20.0f;  // Starttiefe des Gitters
 
-  // Steuerung der Gitterlinien
-  bool drawXLines = true; // Linien in x-Richtung (vertikal)
-  bool drawYLines = true; // Linien in y-Richtung (horizontal)
-  bool drawZLines = true; // Linien in z-Richtung (Tiefe)
-
   // Kamera-Position
-  float camX = 0.0f, camY = 0.0f, camZ = 0.0f; // Startet leicht nach hinten versetzt
+  float _cameraMoveSpeed = 300.0f;
+  float camX = 0.0f, camY = 0.0f, camZ = 0.0f;
   float baseCamX = camX; // Basis-Kamerahöhe (zum Zurücksetzen)
   float baseCamY = camY; // Basis-Kamerahöhe (zum Zurücksetzen)
 
-  float currentCamX;
-  float currentCamY;
+  // Objekt Sichbarkeiten
+  float _farestZVisibility = 2000.0f;
+  float _camMaxObjectScale = 100.0f;
 
   // "Bump"-Effekt
   float bumpTime = 0.0f;
   float bumpDuration = 0.3f; // Gesamtdauer des Bumps
-  
+  float currentCamX;
+  float currentCamY;
   PT<float> vfBumpDir; // Richtung des Bumps
   float bumpBaseAmplitude = 5.0f; // Maximale Stärke
  
