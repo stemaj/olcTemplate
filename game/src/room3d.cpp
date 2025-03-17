@@ -136,6 +136,13 @@ void Room3d::Debug()
   ImGui::ColorEdit3("colorXLines", &_colorXLines[0]);
   ImGui::ColorEdit3("colorYLines", &_colorYLines[0]);
   ImGui::ColorEdit3("colorZLines", &_colorZLines[0]);
+  ImGui::SliderFloat("fov", &fov, 10.0f, 1000.0f);
+  ImGui::SliderFloat("depth", &depth, 50.0f, 5000.0f);
+  ImGui::SliderFloat("gridWidth", &gridWidth, 200.0f, 20000.0f);
+  ImGui::SliderFloat("gridHeight", &gridHeight, 50.0f, 5000.0f);
+  ImGui::SliderFloat("startZ", &startZ, -200.0f, 200.0f);
+  ImGui::SliderFloat("_farestZVisibility", &_farestZVisibility, 200.0f, 20000.0f);
+  ImGui::SliderFloat("_camMaxObjectScale", &_camMaxObjectScale, 10.0f, 1000.0f);
   ImGui::End();
 
   debugLinesX.clear();
