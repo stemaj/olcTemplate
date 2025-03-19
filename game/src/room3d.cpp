@@ -103,7 +103,7 @@ std::array<float, 3> Room3d::MoveObject(const std::array<float, 3>& from, const 
   float speed, float fElapsedTime)
 {
   float distance = Distance(from[0], from[1], from[2], to[0], to[1], to[2]);
-  if (distance < 10.0f)
+  if (std::fabs(distance) < 10.0f)
   {
     return from;
   }
@@ -121,7 +121,8 @@ std::array<float, 3> Room3d::MoveObject(const std::array<float, 3>& from, const 
 float Room3d::calculateHeightFactor(float hmin, float hmax, float curvature, float l, float l_max)
 {
   float t = l / l_max; // Normierung der Länge (0 bis 1)
-  return hmin + (hmax - hmin) * std::pow(1 - t, curvature);
+  float ret = hmin + (hmax - hmin) * std::pow(1 - t, curvature);
+  return std::max(hmin, std::min(hmax, ret)); // Wertebereich sicherstellen
 }
 
 void Room3d::Debug()
