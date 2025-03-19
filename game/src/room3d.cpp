@@ -103,7 +103,7 @@ std::array<float, 3> Room3d::MoveObject(const std::array<float, 3>& from, const 
   float speed, float fElapsedTime)
 {
   float distance = Distance(from[0], from[1], from[2], to[0], to[1], to[2]);
-  if (std::fabs(distance) < 10.0f)
+  if (std::fabs(distance) < speed/80.f)
   {
     return from;
   }
