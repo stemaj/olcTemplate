@@ -33,7 +33,7 @@ public:
   PT<int> GetBackgroundPosition() const;
   float GetBackgroundScale() const;
 
-  float ObjectSizeFactor(float posZ) const;
+  float calculateHeightFactor(float hmin, float hmax, float curvature, float l, float l_max);
 
   void Debug();
   std::vector<std::pair<PT<float>,PT<float>>> debugLinesX;
@@ -78,10 +78,6 @@ private:
   float camX = 0.0f, camY = 0.0f, camZ = 0.0f;
   float baseCamX = camX; // Basis-Kamerahöhe (zum Zurücksetzen)
   float baseCamY = camY; // Basis-Kamerahöhe (zum Zurücksetzen)
-
-  // Objekt Sichbarkeiten
-  float _farestZVisibility = 2000.0f;
-  float _camMaxObjectScale = 100.0f;
 
   // "Bump"-Effekt
   float bumpTime = 0.0f;

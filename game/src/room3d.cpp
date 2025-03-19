@@ -118,12 +118,10 @@ std::array<float, 3> Room3d::MoveObject(const std::array<float, 3>& from, const 
            from[2] + dz * speed * fElapsedTime };
 }
 
-float Room3d::ObjectSizeFactor(float posZ) const
+float Room3d::calculateHeightFactor(float hmin, float hmax, float curvature, float l, float l_max)
 {
-  float distance = posZ - camZ;
-  if (distance >= _farestZVisibility) return 0.0f;
-
-  return (_farestZVisibility-distance) * _camMaxObjectScale / _farestZVisibility;
+  float t = l / l_max; // Normierung der Länge (0 bis 1)
+  return hmin + (hmax - hmin) * std::pow(1 - t, curvature);
 }
 
 void Room3d::Debug()
@@ -141,8 +139,6 @@ void Room3d::Debug()
   ImGui::SliderFloat("gridWidth", &gridWidth, 200.0f, 20000.0f);
   ImGui::SliderFloat("gridHeight", &gridHeight, 50.0f, 5000.0f);
   ImGui::SliderFloat("startZ", &startZ, -200.0f, 200.0f);
-  ImGui::SliderFloat("_farestZVisibility", &_farestZVisibility, 200.0f, 20000.0f);
-  ImGui::SliderFloat("_camMaxObjectScale", &_camMaxObjectScale, 10.0f, 1000.0f);
   ImGui::End();
 
   debugLinesX.clear();
