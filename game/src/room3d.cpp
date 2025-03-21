@@ -6,12 +6,12 @@
 
 using namespace stemaj;
 
-PT<int> Room3d::Projected(float x, float y, float z) const
+PT<int> Room3d::Projected(WorldPosition pos) const
 {
   // Relativ zur Kamera berechnen
-  float relX = x - camX;
-  float relY = y - camY;
-  float relZ = z - camZ;
+  float relX = pos.x - camX;
+  float relY = pos.y - camY;
+  float relZ = pos.z - camZ;
 
   // Mindest-Z-Wert setzen (verhindert starke Verzögerungen bei z ≈ 0)
   float minZ = 10.0f;  // Setze die Mindesttiefe auf 10
@@ -24,9 +24,9 @@ PT<int> Room3d::Projected(float x, float y, float z) const
   return { screenX, screenY };
 }
 
-float Room3d::Distance(float x1, float y1, float z1, float x2, float y2, float z2)
+float Room3d::Distance(WorldPosition p1, WorldPosition p2)
 {
-  return sqrtf((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
+  return sqrtf((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y) + (p2.z - p1.z) * (p2.z - p1.z));
 }
 
 void Room3d::MoveCamX(float val)
@@ -91,31 +91,31 @@ void Room3d::UpdateBumpEffect(float fElapsedTime)
 
 PT<int> Room3d::GetBackgroundPosition() const
 {
-  return Projected(decalX,decalY,decalZ);
+  return Projected({decalPos});
 }
 
 float Room3d::GetBackgroundScale() const
 {
-  return fov / (decalZ - camZ + fov); // Skalierung mit Tiefe
+  return fov / (decalPos.z - camZ + fov); // Skalierung mit Tiefe
 }
 
-std::array<float, 3> Room3d::MoveObject(const std::array<float, 3>& from, const std::array<float, 3>& to,
+WorldPosition Room3d::MoveObject(const WorldPosition from, const WorldPosition to,
   float speed, float fElapsedTime)
 {
-  float distance = Distance(from[0], from[1], from[2], to[0], to[1], to[2]);
+  float distance = Distance(from, to);
   if (std::fabs(distance) < speed/80.f)
   {
     return from;
   }
 
   float norm = 1.0f / distance;
-  float dx = (to[0] - from[0]) * norm;
-  float dy = (to[1] - from[1]) * norm;
-  float dz = (to[2] - from[2]) * norm;
+  float dx = (to.x - from.x) * norm;
+  float dy = (to.y - from.y) * norm;
+  float dz = (to.z - from.z) * norm;
 
-  return { from[0] + dx * speed * fElapsedTime,
-           from[1] + dy * speed * fElapsedTime,
-           from[2] + dz * speed * fElapsedTime };
+  return { from.x + dx * speed * fElapsedTime,
+           from.y + dy * speed * fElapsedTime,
+           from.z + dz * speed * fElapsedTime };
 }
 
 float Room3d::calculateHeightFactor(float hmin, float hmax, float curvature, float l, float l_max)
@@ -154,8 +154,8 @@ void Room3d::Debug()
       // Vertikale Linien in x-Richtung
       for (float x = -gridWidth / 2; x <= gridWidth / 2; x += gridSize)
       {
-        auto p1 = Projected(x, -gridHeight / 2, z);
-        auto p2 = Projected(x, gridHeight / 2, z);
+        auto p1 = Projected({x, -gridHeight / 2, z});
+        auto p2 = Projected({x, gridHeight / 2, z});
         debugLinesX.push_back({{p1.x,p1.y},{p2.x,p2.y}});
       }
     }
@@ -164,8 +164,8 @@ void Room3d::Debug()
       // Horizontale Linien in y-Richtung
       for (float y = -gridHeight / 2; y <= gridHeight / 2; y += gridSize)
       {
-        auto p1 = Projected(-gridWidth / 2, y, z);
-        auto p2 = Projected(gridWidth / 2, y, z);
+        auto p1 = Projected({-gridWidth / 2, y, z});
+        auto p2 = Projected({gridWidth / 2, y, z});
         debugLinesY.push_back({{p1.x,p1.y},{p2.x,p2.y}});
       }
     }
@@ -178,8 +178,8 @@ void Room3d::Debug()
     {
       for (float y = -gridHeight / 2; y <= gridHeight / 2; y += gridSize)
       {
-        auto p1 = Projected(x, y, startZ);
-        auto p2 = Projected(x, y, depth);
+        auto p1 = Projected({x, y, startZ});
+        auto p2 = Projected({x, y, depth});
         debugLinesZ.push_back({{p1.x,p1.y},{p2.x,p2.y}});
       }
     }

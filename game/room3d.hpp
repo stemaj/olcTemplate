@@ -1,21 +1,27 @@
 #ifndef __ROOM_3D
 #define __ROOM_3D
 
-#include <array>
 #include <olcTemplate/game/coordinates.hpp>
 
 namespace stemaj {
+
+struct WorldPosition
+{
+  float x = 0.0f;
+  float y = 0.0f;
+  float z = 0.0f;
+};
 
 class Room3d
 {
 public:
   // Perspektivische Projektion mit Kameraverschiebung
-  PT<int> Projected(float x, float y, float z) const;
+  PT<int> Projected(WorldPosition p) const;
 
   // Abstand zwischen zwei 3D-Punkten berechnen
-  static float Distance(float x1, float y1, float z1, float x2, float y2, float z2);
+  static float Distance(WorldPosition p1, WorldPosition p2);
 
-  std::array<float, 3> MoveObject(const std::array<float, 3>& from, const std::array<float, 3>& to,
+  WorldPosition MoveObject(const WorldPosition from, const WorldPosition to,
     float speed, float fElapsedTime);
 
   void MoveCamX(float val);
@@ -88,9 +94,7 @@ private:
   float bumpBaseAmplitude = 5.0f; // Maximale Stärke
  
   // Decal-Position im 3D-Raum
-  float decalX = -50.0f;
-  float decalY = -10.0f;
-  float decalZ = 200.0f;
+  WorldPosition decalPos = { -50.0f, -10.0f, 200.0f };
 };
 
 } // namespace stemaj
