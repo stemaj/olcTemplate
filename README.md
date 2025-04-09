@@ -13,3 +13,13 @@ emranlib *.a
 
 ### Linux
 ../configure --prefix=./ffmpeg_linux_install --disable-debug --disable-doc --disable-ffplay --disable-ffprobe --disable-network --enable-shared --enable-avformat --disable-programs --enable-avcodec --enable-avfilter --enable-swresample --enable-swscale
+
+### Sanitizer
+    buildoptions_cpp {
+      "-fsanitize=address",
+      "-fno-omit-frame-pointer"
+    }
+    linkoptions {
+      "-fsanitize=address",
+      "-fno-omit-frame-pointer"
+    }
