@@ -48,7 +48,7 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 			AS.Decal(g.file), {g.scale, g.scale});
 	}
 
-	if (!rends.empty()) return;
+	//if (!rends.empty()) return;
 	for (const auto& t : m->_texts)
 	{
 		auto col = m->_colors[t.colorListIndex];
