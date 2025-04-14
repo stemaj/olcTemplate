@@ -48,7 +48,6 @@ void Gui::prepareTextButton(ButtonAction ba, const std::string& text,
     const std::string& fontName, const FontSize fontSize,
     const MainMenuColor color, PT<int> coord, int buttonDelta)
 {
-  auto font = FT.Font(fontName, fontSize);
   rends.push_back({ba, FT.Renderable(text, fontName, fontSize,
     olc::Pixel(color[0],color[1],color[2],color[3]).n)});
   _texts[ba] = rends.back().second;

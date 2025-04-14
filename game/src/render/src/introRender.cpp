@@ -43,7 +43,6 @@ void IntroRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
   {
     auto t = i->_texts[index];
     auto col = i->_colors[t.colorListIndex];
-    auto font = FT.Font(i->_font, (FontSize)t.fontSize);
     rends.push_back(FT.Renderable(
       t.text,
       i->_font,
