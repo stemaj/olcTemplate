@@ -1,10 +1,7 @@
-#include <memory>
-#include <olcTemplate/game/src/render/render.hpp>
 #include <olcTemplate/game/src/render/mainMenuRender.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
 #include <olcTemplate/game/src/engine/olcPGEX_TTF.h>
-#include "olcTemplate/game/gui.hpp"
 #include <olcTemplate/game/assets.hpp>
 #include <olcTemplate/game/fonts.hpp>
 #define UTF_CPP_CPLUSPLUS 202002L
@@ -16,9 +13,16 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 {
   auto m = static_cast<MainMenuState*>(state);
 
+	if (_gui != nullptr)
+	{
+		_gui->Update(pge);
+
+		m->_buttonHit = _gui->pressedOn();
+	}
+
 	if (_gui == nullptr)
 	{
-		_gui = std::make_unique<Gui>();
+		_gui = std::make_shared<Gui>();
 
     auto col = m->_colors[m->_buttonNormalColorIndex];
 		_gui->setColNormal(col[0],col[1],col[2],col[3]);
@@ -44,18 +48,12 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 			AS.Decal(g.file), {g.scale, g.scale});
 	}
 
+	if (!rends.empty()) return;
 	for (const auto& t : m->_texts)
 	{
-		olc::Decal* r = nullptr;
 		auto col = m->_colors[t.colorListIndex];
-		auto font = FT.Font(m->_font, t.fontSize);
-		r = font->RenderStringToDecal(
-			utf8::utf8to32(std::string(t.text)),
-			olc::Pixel(col[0],col[1],col[2],col[3]));
-		pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, r);
+		rends.push_back(FT.Renderable(t.text, m->_font, t.fontSize, olc::Pixel(col[0],col[1],col[2],col[3]).n));
+
+		pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, rends.back()->Decal());
 	}
-
-	_gui->Update(pge);
-
-	m->_buttonHit = _gui->pressedOn();
 }

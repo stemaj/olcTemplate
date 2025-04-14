@@ -6,6 +6,10 @@
 #include <olcTemplate/game/input.hpp>
 #include <memory>
 
+namespace olc {
+  class Renderable;  
+}
+
 namespace stemaj {
 
 class MainMenuRender : public Render
@@ -15,7 +19,9 @@ public:
   void Fade(olc::PixelGameEngine* pge, State* state) override final {}
 
 private:
-  std::unique_ptr<Gui> _gui;
+  std::vector<std::shared_ptr<olc::Renderable>> rends;
+
+  std::shared_ptr<Gui> _gui;
 };
 
 } // namespace stemaj

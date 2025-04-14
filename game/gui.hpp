@@ -5,21 +5,29 @@
 #include "olcTemplate/game/input.hpp"
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 namespace olc {
   class Font;
+  class Renderable;
   class PixelGameEngine;
+  namespace QuickGUI {
+    class Manager;
+    class BaseControl;
+  }
 }
 
 namespace stemaj {
 
 
+using RenderedText = std::shared_ptr<olc::Renderable>;
+using RenderedControl = std::shared_ptr<olc::QuickGUI::BaseControl>;
+
 class Gui
 {
 public:
-  Gui();
-  virtual ~Gui();
-
+  explicit Gui();
+  virtual ~Gui() = default;
   void setColNormal(int r, int g, int b, int alpha);
   void setColHover(int r, int g, int b, int alpha);
   void setColClick(int r, int g, int b, int alpha);
@@ -35,8 +43,10 @@ public:
   void Update(olc::PixelGameEngine* pge);
 
 private:
-  class GuiImpl;
-  std::unique_ptr<GuiImpl> _impl;
+  std::shared_ptr<olc::QuickGUI::Manager> guiManager;
+  std::unordered_map<ButtonAction, RenderedControl> _controls;
+  std::unordered_map<ButtonAction, RenderedText> _texts;
+  std::vector<std::pair<ButtonAction, std::shared_ptr<olc::Renderable>>> rends;
 };
 
 }

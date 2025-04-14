@@ -1,8 +1,8 @@
-#include <olcTemplate/game/gui.hpp>
 #include <olcTemplate/game/src/render/render.hpp>
 #include <olcTemplate/game/src/render/levelRender.hpp>
 #include <olcTemplate/game/src/state/levelState.hpp>
 #include <olcTemplate/game/src/engine/olcPixelGameEngine.h>
+#include <olcTemplate/game/gui.hpp>
 
 using namespace stemaj;
 

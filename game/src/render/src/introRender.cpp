@@ -38,16 +38,18 @@ void IntroRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, State*
     );
   }
 
+  rends.clear();
   for (const auto& index : i->_activeTextIndicies)
   {
     auto t = i->_texts[index];
     auto col = i->_colors[t.colorListIndex];
     auto font = FT.Font(i->_font, (FontSize)t.fontSize);
-    pge->DrawDecal({(float)t.pos.x,(float)t.pos.y},
-      font->RenderStringToDecal(
-        utf8::utf8to32(t.text),
-        olc::Pixel(col[0],col[1],col[2],col[3])
-    ));
+    rends.push_back(FT.Renderable(
+      t.text,
+      i->_font,
+      (FontSize)t.fontSize,
+      olc::Pixel(col[0],col[1],col[2],col[3]).n));
+    pge->DrawDecal({(float)t.pos.x,(float)t.pos.y}, rends.back()->Decal());
   }
 }
 

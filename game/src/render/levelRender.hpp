@@ -1,13 +1,10 @@
 #ifndef __LEVELRENDER_HPP
 #define __LEVELRENDER_HPP
 
-#include <olcTemplate/game/src/render/render.hpp>
-#include <memory>
 #include <olcTemplate/game/gui.hpp>
+#include <olcTemplate/game/src/render/render.hpp>
 
 namespace stemaj {
-
-class Gui;
 
 class LevelRender : public Render
 {

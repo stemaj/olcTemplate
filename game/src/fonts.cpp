@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <memory>
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/coordinates.hpp>
@@ -136,22 +137,23 @@ PT<int> Fonts::BoxSize(const std::string& text, const std::string& fontName, con
 	{
 		if (a.name == fontName && a.size == fontSize)
 		{
-			auto r = a.font->RenderStringToDecal(
+			auto r = a.font->RenderStringToRenderable(
 																				 utf8::utf8to32(std::string(text)), olc::WHITE);
-			return { r->sprite->width, r->sprite->height};
+			return { r.Sprite()->width, r.Sprite()->height};
 		}
 	}
 	return {0,0};
 }
 
-olc::Decal* Fonts::Decal(const std::string& text, const std::string& fontName, const FontSize fontSize)
+std::shared_ptr<olc::Renderable> Fonts::Renderable(const std::string& text, const std::string& fontName, const FontSize fontSize, uint32_t col)
 {
+  olc::Pixel color(col);
 	for (auto& a : _impl->_fonts)
 	{
 		if (a.name == fontName && a.size == fontSize)
 		{
-			return a.font->RenderStringToDecal(
-																				 utf8::utf8to32(std::string(text)), olc::WHITE);
+			return std::make_shared<olc::Renderable>(a.font->RenderStringToRenderable(
+        utf8::utf8to32(std::string(text)), color));
 		}
 	}
 	return nullptr;

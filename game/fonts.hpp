@@ -11,6 +11,7 @@
 namespace olc {
 	class Font;
 	class Decal;
+	class Renderable;
 }
 
 namespace stemaj {
@@ -31,7 +32,8 @@ public:
 	bool Loaded = false;
 	
 	PT<int> BoxSize(const std::string& text, const std::string& fontName, const FontSize fontSize);
-	olc::Decal* Decal(const std::string& text, const std::string& fontName, const FontSize fontSize);
+	std::shared_ptr<olc::Renderable> Renderable(const std::string& text,
+		const std::string& fontName, const FontSize fontSize, const uint32_t color = 0xFFFFFFFF);
 
 private:
 	Fonts();
