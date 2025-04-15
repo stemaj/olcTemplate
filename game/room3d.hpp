@@ -34,8 +34,6 @@ public:
 
   void UpdateBumpEffect(float fElapsedTime);
 
-  void CalcBackgroundPosition();
-
   PT<int> GetBackgroundPosition() const;
   float GetBackgroundScale() const;
 
@@ -94,7 +92,7 @@ private:
   float bumpBaseAmplitude = 5.0f; // Maximale Stärke
  
   // Decal-Position im 3D-Raum
-  WorldPosition decalPos = { -50.0f, -10.0f, 200.0f };
+  WorldPosition decalPos = { -1000.0f, 380.0f, 100.0f };
 };
 
 } // namespace stemaj
