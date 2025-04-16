@@ -26,41 +26,19 @@ void OlcHelper::DrawCircleDecal(olc::PixelGameEngine* pge, const int radius,
   if (radius < 1)
       return;
 
-  int x = radius;
-  int y = 0;
-  int decisionOver2 = 1 - x;
+  olc::vf2d center = { (float)position.x, (float)position.y };
+  const int segments = 16;
+  const float angleStep = 2.0f * 3.14159265f / segments;
 
-  olc::vf2d prevPoint = olc::vi2d(position.x,position.y) + olc::vi2d(x, y);
-
-  while (y <= x)
+  for (int i = 0; i < segments; ++i)
   {
-    olc::vf2d points[8] = {
-      olc::vi2d(position.x,position.y) + olc::vi2d(x, y),
-      olc::vi2d(position.x,position.y) + olc::vi2d(y, x),
-      olc::vi2d(position.x,position.y) + olc::vi2d(-x, y),
-      olc::vi2d(position.x,position.y) + olc::vi2d(-y, x),
-      olc::vi2d(position.x,position.y) + olc::vi2d(-x, -y),
-      olc::vi2d(position.x,position.y) + olc::vi2d(-y, -x),
-      olc::vi2d(position.x,position.y) + olc::vi2d(x, -y),
-      olc::vi2d(position.x,position.y) + olc::vi2d(y, -x)
-    };
+    float angle1 = i * angleStep;
+    float angle2 = (i + 1) * angleStep;
 
-    for (int i = 0; i < 8; i++)
-    {
-      pge->DrawLineDecal(prevPoint, points[i], color);
-      prevPoint = points[i];
-    }
+    olc::vf2d point1 = center + olc::vf2d(std::cos(angle1), std::sin(angle1)) * radius;
+    olc::vf2d point2 = center + olc::vf2d(std::cos(angle2), std::sin(angle2)) * radius;
 
-    y++;
-    if (decisionOver2 <= 0)
-    {
-      decisionOver2 += 2 * y + 1;
-    }
-    else
-    {
-      x--;
-      decisionOver2 += 2 * (y - x) + 1;
-    }
+    pge->DrawLineDecal(point1, point2, color);
   }
 }
 
