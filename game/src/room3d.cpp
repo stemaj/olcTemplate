@@ -63,19 +63,10 @@ void Room3d::UpdateBumpEffect(float fElapsedTime)
   if (bumpTime < bumpDuration)
   {
     // Sinusförmige Bewegung für sanftes Hoch- und Runtergehen
-
-    auto mag = [](const PT<float> v){
-      return std::sqrt(v.x * v.x + v.y * v.y);
-    };
-    auto norm = [&mag](const PT<float> v){
-      auto r = 1 / mag(v);
-      return PT<float>{v.x * r, v.y * r};
-    };
-
-    auto bumpDirection = norm(vfBumpDir) * PT<float>{-1.0f,-1.0f}; // Umkehren der Richtung
+    auto bumpDirection = vfBumpDir.norm() * PT<float>{-1.0f,-1.0f}; // Umkehren der Richtung
 
     // Begrenzung der Bump-Stärke auf einen sinnvollen Bereich
-    float bumpFactor = 1.0f + mag(vfBumpDir);
+    float bumpFactor = 1.0f + vfBumpDir.mag();
     float bumpStrength = bumpBaseAmplitude / std::clamp(bumpFactor, 0.1f, 0.2f);
 
     camX = currentCamX + bumpDirection.x * bumpStrength * sinf((bumpTime / bumpDuration) * 3.14159f);

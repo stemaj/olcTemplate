@@ -1,6 +1,7 @@
 #ifndef __COORDINATES_HPP
 #define __COORDINATES_HPP
 
+#include <cmath>
 #include <iomanip>
 #include <ostream>
 #include <vector>
@@ -64,6 +65,16 @@ struct PT
 		os << std::setprecision(3) << "{ x: " << obj.x << ", y: " << obj.y << " }\n";
 		return os;
 	}
+
+	T mag() const
+	{
+		return std::sqrt(x * x + y * y);
+  };
+	PT norm() const
+	{
+		auto r = 1 / mag();
+    return {x * r, y * r};
+  };
 };
 
 class Coordinates
