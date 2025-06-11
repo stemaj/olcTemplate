@@ -7,6 +7,7 @@
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <olcTemplate/game/sound.hpp>
+#include <olcTemplate/game/loadsave.hpp>
 
 using namespace stemaj;
 
@@ -14,51 +15,15 @@ Cutscene::Cutscene(const std::string& name, const std::string& tryAgainLevelName
 : _name(name), _tryAgainLevelName(tryAgainLevelName), _render(std::make_unique<RenderCutscene>())
 {
   //SO.StartMusic("./olcTemplate/assets/wav/groovy-energy-sports-80-bpm-short-12275.mp3", 0.5f);
-	
-  _lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
-	try
-	{
-		_lua.safe_script_file("scripts/" + name + ".lua");
-	}
-	catch (const sol::error& e)
-	{
-		std::cout << std::string(e.what()) << std::endl;
-	}
-
-
-  _font = _lua["font"].get_or<std::string>("dogica");
-  _fader = std::make_unique<Fader>(_lua["fade_time"].get_or(3.0f));
-  _cutsceneTime = _lua["cutscene_time"].get_or(18.0f);
-  _colors = _lua["colors"].get<std::vector<MainMenuColor>>();
-  _backgroundColorIndex = _lua["background_color"].get_or(0);
-  
-  sol::table textsTable = _lua["texts"];
-  for (size_t i = 1; i <= textsTable.size(); i++)
-  {
-    sol::table t = textsTable[i];
-    auto p = t.get<std::array<float,2>>(2);
-    _texts.push_back( {
-      t.get<std::string>(1),
-      CO.D({p[0],p[1]}),
-      (FontSize)t.get<int>(3),
-      t.get<float>(4),
-      t.get<float>(5),
-      t.get<int>(6)});
-  }
-
-  sol::table graphicsTable = _lua["graphics"];
-  for (size_t i = 1; i <= graphicsTable.size(); i++)
-  {
-    sol::table t = graphicsTable[i];
-    auto p = t.get<std::array<float,2>>(2);
-    _graphics.push_back( {
-      t.get<std::string>(1),
-      CO.D({p[0],p[1]}),
-      t.get<float>(3),
-      t.get<float>(4),
-      t.get<float>(5)});
-  }
+  LS.Init("./scripts/" + name + ".lua", false);
+  _font = LS.String("font", "dogica");
+  _fader = std::make_unique<Fader>(LS.Float("fade_time", 3.0f));
+  _cutsceneTime = LS.Float("cutscene_time", 18.0f);
+  _colors = LS.Colors();
+  _backgroundColorIndex = LS.Int("background_color", 0);
+  _texts = LS.IntroTexts();
+  _graphics = LS.IntroGraphics();
 }
 
 Render* Cutscene::GetRender()

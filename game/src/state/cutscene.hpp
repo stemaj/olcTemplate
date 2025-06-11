@@ -8,8 +8,6 @@
 #include <olcTemplate/game/src/tools/fader.hpp>
 #include <olcTemplate/game/src/render/renderCutscene.hpp>
 #include <olcTemplate/game/fonts.hpp>
-#define SOL_ALL_SAFETIES_ON 1
-#include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
 #include <string>
 #include <memory>
 
@@ -44,7 +42,6 @@ private:
 
   std::string _winCutscene = "";
   std::string _tryAgainLevelName = "";
-  sol::state _lua;
   std::unique_ptr<RenderCutscene> _render;
 };
 

@@ -13,7 +13,8 @@ void RenderCutscene::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 {
   auto i = static_cast<Cutscene*>(state);
 
-  pge->Clear(olc::Pixel(255,207,131 ));
+  auto c = i->_colors[i->_backgroundColorIndex];
+  pge->Clear( olc::Pixel(c[0],c[1],c[2],c[3]) );
 
   for (const auto& index : i->_activeGraphicIndicies)
   {
