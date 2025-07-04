@@ -2,17 +2,20 @@
 #include <olcTemplate/game/src/state/cutscene.hpp>
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/src/tools/fader.hpp>
-#include <game/cheetahLevel.hpp>
 #include <olcTemplate/game/src/state/mainMenuState.hpp>
 #include <optional>
 #include <olcTemplate/sdk/imgui-1.90.4/imgui.h>
 #include <olcTemplate/game/sound.hpp>
 #include <olcTemplate/game/loadsave.hpp>
+#include <utility>
 
 using namespace stemaj;
 
-Cutscene::Cutscene(const std::string& name, const std::string& tryAgainLevelName) 
-: _name(name), _tryAgainLevelName(tryAgainLevelName), _render(std::make_unique<RenderCutscene>())
+Cutscene::Cutscene(const std::string& name,
+  std::unique_ptr<State> onNext,
+  std::unique_ptr<State> onAgain) 
+  : _name(name), _onNext(std::move(onNext)),
+    _onAgain(std::move(onAgain)), _render(std::make_unique<RenderCutscene>())
 {
   //SO.StartMusic("./olcTemplate/assets/wav/groovy-energy-sports-80-bpm-short-12275.mp3", 0.5f);
 
@@ -68,11 +71,11 @@ std::optional<std::unique_ptr<State>> Cutscene::Update(const Input& input, float
     }
     else if (_name == "cutscene_lose")
     {
-      return std::make_unique<CheetahLevel>(_tryAgainLevelName);
+      return std::move(_onAgain); //std::make_unique<CheetahLevel>(_tryAgainLevelName);
     }
     else // next level 
     {
-      return std::make_unique<CheetahLevel>(_name.replace(0,9,""));
+      return std::move(_onNext); //std::make_unique<CheetahLevel>(_name.replace(0,9,""));
     }
   }
 
@@ -94,11 +97,11 @@ std::optional<std::unique_ptr<State>> Cutscene::Update(const Input& input, float
       }
       else if (_name == "cutscene_lose")
       {
-        return std::make_unique<CheetahLevel>(_tryAgainLevelName);
+        return std::move(_onAgain); //std::make_unique<CheetahLevel>(_tryAgainLevelName);
       }
       else // next level 
       {
-        return std::make_unique<CheetahLevel>(_name.replace(0,9,""));
+        return std::move(_onNext); //std::make_unique<CheetahLevel>(_name.replace(0,9,""));
       }
     }
     else if (!_fader->IsFading())

@@ -20,7 +20,10 @@ namespace stemaj {
 class Cutscene : public State
 {
 public:
-  explicit Cutscene(const std::string& name, const std::string& tryAgainLevelName = "");
+  explicit Cutscene(const std::string& name, 
+    std::unique_ptr<State> onNext = nullptr,
+    std::unique_ptr<State> onAgain = nullptr
+  );
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
   std::unique_ptr<Fader> _fader;
@@ -41,8 +44,10 @@ private:
   bool _animationRewindedForStartup = false;
 
   std::string _winCutscene = "";
-  std::string _tryAgainLevelName = "";
   std::unique_ptr<RenderCutscene> _render;
+
+  std::unique_ptr<State> _onNext;
+  std::unique_ptr<State> _onAgain;
 };
 
 } // namespace stemaj
