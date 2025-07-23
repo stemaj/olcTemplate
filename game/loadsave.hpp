@@ -62,7 +62,7 @@ public:
 	void SaveEnd();
 
 	int Profile = 1;
-private:
+protected:
 	std::ofstream _outFile;
   sol::state _luaProfile;
 	sol::state _luaDefault;
