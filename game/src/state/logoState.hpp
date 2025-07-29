@@ -22,6 +22,8 @@ public:
   explicit LogoState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
+  void setNext(std::unique_ptr<State> onNext) override {}
+  void setAgain(std::unique_ptr<State> onAgain) override {}
   Fader _fader;
 
   Sheet _logoSheet;

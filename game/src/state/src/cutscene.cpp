@@ -12,11 +12,11 @@
 using namespace stemaj;
 
 Cutscene::Cutscene(const std::string& name,
-  std::unique_ptr<State> onNext,
-  std::unique_ptr<State> onAgain) 
-  : _name(name), _onNext(std::move(onNext)),
-    _onAgain(std::move(onAgain)), _render(std::make_unique<RenderCutscene>())
+  std::unique_ptr<State> onNext) 
+  : _name(name), _render(std::make_unique<RenderCutscene>())
 {
+  _onNext = std::move(onNext);
+
   //SO.StartMusic("./olcTemplate/assets/wav/groovy-energy-sports-80-bpm-short-12275.mp3", 0.5f);
 
   LS.Init("./scripts/" + name + ".lua", false);
@@ -65,17 +65,9 @@ std::optional<std::unique_ptr<State>> Cutscene::Update(const Input& input, float
 
   if (input.spacePressed || input.leftMouseClicked)
   {
-    if (_name == "cutscene_end_good" || _name == "cutscene_end_bad")
+    if (_onNext != nullptr)
     {
-      return std::make_unique<MainMenuState>();
-    }
-    else if (_name == "cutscene_lose")
-    {
-      return std::move(_onAgain); //std::make_unique<CheetahLevel>(_tryAgainLevelName);
-    }
-    else // next level 
-    {
-      return std::move(_onNext); //std::make_unique<CheetahLevel>(_name.replace(0,9,""));
+      return std::move(_onNext);
     }
   }
 
@@ -91,17 +83,9 @@ std::optional<std::unique_ptr<State>> Cutscene::Update(const Input& input, float
   {
     if (_fader->IsTurning())
     {
-      if (_name == "cutscene_end_good" || _name == "cutscene_end_bad")
+      if (_onNext != nullptr)
       {
-        return std::make_unique<MainMenuState>();
-      }
-      else if (_name == "cutscene_lose")
-      {
-        return std::move(_onAgain); //std::make_unique<CheetahLevel>(_tryAgainLevelName);
-      }
-      else // next level 
-      {
-        return std::move(_onNext); //std::make_unique<CheetahLevel>(_name.replace(0,9,""));
+        return std::move(_onNext);
       }
     }
     else if (!_fader->IsFading())

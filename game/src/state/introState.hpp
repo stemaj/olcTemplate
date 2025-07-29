@@ -26,6 +26,9 @@ public:
   explicit IntroState();
   std::optional<std::unique_ptr<State>> Update(const Input& input, float fElapsedTime) override;
   Render* GetRender() override;
+  void setNext(std::unique_ptr<State> onNext) override {}
+  void setAgain(std::unique_ptr<State> onAgain) override {}
+
   std::unique_ptr<Fader> _fader;
 
   std::string _font = "";
