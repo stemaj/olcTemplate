@@ -86,6 +86,63 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 	}
 }
 
+void PhysicalWorld::SpawnRectangle(int id, PT<float> p1, PT<float> p2, float height,
+	int type, float dens, float rest, float fric, float lDamp, float aDamp, Userdata* userdata)
+{
+	PT<float> midpoint = {(p1.x + p2.x)/2.0f, (p1.y + p2.y)/2.0f };
+	float length = sqrt( pow(p2.x - p1.x,2) + pow(p2.y - p1.y,2) );
+	float angle = std::atan2( p2.y - p1.y, p2.x - p1.x );
+
+	b2PolygonShape polygonShape;
+	polygonShape.SetAsBox(length*_box2dScale/2.0f,height*_box2dScale/2.0f);
+
+	b2FixtureDef fixtureDef;
+	fixtureDef.density = dens;
+	fixtureDef.restitution = rest;
+	fixtureDef.friction = fric;
+	fixtureDef.shape = &polygonShape;
+
+	b2BodyDef bodyDef;
+	bodyDef.position.Set(midpoint.x*_box2dScale,midpoint.y*_box2dScale);
+	bodyDef.type = (b2BodyType)type;
+	bodyDef.angle = angle;
+	_bodyPtrs[id] = _world->CreateBody(&bodyDef);
+	_bodyPtrs[id]->CreateFixture(&fixtureDef);
+	_bodyPtrs[id]->SetLinearDamping(lDamp);
+	_bodyPtrs[id]->SetAngularDamping(aDamp);
+	_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)userdata;
+}
+
+void PhysicalWorld::SpawnPolygon(int id, PT<float> midpoint, std::vector<PT<float>> localPts, 
+	float angle, int type, float dens,
+	float rest, float fric, float lDamp, float aDamp, Userdata* userdata)
+{
+	b2PolygonShape polygonShape;
+	b2Vec2* points = new b2Vec2[int(localPts.size())]();
+	for (int i = 0; i < localPts.size(); i++)
+	{
+		points[i].Set(localPts[i].x*_box2dScale, localPts[i].y*_box2dScale);
+	}
+	polygonShape.Set(b2ComputeHull(points, int32(localPts.size())));
+	delete[] points;
+
+	b2FixtureDef fixtureDef;
+	fixtureDef.density = dens;
+	fixtureDef.restitution = rest;
+	fixtureDef.friction = fric;
+	fixtureDef.shape = &polygonShape;
+
+	b2BodyDef bodyDef;
+	bodyDef.position.Set(midpoint.x*_box2dScale,midpoint.y*_box2dScale);
+	bodyDef.type = (b2BodyType)type;
+	bodyDef.angle = angle;
+	_bodyPtrs[id] = _world->CreateBody(&bodyDef);
+	_bodyPtrs[id]->CreateFixture(&fixtureDef);
+	_bodyPtrs[id]->SetLinearDamping(lDamp);
+	_bodyPtrs[id]->SetAngularDamping(aDamp);
+	_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)userdata;
+}
+
 void PhysicalWorld::Step(float fElapsedTime)
 {
 	_world->Step(fElapsedTime, 6, 2);

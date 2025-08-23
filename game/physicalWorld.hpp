@@ -29,6 +29,12 @@ public:
 	virtual ~PhysicalWorld();
 	
 	void LoadFromScript(const std::string& name, const std::string& prefix, Userdata* userdata);
+
+	void SpawnRectangle(int id, PT<float> p1, PT<float> p2, float height, int type, float dens,
+		float rest, float fric, float lDamp, float aDamp, Userdata* userdata);
+	void SpawnPolygon(int id, PT<float> midpoint, std::vector<PT<float>> localPts, 
+		float angle, int type, float dens,
+		float rest, float fric, float lDamp, float aDamp, Userdata* userdata);
 	
 	void Step(float fElapsedTime);
 
