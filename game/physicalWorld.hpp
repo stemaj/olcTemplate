@@ -6,6 +6,7 @@
 #include <olcTemplate/game/coordinates.hpp>
 #include <string>
 #include <unordered_map>
+#include <list>
 
 namespace stemaj {
 
@@ -24,17 +25,29 @@ class PhysicalWorld
 public:
 	struct Userdata {
 		bool inContact = false;
+		int id = -1;
+	};
+	class ContactChecker : public b2ContactListener
+	{
+	public:
+		ContactChecker(int id) : _id(id) {}
+    void BeginContact(b2Contact* contact) override;
+    void EndContact(b2Contact* contact) override;
+		bool IsInContactWithId(const int lessThan, const int moreThan);
+	private:
+		std::vector<int> _idsInContactWith;
+		int _id = 0;
 	};
 
 	virtual ~PhysicalWorld();
 	
-	void LoadFromScript(const std::string& name, const std::string& prefix, Userdata* userdata);
+	void LoadFromScript(const std::string& name, const std::string& prefix, std::list<int>& userdata);
 
 	void SpawnRectangle(int id, PT<float> p1, PT<float> p2, float height, int type, float dens,
-		float rest, float fric, float lDamp, float aDamp, Userdata* userdata);
+		float rest, float fric, float lDamp, float aDamp, int* userdata);
 	void SpawnPolygon(int id, PT<float> midpoint, std::vector<PT<float>> localPts, 
 		float angle, int type, float dens,
-		float rest, float fric, float lDamp, float aDamp, Userdata* userdata);
+		float rest, float fric, float lDamp, float aDamp, int* userdata);
 	
 	void Step(float fElapsedTime);
 
@@ -58,7 +71,7 @@ public:
 
 	float GetSpeedX(const int id);
 
-	void SetListener(b2ContactListener* listener);
+	void SetListener(PhysicalWorld::ContactChecker* checker);
 private:
 
 	float _box2dScale = 0.0f;

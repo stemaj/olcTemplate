@@ -3,6 +3,7 @@
 #include <olcTemplate/game/loadsave.hpp>
 #define SOL_ALL_SAFETIES_ON 1
 #include <olcTemplate/sdk/sol2-3.3.0/sol.hpp>
+#include <algorithm>
 
 using namespace stemaj;
 
@@ -21,13 +22,9 @@ PhysicalWorld::~PhysicalWorld()
 	_world = nullptr;
 }
 
-void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& prefix, Userdata* userdata)
+void PhysicalWorld::LoadFromScript(const std::string& name,
+	const std::string& prefix, std::list<int>& userdata)
 {
-	//LS.Init(name);
-	
-	
-	
-	
 	sol::state lua;
 	lua.open_libraries(sol::lib::base, sol::lib::io, sol::lib::math, sol::lib::table);
 
@@ -82,12 +79,13 @@ void PhysicalWorld::LoadFromScript(const std::string& name, const std::string& p
 		_bodyPtrs[id]->CreateFixture(&fixtureDef);
 		_bodyPtrs[id]->SetLinearDamping(lDamp);
 		_bodyPtrs[id]->SetAngularDamping(aDamp);
-		_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)userdata;
+		userdata.push_back(id);
+		_bodyPtrs[id]->GetUserData().pointer = reinterpret_cast<uintptr_t>(&userdata.back());
 	}
 }
 
 void PhysicalWorld::SpawnRectangle(int id, PT<float> p1, PT<float> p2, float height,
-	int type, float dens, float rest, float fric, float lDamp, float aDamp, Userdata* userdata)
+	int type, float dens, float rest, float fric, float lDamp, float aDamp, int* userdata)
 {
 	PT<float> midpoint = {(p1.x + p2.x)/2.0f, (p1.y + p2.y)/2.0f };
 	float length = sqrt( pow(p2.x - p1.x,2) + pow(p2.y - p1.y,2) );
@@ -110,12 +108,12 @@ void PhysicalWorld::SpawnRectangle(int id, PT<float> p1, PT<float> p2, float hei
 	_bodyPtrs[id]->CreateFixture(&fixtureDef);
 	_bodyPtrs[id]->SetLinearDamping(lDamp);
 	_bodyPtrs[id]->SetAngularDamping(aDamp);
-	_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)userdata;
+	_bodyPtrs[id]->GetUserData().pointer = reinterpret_cast<uintptr_t>(userdata);
 }
 
 void PhysicalWorld::SpawnPolygon(int id, PT<float> midpoint, std::vector<PT<float>> localPts, 
 	float angle, int type, float dens,
-	float rest, float fric, float lDamp, float aDamp, Userdata* userdata)
+	float rest, float fric, float lDamp, float aDamp, int* userdata)
 {
 	b2PolygonShape polygonShape;
 	b2Vec2* points = new b2Vec2[int(localPts.size())]();
@@ -140,7 +138,7 @@ void PhysicalWorld::SpawnPolygon(int id, PT<float> midpoint, std::vector<PT<floa
 	_bodyPtrs[id]->CreateFixture(&fixtureDef);
 	_bodyPtrs[id]->SetLinearDamping(lDamp);
 	_bodyPtrs[id]->SetAngularDamping(aDamp);
-	_bodyPtrs[id]->GetUserData().pointer = (uintptr_t)userdata;
+	_bodyPtrs[id]->GetUserData().pointer = reinterpret_cast<uintptr_t>(userdata);
 }
 
 void PhysicalWorld::Step(float fElapsedTime)
@@ -344,9 +342,9 @@ bool PhysicalWorld::IsBodyGrounded(const int id)
 	return reinterpret_cast<PhysicalWorld::Userdata*>(_bodyPtrs[id]->GetUserData().pointer)->inContact;
 }
 
-void PhysicalWorld::SetListener(b2ContactListener* listener)
+void PhysicalWorld::SetListener(PhysicalWorld::ContactChecker* checker)
 {
-	_world->SetContactListener(listener);
+	_world->SetContactListener(checker);
 }
 
 void GroundedListener::BeginContact(b2Contact* contact)
@@ -401,4 +399,55 @@ void GroundedListener::EndContact(b2Contact* contact)
 			}
 		}
 	}
+}
+
+void PhysicalWorld::ContactChecker::BeginContact(b2Contact* contact)
+{
+	b2Fixture* fixtureA = contact->GetFixtureA();
+	b2Fixture* fixtureB = contact->GetFixtureB();
+
+	auto uA = reinterpret_cast<int*>(fixtureA->GetBody()->GetUserData().pointer);
+	auto uB = reinterpret_cast<int*>(fixtureB->GetBody()->GetUserData().pointer);
+
+	if (*uA == _id)
+	{
+		//std::cout << "Contact with " << *uB << std::endl;
+		_idsInContactWith.push_back(*uB);
+	}
+	else if (*uB == _id)
+	{
+		//std::cout << "Contact with " << *uA << std::endl;
+		_idsInContactWith.push_back(*uA);
+	}
+}
+
+void PhysicalWorld::ContactChecker::EndContact(b2Contact* contact)
+{
+	b2Fixture* fixtureA = contact->GetFixtureA();
+	b2Fixture* fixtureB = contact->GetFixtureB();
+
+	auto uA = reinterpret_cast<int*>(fixtureA->GetBody()->GetUserData().pointer);
+	auto uB = reinterpret_cast<int*>(fixtureB->GetBody()->GetUserData().pointer);
+
+	if (*uA == _id)
+	{
+		//std::cout << "End Contact with " << *uB << std::endl;
+		_idsInContactWith.erase(std::remove(
+			_idsInContactWith.begin(), _idsInContactWith.end(), *uB),
+			_idsInContactWith.end());
+	}
+	else if (*uB == _id)
+	{
+		//std::cout << "End Contact with " << *uA << std::endl;
+		_idsInContactWith.erase(std::remove(
+			_idsInContactWith.begin(), _idsInContactWith.end(), *uA),
+			_idsInContactWith.end());
+	}
+}
+
+bool PhysicalWorld::ContactChecker::IsInContactWithId(int lessThan, int moreThan)
+{
+	return std::find_if(_idsInContactWith.begin(), _idsInContactWith.end(),
+		[=](int id){ return id < lessThan && id > moreThan; })
+			!= _idsInContactWith.end();
 }
