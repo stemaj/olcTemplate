@@ -13,13 +13,6 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 {
   auto m = static_cast<MainMenuState*>(state);
 
-	if (_gui != nullptr)
-	{
-		_gui->Update(pge);
-
-		m->_buttonHit = _gui->pressedOn();
-	}
-
 	if (_gui == nullptr)
 	{
 		_gui = std::make_shared<Gui>();
@@ -55,5 +48,12 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
 		rends.push_back(FT.Renderable(t.text, m->_font, t.fontSize, olc::Pixel(col[0],col[1],col[2],col[3]).n));
 
 		pge->DrawDecal({(float)t.pos.x, (float)t.pos.y}, rends.back()->Decal());
+	}
+
+	if (_gui != nullptr)
+	{
+		_gui->Update(pge);
+
+		m->_buttonHit = _gui->pressedOn();
 	}
 }
