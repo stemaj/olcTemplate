@@ -27,11 +27,6 @@ protected:
   std::optional<std::unique_ptr<State>> RequestForMainMenu(
     bool escapeTriggered, float fElapsedTime);
 
-  void playMusic(const std::string& filePath, const float fadeTime = 0.0f);
-  void stopMusic(const float fadeTime = 0.0f);
-  void playEffect(const std::string& filePath);
-  void stopAllEffects();
-
   olc::utils::Camera2D _camera;
   bool _cameraConfigured = false;
 

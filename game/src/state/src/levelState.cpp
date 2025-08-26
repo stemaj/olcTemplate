@@ -32,35 +32,16 @@ std::optional<std::unique_ptr<State>> LevelState::RequestForMainMenu(bool escape
 {
    if (escapeTriggered)
    {
-    stopAllEffects();
-	  stopMusic();
     _fader.StartFadeOut();
+    SO.StopMusic(_fader.GetFadeDuration()-0.1f);
    }
    _fader.Update(fElapsedTime);
    if (_fader.IsTurning())
    {
+     SO.StopAllEffects();
+	   
      return std::make_unique<MainMenuState>();
    }
    return std::nullopt;   
 }
 
-void LevelState::playMusic(const std::string& filePath, const float fadeTime)
-{
-  SO.StartMusic(filePath, 0.2f, fadeTime);
-}
-
-void LevelState::stopMusic(const float fadeTime)
-{
-  SO.StopAllEffects();
-  SO.StopMusic(fadeTime);
-}
-
-void LevelState::playEffect(const std::string& filePath)
-{
-  SO.StartEffect(filePath, 1.0f);
-}
-
-void LevelState::stopAllEffects()
-{
-  SO.StopAllEffects();
-}

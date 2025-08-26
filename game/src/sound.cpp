@@ -30,7 +30,7 @@ Sound::~Sound()
   if (_soundEnabled && _soundEngine != nullptr)
   {
     _soundEngine->stopAll();
-    _effects.clear();
+
     _soundEngine->deinit();
   }
 }
@@ -86,10 +86,33 @@ void Sound::StartEffect(const std::string& filepath, float volume)
     return;
   }
 
-  _effects.emplace_back(std::make_unique<SoLoud::Wav>());
-  _effects[_effects.size()-1]->load(filepath.c_str());
-  _effects[_effects.size()-1]->setVolume(volume);
-  _soundEngine->play(*_effects[_effects.size()-1]);
+  _effects[filepath] = std::make_unique<SoLoud::Wav>();
+  _effects[filepath]->load(filepath.c_str());
+  _effects[filepath]->setVolume(volume);
+  _effects[filepath]->setLooping(true);
+  _effectHandles[filepath] = _soundEngine->play(*_effects[filepath]);
+}
+
+void Sound::StopEffect(const std::string& filepath, float fadeOutTime)
+{
+  if (!_soundEnabled || _soundEngine == nullptr)
+  {
+    return;
+  }
+
+  if (fadeOutTime > 0.0f)
+  {
+    _soundEngine->fadeVolume(_effectHandles[filepath], 0.0f, fadeOutTime);
+    _soundEngine->scheduleStop(_effectHandles[filepath],
+      _soundEngine->getStreamTime(_effectHandles[filepath]) + fadeOutTime);
+    _effectHandles.erase(filepath);
+  }
+  else
+  {
+    _soundEngine->stop(_effectHandles[filepath]);
+    _effects.erase(filepath);
+    _effectHandles.erase(filepath);
+  }
 }
 
 void Sound::StopAllEffects()
@@ -99,9 +122,7 @@ void Sound::StopAllEffects()
     return;
   }
 
-  for (auto& e : _effects)
-  {
-    e->stop();
-  }
+  _soundEngine->stopAll();
+  _effectHandles.clear();
   _effects.clear();
 }
