@@ -20,9 +20,9 @@ void MainMenuRender::DoRender(olc::PixelGameEngine* pge, float fElapsedTime, Sta
     auto col = m->_colors[m->_buttonNormalColorIndex];
 		_gui->setColNormal(col[0],col[1],col[2],col[3]);
 		col = m->_colors[m->_buttonHoverColorIndex];
-		_gui->setColNormal(col[0],col[1],col[2],col[3]);
+		_gui->setColHover(col[0],col[1],col[2],col[3]);
 		col = m->_colors[m->_buttonClickColorIndex];
-		_gui->setColNormal(col[0],col[1],col[2],col[3]);
+		_gui->setColClick(col[0],col[1],col[2],col[3]);
 
 		for (auto& [ba, text] : m->_buttons)
 		{
