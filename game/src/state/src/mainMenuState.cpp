@@ -15,8 +15,6 @@ using namespace stemaj;
 
 MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
 {
-  SO.StartMusic("./olcTemplate/assets/wav/hard-rock-logo-108960.mp3", 0.5f);
-
   LS.Init("scripts/mainMenu.lua", false);
   _font = LS.String("font", "dogica");
   _colors = LS.Colors();
@@ -27,6 +25,10 @@ MainMenuState::MainMenuState() : _render(std::make_unique<MainMenuRender>())
   _texts = LS.Texts();
   _graphics = LS.Graphics();
   _buttons = LS.ButtonTexts();
+  _sound = LS.String("sound", "./olcTemplate/assets/wav/hard-rock-logo-108960.mp3");
+  _sound_volume = LS.Float("sound_volume", 0.5f);
+
+  SO.StartMusic(_sound, _sound_volume);
 }
 
 Render* MainMenuState::GetRender()

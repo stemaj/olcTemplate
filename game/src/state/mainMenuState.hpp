@@ -44,6 +44,9 @@ public:
 	ButtonAction _buttonHit = ButtonAction::NO_ACTION;
 
 private:
+
+  std::string _sound = "";
+  float _sound_volume = 0.0f;
   std::unique_ptr<MainMenuRender> _render;
 };
 
