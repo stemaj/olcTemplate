@@ -4,7 +4,6 @@
 #include <olcTemplate/game/coordinates.hpp>
 #include <olcTemplate/game/src/engine/olcUTIL_Geometry2D.h>
 #include <olcTemplate/game/src/engine/olcUTIL_Animate2D.h>
-#include <cstdint>
 #include <string>
 #include <unordered_map>
 #include <olcTemplate/game/src/state/loading.hpp>

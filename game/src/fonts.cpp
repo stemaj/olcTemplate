@@ -1,4 +1,3 @@
-#include <cstdint>
 #include <memory>
 #include <olcTemplate/game/fonts.hpp>
 #include <olcTemplate/game/coordinates.hpp>
