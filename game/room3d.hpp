@@ -1,6 +1,7 @@
 #ifndef __ROOM_3D
 #define __ROOM_3D
 
+#include <cstdint>
 #include <olcTemplate/game/coordinates.hpp>
 
 namespace stemaj {
