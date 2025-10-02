@@ -1,6 +1,7 @@
 #ifndef __GUIELEMENTS_HPP
 #define __GUIELEMENTS_HPP
 
+#include <cstdint>
 #include <array>
 #include <olcTemplate/game/coordinates.hpp>
 
