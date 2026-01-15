@@ -4243,6 +4243,10 @@ namespace olc
 #endif
 		}
 
+#if defined(OLC_PLATFORM_WINAPI)
+		bool bSync = false;
+#endif
+
 		olc::rcode CreateDevice(std::vector<void*> params, bool bFullScreen, bool bVSYNC) override
 		{
 #if defined(OLC_PLATFORM_WINAPI)

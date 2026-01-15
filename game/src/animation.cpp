@@ -32,7 +32,7 @@ void AnimationMap::LoadFrom(const std::string& directory)
       continue;      
     }
 
-    LS.Init(entry.path(), false);
+    LS.Init(entry.path().string(), false);
 
     stemaj::Animation a;
     a.spriteWidth = LS.Int("spriteWidth");
